@@ -23,11 +23,22 @@
 :: Modifications by Jianxun Zhu:
 :: - Changed DEFAULT_DESIGNS from %USERPROFILE%\eda\designs to %CD%\designs
 ::   to mount the current directory's designs folder instead of user home
+:: Modifications by Luighi Viton-Zorrilla:
+:: - Added: support for an .env file to load environment variables
+:: - Added: support for gLatout installation by GLAYOUT_INSTALL
+:: GLAYOUT_REPOSITORY and GLAYOUT_FOLDER env variables
 :: ========================================================================
 
 SETLOCAL
 
 SET DEFAULT_DESIGNS=%CD%\designs
+set "ENVFILE=.env"
+
+:: Check if the .env file exists
+if exist "%ENVFILE%" (
+    :: Loop through the file to set variables (simulates 'source')
+    for /f "tokens=*" %%i in (%ENVFILE%) do set %%i
+)
 
 IF DEFINED DRY_RUN (
 	echo This is a dry run, all commands will be printed to the shell ^(Commands printed but not executed are marked with ^$^)!
@@ -68,6 +79,25 @@ IF "%JUPYTER_PORT%"=="" SET JUPYTER_PORT=8888
 IF %CONTAINER_USER% NEQ 0 if %CONTAINER_USER% LSS 1000 echo WARNING: Selected User ID %CONTAINER_USER% is below 1000. This ID might interfere with User-IDs inside the container and cause undefined behaviour!
 IF %CONTAINER_GROUP% NEQ 0 if %CONTAINER_GROUP% LSS 1000 echo WARNING: Selected Group ID %CONTAINER_GROUP% is below 1000. This ID might interfere with Group-IDs inside the container and cause undefined behaviour!
 
+setlocal enabledelayedexpansion
+
+:: Adding support for gLayout installation
+if "%GLAYOUT_INSTALL%"=="1" (
+
+    if "!GLAYOUT_REPOSITORY!"=="" (
+        set "GLAYOUT_REPOSITORY=git@github.com:ReaLLMASIC/gLayout.git"
+    )
+
+    if "!GLAYOUT_FOLDER!"=="" (
+        set "GLAYOUT_FOLDER=gLayout"
+    )
+
+    if "!GLAYOUT_PATH!"=="" (
+        set "GLAYOUT_PATH=libs"
+    )
+
+)
+
 IF DEFINED IIC_SERVER_DEPLOYMENT (
   SET PARAMS=""
 ) ELSE (
@@ -88,6 +118,22 @@ IF %JUPYTER_PORT% GTR 0 (
 
 IF DEFINED VNC_PW (
   SET PARAMS=%PARAMS% -e VNC_PW=%VNC_PW%
+)
+
+if "%GLAYOUT_INSTALL%"=="1" (
+
+    if not "!GLAYOUT_REPOSITORY!"=="" (
+        set "DOCKER_EXTRA_PARAMS=!DOCKER_EXTRA_PARAMS! -e GLAYOUT_REPOSITORY=!GLAYOUT_REPOSITORY!"
+    )
+
+    if not "!GLAYOUT_FOLDER!"=="" (
+        set "DOCKER_EXTRA_PARAMS=!DOCKER_EXTRA_PARAMS! -e GLAYOUT_FOLDER=!GLAYOUT_FOLDER!"
+    )
+
+    if not "!GLAYOUT_PATH!"=="" (
+        set "DOCKER_EXTRA_PARAMS=!DOCKER_EXTRA_PARAMS! -e GLAYOUT_PATH=!GLAYOUT_PATH!"
+    )
+
 )
 
 IF DEFINED DOCKER_EXTRA_PARAMS (
@@ -112,4 +158,30 @@ IF NOT ERRORLEVEL 1 (
             )
         )
     )
+)
+
+:: Check if GLAYOUT_INSTALL is 1
+if "%GLAYOUT_INSTALL%"=="1" (
+
+    :: extra steps for gLayout
+    :: In Batch, we check if a directory exists by using "if exist folder\"
+    if exist "%DESIGNS%\%GLAYOUT_PATH%\%GLAYOUT_FOLDER%\" (
+        echo [INFO] gLayout folder exists in repo. Skipping.
+    ) else (
+        echo [INFO] adding gLayout as submodule
+        
+        :: Navigate to the target directory
+        pushd "%DESIGNS%\%GLAYOUT_PATH%"
+        
+        :: Execute git commands
+        git submodule add !GLAYOUT_REPOSITORY! !GLAYOUT_FOLDER!
+        git submodule update --init --recursive
+
+        echo [INFO] Selected repository !GLAYOUT_REPOSITORY! added and initialized successfully.
+        echo [INFO] Please to install it, execute run_GL.sh inside the docker container.
+        
+        :: Return to the original directory
+        popd
+    )
+
 )
