@@ -1,6 +1,6 @@
 #!/bin/bash -e
 # ========================================================================
-# Start script for DIC docker images (VNC)
+# Start script for ICD@JKU docker images (VNC)
 #
 # SPDX-FileCopyrightText: 2022-2026 Harald Pretl and Georg Zachl
 # Johannes Kepler University, Department for Integrated Circuits 
