@@ -127,7 +127,7 @@ if [[ ${GLAYOUT_INSTALL} == 1 ]]; then
 	fi
 
 	if [ -z ${GLAYOUT_FOLDER+z} ]; then
-		GLAYOUT_REPOSITORY="gLayout"
+		GLAYOUT_FOLDER="gLayout"
 	fi
 
 	if [ -z ${GLAYOUT_PATH+z} ]; then
