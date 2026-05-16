@@ -6,7 +6,7 @@
 # Prevent Git from opening an editor for commit messages
 export GIT_MERGE_AUTOEDIT=no
 
-TEMPLATE_REPO="https://github.com/Jianxun/iic-osic-tools-project-template.git"
+TEMPLATE_REPO="https://github.com/LuighiV/iic-osic-tools-project-template.git"
 TEMPLATE_BRANCH="main"
 
 # Function to prompt user for confirmation
