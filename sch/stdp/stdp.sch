@@ -72,7 +72,6 @@ N -40 420 -10 420 {lab=vdep}
 N -450 610 -450 640 {lab=avss}
 N -260 610 -260 640 {lab=avss}
 N -570 420 -570 450 {lab=avss}
-N -320 670 -320 720 {lab=avss}
 N 520 30 520 110 {lab=avdd}
 N -60 670 0 670 {lab=avss}
 N -100 420 -40 420 {lab=vdep}
@@ -84,6 +83,8 @@ N 140 310 140 510 {lab=avss}
 N 30 510 140 510 {lab=avss}
 N 30 -230 200 -230 {lab=avdd}
 N 30 -230 30 -80 {lab=avdd}
+N -610 -230 30 -230 {lab=avdd}
+N -670 670 -570 670 {lab=avss}
 C {symbols/pfet_03v3.sym} 50 -50 0 1 {name=M1
 L=0.28u
 W=0.22u
@@ -140,12 +141,6 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {devices/code_shown.sym} 310 600 0 0 {name=MODELS only_toplevel=true
-format="tcleval( @value )"
-value="
-.include $::180MCU_MODELS/design.ngspice
-.lib $::180MCU_MODELS/sm141064.ngspice typical
-"}
 C {symbols/pfet_03v3.sym} 430 -170 0 1 {name=M5
 L=0.28u
 W=0.22u
@@ -194,9 +189,8 @@ L=1e-6
 model=cap_mim_2f0fF
 spiceprefix=X
 m=50}
-C {iopin.sym} -560 -10 0 0 {name=p1 lab=avss}
-C {cccs.sym} 610 -60 0 0 {name=Itp vnam=v1 value=1n}
-C {iopin.sym} -570 -40 0 0 {name=p2 lab=avdd}
+C {iopin.sym} -670 670 0 1 {name=p1 lab=avss}
+C {iopin.sym} -610 -230 0 1 {name=p2 lab=avdd}
 C {lab_pin.sym} 410 -230 1 0 {name=p3 sig_type=std_logic lab=avdd}
 C {symbols/pfet_03v3.sym} 520 10 3 1 {name=M8
 L=0.28u
@@ -212,7 +206,6 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {cccs.sym} 740 120 0 0 {name=F2 vnam=v1 value=220n}
 C {lab_pin.sym} 610 -10 2 0 {name=p6 sig_type=std_logic lab=avss}
 C {lab_pin.sym} 740 170 2 0 {name=p5 sig_type=std_logic lab=avss}
 C {symbols/cap_mim_2f0fF.sym} 90 200 3 0 {name=CW
@@ -280,7 +273,6 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {cccs.sym} -450 520 0 0 {name=Itd vnam=v1 value=1n}
 C {lab_pin.sym} -450 490 1 0 {name=p10 sig_type=std_logic lab=avdd}
 C {symbols/cap_mim_2f0fF.sym} -150 520 0 1 {name=C3
 W=1e-6
@@ -288,13 +280,15 @@ L=1e-6
 model=cap_mim_2f0fF
 spiceprefix=X
 m=50}
-C {cccs.sym} -570 320 0 0 {name=Idep vnam=v1 value=250n}
 C {lab_pin.sym} -570 270 1 0 {name=p11 sig_type=std_logic lab=avdd}
 C {iopin.sym} -310 380 3 0 {name=p12 lab=vpost}
-C {lab_pin.sym} -320 720 3 0 {name=p13 sig_type=std_logic lab=avss}
 C {lab_pin.sym} -310 500 3 0 {name=p14 sig_type=std_logic lab=avss}
 C {lab_pin.sym} 520 110 3 0 {name=p15 sig_type=std_logic lab=avdd}
 C {iopin.sym} -10 310 2 0 {name=p16 lab=vpre}
 C {lab_pin.sym} 30 200 0 0 {name=p17 sig_type=std_logic lab=vw}
 C {lab_pin.sym} -70 420 1 0 {name=p4 sig_type=std_logic lab=vdep}
 C {lab_pin.sym} 200 -50 2 0 {name=p18 sig_type=std_logic lab=vpot}
+C {isource.sym} -570 320 0 0 {name=Idep value=250n}
+C {isource.sym} -450 520 0 0 {name=Itd value=1n}
+C {isource.sym} 610 -60 0 0 {name=Itp value=1n}
+C {isource.sym} 740 120 0 0 {name=Ipot value=220n}
