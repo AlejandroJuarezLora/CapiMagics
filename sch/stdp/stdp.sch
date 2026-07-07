@@ -13,18 +13,25 @@ L 4 -770 210 -110 210 {}
 L 4 -770 790 -110 790 {}
 L 4 -770 210 -770 790 {}
 L 4 -110 210 -110 790 {}
+L 4 -80 -280 -80 620 {}
+L 4 170 -280 170 620 {}
+L 4 -80 -280 170 -280 {}
+L 4 -80 620 170 620 {}
 T {potentiation unit} 260 160 0 0 0.4 0.4 {}
 T {depression unit} -380 220 0 0 0.4 0.4 {}
+T {The current Itd controlls the decay of Cdep} -580 160 0 0 0.4 0.4 {}
+T {The current Itp controlls the decay of Cpot} 350 210 0 0 0.4 0.4 {}
+T {*the current sources have to be replaced} 360 650 0 0 0.4 0.4 {}
+T {Vw represents the synaptic weight} 350 260 0 0 0.4 0.4 {}
+T {dt - Vw conversion unit} -70 -270 0 0 0.4 0.4 {}
 N 30 -20 30 40 {lab=#net1}
 N 30 340 30 390 {lab=#net2}
-N 610 -230 610 -200 {lab=avdd}
-N 200 -230 610 -230 {lab=avdd}
+N 610 -230 610 -170 {lab=avdd}
+N 410 -230 610 -230 {lab=avdd}
 N 200 -230 200 -170 {lab=avdd}
-N 410 -230 410 -200 {lab=avdd}
-N 410 -200 410 -170 {lab=avdd}
-N 610 -200 610 -170 {lab=avdd}
-N 450 -170 570 -170 {lab=#net3}
-N 610 -140 610 -90 {lab=#net3}
+N 410 -230 410 -170 {lab=avdd}
+N 520 -170 570 -170 {lab=#net3}
+N 610 -120 610 -90 {lab=#net3}
 N 30 -80 30 -50 {lab=avdd}
 N -70 70 30 70 {lab=avdd}
 N -70 -80 -70 70 {lab=avdd}
@@ -32,52 +39,42 @@ N -70 -80 30 -80 {lab=avdd}
 N 520 -120 610 -120 {lab=#net3}
 N 520 -170 520 -120 {lab=#net3}
 N 200 -110 200 -50 {lab=vpot}
-N 140 -50 200 -50 {lab=vpot}
-N 410 -140 410 -50 {lab=vpot}
+N 410 -140 410 30 {lab=vpot}
 N 200 30 410 30 {lab=vpot}
-N 740 -230 740 -0 {lab=avdd}
+N 740 -230 740 30 {lab=avdd}
 N 610 -230 740 -230 {lab=avdd}
 N 740 60 740 90 {lab=#net4}
 N 740 150 740 170 {lab=avss}
 N 610 -30 610 -10 {lab=avss}
 N 550 30 700 30 {lab=#net5}
 N 410 30 490 30 {lab=vpot}
-N 410 -50 410 30 {lab=vpot}
 N 200 -50 200 30 {lab=vpot}
-N 70 -50 140 -50 {lab=vpot}
-N 30 100 30 290 {lab=vw}
+N 70 -50 200 -50 {lab=vpot}
+N 30 200 30 290 {lab=vw}
 N 30 200 60 200 {lab=vw}
-N -410 610 -300 610 {lab=#net6}
-N -450 550 -450 580 {lab=#net6}
+N -360 610 -300 610 {lab=#net6}
+N -450 560 -450 580 {lab=#net6}
 N -450 560 -360 560 {lab=#net6}
 N -360 560 -360 610 {lab=#net6}
-N -280 420 -150 420 {lab=vdep}
+N -260 420 -150 420 {lab=vdep}
 N -150 420 -150 490 {lab=vdep}
-N -150 420 -100 420 {lab=vdep}
+N -150 420 -10 420 {lab=vdep}
 N -150 550 -150 670 {lab=avss}
-N -570 670 -150 670 {lab=avss}
-N -570 450 -570 670 {lab=avss}
-N -450 640 -450 670 {lab=avss}
-N -260 640 -260 670 {lab=avss}
+N -260 670 -150 670 {lab=avss}
 N -260 420 -260 580 {lab=vdep}
-N -530 420 -340 420 {lab=#net7}
-N -570 350 -570 390 {lab=#net7}
+N -470 420 -340 420 {lab=#net7}
+N -570 370 -570 390 {lab=#net7}
 N -570 270 -570 290 {lab=avdd}
 N -570 370 -470 370 {lab=#net7}
 N -470 370 -470 420 {lab=#net7}
-N -150 670 -60 670 {lab=avss}
-N 30 450 30 670 {lab=avss}
-N -0 670 30 670 {lab=avss}
-N -40 420 -10 420 {lab=vdep}
-N -450 610 -450 640 {lab=avss}
-N -260 610 -260 640 {lab=avss}
-N -570 420 -570 450 {lab=avss}
+N -150 670 30 670 {lab=avss}
+N 30 510 30 670 {lab=avss}
+N -450 610 -450 670 {lab=avss}
+N -260 610 -260 670 {lab=avss}
+N -570 420 -570 670 {lab=avss}
 N 520 30 520 110 {lab=avdd}
-N -60 670 0 670 {lab=avss}
-N -100 420 -40 420 {lab=vdep}
 N -310 420 -310 500 {lab=avss}
-N 740 0 740 30 {lab=avdd}
-N 30 420 30 450 {lab=avss}
+N 30 420 30 510 {lab=avss}
 N 30 310 140 310 {lab=avss}
 N 140 310 140 510 {lab=avss}
 N 30 510 140 510 {lab=avss}
@@ -85,6 +82,17 @@ N 30 -230 200 -230 {lab=avdd}
 N 30 -230 30 -80 {lab=avdd}
 N -610 -230 30 -230 {lab=avdd}
 N -670 670 -570 670 {lab=avss}
+N 200 -230 410 -230 {lab=avdd}
+N 610 -140 610 -120 {lab=#net3}
+N 450 -170 520 -170 {lab=#net3}
+N 30 100 30 200 {lab=vw}
+N -450 550 -450 560 {lab=#net6}
+N -410 610 -360 610 {lab=#net6}
+N -570 670 -450 670 {lab=avss}
+N -450 670 -260 670 {lab=avss}
+N -280 420 -260 420 {lab=vdep}
+N -570 350 -570 370 {lab=#net7}
+N -530 420 -470 420 {lab=#net7}
 C {symbols/pfet_03v3.sym} 50 -50 0 1 {name=M1
 L=0.28u
 W=0.22u
@@ -183,7 +191,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {symbols/cap_mim_2f0fF.sym} 200 -140 0 0 {name=C1
+C {symbols/cap_mim_2f0fF.sym} 200 -140 0 0 {name=Cpot
 W=1e-6
 L=1e-6
 model=cap_mim_2f0fF
@@ -274,7 +282,7 @@ model=nfet_03v3
 spiceprefix=X
 }
 C {lab_pin.sym} -450 490 1 0 {name=p10 sig_type=std_logic lab=avdd}
-C {symbols/cap_mim_2f0fF.sym} -150 520 0 1 {name=C3
+C {symbols/cap_mim_2f0fF.sym} -150 520 0 1 {name=Cdep
 W=1e-6
 L=1e-6
 model=cap_mim_2f0fF
