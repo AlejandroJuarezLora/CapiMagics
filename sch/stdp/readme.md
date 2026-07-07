@@ -13,6 +13,11 @@ Ejemplo de ecuaciones:
 V_m' = 4V_m^2 + 5V_m + 1.3947 - 0.3157U_m + I
 ```
 
+```math
+\Delta w = A^+ exp\left(\frac{-\Delta t}{\tau} \right)
+```
+
+
 ## How to test
 The testbench for this circuit consist into two voltage ramps that fed two neurons (See ../LIF).... Jalton. continua aqui con la descripcion 
 ![tb_stdp](tb_stdp.png)
