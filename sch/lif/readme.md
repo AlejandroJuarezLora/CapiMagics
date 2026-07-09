@@ -85,11 +85,11 @@ f = \frac{1}{\bar{R}_{leak} \cdot C_m \cdot \ln\left(\dfrac{-\bar{R}_{leak} I_{e
 
 
 
-\### The three stages
+### The three stages
 
 
 
-!\[Fig6](fig06-stages-sky130.png)
+![Fig6](fig06-stages-sky130.png)
 
 
 
@@ -107,7 +107,7 @@ f = \frac{1}{\bar{R}_{leak} \cdot C_m \cdot \ln\left(\dfrac{-\bar{R}_{leak} I_{e
 
 
 
-\## Schematic
+## Schematic
 
 nfet_03v3 / pfet_03v3 devices, $Vdd = 3.3V$. Captured in xschem, no simulation or layout yet.
 
@@ -133,7 +133,7 @@ nfet_03v3 / pfet_03v3 devices, $Vdd = 3.3V$. Captured in xschem, no simulation o
 
 
 
-\## Sizing
+## Sizing
 
 | Parameter | Value |
 
@@ -161,7 +161,7 @@ nfet_03v3 / pfet_03v3 devices, $Vdd = 3.3V$. Captured in xschem, no simulation o
 
 
 
-\## How to test
+## How to test
 
 1\. Constant $I_{ex}$ → steady spike train at expected frequency
 
@@ -171,7 +171,7 @@ nfet_03v3 / pfet_03v3 devices, $Vdd = 3.3V$. Captured in xschem, no simulation o
 
 
 
-\## 📚 References
+## 📚 References
 
 &#x20;   - A. A. Salazar-Hernandez, V. H. Ponce-Ponce, H. Molina-Lozano, J. H. Sossa-Azuela, J. J. Ocampo-Hidalgo, Dual-Mode CMOS LIF Neuron With Subthreshold Efficiency and Saturation-Driven Robustness, IEEE Access, 2026, Volume 14, Pages 27290-27302, doi: 10.1109/ACCESS.2026.3663914
 
