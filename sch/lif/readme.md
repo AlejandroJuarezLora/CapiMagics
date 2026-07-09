@@ -89,7 +89,7 @@ f = \frac{1}{\bar{R}_{leak} \cdot C_m \cdot \ln\left(\dfrac{-\bar{R}_{leak} I_{e
 
 
 
-![Fig6](fig06-stages-sky130.png)
+![Fig6](fig06-stages-sky130.jpeg)
 
 
 
