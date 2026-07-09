@@ -12,16 +12,16 @@ L 4 320 -460 320 -270 {}
 L 4 640 -630 640 -460 {}
 L 4 640 -630 900 -630 {}
 L 4 900 -630 900 -460 {}
-B 2 20 -260 1460 -20 {flags=graph
-y1=-0.00078
-y2=3.4
+B 2 50 -260 1490 -40 {flags=graph
+y1=-0.17571724
+y2=3.2250627
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-4.0099038e-06
-x2=0.00019599009
+x1=0
+x2=0.0002
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -30,7 +30,7 @@ dataset=-1
 unitx=1
 logx=0
 logy=0
-hilight_wave=0
+hilight_wave=-1
 color=5
 node=spike}
 T {LIF Neuron} 610 -690 0 0 0.6 0.6 {}
@@ -52,7 +52,7 @@ T {-The maximum frequency achieved is 1 MHz at 200 nA.
 -A transient analysis was performed by varying the current
  source from 0 A to 200 nA and from 200 nA to 0 A.} 930 -620 0 0 0.3 0.3 {}
 T {Abraham Alejandro Salazar Hernandez
-Carlos Ricardo Cueva León} 1160 -20 0 0 0.3 0.3 {}
+Carlos Ricardo Cueva León} 1190 -40 0 0 0.3 0.3 {}
 N 710 -420 710 -360 {lab=spike_neg}
 N 520 -420 520 -360 {lab=Iex}
 N 560 -390 710 -390 {lab=spike_neg}
