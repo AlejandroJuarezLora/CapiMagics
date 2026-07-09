@@ -66,7 +66,7 @@ C {devices/lab_pin.sym} 250 50 1 0 {name=l1 sig_type=std_logic lab=G}
 C {devices/lab_pin.sym} 330 -30 0 0 {name=l2 sig_type=std_logic lab=S}
 C {devices/code_shown.sym} 770 20 0 0 {name=NGSPICE only_toplevel=true
 value="
-
+*obtainng lambda1
 .save all
 
 .control
