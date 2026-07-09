@@ -35,8 +35,8 @@ rawfile=$netlist_dir/tb_integrator.raw
 color=4
 node=vout}
 B 2 -540 360 260 760 {flags=graph
-y1=2.1844139
-y2=2.876474
+y1=2.1865914
+y2=3.0516665
 ypos1=0
 ypos2=2
 divy=5
@@ -48,7 +48,7 @@ divx=5
 subdivx=1
 xlabmag=1.0
 ylabmag=1.0
-node="vsyn
+node="vcap
 vspk"
 color="1 4"
 dataset=-1
@@ -57,22 +57,27 @@ logx=0
 logy=0
 }
 T {output stage} 810 340 0 0 0.4 0.4 {}
-T {vcap (vgs6) should be between 2.5V and 2.8V)} 1150 50 0 0 0.4 0.4 {}
-T {vgs7 controls the inversion stage from left to right} 1140 150 0 0 0.4 0.4 {}
+T {vcap (vg4) should be between 2.5V and 2.8V)} 1150 50 0 0 0.4 0.4 {}
+T {vgs5 controls the inversion stage from left to right} 1140 150 0 0 0.4 0.4 {}
 T {setting vgs1 at 0.7 and sweeping vx, we found that 1.8V set vsyn is between 2.5V and 3.3V} -770 830 0 0 0.4 0.4 {}
 T {integrator stage} -350 -210 0 0 0.4 0.4 {}
+T {M1} -10 -90 0 0 0.4 0.4 {}
+T {M2} -10 40 0 0 0.4 0.4 {}
+T {M3} 170 220 0 0 0.4 0.4 {}
+T {M4} 1000 10 0 0 0.4 0.4 {}
+T {M5} 990 170 0 0 0.4 0.4 {}
 N -350 0 -350 20 {lab=VDD}
-N 260 -50 260 30 {lab=vsyn}
+N 260 -50 260 30 {lab=vcap}
 N 260 -170 260 -110 {lab=VDD}
 N 80 -170 80 -120 {lab=VDD}
 N 80 -170 210 -170 {lab=VDD}
-N 80 -60 80 20 {lab=vsyn}
+N 80 -60 80 20 {lab=vcap}
 N 80 -120 80 -90 {lab=VDD}
 N 80 50 160 50 {lab=VDD}
 N 160 30 160 50 {lab=VDD}
 N 80 260 80 290 {lab=0}
 N 80 230 80 260 {lab=0}
-N 80 -20 260 -20 {lab=vsyn}
+N 80 -20 260 -20 {lab=vcap}
 N -350 80 -350 110 {lab=0}
 N -120 230 20 230 {lab=vspk}
 N -270 230 -270 250 {lab=vspk
@@ -81,7 +86,7 @@ N -270 230 -120 230 {lab=vspk
 spice_ignore=short}
 N -270 310 -270 340 {lab=0}
 N 0 -170 80 -170 {lab=VDD}
-N 810 30 870 30 {lab=vsyn}
+N 810 30 870 30 {lab=vcap}
 N 910 -170 910 0 {lab=VDD}
 N 910 60 910 160 {lab=vout}
 N 910 220 910 260 {lab=0}
@@ -92,13 +97,13 @@ N 760 190 870 190 {lab=#net1}
 N 760 250 760 270 {lab=0
 }
 N 210 -170 260 -170 {lab=VDD}
-N 760 30 810 30 {lab=vsyn}
-N 710 30 760 30 {lab=vsyn}
-N 260 30 710 30 {lab=vsyn}
+N 760 30 810 30 {lab=vcap}
+N 710 30 760 30 {lab=vcap}
+N 260 30 710 30 {lab=vcap}
 N 80 80 80 90 {lab=#net2}
 N 80 180 80 200 {lab=#net3}
-N 40 -90 40 -20 {lab=vsyn}
-N 40 -20 80 -20 {lab=vsyn}
+N 40 -90 40 -20 {lab=vcap}
+N 40 -20 80 -20 {lab=vcap}
 N 20 230 40 230 {lab=vspk}
 N 80 90 80 120 {lab=#net2}
 N 40 50 40 100 {lab=#net2}
@@ -160,7 +165,7 @@ C {vsource.sym} -230 150 0 0 {name=V2 value="PWL(0 3.3 200u 1.3)" savecurrent=fa
 spice_ignore=true}
 C {gnd.sym} -270 340 0 0 {name=l9 lab=0}
 C {lab_pin.sym} 1020 110 2 0 {name=p1 sig_type=std_logic lab=vout}
-C {lab_pin.sym} 260 30 0 0 {name=p3 sig_type=std_logic lab=vsyn}
+C {lab_pin.sym} 260 30 0 0 {name=p3 sig_type=std_logic lab=vcap}
 C {lab_pin.sym} 0 230 1 0 {name=p4 sig_type=std_logic lab=vspk}
 C {code_shown.sym} -470 -500 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
