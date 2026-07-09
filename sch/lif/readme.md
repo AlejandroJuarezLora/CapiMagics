@@ -1,4 +1,4 @@
-\# Dual-Mode CMOS LIF Neuron
+# Dual-Mode CMOS LIF Neuron
 
 
 
@@ -7,7 +7,6 @@ Based on \[1], here is the dual-mode leaky integrate-and-fire (LIF) neuron, impl
 
 
 !\[Fig5](fig05-topology-sky130.png)
-
 
 
 \## How it works
@@ -30,7 +29,7 @@ V_m(t) \rightarrow R_{leak} \cdot I_{ex} \quad\text{(as } t \rightarrow \infty \
 
 
 
-When $V\_m$ crosses the firing threshold $V\_th(lif)$, the neuron spikes and resets. Firing rate encodes input current.
+When $V\_m$ crosses the firing threshold $V_{th(lif)}$, the neuron spikes and resets. Firing rate encodes input current.
 
 
 
@@ -40,13 +39,13 @@ One transistor (M1) is left in subthreshold — not truly off, just conducting a
 
 ```math
 
-I\_d \\approx I\_0 \\cdot \\exp\\left(\\frac{V\_{gs}}{n \\cdot V\_t}\\right) \\cdot \\left(1 - \\exp\\left(-\\frac{V\_{ds}}{V\_t}\\right)\\right)
+I_d \approx I_0 \cdot \exp\left(\frac{V_{gs}}{n \cdot V_t}\right) \cdot \left(1 - \exp\left(-\frac{V_{ds}}{V_t}\right)\right)
 
 ```
 
 
 
-At nanoamp-scale `I\_d` and volt-scale `V\_ds`, `R\_leak = V\_ds/I\_d` lands naturally in the MΩ–GΩ range. The rest of the circuit (M2–M5, two inverter stages) stays in saturation, giving full-swing output with no extra amplifier.
+At nanoamp-scale $I_d$ and volt-scale $V_{ds}$, $R_{leak} = V_{ds}/I_d$ lands naturally in the MΩ–GΩ range. The rest of the circuit (M2–M5, two inverter stages) stays in saturation, giving full-swing output with no extra amplifier.
 
 
 
@@ -128,7 +127,7 @@ nfet_03v3 / pfet_03v3 devices, $Vdd = 3.3V$. Captured in xschem, no simulation o
 
 | M6–M7 inverter | Spike | Output signal (spike) |
 
-| I0  | `I\_ex` | max 200 nA |
+| I0  | $I_{ex}$ | max 200 nA |
 
 
 
@@ -140,21 +139,21 @@ nfet_03v3 / pfet_03v3 devices, $Vdd = 3.3V$. Captured in xschem, no simulation o
 
 |---|---|
 
-| `V\_dd` | 3.3 V (`\*\_03v3` devices) |
+| $V_{dd}$ | 3.3 V (`\*\_03v3` devices) |
 
 | Devices | `nfet\_03v3` / `pfet\_03v3` |
 
-| `C\_m` | 150 fF |
+| $C_m$ | 150 fF |
 
-| `V\_th(lif)` | 1.3 V |
+| $V_{th(lif)}$ | 1.3 V |
 
 | Transistor count | 7T|
 
-| `I\_ex` | max 200 nA |
+| $I_{ex}$ | max 200 nA |
 
 | Firing frequency range | up to 1 mHz  |
 
-| Average `R\_leak` | 495 GOhms |
+| Average $R_{leak}$ | 495 GOhms |
 
 | W/L sizing (all devices) | M5=0.025, M1-M4 and M5-M7 = 0.78|
 
@@ -164,9 +163,9 @@ nfet_03v3 / pfet_03v3 devices, $Vdd = 3.3V$. Captured in xschem, no simulation o
 
 \## How to test
 
-1\. Constant `I\_ex` → steady spike train at expected frequency
+1\. Constant $I_{ex}$ → steady spike train at expected frequency
 
-2\. Ramp/step `I\_ex` → frequency tracks input monotonically
+2\. Ramp/step $I_{ex}$ → frequency tracks input monotonically
 
 
 
