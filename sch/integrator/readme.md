@@ -13,7 +13,7 @@ Given that:
 ```math
 R_1 = \frac{1}{g_{ds1}}, R_2 = \frac{1}{g_{gds2}}, R_3 = \frac{1}{g{ds3}}
 ```
-And the fact that $ I_D = I_1 = I_2 = I_3$, we can rewrite [1] as:
+And the fact that $I_D=I_1=I_2=I_3$, we can rewrite [1] as:
 ```math
 V_{cap} = V_{dd} - I_D (\frac{1}{g_{ds1}+g_{ds2}+g_{ds3}})
 ```
@@ -28,10 +28,10 @@ $\lambda$ is the channel lenght modulation of each transistor in saturation. We 
 
 We can write
 ```math
-V_cap = \frac{R_2}{R_1+R_2} \cdot V_{dd}
+V_{cap} = \frac{R_2}{R_1+R_2} \cdot V_{dd}
 ```
 ```math
-V_cap = \frac{\frac{1}{g_{ds2}}}{\frac{1}{g_{ds1}+g_{ds2}} \cdot V_{dd}}
+V_{cap} = \frac{\frac{1}{g_{ds2}}}{\frac{1}{g_{ds1}+g_{ds2}} \cdot V_{dd}}
 ```
 
 ```math
