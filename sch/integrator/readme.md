@@ -2,91 +2,88 @@
 # Integrator
 
 Based on [1], here is the Integrator circuit using a subthreshold first-order LPF circuit, implemented in the gf180mcuD pdk. 
-![STDPDiagram](stdp.png)
+![LPFDiagram](lpf_1.png)
 
 ## How it works
-Each incoming spike at the gate of $M_5$ draws a current $I_{spks}$ from the capacitor $C_{syn}$, causing the synaptic voltage $v_{syn}$ to decrease. This reduction in $v_{syn}$ activates transistor $M_2$, allowing current to flow and generating a rising output voltage $\hat{x}$. In the absence of spikes, $C_{syn}$ remains charged, increasing $v_{syn}$ and driving $\hat{x}$ toward zero.
-
-Since $I_{M_2} = I_{M_4}$, the output current can be expressed as:
-
+Given the original circuit LPF proposed at [1], we can obtain the next expression for the first branch:
 ```math
-\frac{1}{2}\mu_p C_{ox}\left(\frac{W}{L}\right)_4
-\left(v_{sg}-|v_{th,p}|\right)^2
-=
-\mu_n C_{ox}\left(\frac{W}{L}\right)_5
-\left(v_{gs}-v_{th,n}\right)v_{ds}
--\frac{1}{2}v_{ds}^2
+V_{cap} = V_{dd} - I_1 R_1 - I_2 R_2 - I_3 R_3
+```
+Given that: 
+```math
+R_1 = \frac{1}{g_{ds1}}, R_2 = \frac{1}{g_{gds2}}, R_3 = \frac{1}{g{ds3}}
+```
+And the fact that $I_D=I_1=I_2=I_3$, we can rewrite [1] as:
+```math
+V_{cap} = V_{dd} - I_D (\frac{1}{g_{ds1}+g_{ds2}+g_{ds3}})
+```
+Where $g_{ds}$ is the small signal channel conductance
+```math
+g_{ds} = \frac{I_D \lambda}{1+ \lambda \cdot V_{DS}} \approx I_D \cdot \lambda 
+```
+$\lambda$ is the channel lenght modulation of each transistor in saturation. We can, for this last reason. redraw as: 
+![LPFResDiagram](lpf_2.png)
+
+
+> **Note:** as $M_3$ is in saturation, a spike arriving sets the transistor in saturation, this is $V_{spk} > V_{th,n}$
+
+We can write
+```math
+V_{cap} = \frac{R_2}{R_1+R_2} \cdot V_{dd}
+```
+```math
+V_{cap} = \frac{\frac{1}{g_{ds2}}}{\frac{1}{g_{ds1}+g_{ds2}} \cdot V_{dd}}
 ```
 
 ```math
-\frac{1}{2}\mu_p \left(\frac{W}{L}\right)_4
-\left(v_{dd}-v_{syn}-|v_{th,p}|\right)^2
-\approx
-\mu_n \left(\frac{W}{L}\right)_5
-\left(v_x-v_{th,n}\right)v_{out}
+v_{cap} = \frac{1/g_{ds2}}{1/g_{ds1}+1/g_{ds2}}
 ```
-
-Taking into account that
+Replacing with $g_{ds1} \approx \lambda_1 I_D$, we can have
 
 ```math
-v_x = \frac{R_2}{R_1 + R_2}v_{dd} = \frac{v_{dd}}{2}
+v_{cap} = \frac{1/{\lambda_2 \cancel{I_D}}}{1/{\lambda_1 \cancel{I_D}}+1/{\lambda_2 \cancel{I_D}}} v_{dd}
+```
+Then:
+```math
+v_{cap} = \frac{1}{{\lambda_2}/{\lambda_1 }+1}  v_{dd}
 ```
 
-we can find an expression for \(v_{out}=\hat{x}\) as:
+We then can rewrite 
+```math
+v_{cap} = \eta v_{dd}
+```
+
+setting $\eta =\frac{1}{{\lambda_2}/{\lambda_1 }+1}$
+
+Then, as $v_{cap}$ controls the gate of M4, we can drive this transistor in triode region by setting  $v_{cap}\in\left[ 3.3V, 2.6V\right]$. For the upper limit, no spikes should arrive at the transistor M3, however, for the lower bound, we can set $v_{cap} = 2.6V$ and $v_{dd}=3.3$ and then 
 
 ```math
-\frac{1}{2}\mu_p C_{ox}\left(\frac{W}{L}\right)_4
-(v_{sg}-|v_{th,p}|)^2
-=
-\mu_n C_{ox}\left(\frac{W}{L}\right)_5
-(v_{gs}-v_{th,n})v_{ds}
--\frac{1}{2}v_{ds}^2
+v_{cap} = \eta v_{dd}
 ```
+```math
+2.6 = \eta 3.3
+```
+```math
+\eta = 0.78
+```
+Then, by setting $\lambda_2$ fized, we can solve for $\lambda_2$
 
 ```math
-\frac{1}{2}\mu_p \left(\frac{W}{L}\right)_4
-(v_{dd}-v_{syn}-|v_{th,p}|)^2
-\approx
-\mu_n \left(\frac{W}{L}\right)_5
-(v_x-v_{th,n})v_{out}
+\eta = 0.78 =\frac{1}{{\lambda_2}/{\lambda_1 }+1}
 ```
-
-Substituting \(v_x=v_{dd}/2\):
-
 ```math
-\frac{1}{2}\mu_p \left(\frac{W}{L}\right)_4
-(v_{dd}-v_{syn}-|v_{th,p}|)^2
-\approx
-\mu_n \left(\frac{W}{L}\right)_5
-\left(\frac{v_{dd}}{2}-v_{th,n}\right)v_{out}
+\lambda_2 = 0.28 \lambda_1 
 ```
 
-Solving for \(v_{out}\):
+This is, assuming all transistors $M1, M2, M3$ are in saturation. We can accomplish this by setting the M1 and M2 as triode
+![finalIntegrator](finalIntegrator.jpeg)
 
-```math
-v_{out}
-\approx
-\frac{
-\frac{1}{2}\mu_p \left(\frac{W}{L}\right)_4
-(v_{dd}-v_{syn}-|v_{th,p}|)^2
-}{
-\mu_n \left(\frac{W}{L}\right)_5
-\left(\frac{v_{dd}}{2}-v_{th,n}\right)
-}
-```
-
-This relationship can be expressed as
-
-```math
-v_{out} = \hat{x} = f(v_{syn})
-```
-
-where \(v_{syn}\) acts as the controlling input voltage.
+The channel length $L_1$ and $L_2$ then selected to accomplish the boundries of $v_cap$
 
 ## How to test
 The testbench for this circuit consists of the integrator block driven by a neuron model that generates a train of pulses, allowing the circuit's operation and dynamic behavior to be evaluated.
 
-![tb_stdp](tb_stdp.png)
+![tb_stdp](tb_integrator.jpeg)
 
 ## 📚 References
     - Satoshi Moriya, Tatsuki Kato, Daisuke Oguchi, Hideaki Yamamoto, Shigeo Sato, Yasushi Yuminaka, Yoshihiko Horio, Jordi Madrenas, Analog-circuit implementation of multiplicative spike-timing-dependent plasticity with linear decay, Nonlinear Theory and Its Applications, IEICE, 2021, Volume 12, Issue 4, Pages 685-694, Released on J-STAGE October 01, 2021, Online ISSN 2185-4106, https://doi.org/10.1587/nolta.12.685, https://www.jstage.jst.go.jp/article/nolta/12/4/12_685/_article/-char/en
