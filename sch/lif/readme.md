@@ -6,10 +6,10 @@ Based on \[1], here is the dual-mode leaky integrate-and-fire (LIF) neuron, impl
 
 
 
-!\[Fig5](fig05-topology-sky130.png)
+![Fig5](fig05-topology-sky130.png)
 
 
-\## How it works
+## How it works
 
 The membrane node integrates an excitation current  $I_{ex}$  on capacitance $C_m$ and continuously leaks through $R_{leak}$:
 
