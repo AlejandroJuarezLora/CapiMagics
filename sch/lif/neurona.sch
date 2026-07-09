@@ -51,6 +51,8 @@ T {-The maximum frequency achieved is 1 MHz at 200 nA.
 
 -A transient analysis was performed by varying the current
  source from 0 A to 200 nA and from 200 nA to 0 A.} 930 -620 0 0 0.3 0.3 {}
+T {Abraham Alejandro Salazar Hernandez
+Carlos Ricardo Cueva León} 1160 -20 0 0 0.3 0.3 {}
 N 710 -420 710 -360 {lab=spike_neg}
 N 520 -420 520 -360 {lab=Iex}
 N 560 -390 710 -390 {lab=spike_neg}
