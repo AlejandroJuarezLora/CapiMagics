@@ -71,7 +71,11 @@ model=nfet_03v3
 spiceprefix=X
 }
 C {symbols/pfet_03v3.sym} 120 -30 0 0 {name=M3
+<<<<<<< HEAD
 L=0.45u
+=======
+L=1.5u
+>>>>>>> 8659f55 (subiendo actualizaciones al tb del integrador)
 W=0.45u
 nf=1
 mult=1
@@ -147,4 +151,8 @@ W=5e-6
 L=5e-6
 model=cap_mim_2f0fF
 spiceprefix=X
+<<<<<<< HEAD
 m=5}
+=======
+m=1}
+>>>>>>> 8659f55 (subiendo actualizaciones al tb del integrador)

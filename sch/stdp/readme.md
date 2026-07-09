@@ -17,6 +17,9 @@ V_m' = 4V_m^2 + 5V_m + 1.3947 - 0.3157U_m + I
 \Delta w = A^+ exp\left(\frac{-\Delta t}{\tau} \right)
 ```
 
+## Design Assumptions
+
+Voltage de alimentacion 3.3V
 
 ## How to test
 The testbench for this circuit consist into two voltage ramps that fed two neurons (See ../LIF).... Jalton. continua aqui con la descripcion 
