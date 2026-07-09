@@ -7,7 +7,7 @@ Based on [1], here is the Integrator circuit using a subthreshold first-order LP
 ## How it works
 Given the original circuit LPF proposed at [1], we can obtain the next expression for the first branch:
 ```math
-V_cap = V_{dd} - I_1 R_1 - I_2 R_2 - I_3 R_3
+V_{cap} = V_{dd} - I_1 R_1 - I_2 R_2 - I_3 R_3
 ```
 Given that: 
 ```math
@@ -15,22 +15,23 @@ R_1 = \frac{1}{g_{ds1}}, R_2 = \frac{1}{g_{gds2}}, R_3 = \frac{1}{g{ds3}}
 ```
 And the fact that $ I_D = I_1 = I_2 = I_3$, we can rewrite [1] as:
 ```math
-V_cap = V_{dd} - I_D (\frac{1}{g_{ds1}+g_{ds2}+g_{ds3}})
+V_{cap} = V_{dd} - I_D (\frac{1}{g_{ds1}+g_{ds2}+g_{ds3}})
 ```
 Where $g_{ds}$ is the small signal channel conductance
 ```math
-g_{ds} = \frac{I_D \lambda}{1+ \lambda V_{DS}} \approx I_D \lambda 
+g_{ds} = \frac{I_D \lambda}{1+ \lambda \cdot V_{DS}} \approx I_D \cdot \lambda 
 ```
 $\lambda$ is the channel lenght modulation of each transistor in saturation. We can, for this last reason. redraw as: 
 
 
-> **Note:** as M_3 is in saturation, a spike arriving sets the transistor in saturation, this is V_{spk} > V_{th,n}
+> **Note:** as $M_3$ is in saturation, a spike arriving sets the transistor in saturation, this is $V_{spk} > V_{th,n}$
 
 We can write
 ```math
 V_cap = \frac{R_2}{R_1+R_2} \cdot V_{dd}
+```
 ```math
-V_cap = \frac{\frac{1}{g_{ds2}}}{\frac{1}{g_{ds1}+g_{ds2}} \cdot V_{dd}
+V_cap = \frac{\frac{1}{g_{ds2}}}{\frac{1}{g_{ds1}+g_{ds2}} \cdot V_{dd}}
 ```
 
 ```math
