@@ -2,7 +2,7 @@
 # Integrator
 
 Based on [1], here is the Integrator circuit using a subthreshold first-order LPF circuit, implemented in the gf180mcuD pdk. 
-![STDPDiagram](stdp.png)
+![LPFDiagram](lpf_1.png)
 
 ## How it works
 Given the original circuit LPF proposed at [1], we can obtain the next expression for the first branch:
@@ -22,6 +22,7 @@ Where $g_{ds}$ is the small signal channel conductance
 g_{ds} = \frac{I_D \lambda}{1+ \lambda \cdot V_{DS}} \approx I_D \cdot \lambda 
 ```
 $\lambda$ is the channel lenght modulation of each transistor in saturation. We can, for this last reason. redraw as: 
+![LPFResDiagram](lpf_2.png)
 
 
 > **Note:** as $M_3$ is in saturation, a spike arriving sets the transistor in saturation, this is $V_{spk} > V_{th,n}$
