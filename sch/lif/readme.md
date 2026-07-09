@@ -12,31 +12,29 @@ Based on \[1], here is the dual-mode leaky integrate-and-fire (LIF) neuron, impl
 
 \## How it works
 
-The membrane node integrates an excitation current  $I\_{ex}$  on capacitance $C\_m$ and continuously leaks through $R\_{leak}$:
+The membrane node integrates an excitation current  $I_{ex}$  on capacitance $C_m$ and continuously leaks through $R_{leak}$:
 
 
 
 ```math
-
-\\tau = R\_{leak} \\cdot C\_m
-
+\tau = R_{leak} \cdot C_m
 ```
 
 
 
 ```math
 
-V\_m(t) \\rightarrow R\_{leak} \\cdot I\_{ex} \\quad \\text{(as } t \\rightarrow \\infty \\text{, until threshold crossing)}
+V_m(t) \rightarrow R_{leak} \cdot I_{ex} \quad\text{(as } t \rightarrow \infty \text{, until threshold crossing)}
 
 ```
 
 
 
-When `V\_m` crosses the firing threshold `V\_th(lif)`, the neuron spikes and resets. Firing rate encodes input current.
+When $V\_m$ crosses the firing threshold $V\_th(lif)$, the neuron spikes and resets. Firing rate encodes input current.
 
 
 
-One transistor (M1) is left in subthreshold — not truly off, just conducting a small diffusion current that grows exponentially with `V\_gs`:
+One transistor (M1) is left in subthreshold — not truly off, just conducting a small diffusion current that grows exponentially with $V_{gs}$:
 
 
 
@@ -52,25 +50,25 @@ At nanoamp-scale `I\_d` and volt-scale `V\_ds`, `R\_leak = V\_ds/I\_d` lands nat
 
 
 
-Since `V\_ds = V\_m` in this topology, the leak resistance at the drain of M1 is:
+Since $V_{ds} = V_m$ in this topology, the leak resistance at the drain of M1 is:
 
 
 
 ```math
 
-R\_{leak} = \\left| \\frac{V\_m}{I\_0 \\exp\\left(-\\dfrac{V\_{th}}{n V\_t}\\right)\\left(1 - e^{-V\_m/V\_t}\\right)} \\right|
+R_{leak} = \left| \frac{V_m}{I_0 \exp \left(-\dfrac{V_{th}}{n V_t}\right)\left(1 - e^{-V_m/V_t}\right)} \right|
 
 ```
 
 
 
-`R\_leak` is therefore not constant — it depends on `V\_m` and is only piecewise-linear over the integration range, which justifies linearizing it as an average around the midpoint between reset and threshold:
+$R\_leak$ is therefore not constant — it depends on $V_m$ and is only piecewise-linear over the integration range, which justifies linearizing it as an average around the midpoint between reset and threshold:
 
 
 
 ```math
 
-\\bar{R}\_{leak} \\approx \\frac{V\_{th(lif)} + V\_{reset}}{2 I\_0 \\exp\\left(-\\dfrac{V\_{th}}{n V\_t}\\right)\\left(1 - \\exp\\left(-\\dfrac{V\_{th(lif)} + V\_{reset}}{2 V\_t}\\right)\\right)}
+\bar{R}_{leak} \approx \frac{V_{th(lif)} + V_{reset}}{2 I_0 \exp\left(-\dfrac{V_{th}}{n V_t}\right)\left(1 - \exp\left(-\dfrac{V_{th(lif)} + V_{reset}}{2 V_t}\right)\right)}
 
 ```
 
@@ -82,7 +80,7 @@ This average feeds the closed-form firing-frequency model:
 
 ```math
 
-f = \\frac{1}{\\bar{R}\_{leak} \\cdot C\_m \\cdot \\ln\\left(\\dfrac{-\\bar{R}\_{leak} I\_{ex}}{V\_{th(lif)} - \\bar{R}\_{leak} I\_{ex}}\\right)}
+f = \frac{1}{\bar{R}_{leak} \cdot C_m \cdot \ln\left(\dfrac{-\bar{R}_{leak} I_{ex}}{V_{th(lif)} - \bar{R}_{leak} I_{ex}}\right)}
 
 ```
 
@@ -100,9 +98,9 @@ f = \\frac{1}{\\bar{R}\_{leak} \\cdot C\_m \\cdot \\ln\\left(\\dfrac{-\\bar{R}\_
 
 |---|---|---|
 
-| (a) Integrate \& reset | M5 (subthreshold) | Charges `C\_m` via `I\_ex`; leaks via `R\_leak`; dumps charge on reset |
+| (a) Integrate \& reset | M5 (subthreshold) | Charges $C_m$ via $I\_ex$; leaks via $R\_leak$; dumps charge on reset |
 
-| (b) Threshold \& spike | M1–M2 (inverter) | Trip point = `V\_th(lif)`, the firing threshold |
+| (b) Threshold \& spike | M1–M2 (inverter) | Trip point = $V_th(lif)$, the firing threshold |
 
 | (c) Gain \& feedback reset | M3–M4 (inverter) | Full-swing spike out; feeds a reset pulse back into M1 |
 
@@ -112,7 +110,7 @@ f = \\frac{1}{\\bar{R}\_{leak} \\cdot C\_m \\cdot \\ln\\left(\\dfrac{-\\bar{R}\_
 
 \## Schematic
 
-`nfet\_03v3` / `pfet\_03v3` devices, `V\_dd = 3.3V`. Captured in xschem, no simulation or layout yet.
+nfet_03v3 / pfet_03v3 devices, $Vdd = 3.3V$. Captured in xschem, no simulation or layout yet.
 
 
 
@@ -120,9 +118,9 @@ f = \\frac{1}{\\bar{R}\_{leak} \\cdot C\_m \\cdot \\ln\\left(\\dfrac{-\\bar{R}\_
 
 |---|---|---|
 
-| M5 |leakage resistance (subthreshold) and reset | `𝑉\_gs` is low ⇒ `R\_leak` ; `V\_gs` is high ⇒ `reset`|
+| M5 |leakage resistance (subthreshold) and reset | $V_{gs}$ is low ⇒ $R_leak$ ; $V_{gs}$ is high ⇒ `reset`|
 
-| C1 = 150 fF | `C\_m` | carried over roughly, not re-derived |
+| C1 = 150 fF | $C_m$ | carried over roughly, not re-derived |
 
 | M1–M2 inverter | LIF threshold | Inverted output signal |
 
