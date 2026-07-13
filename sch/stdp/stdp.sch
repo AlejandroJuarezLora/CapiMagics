@@ -24,6 +24,18 @@ T {The current Itp controlls the decay of Cpot} 350 210 0 0 0.4 0.4 {}
 T {*the current sources have to be replaced} 360 650 0 0 0.4 0.4 {}
 T {Vw represents the synaptic weight} 350 260 0 0 0.4 0.4 {}
 T {dt - Vw conversion unit} -70 -270 0 0 0.4 0.4 {}
+T {M1} -550 440 0 0 0.4 0.4 {}
+T {M3} -430 620 0 0 0.4 0.4 {}
+T {M4} -300 620 0 0 0.4 0.4 {}
+T {M2} -370 380 0 0 0.4 0.4 {}
+T {M5} -20 440 0 0 0.4 0.4 {}
+T {M6} -10 330 0 0 0.4 0.4 {}
+T {M7} 50 10 0 0 0.4 0.4 {}
+T {M8} 50 -100 0 0 0.4 0.4 {}
+T {M9} 420 -140 0 0 0.4 0.4 {}
+T {M10} 540 -20 0 0 0.4 0.4 {}
+T {M11} 540 -210 0 0 0.4 0.4 {}
+T {M12} 680 50 0 0 0.4 0.4 {}
 N 30 -20 30 40 {lab=#net1}
 N 30 340 30 390 {lab=#net2}
 N 610 -230 610 -170 {lab=avdd}
