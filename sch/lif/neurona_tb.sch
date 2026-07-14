@@ -28,7 +28,7 @@ logx=0
 logy=0
 }
 T {-The current mirror suplies enoug energy for
- the neuron to reach maximun frecuency of 1MHz.} -200 -380 0 0 0.3 0.3 {}
+ the neuron to reach maximun frecuency of 1MHz.} -300 -340 0 0 0.3 0.3 {}
 N -200 -160 -160 -160 {lab=#net1}
 N -240 -130 -240 -100 {lab=#net1}
 N -240 -100 -180 -100 {lab=#net1}
@@ -38,13 +38,13 @@ N -240 -50 -240 -20 {lab=GND}
 N -240 -190 -240 -160 {lab=Vdd}
 N -240 -240 -80 -240 {lab=Vdd}
 N -240 -240 -240 -190 {lab=Vdd}
-C {code_shown.sym} -430 -370 0 0 {name=spice only_toplevel=false value=".tran 0.1n 200u
+C {code_shown.sym} -560 -360 0 0 {name=spice only_toplevel=false value=".tran 0.1n 200u
 .control
  save all
  run
  write neurona_tb.raw
 .endc"}
-C {devices/code.sym} -570 -380 0 0 {name=MODELS only_toplevel=true
+C {devices/code.sym} -700 -370 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice
