@@ -23,11 +23,11 @@ According to these requirements, Configuration Block C was selected, as it provi
 # Schematic Simulations
 Here is the schematic of all the blocks working together, intended to be included in the tapeout
 
-![tb_full_4x2](tb_full_4x2.pdf)
+![tb_full_4x2](tb_full_4x2.png)
 
 4 neurons in a first layer are connected to 2 output neurons (post-synaptic) via an array of 4x2 synapses with STDPs cells. Here is the inside the stdp/stdo_4x2.sym :
 
-![stdp_4x2](stdp_4x2.pdf)
+![stdp_4x2](stdp_4x2.png)
 
 ## General assumptions
 Voltage operation: 3.3V. 
