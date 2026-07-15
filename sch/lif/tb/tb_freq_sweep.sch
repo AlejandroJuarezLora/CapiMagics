@@ -27,12 +27,11 @@ unitx=1
 logx=0
 logy=0
 }
-T {-The current mirror suplies enoug energy for
- the neuron to reach maximun frecuency of 1MHz.
- NOTE: this ramp gives a fast qualitative view only — within one measured
- period at low Iex, current can drift >1000%, invalidating point-by-point
- comparison against the theoretical model. For rigorous freq-vs-Iex data,
- see tb_freq_dc.sch (fixed Vin per run, multi-cycle averaging).} 290 -330 0 0 0.3 0.3 {}
+T {-Ramp sweep: Vin goes 0 -> 3.3V over 200u, driving Iex through its
+ full range in a single run. The spike train visibly densifies as the
+ current rises, illustrating the current-to-frequency encoding.
+ Qualitative view only; the quantitative freq-vs-Iex characterization
+ is done with fixed DC operating points (see tb_freq_dc.sch).} 290 -330 0 0 0.3 0.3 {}
 N -150 80 -110 80 {lab=#net1}
 N -190 110 -190 140 {lab=#net1}
 N -190 140 -130 140 {lab=#net1}
