@@ -21,9 +21,9 @@ L 4 830 -270 880 -270 {}
 L 4 830 190 880 190 {}
 T {potentiation unit} 260 160 0 0 0.4 0.4 {}
 T {depression unit} -380 220 0 0 0.4 0.4 {}
-T {The current Itd controlls the decay of Cdep} -630 170 0 0 0.4 0.4 {}
-T {The current Itp controlls the decay of Cpot} 350 210 0 0 0.4 0.4 {}
-T {Vw represents the synaptic weight} 350 260 0 0 0.4 0.4 {}
+T {The current Itd controlls the decay of Cdep} -550 180 0 0 0.4 0.4 {}
+T {The current Itp controlls the decay of Cpot} 220 280 0 0 0.4 0.4 {}
+T {Vw represents the synaptic weight} 230 320 0 0 0.4 0.4 {}
 T {dt - Vw conversion unit} -70 -270 0 0 0.4 0.4 {}
 T {M1} -550 440 0 0 0.4 0.4 {}
 T {M3} -430 620 0 0 0.4 0.4 {}
@@ -59,15 +59,14 @@ spice_ignore=true}
 N 520 -170 520 -120 {lab=#net3
 spice_ignore=true}
 N 200 -110 200 -50 {lab=vpot}
-N 410 -140 410 30 {lab=vpot}
 N 200 30 410 30 {lab=vpot}
 N 740 -230 740 30 {lab=avdd}
 N 610 -230 740 -230 {lab=avdd}
 N 740 60 740 90 {lab=#net3}
-N 740 150 740 170 {lab=avss}
+N 740 150 740 170 {lab=#net4}
 N 610 -30 610 -10 {lab=avss
 spice_ignore=true}
-N 550 30 700 30 {lab=#net4}
+N 550 30 700 30 {lab=#net5}
 N 410 30 490 30 {lab=vpot}
 N 200 -50 200 30 {lab=vpot}
 N 70 -50 200 -50 {lab=vpot}
@@ -86,12 +85,11 @@ N -150 420 -150 490 {lab=vdep}
 N -150 420 -10 420 {lab=vdep}
 N -150 550 -150 670 {lab=avss}
 N -260 670 -150 670 {lab=avss}
-N -260 420 -260 580 {lab=vdep}
-N -470 420 -340 420 {lab=#net5}
-N -570 370 -570 390 {lab=#net5}
-N -570 270 -570 290 {lab=avdd}
-N -570 370 -470 370 {lab=#net5}
-N -470 370 -470 420 {lab=#net5}
+N -470 420 -340 420 {lab=#net6}
+N -570 370 -570 390 {lab=#net6}
+N -570 270 -570 290 {lab=#net7}
+N -570 370 -470 370 {lab=#net6}
+N -470 370 -470 420 {lab=#net6}
 N -150 670 30 670 {lab=avss}
 N 30 510 30 670 {lab=avss}
 N -450 610 -450 670 {lab=avss
@@ -121,15 +119,18 @@ spice_ignore=true}
 N -570 670 -450 670 {lab=avss}
 N -450 670 -260 670 {lab=avss}
 N -280 420 -260 420 {lab=vdep}
-N -570 350 -570 370 {lab=#net5}
-N -530 420 -470 420 {lab=#net5}
-N -570 290 -570 320 {lab=avdd}
+N -570 350 -570 370 {lab=#net6}
+N -530 420 -470 420 {lab=#net6}
+N -570 290 -570 320 {lab=#net7}
 N -650 320 -610 320 {lab=vb_idep}
 N -450 490 -450 520 {lab=avdd
 spice_ignore=true}
 N -320 610 -300 610 {lab=vb_itd}
 N 450 -170 480 -170 {lab=vb_itp}
-N 740 120 740 150 {lab=avss}
+N 740 120 740 150 {lab=#net4}
+N -260 420 -260 520 {lab=vdep}
+N 410 -140 410 -100 {lab=#net8}
+N 410 -40 410 30 {lab=vpot}
 C {symbols/pfet_03v3.sym} 50 -50 0 1 {name=M1
 L=0.28u
 W=0.22u
@@ -253,7 +254,7 @@ spiceprefix=X
 }
 C {lab_pin.sym} 610 -10 2 0 {name=p6 sig_type=std_logic lab=avss
 spice_ignore=true}
-C {lab_pin.sym} 740 170 2 0 {name=p5 sig_type=std_logic lab=avss}
+C {lab_pin.sym} 740 230 2 0 {name=p5 sig_type=std_logic lab=avss}
 C {symbols/cap_mim_2f0fF.sym} 90 200 3 0 {name=CW
 W=5e-6
 L=5e-6
@@ -327,7 +328,7 @@ L=5e-6
 model=cap_mim_2f0fF
 spiceprefix=X
 m=2}
-C {lab_pin.sym} -570 270 1 0 {name=p11 sig_type=std_logic lab=avdd}
+C {lab_pin.sym} -570 210 1 0 {name=p11 sig_type=std_logic lab=avdd}
 C {iopin.sym} -310 380 3 0 {name=p12 lab=vpost}
 C {lab_pin.sym} -310 500 3 0 {name=p14 sig_type=std_logic lab=avss}
 C {lab_pin.sym} 520 110 3 0 {name=p15 sig_type=std_logic lab=avdd}
@@ -340,9 +341,9 @@ C {isource.sym} -410 460 0 0 {name=Itd value=5n
 spice_ignore=true}
 C {isource.sym} 610 -60 0 0 {name=Itp value=1n
 spice_ignore=true}
-C {isource.sym} 590 130 0 0 {name=Ipot value=220n
+C {isource.sym} 910 140 0 0 {name=Ipot value=220n
 spice_ignore=true}
-C {symbols/pfet_03v3.sym} -560 100 0 0 {name=M13
+C {symbols/pfet_03v3.sym} -440 90 0 0 {name=M13
 L=2.8u
 W=1.2u
 nf=1
@@ -373,7 +374,7 @@ spice_ignore=true}
 C {iopin.sym} -650 320 3 0 {name=p13 lab=vb_idep}
 C {iopin.sym} -320 610 1 0 {name=p19 lab=vb_itd}
 C {iopin.sym} 480 -170 1 0 {name=p20 lab=vb_itp}
-C {symbols/nfet_03v3.sym} 980 30 0 1 {name=M15
+C {symbols/nfet_03v3.sym} 990 30 0 1 {name=M15
 L=2.8u
 W=0.6u
 nf=1
@@ -387,22 +388,8 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 spice_ignore=true}
-C {iopin.sym} 780 120 0 0 {name=p21 lab=vb_pot}
+C {iopin.sym} 700 120 0 1 {name=p21 lab=vb_pot}
 C {iopin.sym} 30 240 0 1 {name=p23 lab=vw}
-C {symbols/pfet_03v3.sym} -590 320 0 0 {name=M16
-L=2.8u
-W=10.2u
-nf=1
-mult=1
-ad="'int((nf+1)/2) * W/nf * 0.18u'"
-pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
-as="'int((nf+2)/2) * W/nf * 0.18u'"
-ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
-nrd="'0.18u / W'" nrs="'0.18u / W'"
-sa=0 sb=0 sd=0
-model=pfet_03v3
-spiceprefix=X
-}
 C {symbols/nfet_03v3.sym} -280 610 0 0 {name=MCM_3
 L=50u
 W=0.28u
@@ -431,7 +418,25 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {symbols/pfet_03v3.sym} 760 120 0 1 {name=M18
+C {ammeter.sym} -570 240 0 0 {name=videp savecurrent=true spice_ignore=0}
+C {ammeter.sym} -260 550 0 0 {name=vitd savecurrent=true spice_ignore=0}
+C {ammeter.sym} 740 200 0 0 {name=vipot savecurrent=true spice_ignore=0}
+C {ammeter.sym} 410 -70 0 0 {name=vitp savecurrent=true spice_ignore=0}
+C {symbols/nfet_03v3.sym} 720 120 0 0 {name=MCM_1
+L=2.8u
+W=0.61u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {symbols/pfet_03v3.sym} -590 320 0 0 {name=M16
 L=2.8u
 W=10.2u
 nf=1

@@ -300,7 +300,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {isource.sym} 190 380 0 1 {name=Iglb value=1m}
+C {isource.sym} 190 380 0 1 {name=Iglb value=1u}
 C {vdd.sym} 290 310 0 0 {name=l19 lab=VDD}
 C {gnd.sym} 270 540 0 0 {name=l20 lab=0}
 C {lab_pin.sym} 410 410 0 1 {name=p6 sig_type=std_logic lab=B}

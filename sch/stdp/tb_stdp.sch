@@ -52,8 +52,8 @@ logx=0
 logy=0
 }
 B 2 240 560 1040 960 {flags=graph
-y1=0.14290155
-y2=0.15314155
+y1=5.9e-05
+y2=0.024
 ypos1=0
 ypos2=2
 divy=5
@@ -74,8 +74,8 @@ logx=0
 logy=0
 }
 B 2 240 960 1040 1360 {flags=graph
-y1=6.4e-06
-y2=6.6e-06
+y1=7.1e-06
+y2=7.3e-06
 ypos1=0
 ypos2=2
 divy=5
@@ -260,7 +260,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {isource.sym} -510 270 0 1 {name=Iglb value=1m}
+C {isource.sym} -510 270 0 1 {name=Iglb value=1u}
 C {vdd.sym} -410 200 0 0 {name=l6 lab=VDD}
 C {gnd.sym} -430 430 0 0 {name=l7 lab=0}
 C {lab_pin.sym} -290 300 0 1 {name=p6 sig_type=std_logic lab=B}
