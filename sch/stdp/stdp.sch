@@ -21,7 +21,7 @@ L 4 830 -270 880 -270 {}
 L 4 830 190 880 190 {}
 T {potentiation unit} 260 160 0 0 0.4 0.4 {}
 T {depression unit} -380 220 0 0 0.4 0.4 {}
-T {The current Itd controlls the decay of Cdep} -650 0 0 0 0.4 0.4 {}
+T {The current Itd controlls the decay of Cdep} -630 170 0 0 0.4 0.4 {}
 T {The current Itp controlls the decay of Cpot} 350 210 0 0 0.4 0.4 {}
 T {Vw represents the synaptic weight} 350 260 0 0 0.4 0.4 {}
 T {dt - Vw conversion unit} -70 -270 0 0 0.4 0.4 {}
@@ -37,8 +37,8 @@ T {M9} 420 -140 0 0 0.4 0.4 {}
 T {M10} 540 -20 0 0 0.4 0.4 {}
 T {M11} 540 -210 0 0 0.4 0.4 {}
 T {M12} 680 50 0 0 0.4 0.4 {}
-T {NOTA: FALTA QUE MIKE TE DE ESTAS GEOMETRIAS} 430 -260 0 0 0.4 0.4 {}
-T {NOTA: FALTA QUE MIKE TE DE ESTAS GEOMETRIAS} -590 680 0 0 0.4 0.4 {}
+T {These circuits appear commented as they were
+replaced by current mirror external to this subcircuit} 220 360 0 0 0.4 0.4 {}
 N 30 -20 30 40 {lab=#net1}
 N 30 340 30 390 {lab=#net2}
 N 610 -230 610 -170 {lab=avdd
@@ -186,7 +186,7 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/pfet_03v3.sym} 430 -170 0 1 {name=M5
+C {symbols/pfet_03v3.sym} 500 -330 0 1 {name=M5
 L=10u
 W=0.22u
 nf=1
@@ -199,7 +199,7 @@ nrd="'0.18u / W'" nrs="'0.18u / W'"
 sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
-}
+spice_ignore=true}
 C {symbols/pfet_03v3.sym} 590 -170 0 0 {name=M6
 L=0.28u
 W=0.22u
@@ -277,7 +277,7 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/nfet_03v3.sym} -280 610 0 0 {name=M10
+C {symbols/nfet_03v3.sym} -260 740 0 0 {name=M10
 L=10u
 W=0.22u
 nf=1
@@ -290,7 +290,7 @@ nrd="'0.18u / W'" nrs="'0.18u / W'"
 sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
-}
+spice_ignore=true}
 C {symbols/nfet_03v3.sym} -430 610 0 1 {name=M11
 L=0.28u
 W=0.22u
@@ -340,9 +340,9 @@ C {isource.sym} -410 460 0 0 {name=Itd value=5n
 spice_ignore=true}
 C {isource.sym} 610 -60 0 0 {name=Itp value=1n
 spice_ignore=true}
-C {isource.sym} 930 110 0 0 {name=Ipot value=220n
+C {isource.sym} 590 130 0 0 {name=Ipot value=220n
 spice_ignore=true}
-C {symbols/pfet_03v3.sym} -590 320 0 0 {name=M13
+C {symbols/pfet_03v3.sym} -560 100 0 0 {name=M13
 L=2.8u
 W=1.2u
 nf=1
@@ -355,7 +355,7 @@ nrd="'0.18u / W'" nrs="'0.18u / W'"
 sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
-}
+spice_ignore=true}
 C {symbols/pfet_03v3.sym} -470 520 0 0 {name=M14
 L=0.28u
 W=0.22u
@@ -373,7 +373,7 @@ spice_ignore=true}
 C {iopin.sym} -650 320 3 0 {name=p13 lab=vb_idep}
 C {iopin.sym} -320 610 1 0 {name=p19 lab=vb_itd}
 C {iopin.sym} 480 -170 1 0 {name=p20 lab=vb_itp}
-C {symbols/nfet_03v3.sym} 760 120 0 1 {name=M15
+C {symbols/nfet_03v3.sym} 980 30 0 1 {name=M15
 L=2.8u
 W=0.6u
 nf=1
@@ -386,6 +386,62 @@ nrd="'0.18u / W'" nrs="'0.18u / W'"
 sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
-}
+spice_ignore=true}
 C {iopin.sym} 780 120 0 0 {name=p21 lab=vb_pot}
 C {iopin.sym} 30 240 0 1 {name=p23 lab=vw}
+C {symbols/pfet_03v3.sym} -590 320 0 0 {name=M16
+L=2.8u
+W=10.2u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {symbols/nfet_03v3.sym} -280 610 0 0 {name=MCM_3
+L=50u
+W=0.28u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {symbols/pfet_03v3.sym} 430 -170 0 1 {name=M17
+L=4.6u
+W=0.3u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {symbols/pfet_03v3.sym} 760 120 0 1 {name=M18
+L=2.8u
+W=10.2u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
