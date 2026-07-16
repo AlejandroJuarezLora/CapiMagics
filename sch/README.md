@@ -1,7 +1,7 @@
 # General Schematic (Updated 16 July)
 
 The figure below shows the overall architecture of the project. The implemented spiking neural network consists of an encoder block, four input neurons, a 4×2 STPP synaptic array, and two output neurons. The encoder block is composed of a Voltage-Controlled Current Source (VCCS), which converts the input voltage into a proportional current. Each output neuron is connected to an integrator circuit that generates the corresponding output voltage based on the network activity.
-![generalDiagram](schematic.png)
+![generalDiagram](bloquegeneral.png)
 
 For ease of navigation and documentation, each functional block of the design has its own dedicated folder within the repository, containing its corresponding information, schematics, and implementation details.
 
