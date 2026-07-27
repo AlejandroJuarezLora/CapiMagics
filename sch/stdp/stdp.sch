@@ -25,8 +25,8 @@ T {The current Itd controlls the decay of Cdep} -550 180 0 0 0.4 0.4 {}
 T {The current Itp controlls the decay of Cpot} 220 280 0 0 0.4 0.4 {}
 T {Vw represents the synaptic weight} 230 320 0 0 0.4 0.4 {}
 T {dt - Vw conversion unit} -70 -270 0 0 0.4 0.4 {}
-T {M1} -550 440 0 0 0.4 0.4 {}
-T {M3} -430 620 0 0 0.4 0.4 {}
+T {M1} -620 330 0 0 0.4 0.4 {}
+T {M3} -550 440 0 0 0.4 0.4 {}
 T {M4} -300 620 0 0 0.4 0.4 {}
 T {M2} -370 380 0 0 0.4 0.4 {}
 T {M5} -20 440 0 0 0.4 0.4 {}
@@ -35,8 +35,8 @@ T {M7} 50 10 0 0 0.4 0.4 {}
 T {M8} 50 -100 0 0 0.4 0.4 {}
 T {M9} 420 -140 0 0 0.4 0.4 {}
 T {M10} 540 -20 0 0 0.4 0.4 {}
-T {M11} 540 -210 0 0 0.4 0.4 {}
-T {M12} 680 50 0 0 0.4 0.4 {}
+T {M11} 760 -20 0 0 0.4 0.4 {}
+T {M12} 680 140 0 0 0.4 0.4 {}
 T {These circuits appear commented as they were
 replaced by current mirror external to this subcircuit} 220 360 0 0 0.4 0.4 {}
 N 30 -20 30 40 {lab=#net1}
