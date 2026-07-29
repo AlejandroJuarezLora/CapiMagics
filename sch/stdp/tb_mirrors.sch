@@ -6,15 +6,15 @@ S {}
 F {}
 E {}
 B 2 440 40 1240 440 {flags=graph
-y1=4.6e-12
-y2=5.1e-07
+y1=4.9895834e-09
+y2=5.0895834e-09
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-06
-x2=2.2e-05
+x1=-8.7996976e-07
+x2=2.312003e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -27,15 +27,15 @@ hilight_wave=-1
 color=18
 node=i(v_5p)}
 B 2 430 490 1230 890 {flags=graph
-y1=-0.27932954
-y2=3.54273
+y1=2.1861112e-07
+y2=2.2861112e-07
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-06
-x2=2.2e-05
+x1=-8.7996976e-07
+x2=2.312003e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -48,36 +48,37 @@ logx=0
 logy=0
 }
 B 2 1270 40 2070 440 {flags=graph
-y1=0
-y2=2
+y1=4.8461758e-09
+y2=9.6672791e-09
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-06
-x2=2.2e-05
+x1=-8.7996976e-07
+x2=2.312003e-05
 divx=5
 subdivx=1
 xlabmag=1.0
 ylabmag=1.0
-node=i(v_5n)
-color=1
+node="i(v_5n)
+i(v_1)"
+color="1 7"
 dataset=-1
 unitx=1
 logx=0
 logy=0
 }
 B 2 1270 490 2070 890 {flags=graph
-y1=0
-y2=2
+y1=2.1722224e-07
+y2=2.2722224e-07
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=2e-06
-x2=2.2e-05
+x1=-8.7996976e-07
+x2=2.312003e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -126,6 +127,28 @@ N 350 -80 350 10 {lab=#net2}
 N 330 -80 350 -80 {lab=#net2}
 N 330 -140 330 -80 {lab=#net2}
 N 260 -90 330 -90 {lab=#net2}
+N 200 590 200 610 {lab=#net7}
+N 200 510 200 530 {lab=VDD}
+N 150 640 160 640 {lab=#net1}
+N 150 390 150 640 {lab=#net1}
+N 160 640 160 730 {lab=#net1}
+N 200 670 200 700 {lab=#net8}
+N 200 760 200 790 {lab=#net9}
+N 200 640 290 640 {lab=0}
+N 290 640 290 770 {lab=0}
+N 200 730 290 730 {lab=0}
+N 160 730 160 820 {lab=#net1}
+N 200 850 200 880 {lab=#net10}
+N 290 730 290 860 {lab=0}
+N 200 820 290 820 {lab=0}
+N 160 910 160 1000 {lab=#net1}
+N 200 1030 200 1060 {lab=0}
+N 290 910 290 1040 {lab=0}
+N 200 1000 290 1000 {lab=0}
+N 160 820 160 910 {lab=#net1}
+N 200 940 200 970 {lab=#net11}
+N 200 910 290 910 {lab=0}
+N 290 860 290 910 {lab=0}
 C {symbols/pfet_03v3.sym} 280 -140 0 1 {name=M6
 L=0.5u
 W=8u
@@ -241,7 +264,7 @@ C {ammeter.sym} 520 -50 0 0 {name=V_5p savecurrent=true spice_ignore=0}
 C {vsource.sym} 740 -160 0 0 {name=V1 value=3.3 savecurrent=false}
 C {vdd.sym} 740 -190 0 0 {name=l10 lab=VDD}
 C {gnd.sym} 740 -130 0 0 {name=l11 lab=0}
-C {launcher.sym} 280 690 0 0 {name=h5
+C {launcher.sym} 470 980 0 0 {name=h5
 descr="load waves"
 tclcommand="xschem raw_read $netlist_dir/tb_mirrors.raw tran"
 }
@@ -265,3 +288,77 @@ value="
 .lib $::180MCU_MODELS/sm141064.ngspice mimcap_typical
 * .lib $::180MCU_MODELS/sm141064.ngspice res_statistical
 "}
+C {gnd.sym} 200 1060 0 0 {name=l12 lab=0}
+C {symbols/nfet_03v3.sym} 180 640 0 0 {name=MCM_5
+L=10u
+W=0.5u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {vdd.sym} 200 510 0 0 {name=l13 lab=VDD}
+C {ammeter.sym} 200 560 0 0 {name=V_1 savecurrent=true spice_ignore=0}
+C {symbols/nfet_03v3.sym} 180 730 0 0 {name=MCM_6
+L=10u
+W=0.5u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {symbols/nfet_03v3.sym} 180 820 0 0 {name=MCM_7
+L=10u
+W=0.5u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {symbols/nfet_03v3.sym} 180 1000 0 0 {name=MCM_8
+L=10u
+W=0.5u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
+C {gnd.sym} 290 1040 0 0 {name=l14 lab=0}
+C {symbols/nfet_03v3.sym} 180 910 0 0 {name=MCM_9
+L=10u
+W=0.5u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=nfet_03v3
+spiceprefix=X
+}
