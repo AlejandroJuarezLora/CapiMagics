@@ -5,7 +5,7 @@ V {}
 S {}
 F {}
 E {}
-B 2 -1030 -760 -230 -360 {flags=graph
+B 2 -570 560 230 960 {flags=graph
 y1=-0.019
 y2=3.4
 ypos1=0
@@ -28,7 +28,7 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 580 -740 1380 -340 {flags=graph
+B 2 -570 970 230 1370 {flags=graph
 y1=-0.023
 y2=3.4
 ypos1=0
@@ -51,9 +51,9 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 -220 -760 580 -360 {flags=graph
-y1=0.1448927
-y2=0.15432989
+B 2 240 560 1040 960 {flags=graph
+y1=5.9e-05
+y2=0.024
 ypos1=0
 ypos2=2
 divy=5
@@ -73,9 +73,9 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 960 -200 1760 200 {flags=graph
-y1=6.466667e-06
-y2=6.5715246e-06
+B 2 240 960 1040 1360 {flags=graph
+y1=7.1e-06
+y2=7.3e-06
 ypos1=0
 ypos2=2
 divy=5
@@ -103,12 +103,12 @@ needed for internal nodes in  the stdp symbol.
 
 The commented transistors are INSIDE the STDP subcircuit} -330 420 0 0 0.2 0.2 {}
 T {The spikes of the presynaptic neuron. On purpose, it is set to spike faster 
-than the post synaptic neuron. } -930 -800 0 0 0.2 0.2 {}
+than the post synaptic neuron. } -470 520 0 0 0.2 0.2 {}
 T {The spikes of the postSynaptic neuron. On purpose, it is set to spike faster 
-than the post synaptic neuron. } 700 -770 0 0 0.2 0.2 {}
-T {As the presynaptic neuron spikes faster, the synaptic value Vw grows} -70 -780 0 0 0.2 0.2 {}
+than the post synaptic neuron. } -520 1380 0 0 0.2 0.2 {}
+T {As the presynaptic neuron spikes faster, the synaptic value Vw grows} 390 540 0 0 0.2 0.2 {}
 T {The spikes of the postSynaptic neuron. On purpose, it is set to spike faster 
-than the post synaptic neuron. } 990 220 0 0 0.2 0.2 {}
+than the post synaptic neuron. } 270 1380 0 0 0.2 0.2 {}
 N -330 -50 -310 -50 {lab=#net1}
 N 230 -20 250 -20 {lab=nvpost}
 N -150 -20 -70 -20 {lab=nvpre}
@@ -192,7 +192,7 @@ C {code_shown.sym} 130 160 0 0 {name=s1 only_toplevel=false value="
 .save all
 .control
 	run
-	write tb_stdp.raw
+	write tb_stdp_2.raw
 .endc 
 
 "}
@@ -210,7 +210,7 @@ value="
 C {lab_pin.sym} -490 60 1 0 {name=p5 sig_type=std_logic lab=v1}
 C {launcher.sym} 140 310 0 0 {name=h5
 descr="load waves"
-tclcommand="xschem raw_read /headless/.xschem/simulations/tb_stdp.raw tran"
+tclcommand="xschem raw_read /headless/.xschem/simulations/tb_stdp_2.raw tran"
 }
 C {/foss/designs/CapiMagics/sch/lif/neurona.sym} -230 -50 0 0 {name=x4}
 C {vdd.sym} -410 -130 0 0 {name=l1 lab=VDD}
@@ -260,7 +260,7 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {isource.sym} -510 270 0 1 {name=Iglb value=1m}
+C {isource.sym} -510 270 0 1 {name=Iglb value=1u}
 C {vdd.sym} -410 200 0 0 {name=l6 lab=VDD}
 C {gnd.sym} -430 430 0 0 {name=l7 lab=0}
 C {lab_pin.sym} -290 300 0 1 {name=p6 sig_type=std_logic lab=B}

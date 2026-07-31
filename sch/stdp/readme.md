@@ -1,5 +1,5 @@
 
-# STDP circuit with linear decay
+# STDP circuit with linear decay (Updated 16 July)
 
 Based on [1], here is the Synaptic Time Dependant Platicity with linear decay, implemented in the gf180mcuD pdk. 
 ![STDPDiagram](stdp.png)
@@ -16,7 +16,7 @@ The circuit design of the potentiation unit is symmetric to the depression unit,
 
 Voltage de alimentacion 3.3V
 
-## How to test
+## How to test (Updated 16 July)
 The testbench for this circuit consists into two voltage ramps that fed two voltage controlled oscilators (the neurons). The output voltage spikes $v_{pre}$ and $v_{post}$ and its complementary signales (produced by the not.sch symbols) are fed into the stdp subcircuit. The evolution of the synaptic weight represented by Vw (blue graph) shows how increments and decrements per each incoming spike.
 ![tb_stdp](tb_stdp.png)
 
