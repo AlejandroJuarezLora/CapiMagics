@@ -342,6 +342,89 @@ cociente. Consistente con todo lo encontrado sobre el overshoot del reset.
 netlist`) independientemente de W — verificado con W=1.25/L=100 y W=2.5/L=60
 (fallan) vs W=2.5/L=50 (funciona). Es un límite en L, no en la combinación.
 
+### 3c. Superficies 2D W_M5 × L_M5 (barrido de 16 puntos)
+
+Grilla 4×4 (W = 0.5/1.0/1.75/2.5 µm × L = 25/33/41/50 µm), a Iex≈100 nA y
+**Cm=200 fF**. Solo **11 de 16** puntos quedaron en régimen válido — con W y L
+grandes, 200 fF ya no basta para evitar el overshoot.
+
+| freq (kHz) | L=25µ | L=33µ | L=41µ | L=50µ |
+|---|---|---|---|---|
+| **W=0.5µ** | 3038 | 2022 | 1889 | 1257 |
+| **W=1.0µ** | 1609 | 972 | 958 | 695 |
+| **W=1.75µ** | 907 | 623 | 390 ⚠️ | 384 ⚠️ |
+| **W=2.5µ** | 714 | 479 ⚠️ | 274 ⚠️ | 259 ⚠️ |
+
+| Vth (V) | L=25µ | L=33µ | L=41µ | L=50µ |
+|---|---|---|---|---|
+| **W=0.5µ** | 1.413 | 1.467 | 1.520 | 1.583 |
+| **W=1.0µ** | 1.491 | 1.585 | 1.683 | 1.793 |
+| **W=1.75µ** | 1.577 | 1.722 | 1.875 ⚠️ | 2.055 ⚠️ |
+| **W=2.5µ** | 1.638 | 1.832 ⚠️ | 2.016 ⚠️ | 2.260 ⚠️ |
+
+⚠️ = régimen anómalo (Vm sale de los rieles con Cm=200 fF)
+
+#### Frecuencia: ley inversa del área (R² = 0.978)
+
+```math
+f \propto \frac{1}{W_{M5} \cdot L_{M5}}
+```
+
+Ajuste de potencia (R² = 0.981):
+
+```math
+f[\text{kHz}] = 105183 \cdot W_{M5}^{-1.008} \cdot L_{M5}^{-1.304}
+```
+
+Los exponentes son casi −1 para W y −1.3 para L: **el área manda, con L pesando
+algo más**. Error típico ±10%, con desviaciones hasta 20% en la zona anómala.
+
+⚠️ **Modelos lineales en (W, L) fallan** para la frecuencia (R² ≤ 0.83, LOO > 420
+kHz). La relación es **inversa**, no lineal — probar la forma funcional correcta
+fue clave.
+
+#### Threshold: superficie con término de interacción (R² = 0.9937)
+
+```math
+V_{th}[V] = -0.11481 \cdot W + 0.00280 \cdot L + 0.008966 \cdot W \cdot L + 1.3001
+```
+
+*(a Cm=200 fF; W en µm, L en µm)*
+
+Comparación de modelos con leave-one-out:
+
+| Modelo | R² | LOO |
+|---|---|---|
+| área `W·L` | 0.920 | 0.073 V |
+| `W` y `L` separados | 0.919 | 0.089 V |
+| **`W`, `L`, `W·L`** | **0.9937** | **0.025 V** |
+| `√(W·L)` | 0.890 | 0.089 V |
+
+**El término de interacción `W·L` es imprescindible** — sin él, ningún modelo pasa
+de R²=0.92. Ni el área sola ni los efectos separados bastan.
+
+#### El área NO predice el overshoot
+
+Test directo: puntos de área comparable con resultados opuestos:
+
+| W | L | área (µm²) | Vm_min | estado |
+|---|---|---|---|---|
+| 2.5 µm | 25 µm | 62.5 | **+0.142** | ✅ OK |
+| 1.75 µm | 41 µm | 71.8 | −0.248 | ❌ anómalo |
+
+Un punto de **menor** área falla mientras uno de mayor área funciona. Para el
+overshoot, **L pesa más que W** (al revés que para la frecuencia).
+
+Superficie del undershoot a Cm=200 fF (R² = 0.969):
+
+```math
+V_{m,min}[V] = -0.1607 \cdot W - 0.00107 \cdot L - 0.01341 \cdot W \cdot L + 1.3207
+```
+
+**Consecuencia para el límite de Cm:** la ley `Cm_min = 2.166·L_M5 + 52.06`
+(medida solo a W=1.25 µm) **subestima** el límite para W mayores. Con W=1.75 µm y
+L=41 µm, ni siquiera 200 fF alcanza, cuando esa ley predice ~141 fF.
+
 ### 4. W de M7-M8 (inversor de salida) — CORRIENTE DE DRIVE DEL SPIKE
 
 No afecta la frecuencia; controla cuánta corriente puede entregar el nodo `spike`
