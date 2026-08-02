@@ -500,6 +500,25 @@ libre, en cambio, extrapoló correctamente.
 La ley que solo usaba L subestima gravemente para W grande (141 vs 337 fF), y la
 del área sobreestima en el extremo. **Usar la ley de potencia.**
 
+**Se probó también un ajuste global con las 85 mediciones** de `Vm_min` disponibles
+en los 4 barridos (rangos W 0.5–2.5 µm, L 25–50 µm, Cm 50–400 fF), modelando la
+física del acoplamiento:
+
+```math
+V_{m,min} = 0.8900 - \frac{3.10 \cdot W^{1.453} L^{0.847}}{C_m} \qquad (R^2 = 0.837)
+```
+
+Despejando `Vm_min = 0` da `Cm_min = 3.48·W^1.453·L^0.847`, pero **predice peor**:
+RMSE de **33.6 fF** contra las fronteras medidas, frente a **11.5 fF** de la ley
+ajustada directamente a ellas.
+
+**Por qué usar más datos empeoró el resultado:** las 85 mediciones están repartidas
+por todo el rango de `Vm_min`, la mayoría lejos de cero. Un ajuste global optimiza
+el error medio en todo el espacio y sacrifica precisión justo en `Vm_min ≈ 0`, que
+es la única región que define el límite. Las 12 fronteras, medidas por búsqueda
+binaria con tolerancia ±10 fF, son menos datos pero **del régimen exacto que
+importa**. Se conserva la ley de las 12 fronteras.
+
 ### 4. W de M7-M8 (inversor de salida) — CORRIENTE DE DRIVE DEL SPIKE
 
 No afecta la frecuencia; controla cuánta corriente puede entregar el nodo `spike`
