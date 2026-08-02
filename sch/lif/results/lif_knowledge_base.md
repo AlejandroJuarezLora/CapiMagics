@@ -425,6 +425,43 @@ V_{m,min}[V] = -0.1607 \cdot W - 0.00107 \cdot L - 0.01341 \cdot W \cdot L + 1.3
 (medida solo a W=1.25 µm) **subestima** el límite para W mayores. Con W=1.75 µm y
 L=41 µm, ni siquiera 200 fF alcanza, cuando esa ley predice ~141 fF.
 
+#### Cm_min(W, L) — barrido dedicado (30 puntos)
+
+Para cada combinación (W, L) se barrió Cm ∈ {100, 150, 200, 300, 400} fF y se
+interpoló dónde `Vm_min` cruza cero:
+
+| W_M5 | L_M5 | área (µm²) | **Cm_min** | ley vieja (solo L) | error de la vieja |
+|---|---|---|---|---|---|
+| 0.5 µm | 25 µm | 12.5 | **< 100 fF** | 106 fF | (fuera de grilla) |
+| 0.5 µm | 50 µm | 25.0 | **< 100 fF** | 160 fF | (fuera de grilla) |
+| 1.25 µm | 50 µm | 62.5 | **157 fF** | 160 fF | −3 fF ✓ |
+| 1.75 µm | 33 µm | 57.8 | **166 fF** | 124 fF | **+42 fF** |
+| 1.75 µm | 41 µm | 71.8 | **246 fF** | 141 fF | **+105 fF** |
+| 2.5 µm | 25 µm | 62.5 | **182 fF** | 106 fF | **+76 fF** |
+
+**La ley anterior solo acierta en W=1.25 µm** (su punto de medición). Fuera de ahí
+subestima hasta 105 fF — un error que llevaría a diseños en régimen anómalo.
+
+**Modelo (con reserva):**
+
+```math
+C_{m,min}[fF] \approx 6.230 \cdot (W_{M5} \cdot L_{M5}) - 208.7 \qquad (R^2 = 0.826)
+```
+
+⚠️ **Limitaciones serias de este ajuste:**
+- Solo **4 puntos** tienen frontera medible (los de W=0.5 µm caen por debajo de la
+  grilla, `Cm_min < 100 fF`).
+- **LOO RMSE = 42 fF** — el error real de predicción es alto.
+- Modelos con más términos (`W`, `L`, `W·L`) dan R²=1.0000 pero eso es **sobreajuste
+  trivial**: 4 parámetros para 4 puntos. No tienen valor predictivo.
+
+**Uso recomendado:** tomar `Cm_min ≈ 6.23·(W·L) − 209` como **estimación gruesa** y
+**verificar por simulación** el punto de diseño concreto. Con W ≤ 0.5 µm el límite
+cae por debajo de 100 fF (margen amplio, sin restricción práctica).
+
+Para una ley confiable haría falta ampliar la grilla (más combinaciones y valores
+de Cm por debajo de 100 fF).
+
 ### 4. W de M7-M8 (inversor de salida) — CORRIENTE DE DRIVE DEL SPIKE
 
 No afecta la frecuencia; controla cuánta corriente puede entregar el nodo `spike`
