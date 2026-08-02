@@ -2,7 +2,20 @@
 
 Todos operan sobre `../tb_charac.spice` (el testbench parametrizable, autocontenido)
 generando variantes con `sed` y midiendo con **promedio multi-ciclo** sobre el `.raw`
-(no `.meas` de un solo ciclo, que da errores de hasta 30% por el jitter real).
+(no `.meas` de un solo ciclo).
+
+> ## ⚠️ Paso de `.tran`: usar 1 ns, no 20 ns
+>
+> Los scripts anteriores a `sweep_3d_fine.sh` usan `.tran 20n`, que **sobreestima
+> la frecuencia +41% en promedio y hasta +193%**: el integrador salta ciclos y los
+> cuenta como disparos. También genera jitter aparente de hasta 55% que no existe.
+>
+> `test_tstep.sh` demuestra el efecto (mismo circuito a 20/5/1 ns). Los barridos
+> nuevos deben usar `-e 's/^.tran 20n 100u/.tran 1n 100u/'` y marcar `NOCONV`
+> cualquier punto con jitter > 2%.
+>
+> Coste: `.tran 1n` genera 100k puntos por simulación (~3.2 MB de `.raw`, ~20×
+> más lento). Vale la pena — los ajustes pasan de LOO 8.5% a 3.1%.
 
 ## Cómo correrlos
 
@@ -27,6 +40,15 @@ Los resultados van a `../results/*.csv`. Los `.raw` intermedios quedan en
 | `sweep_drive.sh` | 6 anchos de M7-M8: corriente de drive | `sweep_drive.csv` |
 | `sweep_cmlimit.sh` | Cm × Iex: ¿el límite depende de la corriente? | `cm_limit_map.csv` |
 | `sweep_cmlimit_lm5.sh` | Cm × L_M5: ¿el límite depende de M5? | `cm_limit_lm5.csv` |
+| `sweep_3d_wlcm.sh` | W × L × Cm (paso 20n) — ⚠️ datos con sesgo | `sweep_3d_wlcm.csv` |
+| **`sweep_3d_fine.sh`** | **W × L × Cm con paso 1 ns — el bueno** | `sweep_3d_fine.csv` |
+
+## Verificación numérica
+
+| Script | Qué comprueba | Salida |
+|---|---|---|
+| `test_tstep.sh` | jitter y `f` a 20/5/1 ns en 5 configs | stdout |
+| `refit_3d.py` | reajusta f/Vth/swing incluyendo W_M5, con LOO | stdout |
 
 ## Validaciones cruzadas (verifican ecuaciones fuera del nominal)
 

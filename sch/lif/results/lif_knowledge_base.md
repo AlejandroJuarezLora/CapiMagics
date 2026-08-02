@@ -7,6 +7,96 @@ robusta (promedio multi-ciclo, método del PR #10), no `.meas` de un solo ciclo.
 Neurona base: `sch/lif/neurona.sch`. Nominal: Cm=150fF, L_M5=50µ, L_M6=17µ,
 inversores W/L = 0.22µ/0.28µ (mínimos GF180).
 
+---
+
+> ## ⚠️ AVISO DE VALIDEZ — leer antes de usar cualquier ecuación
+>
+> Todo lo medido con `.tran 20n` (la mayor parte de este documento, secciones 1
+> a 3c y la validación cruzada) tiene **error sistemático en frecuencia de +41%
+> en promedio y hasta +193%**. Con paso grueso el integrador salta ciclos y los
+> cuenta como disparos, inflando `f` y generando jitter aparente de hasta 55%.
+>
+> Las leyes correctas están en **[Leyes definitivas](#leyes-definitivas-paso-1-ns)**,
+> justo abajo. Las secciones históricas se conservan porque las magnitudes de
+> tensión (`Vth`, `Vm_min`, `swing`) sí sobreviven, y porque documentan cómo se
+> detectó el problema.
+
+---
+
+## Leyes definitivas (paso 1 ns)
+
+Barrido `sweep_3d_fine.csv`: 32 puntos, W ∈ {0.5, 1.0, 1.75, 2.5} µm ×
+L ∈ {25, 41} µm × 4 valores de Cm por celda (1.3×, 1.8×, 2.6×, 4.0× el `Cm_min`
+predicho). **32/32 `OK`, jitter máximo 1.85%.** Iex = 100.5 nA (Vin = 1.8 V).
+
+### Frecuencia — Cm NO interviene
+
+```math
+f[\text{kHz}] = 24837 \cdot W_{M5}^{-1.076} \cdot L_{M5}^{-0.940}
+```
+
+R² = 0.99860, LOO = 30.7 kHz (**3.1%**).
+
+Añadir `Cm` al ajuste **empeora** el LOO (30.7 → 30.8 kHz). Verificado en las 8
+series: `f` varía menos del 4% mientras `Cm` se triplica. Ejemplo extremo
+(W=1.75, L=41):
+
+| Cm | 280 f | 388 f | 561 f | 864 f |
+|---|---|---|---|---|
+| f [kHz] | 414.2 | 411.6 | 410.3 | 411.5 |
+
+Cm ×3.1 → f varía **0.9%**.
+
+Se probaron correcciones de curvatura (`log²W`, `log²L`, offset `(W+W₀)`). El
+término `log²W` baja el LOO a 2.82% — 2.8 kHz, dentro del ruido — y el ajuste
+con offset converge a `W₀ = 0.00 µm`, o sea rechaza la corrección. **La ley de
+potencia simple vale en todo el rango W ∈ [0.5, 2.5] µm.**
+
+### Excursión de membrana (swing)
+
+```math
+\text{swing}[V] = 4.114 \cdot W_{M5}^{0.951} \cdot L_{M5}^{1.065} \cdot C_m^{-1.006}
+```
+
+R² = 0.99888, LOO = 0.012 V. Exponentes ≈ (+1, +1, −1): es `W·L/Cm`, la carga
+acoplada del reset sobre la capacitancia. Física exacta, no ajuste empírico.
+
+### Threshold
+
+```math
+V_{th}[V] = 1.2792 + \frac{-16.83 \cdot W_{M5} + 0.4884 \cdot L_{M5} + 1.766 \cdot W_{M5} L_{M5}}{C_m}
+```
+
+R² = 0.98888, LOO = 0.016 V. El término cruzado `W·L` es necesario: sin los
+términos lineales el R² cae a 0.806.
+
+### El jitter no es un límite de diseño
+
+`test_tstep.sh` re-simuló 5 configuraciones a 20 ns / 5 ns / 1 ns:
+
+| W | L | Cm | jit @20 ns | @5 ns | @1 ns |
+|---|---|---|---|---|---|
+| 2.5 | 25 | 884 | 54.5% | 2.7% | **0.0%** |
+| 1.75 | 25 | 612 | 47.1% | 2.2% | **0.0%** |
+| 2.5 | 25 | 287 | 34.2% | 6.0% | **0.2%** |
+| 1.0 | 25 | 344 | 32.7% | 10.9% | **0.1%** |
+| 0.5 | 41 | 106 | 9.3% | 5.1% | **0.5%** (control) |
+
+Todo el jitter desaparece con paso fino — **era resolución temporal, no física**.
+El control confirma que incluso los puntos que parecían sanos estaban
+contaminados. No existe una "frontera de jitter" que restrinja el diseño.
+
+Los scripts nuevos marcan `NOCONV` cualquier punto con jitter > 2% para que un
+dato mal convergido no vuelva a entrar en un ajuste sin avisar.
+
+### Conclusiones que hubo que revertir
+
+| Conclusión previa | Realidad (paso 1 ns) |
+|---|---|
+| «Cm sube la frecuencia hasta +79%» | `f` es plana en Cm (<4%) |
+| «El jitter limita el diseño (20/43 puntos inutilizables)» | Artefacto numérico, desaparece |
+| «`f` necesita término de interacción `W·L`» | Potencia simple basta (el `W·L` empeora el LOO) |
+
 ## Los 3 parámetros dominantes y su efecto
 
 ### 1. Iex (corriente de excitación) — LA PALANCA PRINCIPAL
@@ -558,6 +648,9 @@ integración.
 
 ## Jerarquía de control (para el sistema por capas)
 
+> ⚠️ Esta jerarquía se derivó de datos con paso 20 ns. La fila de `Cm` en
+> FRECUENCIA es **falsa** — ver la versión corregida abajo.
+
 ```
 FRECUENCIA:
   Iex   : ████████████  palanca principal (monótona, amplio rango)
@@ -571,6 +664,32 @@ THRESHOLD (Vth_lif):
 DRIVE DE SALIDA:
   W M7-M8 : ██████████  I_drive ≈ 85·W  (lineal, ortogonal a todo lo demás)
 ```
+
+### Jerarquía corregida (paso 1 ns)
+
+```
+FRECUENCIA:    f = 24837 · W^-1.076 · L^-0.940       (LOO 3.1%)
+  W_M5  : ████████████  exponente -1.076
+  L_M5  : ██████████    exponente -0.940
+  Iex   : ████████████  palanca principal (lineal, ortogonal al threshold)
+  Cm    : —             NO interviene (<4% al triplicar Cm)
+
+THRESHOLD:     Vth = 1.2792 + (-16.83·W + 0.4884·L + 1.766·W·L)/Cm   (LOO 16 mV)
+  Cm    : ██████████    divide todo el termino de acoplamiento
+  W_M5  : ████████      via el termino cruzado W·L
+  L_M5  : ██████
+
+SWING:         swing = 4.114 · W^0.951 · L^1.065 · Cm^-1.006          (LOO 12 mV)
+  = W·L/Cm exacto (carga acoplada / capacitancia)
+
+DRIVE DE SALIDA:
+  W M7-M8 : ██████████  I_drive ≈ 85·W  (lineal, ortogonal a todo lo demás)
+```
+
+**Consecuencia para el diseño:** `Cm` deja de ser una perilla de frecuencia y
+pasa a ser **el mando del par (Vth, swing)**. Eso rompe la circularidad que
+obligaba a iterar: `W` y `L` fijan la frecuencia sin tocar `Cm`, y luego `Cm`
+ajusta el threshold sin devolver efecto a la frecuencia.
 
 Matriz de acoplamiento (medida, no supuesta):
 
@@ -607,6 +726,42 @@ Vin = 2.571 - sqrt(Iex/169.1)
 # 5. W de M7-M8 segun fan-out
 W = I_drive/85
 ```
+
+### Algoritmo definitivo — sin iteración
+
+Como `Cm` no entra en la frecuencia, **la circularidad desaparece**. El diseño se
+resuelve en un solo paso hacia adelante:
+
+```python
+# 1. (W_M5, L_M5) desde la frecuencia objetivo.
+#    f = 24837 * W^-1.076 * L^-0.940  -> un grado de libertad libre.
+#    Criterio para gastarlo: area minima -> W al minimo del PDK.
+W_M5 = 0.5                                   # o el minimo que admita el layout
+L_M5 = (24837 * W_M5**-1.076 / f_obj)**(1/0.940)
+
+# 2. Cm desde el threshold objetivo (ya no realimenta a la frecuencia).
+#    Vth = 1.2792 + (-16.83*W + 0.4884*L + 1.766*W*L)/Cm
+num = -16.83*W_M5 + 0.4884*L_M5 + 1.766*W_M5*L_M5
+Cm  = num / (Vth_obj - 1.2792)
+
+# 3. validar: Cm por encima del limite de operacion valida
+Cm_min = 8.94 * W_M5**1.038 * L_M5**0.700
+assert Cm > 1.2*Cm_min, "Vth objetivo exige Cm por debajo del limite"
+
+# 4. swing resultante (verificar que sea utilizable, >0.3 V)
+swing = 4.114 * W_M5**0.951 * L_M5**1.065 / Cm
+
+# 5. Iex modula la frecuencia alrededor del punto de diseno
+Vin = 2.571 - sqrt(Iex/169.1)
+
+# 6. W de M7-M8 segun fan-out
+W_M7M8 = I_drive/85
+```
+
+El paso 1 tiene un grado de libertad: infinitos pares `(W, L)` dan la misma
+frecuencia. Se gasta según el criterio que interese — área mínima, o `W` grande
+si el layout lo pide. Los exponentes son casi iguales (−1.076 vs −0.940), así
+que **`W·L` ≈ constante** a lo largo de esa curva de iso-frecuencia.
 
 **L_M5 aparece en los pasos 1, 2, 3 y 4** — es el parámetro más transversal del
 diseño. Por eso conviene fijarlo primero y dejar que el resto se derive.
@@ -750,6 +905,20 @@ medición original. Resultado:
 | ~~`Vth = 0.0193·L_M5 + 1.1198`~~ | — | ⚠️ solo vale a Cm=150f |
 | ~~`f ∝ 1/L_M5`~~ | — | ❌ descartada |
 
+### Estado tras el barrido con paso 1 ns
+
+| Ecuación | LOO | Veredicto |
+|---|---|---|
+| `f = 24837·W^-1.076·L^-0.940` | 3.1% | ✅ **definitiva** (Cm no interviene) |
+| `swing = 4.114·W^0.951·L^1.065·Cm^-1.006` | 0.012 V | ✅ **definitiva** (= W·L/Cm) |
+| `Vth = 1.2792 + (-16.83W + 0.4884L + 1.766WL)/Cm` | 0.016 V | ✅ **definitiva** |
+| `Iex = 169.1·(2.571 − Vin)²` | <0.03% | ✅ intacta (DC, no depende del paso) |
+| `I_drive ≈ 85·W_M7M8` | <1% | ✅ intacta (DC) |
+| `Cm_min = 8.94·W^1.038·L^0.700` | 15.4 fF | ⚠️ **revalidar** con paso fino |
+| ~~`f = (363.6/L_M5 − 2.08)·Iex`~~ | — | ❌ **invalidada** (datos 20 ns) |
+| ~~`Vth = 2.893·L/Cm − 21.28/Cm + 1.2606`~~ | — | ❌ **reemplazada** |
+| ~~`f = 105183·W^-1.008·L^-1.304`~~ | — | ❌ **invalidada** (datos 20 ns) |
+
 **Patrón que emerge:** las ecuaciones de los **bloques periféricos** (espejo M6,
 buffer de salida M7-M8) son robustas porque están aislados del lazo. Las del
 **núcleo de integración** (frecuencia, threshold, límite de Cm) están acopladas
@@ -762,15 +931,52 @@ primer decimal, con desviaciones solo dentro del jitter propio del circuito.
 ## Rango de operación validado
 
 - Frecuencia alcanzable: ~300 kHz (55nA) a ~1.6 MHz (212nA/50f).
-- Jitter ciclo-a-ciclo real: 2–9% (comportamiento del circuito, no ruido de sim).
+- ~~Jitter ciclo-a-ciclo real: 2–9% (comportamiento del circuito)~~ ❌ **falso**:
+  era resolución temporal. Con `.tran 1n` el jitter real es **< 0.5%** en todo
+  el rango (máx. 1.85%, solo en Cm mínimo).
+
+### Rango del barrido definitivo (paso 1 ns)
+
+| Variable | Rango | Puntos |
+|---|---|---|
+| W_M5 | 0.5 – 2.5 µm | 4 |
+| L_M5 | 25 – 41 µm | 2 |
+| Cm | 54 – 1248 fF | 4 por celda |
+| f resultante | 280 – 2632 kHz | 32 puntos, todos OK |
+
+⚠️ **L_M5 solo tiene 2 niveles.** El exponente −0.940 se apoya en dos puntos por
+serie; conviene añadir L ∈ {33, 50} µm antes de confiar en extrapolaciones.
+
+## Nota metodológica: el paso de `.tran` no es un detalle
+
+El error del paso grueso **no es ruido, es sesgo**: siempre hacia arriba, porque
+saltar un ciclo cuenta como disparo extra. Medido sobre los 32 puntos:
+
+| | error de `f` (20 ns vs 1 ns) |
+|---|---|
+| medio | **+40.8%** |
+| mediana | +28.1% |
+| máximo | **+192.8%** |
+
+Peor donde `Cm` es grande — justo el régimen que interesa para thresholds bajos.
+Un R² alto no protege contra esto: los ajustes sobre datos gruesos daban
+R² = 0.93–0.99 mientras describían un artefacto.
+
+**Regla para futuros barridos:** paso ≤ 1 ns, y registrar el jitter como columna
+del CSV con marca `NOCONV` si supera 2%. Ver `scripts/test_tstep.sh` para
+reproducir la verificación.
 
 ## Pendiente / a extender
 
+- **Ampliar L_M5 a 4 niveles** (25/33/41/50 µm) con paso 1 ns — el exponente
+  −0.940 solo tiene 2 puntos de apoyo.
+- **Revalidar `Cm_min`** con paso fino: la búsqueda binaria se hizo sobre
+  `Vm_min` medido a 20 ns. Las tensiones son menos sensibles al paso que la
+  frecuencia, pero el `Vm_min` cambió hasta 0.2 V en los puntos re-medidos, así
+  que la ley podría estar corrida (probablemente hacia el lado conservador).
 - Caracterizar W/L de los inversores (afectan Vth_lif y velocidad) — Abraham dijo
   que son fijos, pero mapearlos daria otro grado de libertad.
-- **Re-ajustar las leyes incluyendo W_M5**: threshold, limite de Cm y ganancia de
-  frecuencia estan parametrizadas solo en L_M5, pero W_M5 tiene efecto de primer
-  orden. Haria falta un barrido 2D (W_M5 x L_M5) para las superficies completas.
+- ~~Re-ajustar las leyes incluyendo W_M5~~ ✅ hecho (barrido 3D, paso 1 ns).
 - Consumo de potencia vs parametros (para el trade-off frecuencia/energia).
 - ~~Calibrar el +6.8% del PR #10~~ ✅ hecho (Vth = 1.2396 V, error → +1.46%).
 - Entender la tendencia residual del modelo calibrado (+5% a 10nA, −1% a 200nA).
