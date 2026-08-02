@@ -285,6 +285,63 @@ Regla: **L_M5 es la perilla del THRESHOLD, no de la frecuencia.** Para fijar
 frecuencia usar Iex. El límite duro sigue: >55µ el circuito deja de disparar.
 Nominal 50µ opera en el borde (Vth≈2.09V); para margen usar ~40µ (Vth≈1.88V).
 
+### 3b. W de M5 — PARÁMETRO DE PRIMER ORDEN (era el hueco de la caracterización)
+
+Nunca se había variado (nominal W=1.25 µm). Resulta tener un efecto **comparable
+o mayor que L_M5**. Medido a Iex≈100 nA, Cm=150 fF, L_M5=50 µm:
+
+| W_M5 (µm) | freq (kHz) | Vth (V) | Vm_min (V) | estado |
+|---|---|---|---|---|
+| 0.5 | 1358.8 | 1.680 | +0.781 | ✅ holgado |
+| **1.25** | **545.3** | **2.088** | **−0.050** | ✅ nominal (en el borde) |
+| 2.5 | 307.5 | 2.560 | −0.745 | ❌ anómalo |
+| 5.0 | 278.4 | **3.251** | −0.789 | ❌ crítico (Vth≈Vdd) |
+
+**Relaciones:**
+
+```math
+V_{th} \approx 0.3387 \cdot W_{M5}[\mu m] + 1.6114 \qquad (R^2 = 0.981,\ L_{M5}=50\mu m)
+```
+
+`f ∝ 1/W_M5` ajusta con R²=0.972, pero **satura arriba de 2.5 µm**: de W=2.5 a
+5.0 µm (el doble) la frecuencia solo baja 10% (307→278 kHz), cuando debería
+partirse a la mitad.
+
+⚠️ **A W=5 µm el threshold llega a 3.251 V con Vdd=3.3 V** — prácticamente en el
+riel. El circuito está al borde de no poder dispararse; de ahí la saturación.
+
+⚠️ **W_M5 también mueve el límite de Cm.** A W=2.5 µm el circuito ya es anómalo
+con Cm=150 fF (que es válido en el nominal). La ley `Cm_min = 2.166·L_M5 + 52.06`
+está **incompleta**: le falta el término de W.
+
+**Rango útil: W_M5 ≤ ~1.25 µm.** El nominal está en el borde; W=0.5 µm opera
+holgado (Vth=1.68 V, sin overshoot).
+
+#### El parámetro NO es W/L — L y W actúan por separado
+
+Test directo: dos configuraciones con **el mismo ratio W/L = 0.025**:
+
+| W_M5 | L_M5 | W/L | freq | Vth |
+|---|---|---|---|---|
+| 1.25 µm | 50 µm | 0.025 | 545.3 kHz | 2.088 V |
+| 0.625 µm | 25 µm | 0.025 | **2530.9 kHz** | 1.485 V |
+
+**4.6× de diferencia en frecuencia con idéntico ratio.** El comportamiento no
+depende de W/L.
+
+**Implicación:** las leyes en función de L_M5 (threshold, límite de Cm, ganancia)
+**están bien parametrizadas** — no eran una simplificación del ratio. Pero les
+falta la dimensión W.
+
+**Interpretación física:** si el mecanismo dominante fuera la resistencia de fuga,
+mandaría W/L (la ley del MOSFET). Que no sea así confirma que **domina el
+acoplamiento capacitivo** — los parásitos escalan con el **área** W×L, no con el
+cociente. Consistente con todo lo encontrado sobre el overshoot del reset.
+
+**Límite de simulación:** con L_M5 ≥ 55 µm ngspice falla (`incomplete or empty
+netlist`) independientemente de W — verificado con W=1.25/L=100 y W=2.5/L=60
+(fallan) vs W=2.5/L=50 (funciona). Es un límite en L, no en la combinación.
+
 ### 4. W de M7-M8 (inversor de salida) — CORRIENTE DE DRIVE DEL SPIKE
 
 No afecta la frecuencia; controla cuánta corriente puede entregar el nodo `spike`
@@ -344,8 +401,12 @@ Matriz de acoplamiento (medida, no supuesta):
 |---|---|---|---|
 | **Iex** (via Vin) | ✅ principal, lineal | **solo 2%** (45× de Iex) | **ortogonal** ✓ |
 | **L_M5** | indirecto/sucio | ✅ principal, 26% | R²=0.999 |
+| **W_M5** | fuerte (`∝1/W`, satura >2.5µ) | fuerte, **94%** (0.5→5µ) | **primer orden** |
 | **Cm** | sí, si <100f | sí, **76%** | muy acoplado |
 | **W M7-M8** | no | no | ortogonal ✓ |
+
+⚠️ **W_M5 y L_M5 actúan por separado, no como W/L** (verificado: mismo ratio da
+4.6× de diferencia en frecuencia).
 
 Solo **Iex** y **W** son perillas limpias. Cm es la más acoplada (mueve Vth 76%).
 
@@ -529,7 +590,10 @@ primer decimal, con desviaciones solo dentro del jitter propio del circuito.
 ## Pendiente / a extender
 
 - Caracterizar W/L de los inversores (afectan Vth_lif y velocidad) — Abraham dijo
-  que son fijos, pero mapearlos daria el 4to grado de libertad.
+  que son fijos, pero mapearlos daria otro grado de libertad.
+- **Re-ajustar las leyes incluyendo W_M5**: threshold, limite de Cm y ganancia de
+  frecuencia estan parametrizadas solo en L_M5, pero W_M5 tiene efecto de primer
+  orden. Haria falta un barrido 2D (W_M5 x L_M5) para las superficies completas.
 - Consumo de potencia vs parametros (para el trade-off frecuencia/energia).
 - ~~Calibrar el +6.8% del PR #10~~ ✅ hecho (Vth = 1.2396 V, error → +1.46%).
 - Entender la tendencia residual del modelo calibrado (+5% a 10nA, −1% a 200nA).
