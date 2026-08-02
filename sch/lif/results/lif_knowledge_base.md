@@ -89,6 +89,64 @@ contaminados. No existe una "frontera de jitter" que restrinja el diseño.
 Los scripts nuevos marcan `NOCONV` cualquier punto con jitter > 2% para que un
 dato mal convergido no vuelva a entrar en un ajuste sin avisar.
 
+### Validación externa (18 puntos que ninguna ley vio)
+
+`verify_laws.csv`: W ∈ {0.75, 1.4, 2.1} × L ∈ {33, 50} × 3 valores de Cm.
+**Ninguna combinación (W,L) está en la grilla de ajuste** {0.5, 1.0, 1.75, 2.5} ×
+{25, 41}, y `L = 50 µm` está fuera del rango ajustado (25–41) → prueba de
+extrapolación. 18/18 `OK`, jitter ≤ 0.47%.
+
+| Ley | error medio | RMS | \|max\| |
+|---|---|---|---|
+| `f` | **−0.00%** | 1.23% | 2.59% |
+| `Vth` | −0.63% | 0.90% | 1.61% |
+| `swing` | −0.58% | 1.11% | 1.88% |
+
+Solo los 7 puntos de **extrapolación** (L=50, fuera del rango):
+
+| Ley | error medio | \|max\| |
+|---|---|---|
+| `f` | −1.08% | 2.59% |
+| `Vth` | −1.04% | 1.61% |
+| `swing` | +0.11% | 1.12% |
+
+**Las leyes no se rompen fuera de su rango de ajuste.** El LOO de 3.1% resultó
+conservador: la validación externa da 1.23% RMS.
+
+### Ley de Iex — validada a paso fino
+
+`verify_iexvin.csv`, 5 puntos con `.tran 1n`:
+
+| Vin | Iex medido | predicho | error |
+|---|---|---|---|
+| 1.20 | 318.04 nA | 317.85 | −0.06% |
+| 1.50 | 194.04 | 193.96 | −0.04% |
+| 1.80 | 100.52 | 100.52 | −0.00% |
+| 2.00 | 55.14 | 55.13 | −0.01% |
+| 2.20 | 23.31 | 23.28 | −0.15% |
+
+RMS **0.07%**. El reajuste con datos finos da `k = 169.19` vs 169.1 original
+(**+0.05%**), y el ajuste libre de ambos parámetros recupera
+`169.19·(2.571−Vin)²` con R² = 1.000000. Confirma por medición lo que antes solo
+se argumentaba: es una magnitud cuasi-DC, insensible al paso.
+
+`f` vs `Iex` a paso fino: `f = 4.786·Iex + 15.63` (R² = 0.99977), pero **+7.4% de
+error a 23 nA** — el término independiente pesa demasiado a corriente baja.
+
+## Límites de validez (obligatorio respetarlos)
+
+Descubiertos al contrastar contra los barridos antiguos y la validación externa:
+
+| Parámetro | Límite | Qué pasa si se viola |
+|---|---|---|
+| `Cm` | **≥ 50 fF** | `Vth` diverge: a 25 fF la ley predice 5.83 V, imposible con VDD=3.3 V (medido 3.77 V, +54.6%) |
+| `W_M5` | **≤ 2.5 µm** | `f` satura: a W=5 µm la ley predice 111 kHz, medido 278 kHz (−60%) |
+| `Iex` | **≥ 50 nA** para `f ∝ Iex` | a 23 nA el error de la recta llega a +7.4% |
+| `L_M5` | 25 – 50 µm | fuera de ahí no se midió |
+
+El de `Cm` es el más importante: la forma `(...)/Cm` no tiene techo, pero `Vth`
+no puede superar VDD. **Todo algoritmo de diseño debe comprobar `Vth < 3.3 V`.**
+
 ### Conclusiones que hubo que revertir
 
 | Conclusión previa | Realidad (paso 1 ns) |
@@ -744,7 +802,11 @@ L_M5 = (24837 * W_M5**-1.076 / f_obj)**(1/0.940)
 num = -16.83*W_M5 + 0.4884*L_M5 + 1.766*W_M5*L_M5
 Cm  = num / (Vth_obj - 1.2792)
 
-# 3. validar: Cm por encima del limite de operacion valida
+# 3. validar los limites duros (ver tabla de limites de validez)
+assert 0.5 <= W_M5 <= 2.5,  "fuera del rango: f satura sobre 2.5um"
+assert 25  <= L_M5 <= 50,   "fuera del rango medido"
+assert Cm  >= 50,           "bajo 50f la ley de Vth diverge"
+assert Vth_obj < 3.3,       "Vth no puede superar VDD"
 Cm_min = 8.94 * W_M5**1.038 * L_M5**0.700
 assert Cm > 1.2*Cm_min, "Vth objetivo exige Cm por debajo del limite"
 
@@ -909,10 +971,10 @@ medición original. Resultado:
 
 | Ecuación | LOO | Veredicto |
 |---|---|---|
-| `f = 24837·W^-1.076·L^-0.940` | 3.1% | ✅ **definitiva** (Cm no interviene) |
-| `swing = 4.114·W^0.951·L^1.065·Cm^-1.006` | 0.012 V | ✅ **definitiva** (= W·L/Cm) |
-| `Vth = 1.2792 + (-16.83W + 0.4884L + 1.766WL)/Cm` | 0.016 V | ✅ **definitiva** |
-| `Iex = 169.1·(2.571 − Vin)²` | <0.03% | ✅ intacta (DC, no depende del paso) |
+| `f = 24837·W^-1.076·L^-0.940` | 3.1% | ✅ **definitiva** — externa 1.23% RMS |
+| `swing = 4.114·W^0.951·L^1.065·Cm^-1.006` | 0.012 V | ✅ **definitiva** — externa 1.11% |
+| `Vth = 1.2792 + (-16.83W + 0.4884L + 1.766WL)/Cm` | 0.016 V | ✅ **definitiva** — externa 0.90% |
+| `Iex = 169.1·(2.571 − Vin)²` | <0.03% | ✅ **medida a 1 ns**: 0.07% RMS |
 | `I_drive ≈ 85·W_M7M8` | <1% | ✅ intacta (DC) |
 | `Cm_min = 8.94·W^1.038·L^0.700` | 15.4 fF | ⚠️ **revalidar** con paso fino |
 | ~~`f = (363.6/L_M5 − 2.08)·Iex`~~ | — | ❌ **invalidada** (datos 20 ns) |
