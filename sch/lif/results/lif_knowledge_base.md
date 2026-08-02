@@ -442,25 +442,63 @@ interpoló dónde `Vm_min` cruza cero:
 **La ley anterior solo acierta en W=1.25 µm** (su punto de medición). Fuera de ahí
 subestima hasta 105 fF — un error que llevaría a diseños en régimen anómalo.
 
-**Modelo (con reserva):**
+**Modelo preliminar (4 puntos, superado):** `Cm_min ≈ 6.230·(W·L) − 208.7`
+(R²=0.826, LOO=42 fF). Ver la versión definitiva abajo.
+
+#### Cm_min(W, L) — ley definitiva (12 puntos, búsqueda binaria)
+
+Se repitió el barrido con **búsqueda binaria** del límite (rango 30–500 fF,
+tolerancia ~10 fF) sobre 12 combinaciones, cubriendo el rango que antes se
+escapaba por debajo de 100 fF:
+
+| W_M5 (µm) | L_M5 (µm) | **Cm_min (fF)** | predicho | error |
+|---|---|---|---|---|
+| 0.5 | 25 | 44 | 41 | +5.8% |
+| 0.5 | 41 | 59 | 59 | +0.6% |
+| 0.75 | 33 | 73 | 77 | −5.1% |
+| 1.0 | 25 | 88 | 85 | +3.3% |
+| 1.0 | 41 | 117 | 120 | −2.9% |
+| 1.0 | 50 | 132 | 138 | −4.8% |
+| 1.25 | 33 | 132 | 130 | +1.3% |
+| 1.5 | 25 | 117 | 130 | −10.8% |
+| 1.5 | 41 | 206 | 183 | +11.0% |
+| 1.75 | 50 | 235 | 247 | −5.2% |
+| 2.0 | 33 | 206 | 212 | −3.0% |
+| 2.5 | 41 | 337 | 311 | +7.6% |
+
+**Ley (R² = 0.980, LOO = 15.4 fF):**
 
 ```math
-C_{m,min}[fF] \approx 6.230 \cdot (W_{M5} \cdot L_{M5}) - 208.7 \qquad (R^2 = 0.826)
+C_{m,min}[fF] = 8.94 \cdot W_{M5}^{1.038} \cdot L_{M5}^{0.700}
 ```
 
-⚠️ **Limitaciones serias de este ajuste:**
-- Solo **4 puntos** tienen frontera medible (los de W=0.5 µm caen por debajo de la
-  grilla, `Cm_min < 100 fF`).
-- **LOO RMSE = 42 fF** — el error real de predicción es alto.
-- Modelos con más términos (`W`, `L`, `W·L`) dan R²=1.0000 pero eso es **sobreajuste
-  trivial**: 4 parámetros para 4 puntos. No tienen valor predictivo.
+Exponentes ≈ **1.04 para W** y **0.70 para L**: W pesa más que L, pero ninguno es
+cuadrático. Errores dentro de ±11%, la mayoría bajo 5%.
 
-**Uso recomendado:** tomar `Cm_min ≈ 6.23·(W·L) − 209` como **estimación gruesa** y
-**verificar por simulación** el punto de diseño concreto. Con W ≤ 0.5 µm el límite
-cae por debajo de 100 fF (margen amplio, sin restricción práctica).
+**Validada por extrapolación** — dos puntos predichos antes de medirse:
 
-Para una ley confiable haría falta ampliar la grilla (más combinaciones y valores
-de Cm por debajo de 100 fF).
+| Punto | predicho | medido | error |
+|---|---|---|---|
+| W=2.0 µm, L=33 µm | 207 fF | 206 fF | **0.6%** |
+| W=2.5 µm, L=41 µm | 301 fF | 337 fF | 10.7% |
+
+⚠️ **Advertencia metodológica — un LOO bajo no protege contra extrapolación.**
+Con los primeros 9 puntos (todos W ≤ 1.5 µm), el modelo `Cm_min ∝ W²·L` parecía
+el mejor (LOO = 10.3 fF, mejor que el área con 16.0). Al añadir el punto de
+W=1.75 µm, ese modelo **falló por 31%** y su LOO se disparó a 28.3 fF. El
+cuadrático en W era un artefacto del rango limitado de datos. La ley de potencia
+libre, en cambio, extrapoló correctamente.
+
+**Comparación con las leyes previas** (a los puntos donde discrepan):
+
+| W, L | medido | ley definitiva | `2.166·L + 52` | `6.23·(W·L) − 209` |
+|---|---|---|---|---|
+| 0.5, 25 | 44 | 41 | 106 | (negativo) |
+| 1.5, 41 | 206 | 183 | 141 | 174 |
+| 2.5, 41 | 337 | 311 | 141 | 431 |
+
+La ley que solo usaba L subestima gravemente para W grande (141 vs 337 fF), y la
+del área sobreestima en el extremo. **Usar la ley de potencia.**
 
 ### 4. W de M7-M8 (inversor de salida) — CORRIENTE DE DRIVE DEL SPIKE
 
@@ -539,8 +577,8 @@ L_M5. Se resuelve con una iteración corta (converge en 2–3 pasos):
 # 1. semilla: elegir L_M5 con la recta a Cm=150f
 L_M5 = (Vth_obj - 1.1198)/0.01927
 for _ in range(3):
-    # 2. Cm mínimo que admite ese L_M5 (con margen)
-    Cm = max(150, 2.166*L_M5 + 52.06)
+    # 2. Cm minimo que admite ese (W_M5, L_M5), con margen del 20%
+    Cm = 1.2 * 8.94 * W_M5**1.038 * L_M5**0.700
     # 3. corregir L_M5 con la SUPERFICIE, ahora que se conoce Cm
     #    Vth = 2.893*L/Cm - 21.28/Cm + 1.2606  ->  despejar L
     L_M5 = (Cm*(Vth_obj - 1.2606) + 21.28)/2.893
