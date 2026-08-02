@@ -133,19 +133,114 @@ se argumentaba: es una magnitud cuasi-DC, insensible al paso.
 `f` vs `Iex` a paso fino: `f = 4.786·Iex + 15.63` (R² = 0.99977), pero **+7.4% de
 error a 23 nA** — el término independiente pesa demasiado a corriente baja.
 
+## Barrido de extremos — fronteras de operación medidas
+
+`sweep_extremes.csv`: 36 puntos en los bordes del espacio de diseño, ordenados
+por criticidad. 22 `OK`, 7 `ANOMALO`, 4 `NO_OSCILA`, 3 `ERR` (no converge).
+**Los estados no-OK son el dato**: marcan dónde deja de funcionar el circuito.
+
+| Frontera | Valor medido | Cómo se detectó |
+|---|---|---|
+| `Iex` mínimo | **~12.5 nA** | Vin ≥ 2.3 V → `NO_OSCILA` |
+| `L_M5` máximo | entre **50 y 60 µm** | L=60 no converge (`ERR`) |
+| `W_M5` máximo | **~3.8 µm** a Cm=400 fF | W=3.5 OK (Vm_min +0.087), W=4.0 `ANOMALO` (−0.058) |
+| `Cm` mínimo real | entre **80 y 100 fF** (W=1, L=41) | barrido 30→100 fF |
+
+### El límite de W no era saturación de `f` — el circuito se rompe
+
+Se documentaba que a W=5 µm la ley fallaba −60% «porque `f` satura». **Es falso.**
+El barrido fino muestra que la membrana se sale del riel:
+
+| W | Vm_min | estado |
+|---|---|---|
+| 2.5 | +0.412 | OK |
+| 3.0 | +0.243 | OK |
+| 3.5 | +0.087 | OK |
+| 4.0 | −0.058 | **ANOMALO** |
+| 5.0 | −0.303 | **ANOMALO** |
+
+Aquel punto de W=5 µm era anómalo y nunca debió usarse como referencia de
+precisión. El límite real es la misma frontera `Cm_min(W,L)` vista desde el eje
+de W: **más W exige más Cm**.
+
+### `Cm_min` es conservadora en +34%
+
+Para W=1.0, L=41 la ley `Cm_min = 8.94·W^1.038·L^0.700` predice **120 fF**, pero
+la frontera medida está entre **80 y 100 fF**. Pide más capacitancia de la
+necesaria — está del lado seguro, pero desperdicia área, y el capacitor es lo
+que más ocupa en la celda.
+
+### La recta `f(Iex)` cambia de pendiente en el extremo alto
+
+| rango | ajuste |
+|---|---|
+| medio (23–318 nA) | `f = 4.786·Iex + 15.63` |
+| alto (366–530 nA) | `f = 4.314·Iex + 170.4` |
+
+La pendiente baja ~10%. La relación no es lineal en todo el rango.
+
+## Reajuste con los 69 puntos — las leyes NO cambian
+
+Se reajustó todo con `sweep_3d_fine` + `verify_laws` + `sweep_extremes`
+(**69 puntos, 13 niveles de W, 8 de L**, solo Iex ≈ 100.5 nA):
+
+| Ley | RMS vieja | RMS nueva | ¿cambia? |
+|---|---|---|---|
+| `f` | 2.07% | 2.03% | **no** (0.04 pp) |
+| `Vth` | 1.32% | 1.32% | **no** |
+| `swing` | 1.72% | 1.68% | **no** |
+
+El ajuste nuevo daría `f = 23872·W^-1.0729·L^-0.9285` frente a
+`24837·W^-1.076·L^-0.940`. **Se conservan las leyes actuales**: cambiar
+coeficientes por 0.04 pp invalidaría la validación externa ya hecha a cambio de
+nada.
+
+> ⚠️ **Advertencia metodológica.** Un corte a W=1.0 fijo daba exponente de L
+> **−0.871** (vs −0.940 de la ley), lo que parecía un error del 7.3%. Con los 69
+> puntos el exponente global es **−0.9285**. Un exponente medido sobre una
+> sección 1-D no es comparable con el de un ajuste multivariable — la sección
+> absorbe correlaciones entre variables.
+
+### Dónde la ley pierde precisión
+
+Los 4 puntos con error > 4%:
+
+| W | L | error |
+|---|---|---|
+| 2.50 | 20 | −6.97% |
+| 1.00 | 20 | +4.98% |
+| 2.50 | 25 | −4.93% |
+| 3.50 | 41 | −4.10% |
+
+Tres de cuatro están en **L ≤ 25 µm**. En ese extremo la precisión pasa de ~1% a
+**5–7%**. Usar `L ≥ 30 µm` cuando la precisión importe.
+
 ## Límites de validez (obligatorio respetarlos)
 
 Descubiertos al contrastar contra los barridos antiguos y la validación externa:
 
+Tabla consolidada tras el barrido de extremos (los valores marcados ✅ están
+medidos directamente; los demás son de rango no explorado):
+
 | Parámetro | Límite | Qué pasa si se viola |
 |---|---|---|
-| `Cm` | **≥ 50 fF** | `Vth` diverge: a 25 fF la ley predice 5.83 V, imposible con VDD=3.3 V (medido 3.77 V, +54.6%) |
-| `W_M5` | **≤ 2.5 µm** | `f` satura: a W=5 µm la ley predice 111 kHz, medido 278 kHz (−60%) |
-| `Iex` | **≥ 50 nA** para `f ∝ Iex` | a 23 nA el error de la recta llega a +7.4% |
-| `L_M5` | 25 – 50 µm | fuera de ahí no se midió |
+| `Cm` | **≥ Cm_min(W,L)** ✅ | la membrana sale del riel (`ANOMALO`). Medido: 80–100 fF para W=1, L=41 |
+| `Cm` | ≥ 50 fF | `Vth` diverge: a 25 fF la ley predice 5.83 V, imposible con VDD=3.3 V |
+| `W_M5` | **≤ 3.5 µm** ✅ | a 4.0 µm `Vm_min` = −0.058 → no oscila bien. **Depende de Cm** |
+| `W_M5` | ≥ 0.22 µm | mínimo del PDK GF180 |
+| `L_M5` | **≤ 50 µm** ✅ | L=60 no converge |
+| `L_M5` | ≥ 20 µm ✅ | medido, pero con **5–7% de error** bajo 25 µm |
+| `Iex` | **≥ 12.5 nA** ✅ | por debajo `NO_OSCILA` (Vin ≥ 2.3 V) |
+| `Iex` | ≥ 50 nA para `f ∝ Iex` | a 23 nA el error de la recta es +7.4%; sobre 366 nA la pendiente cae 10% |
 
-El de `Cm` es el más importante: la forma `(...)/Cm` no tiene techo, pero `Vth`
-no puede superar VDD. **Todo algoritmo de diseño debe comprobar `Vth < 3.3 V`.**
+Dos comprobaciones que **todo algoritmo de diseño debe hacer**:
+
+1. `Vth < VDD` (3.3 V) — la forma `(...)/Cm` no tiene techo, pero la física sí.
+2. `Cm > Cm_min(W,L)` — es la restricción que acopla W, L y Cm, y la que more
+   frecuentemente se viola al pedir thresholds bajos.
+
+~~`W_M5 ≤ 2.5 µm` porque `f` satura~~ — **corregido**: el límite es 3.5 µm y la
+causa no es saturación sino que el circuito deja de oscilar correctamente.
 
 ### Conclusiones que hubo que revertir
 
@@ -803,8 +898,8 @@ num = -16.83*W_M5 + 0.4884*L_M5 + 1.766*W_M5*L_M5
 Cm  = num / (Vth_obj - 1.2792)
 
 # 3. validar los limites duros (ver tabla de limites de validez)
-assert 0.5 <= W_M5 <= 2.5,  "fuera del rango: f satura sobre 2.5um"
-assert 25  <= L_M5 <= 50,   "fuera del rango medido"
+assert 0.22 <= W_M5 <= 3.5, "fuera del rango medido (a 4um ya no oscila)"
+assert 20  <= L_M5 <= 50,  "L=60 no converge; bajo 25um el error sube a 5-7%"
 assert Cm  >= 50,           "bajo 50f la ley de Vth diverge"
 assert Vth_obj < 3.3,       "Vth no puede superar VDD"
 Cm_min = 8.94 * W_M5**1.038 * L_M5**0.700
