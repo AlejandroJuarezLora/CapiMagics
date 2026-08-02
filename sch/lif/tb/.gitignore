@@ -1,1 +1,4 @@
+# artefactos de simulacion (regenerables corriendo los scripts)
+raws_*/
 _sim_output/
+*.raw
