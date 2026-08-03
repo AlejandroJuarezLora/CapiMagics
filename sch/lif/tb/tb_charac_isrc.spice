@@ -1,0 +1,44 @@
+* Caracterizacion LIF - ENTRADA DE CORRIENTE
+*
+* La celda de Abrahan usa entrada de corriente (se conecta a distintas etapas),
+* asi que NO lleva M6 (el espejo PMOS que convertia Vin -> Iex). La corriente
+* entra directamente al nodo de membrana.
+*
+* Diferencia con tb_charac.spice: sin XM6, sin V2/Vin, y una fuente IEX que
+* inyecta corriente en 'integration'. La ley Iex = 169.1*(2.571-Vin)^2 describe
+* un bloque que ahora vive FUERA de esta celda.
+.include /foss/pdks/gf180mcuD/libs.tech/ngspice/design.ngspice
+.lib /foss/pdks/gf180mcuD/libs.tech/ngspice/sm141064.ngspice typical
+.subckt neurona Vdd Vss iin spike spike_neg
+XM1 spike_neg integration Vdd Vdd pfet_03v3 L=0.28u W=0.22u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u'
++ pd='2*int((nf+1)/2) * (W/nf + 0.18u)' ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM2 spike_neg integration Vss Vss nfet_03v3 L=0.28u W=0.22u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u'
++ pd='2*int((nf+1)/2) * (W/nf + 0.18u)' ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM3 spike/reset spike_neg Vdd Vdd pfet_03v3 L=0.28u W=0.22u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u'
++ pd='2*int((nf+1)/2) * (W/nf + 0.18u)' ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM4 spike/reset spike_neg Vss Vss nfet_03v3 L=0.28u W=0.22u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u'
++ pd='2*int((nf+1)/2) * (W/nf + 0.18u)' ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM7 spike spike_neg Vdd Vdd pfet_03v3 L=0.28u W=0.22u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM8 spike spike_neg GND GND nfet_03v3 L=0.28u W=0.22u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u' pd='2*int((nf+1)/2) * (W/nf + 0.18u)'
++ ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+XM5 integration spike/reset Vss Vss nfet_03v3 L=50u W=1.25u nf=1 ad='int((nf+1)/2) * W/nf * 0.18u' as='int((nf+2)/2) * W/nf * 0.18u'
++ pd='2*int((nf+1)/2) * (W/nf + 0.18u)' ps='2*int((nf+2)/2) * (W/nf + 0.18u)' nrd='0.18u / W' nrs='0.18u / W' sa=0 sb=0 sd=0
+C1 integration Vss 150f
+* la corriente de entrada llega directo al nodo de membrana
+Riin iin integration 0.001
+.ends
+.GLOBAL GND
+.end
+
+Vdd Vdd 0 3.3
+Vss Vss 0 0
+IEX 0 iin DC 100n
+X1 Vdd Vss iin spike spike_neg neurona
+.tran 1n 30u
+.control
+save v(spike) v(x1.integration)
+run
+write tb_charac_isrc.raw v(spike) v(x1.integration)
+.endc
+.end
