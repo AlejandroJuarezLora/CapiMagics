@@ -7,11 +7,18 @@ Para verificar por simulacion hace falta ngspice y el contenedor:
 
     docker exec capimagics_x bash -lc \\
       "python3.10 /foss/repo/sch/lif/design/example.py --verify"
+
+Para usarlo desde otro script en cualquier ruta, instalar el paquete:
+
+    cd sch/lif && pip install -e .
+
+y luego basta con  `from design import NeuronSpec, design`.
 """
 import sys
 from pathlib import Path
 
-# permite ejecutar este archivo directamente, sin instalar el paquete
+# permite ejecutar este archivo sin haber instalado el paquete; si ya esta
+# instalado con pip install -e, esta linea no cambia nada
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from design import NeuronSpec, design, verify  # noqa: E402

@@ -42,3 +42,8 @@ tools/
 context/
 
 *.gds.backup
+
+# paquetes instalados en modo editable (pip install -e)
+*.egg-info/
+build/
+dist/
