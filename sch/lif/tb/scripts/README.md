@@ -42,13 +42,36 @@ Los resultados van a `../results/*.csv`. Los `.raw` intermedios quedan en
 | `sweep_cmlimit_lm5.sh` | Cm × L_M5: ¿el límite depende de M5? | `cm_limit_lm5.csv` |
 | `sweep_3d_wlcm.sh` | W × L × Cm (paso 20n) — ⚠️ datos con sesgo | `sweep_3d_wlcm.csv` |
 | **`sweep_3d_fine.sh`** | **W × L × Cm con paso 1 ns — el bueno** | `sweep_3d_fine.csv` |
+| `sweep_extremes.sh` | fronteras de operación en los bordes | `sweep_extremes.csv` |
+| `verify_laws.sh` | 18 puntos fuera de la grilla de ajuste | `verify_laws.csv` |
+| `validate_feasibility.sh` | el mapa (f, Vth) contra simulación | `validate_feasibility.csv` |
+
+## Entrada de corriente (`tb_charac_isrc.spice`)
+
+La celda usa entrada de corriente, así que estos barridos no dependen de `Vin`
+ni de M6. Son los que definen el contrato actual.
+
+| Script | Qué mide | Salida |
+|---|---|---|
+| `sweep_gain_isrc.sh` | ganancia `k(W,L)` de `f = k·Iex` | `sweep_gain_isrc.csv` |
+| `sweep_drive_load_isrc.sh` | `C_load` que soporta la salida | `sweep_drive_load_isrc.csv` |
+| `sweep_zsource.sh` | sensibilidad a la impedancia de fuente | `sweep_zsource.csv` |
+| `sweep_iexwindow.sh` | techo de `Iex` (es límite de periodo) | `sweep_iexwindow.csv` |
+| `sweep_iexmin.sh` | piso de `Iex` — resultó no existir | `sweep_iexmin.csv` |
+| `sweep_f0.sh` | intercepto de la recta — resultó ser cero | `sweep_f0.csv` |
 
 ## Verificación numérica
 
 | Script | Qué comprueba | Salida |
 |---|---|---|
 | `test_tstep.sh` | jitter y `f` a 20/5/1 ns en 5 configs | stdout |
+| `test_tstop.sh` | si acortar el transitorio cambia el resultado | stdout |
+| `bench_par.sh` | escalado de hilos vs procesos | stdout |
 | `refit_3d.py` | reajusta f/Vth/swing incluyendo W_M5, con LOO | stdout |
+
+**No paralelizar**: `bench_par.sh` midió que ngspice ya usa 7.3 de 8 núcleos
+con un solo proceso. Con 2 en paralelo cada simulación pasa de ~100 s a >660 s
+por contención de caché. Los barridos van en serie.
 
 ## Validaciones cruzadas (verifican ecuaciones fuera del nominal)
 
