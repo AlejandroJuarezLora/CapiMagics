@@ -38,19 +38,34 @@ def gain(W: float, L: float) -> float:
 
     Cm NO interviene: anadirlo al ajuste lo empeora.
 
-    Ojo con derivar k de freq_at_iex_ref/100: da RMS 7.9% con sesgo sistematico
-    de +6%, porque f = k*Iex + f0 tiene intercepto. Este ajuste es directo
-    sobre las 9 pendientes medidas.
+    Ajustada sobre las 9 pendientes medidas en Iex 25-400 nA.
+
+    SESGO CONOCIDO: k tiene curvatura -- la pendiente cae al subir la corriente
+    (13.33 -> 10.47 kHz/nA dentro de una misma serie). En el extremo bajo del
+    rango la ganancia real es ~11.6% MAYOR que esta ley: medido a 5-10 nA para
+    W=0.5/L=41 da k=16.41 frente a 14.51 de la formula.
+    Para f() esto importa poco porque el anclaje proporcional lo compensa
+    (error ~3%); para consumir gain() directamente a corriente muy baja,
+    contar con ese margen.
     """
     return 280.22 * W ** -1.0447 * L ** -0.9923
 
 
 def freq(W: float, L: float, iex: float) -> float:
-    """f [kHz] a una corriente dada.
+    """f [kHz] a una corriente dada.  Proporcional pura, sin intercepto.
 
-    Se ancla en freq_at_iex_ref en vez de usar f = k*Iex + f0, porque f0 se
-    midio por configuracion (14-144 kHz) pero no tiene ley. Anclar usa las dos
-    leyes validadas y el error que introduce es del orden de f0/f (1-5%).
+    El f0 de 14-144 kHz que salia de ajustar rectas sobre Iex 25-400 nA era un
+    ARTEFACTO: un intercepto ajustado lejos del origen absorbe la curvatura de
+    la zona alta. Midiendo a 5 y 10 nA (W=0.5, L=41, Cm=150f) sale f0 = +0.57
+    kHz, o sea cero, y k = 16.41 kHz/nA.
+
+    Extrapolar la recta con intercepto hacia abajo falla feo:
+        a  5 nA predice 129.2 kHz, medido 82.6   (+56%)
+        a 10 nA predice 204.7 kHz, medido 164.6  (+24%)
+    mientras que este anclaje da -3.4% y -3.1%.
+
+    Queda un sesgo conocido: k tiene curvatura y a corriente baja la pendiente
+    real es ~11% mayor que la de gain(). Ver la nota en gain().
     """
     return freq_at_iex_ref(W, L) * (iex / IEX_REF)
 
