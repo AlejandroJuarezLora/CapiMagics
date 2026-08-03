@@ -1,104 +1,108 @@
-# Scripts de caracterización de la neurona LIF
+# LIF characterization scripts
 
-Todos operan sobre `../tb_charac.spice` (el testbench parametrizable, autocontenido)
-generando variantes con `sed` y midiendo con **promedio multi-ciclo** sobre el `.raw`
-(no `.meas` de un solo ciclo).
+Each script patches a testbench with `sed` and measures the resulting `.raw`
+using **multi-cycle period averaging** — not a single-cycle `.meas`.
 
-> ## ⚠️ Paso de `.tran`: usar 1 ns, no 20 ns
+Scripts named `*_isrc` use `../tb_charac_isrc.spice` (current input, the current
+topology); the rest use `../tb_charac.spice` (voltage input through M6,
+historical).
+
+> ## ⚠️ Use a 1 ns timestep, not 20 ns
 >
-> Los scripts anteriores a `sweep_3d_fine.sh` usan `.tran 20n`, que **sobreestima
-> la frecuencia +41% en promedio y hasta +193%**: el integrador salta ciclos y los
-> cuenta como disparos. También genera jitter aparente de hasta 55% que no existe.
+> Scripts predating `sweep_3d_fine.sh` use `.tran 20n`, which **overestimates
+> frequency by +41% on average and up to +193%**: the integrator skips cycles
+> and counts them as spikes. It also fabricates jitter of up to 55%.
 >
-> `test_tstep.sh` demuestra el efecto (mismo circuito a 20/5/1 ns). Los barridos
-> nuevos deben usar `-e 's/^.tran 20n 100u/.tran 1n 100u/'` y marcar `NOCONV`
-> cualquier punto con jitter > 2%.
+> `test_tstep.sh` demonstrates the effect (same circuit at 20/5/1 ns). New
+> sweeps must use `.tran 1n` and flag any point with jitter > 2% as `NOCONV`.
 >
-> Coste: `.tran 1n` genera 100k puntos por simulación (~3.2 MB de `.raw`, ~20×
-> más lento). Vale la pena — los ajustes pasan de LOO 8.5% a 3.1%.
+> Cost: `.tran 1n` produces 100k points per simulation (~3.2 MB per `.raw`,
+> ~20× slower). Worth it — fits go from LOO 8.5% to 3.1%.
 
-## Cómo correrlos
+## Running them
 
-Dentro del contenedor, con el repo montado en `/foss/repo`:
+Inside the container, with the repo mounted at `/foss/repo`:
 
 ```bash
 cd /foss/repo/sch/lif/tb
 bash scripts/<script>.sh
 ```
 
-Los resultados van a `../results/*.csv`. Los `.raw` intermedios quedan en
-`raws_*/` (gitignoreados; se pueden borrar y regenerar).
+Results go to `../results/*.csv`. Intermediate `.raw` files land in `raws_*/`
+(gitignored — delete and regenerate freely). Most sweeps are **resumable**: they
+skip points already present in the CSV.
 
-## Barridos (generan datos)
+## Sweeps — voltage input (historical)
 
-| Script | Qué mide | Salida |
+| Script | Measures | Output |
 |---|---|---|
-| `find_vin2.sh` | mapeo Vin → Iex (calibración de la entrada) | stdout |
-| `sweep_iex_robust.sh` | 12 puntos de Iex: freq + Vth + Iex | `sweep_iex_robust.csv` |
-| `sweep_cm_robust.sh` | 7 puntos de Cm: freq + Vth | `sweep_cm_robust.csv` |
-| `sweep_lm5_robust.sh` | 6 puntos de L_M5: freq + Vth | `sweep_lm5_robust.csv` |
-| `sweep_drive.sh` | 6 anchos de M7-M8: corriente de drive | `sweep_drive.csv` |
-| `sweep_cmlimit.sh` | Cm × Iex: ¿el límite depende de la corriente? | `cm_limit_map.csv` |
-| `sweep_cmlimit_lm5.sh` | Cm × L_M5: ¿el límite depende de M5? | `cm_limit_lm5.csv` |
-| `sweep_3d_wlcm.sh` | W × L × Cm (paso 20n) — ⚠️ datos con sesgo | `sweep_3d_wlcm.csv` |
-| **`sweep_3d_fine.sh`** | **W × L × Cm con paso 1 ns — el bueno** | `sweep_3d_fine.csv` |
-| `sweep_extremes.sh` | fronteras de operación en los bordes | `sweep_extremes.csv` |
-| `verify_laws.sh` | 18 puntos fuera de la grilla de ajuste | `verify_laws.csv` |
-| `validate_feasibility.sh` | el mapa (f, Vth) contra simulación | `validate_feasibility.csv` |
+| `find_vin2.sh` | Vin → Iex mapping | stdout |
+| `sweep_iex_robust.sh` | 12 Iex points: freq + Vth + Iex | `sweep_iex_robust.csv` |
+| `sweep_cm_robust.sh` | 7 Cm points: freq + Vth | `sweep_cm_robust.csv` |
+| `sweep_lm5_robust.sh` | 6 L_M5 points | `sweep_lm5_robust.csv` |
+| `sweep_drive.sh` | 6 M7-M8 widths: drive current | `sweep_drive.csv` |
+| `sweep_cmlimit.sh` | Cm × Iex: does the limit depend on current? | `cm_limit_map.csv` |
+| `sweep_cmlimit_lm5.sh` | Cm × L_M5 | `cm_limit_lm5.csv` |
+| `sweep_3d_wlcm.sh` | W × L × Cm at 20 ns — ⚠️ biased data | `sweep_3d_wlcm.csv` |
+| **`sweep_3d_fine.sh`** | **W × L × Cm at 1 ns — the good one** | `sweep_3d_fine.csv` |
+| `sweep_extremes.sh` | operating boundaries at the edges | `sweep_extremes.csv` |
+| `verify_laws.sh` | 18 points outside the fitting grid | `verify_laws.csv` |
+| `validate_feasibility.sh` | the (f, Vth) map against simulation | `validate_feasibility.csv` |
 
-## Entrada de corriente (`tb_charac_isrc.spice`)
+## Sweeps — current input (`tb_charac_isrc.spice`)
 
-La celda usa entrada de corriente, así que estos barridos no dependen de `Vin`
-ni de M6. Son los que definen el contrato actual.
+The cell takes a current input, so these do not depend on `Vin` or M6. They
+define the current contract.
 
-| Script | Qué mide | Salida |
+| Script | Measures | Output |
 |---|---|---|
-| `sweep_gain_isrc.sh` | ganancia `k(W,L)` de `f = k·Iex` | `sweep_gain_isrc.csv` |
-| `sweep_drive_load_isrc.sh` | `C_load` que soporta la salida | `sweep_drive_load_isrc.csv` |
-| `sweep_zsource.sh` | sensibilidad a la impedancia de fuente | `sweep_zsource.csv` |
-| `sweep_iexwindow.sh` | techo de `Iex` (es límite de periodo) | `sweep_iexwindow.csv` |
-| `sweep_iexmin.sh` | piso de `Iex` — resultó no existir | `sweep_iexmin.csv` |
-| `sweep_f0.sh` | intercepto de la recta — resultó ser cero | `sweep_f0.csv` |
+| `sweep_gain_isrc.sh` | modulation gain `k(W,L)` of `f = k·Iex` | `sweep_gain_isrc.csv` |
+| `sweep_drive_load_isrc.sh` | load the output stage can drive | `sweep_drive_load_isrc.csv` |
+| `sweep_zsource.sh` | sensitivity to source impedance | `sweep_zsource.csv` |
+| `sweep_iexwindow.sh` | `Iex` ceiling (turns out to be a period limit) | `sweep_iexwindow.csv` |
+| `sweep_iexmin.sh` | `Iex` floor — turned out not to exist | `sweep_iexmin.csv` |
+| `sweep_f0.sh` | line intercept — turned out to be zero | `sweep_f0.csv` |
 
-## Verificación numérica
+## Cross-validation
 
-| Script | Qué comprueba | Salida |
+| Script | Validates | Output |
 |---|---|---|
-| `test_tstep.sh` | jitter y `f` a 20/5/1 ns en 5 configs | stdout |
-| `test_tstop.sh` | si acortar el transitorio cambia el resultado | stdout |
-| `bench_par.sh` | escalado de hilos vs procesos | stdout |
-| `refit_3d.py` | reajusta f/Vth/swing incluyendo W_M5, con LOO | stdout |
+| `crossval_freq.sh` | `f = k·Iex` across 3 (L_M5, Cm) configs | `crossval_freq.csv` |
+| `crossval_iexvin.sh` | `Iex = 169.1·(2.571−Vin)²` across 3 configs | `crossval_iexvin.csv` |
+| `crossval_drive.sh` | `I_drive ≈ 85·W` across 2 configs | `crossval_drive.csv` |
 
-**No paralelizar**: `bench_par.sh` midió que ngspice ya usa 7.3 de 8 núcleos
-con un solo proceso. Con 2 en paralelo cada simulación pasa de ~100 s a >660 s
-por contención de caché. Los barridos van en serie.
+## Numerical checks
 
-## Validaciones cruzadas (verifican ecuaciones fuera del nominal)
-
-| Script | Qué valida | Salida |
-|---|---|---|
-| `crossval_freq.sh` | `f = k·Iex` en 3 configs de (L_M5, Cm) | `crossval_freq.csv` |
-| `crossval_iexvin.sh` | `Iex = 169.1·(2.571−Vin)²` en 3 configs | `crossval_iexvin.csv` |
-| `crossval_drive.sh` | `I_drive ≈ 85·W` en 2 configs | `crossval_drive.csv` |
-
-## Analizadores (procesan los `.raw`)
-
-| Script | Para qué |
+| Script | Checks |
 |---|---|
-| `analyze_robust.py` | frecuencia multi-ciclo genérica |
-| `analyze_iex.py` | freq + Vth + Iex del barrido de corriente |
-| `analyze_cm.py` | freq + Vth vs Cm, con test de la teoría `f ∝ 1/Cm` |
+| `test_tstep.sh` | jitter and `f` at 20/5/1 ns across 5 configs |
+| `test_tstop.sh` | whether shortening the transient changes the result |
+| `bench_par.sh` | thread vs process scaling |
+| `refit_3d.py` | refits f/Vth/swing including W_M5, with LOO |
+
+**Do not parallelize.** `bench_par.sh` measured that ngspice already uses 7.3 of
+8 cores with a single process. Two in parallel push each simulation from ~100 s
+to >660 s through cache contention. Run sweeps serially.
+
+## Analyzers
+
+| Script | Purpose |
+|---|---|
+| `analyze_robust.py` | generic multi-cycle frequency |
+| `analyze_iex.py` | freq + Vth + Iex from the current sweep |
+| `analyze_cm.py` | freq + Vth vs Cm |
 | `analyze_lm5.py` | freq + Vth vs L_M5 |
-| `analyze_cmlimit.py` | detecta overshoot (Vm fuera de los rieles 0–3.3 V) |
+| `analyze_cmlimit.py` | detects overshoot (Vm outside 0–3.3 V) |
 
-## Notas de uso
+## Gotchas
 
-- **`bash -lc`, no `bash -c`**: ngspice solo está en el PATH del login shell.
-- El nodo de membrana se llama **`x1.integration`** en ngspice (está dentro del
-  subcircuito), no `integration`.
-- La corriente del espejo se lee como `@m.x1.xm6.m0[id]` (el sufijo `.m0` es
-  necesario para el modelo BSIM4).
-- No correr desde `/tmp` (hay un `bisect.py` residual que tapa el stdlib).
+- **Use `bash -lc`, not `bash -c`**: ngspice is only on the login shell's PATH.
+  Without it, sweeps silently produce zero `.raw` files.
+- The membrane node is **`x1.integration`** in ngspice (it is inside the
+  subcircuit), not `integration`.
+- Mirror current reads as `@m.x1.xm6.m0[id]` — the `.m0` suffix is required for
+  the BSIM4 model.
+- Do not run from `/tmp` (a stray `bisect.py` shadows the stdlib).
 
-Los resultados consolidados y las ecuaciones están en
+Consolidated results and equations:
 [`../../results/lif_knowledge_base.md`](../../results/lif_knowledge_base.md).

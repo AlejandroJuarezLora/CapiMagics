@@ -1,54 +1,54 @@
-# Testbenches de caracterización del LIF
+# LIF characterization testbenches
 
-Dos testbenches, según cómo entra la excitación. **El vigente es
-`tb_charac_isrc.spice`**, porque la celda usa entrada de corriente.
+Two testbenches, differing in how the cell is excited. **The current one is
+`tb_charac_isrc.spice`**, since the cell takes a current input.
 
-| archivo | entrada | estado |
+| file | input | status |
 |---|---|---|
-| `tb_charac_isrc.spice` | `IEX` directo al nodo de membrana | **vigente** |
-| `tb_charac.spice` | `Vin` sobre M6 (espejo PMOS) | histórico |
+| `tb_charac_isrc.spice` | `IEX` straight into the membrane node | **current** |
+| `tb_charac.spice` | `Vin` driving M6 (PMOS mirror) | historical |
 
-Ambos son autocontenidos: llevan el subcircuito `neurona` embebido, así que no
-dependen de los `.sch`. Modificarlos con `sed` es lo que hacen todos los
-scripts de `scripts/`.
+Both are self-contained: the `neurona` subcircuit is embedded, so they do not
+depend on the `.sch` files. Every script in `scripts/` patches them with `sed`.
 
-## Por qué hay dos
+## Why two
 
-La celda se conectará a distintas etapas, así que recibe corriente, no tensión.
-`tb_charac_isrc.spice` refleja eso: no lleva M6.
+The cell connects to different stages, so it receives current rather than
+voltage. `tb_charac_isrc.spice` reflects that and carries no M6.
 
-Se comprobó que el cambio **no invalida la caracterización previa**: el mismo
-punto da 494 kHz con M6 y 501 kHz con fuente ideal (1.4%). La `ro` de M6 era lo
-bastante alta (es un PMOS de `L=17 µm`) como para comportarse casi ideal.
+The switch was checked against the earlier characterization and **does not
+invalidate it**: the same operating point gives 494 kHz with M6 and 501 kHz with
+an ideal source (1.4% apart). M6's output impedance was high enough — it is a
+PMOS with `L = 17 µm` — to behave nearly ideally.
 
-La ley `Iex = 169.1·(2.571 − Vin)²` (RMS 0.07%) sigue siendo válida, pero
-describe un bloque que ahora vive **fuera** de la celda. Queda como referencia
-para quien diseñe la etapa de entrada.
+The law `Iex = 169.1·(2.571 − Vin)²` (RMS 0.07%) is still valid, but it now
+describes a block that lives **outside** the cell. Kept as a reference for
+whoever designs the input stage.
 
-## Dos cosas que hay que respetar al simular
+## Two things to respect when simulating
 
-**Paso `.tran 1n`, no 20n.** Con paso grueso la frecuencia se sobreestima
-**+41% de media y hasta +193%**: el integrador salta ciclos y los cuenta como
-disparos. También genera jitter aparente de hasta 55% que no existe.
-`scripts/test_tstep.sh` lo demuestra re-simulando a 20/5/1 ns.
+**Use `.tran 1n`, not 20n.** With a coarse step the frequency is overestimated
+by **+41% on average and up to +193%**: the integrator skips cycles and counts
+them as spikes. It also fabricates jitter of up to 55%.
+`scripts/test_tstep.sh` demonstrates this by re-simulating at 20/5/1 ns.
 
-**Transitorio suficiente para ≥5 ciclos.** Con `tstop` fijo, una neurona a
-15 kHz (periodo 67 µs) no completa ni un ciclo en 30 µs y parece que no oscila.
-De ahí salió un "piso de corriente" que resultó inexistente.
-`scripts/test_tstop.sh` verificó que acortar de 100 a 30 µs da resultados
-idénticos a 4 cifras **cuando la frecuencia lo permite**.
+**Size the transient for ≥5 cycles.** With a fixed `tstop`, a neuron at 15 kHz
+(67 µs period) completes no full cycle in 30 µs and appears not to oscillate.
+That produced a "current floor" that turned out not to exist.
+`scripts/test_tstop.sh` verified that shortening 100 µs → 30 µs gives identical
+results to 4 significant figures **when the frequency allows it**.
 
-## Nodos útiles en el `.raw`
+## Useful nodes in the `.raw`
 
-| señal | nombre en ngspice |
+| signal | ngspice name |
 |---|---|
-| membrana | `v(x1.integration)` — está dentro del subcircuito |
+| membrane | `v(x1.integration)` — it lives inside the subcircuit |
 | spike | `v(spike)` |
-| corriente del espejo (solo `tb_charac`) | `@m.x1.xm6.m0[id]` — el sufijo `.m0` es de BSIM4 |
+| mirror current (`tb_charac` only) | `@m.x1.xm6.m0[id]` — the `.m0` suffix is BSIM4 |
 
-## Resultados
+## Results
 
-Los CSV están en [`../results/`](../results/) y las ecuaciones consolidadas en
+CSV files live in [`../results/`](../results/); the consolidated equations are in
 [`../results/lif_knowledge_base.md`](../results/lif_knowledge_base.md).
 
-Los `raws_*/` son regenerables y están gitignoreados (~376 MB en total).
+The `raws_*/` directories are regenerable and gitignored (~376 MB total).
