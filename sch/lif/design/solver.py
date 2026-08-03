@@ -107,24 +107,46 @@ def _solve_geometry(spec: NeuronSpec, d: NeuronDesign) -> tuple[float, float]:
         Lg = L.solve_L_for_freq(W, f_target, iex_at)
         Lg, hit = _clamp(Lg, L.L_MIN, L.L_MAX)
         if hit:
-            f_got = L.freq(W, Lg, iex_at)
-            d.add(Severity.WARNING, "L_M5",
-                  f"acotada a {Lg:.1f} um (rango valido {L.L_MIN}-{L.L_MAX}); "
-                  f"la frecuencia queda en {f_got:.0f} kHz, no {f_target:.0f} "
-                  f"({100*(f_got-f_target)/f_target:+.0f}%)",
-                  f"f={f_target:.0f} kHz con W={W} exigia L fuera de rango")
+            # L sola no alcanza. Los objetivos mandan, asi que se libera W
+            # aunque el usuario la hubiera fijado.
+            w_new = L.solve_W_for_freq(Lg, f_target, iex_at)
+            w_new, hit_w = _clamp(w_new, L.W_MIN, L.W_MAX)
+            if not hit_w:
+                d.add(Severity.WARNING, "W_M5",
+                      f"cambiada de {W} a {w_new:.3f} um para alcanzar "
+                      f"{f_target:.0f} kHz",
+                      f"con W={W} fija habria hecho falta L="
+                      f"{L.solve_L_for_freq(W, f_target, iex_at):.1f} um, "
+                      f"fuera del rango {L.L_MIN}-{L.L_MAX}")
+                return w_new, Lg
+            f_got = L.freq(w_new, Lg, iex_at)
+            d.add(Severity.ERROR, "frecuencia",
+                  f"{f_target:.0f} kHz inalcanzable ni ajustando W y L",
+                  f"lo mas cercano con ambas en rango: {f_got:.0f} kHz "
+                  f"({100*(f_got-f_target)/f_target:+.0f}%)")
+            return w_new, Lg
         return W, Lg
 
     if Lg is not None:
         W = L.solve_W_for_freq(Lg, f_target, iex_at)
         W, hit = _clamp(W, L.W_MIN, L.W_MAX)
         if hit:
-            f_got = L.freq(W, Lg, iex_at)
-            d.add(Severity.WARNING, "W_M5",
-                  f"acotada a {W:.3f} um (rango valido {L.W_MIN}-{L.W_MAX}); "
-                  f"la frecuencia queda en {f_got:.0f} kHz, no {f_target:.0f} "
-                  f"({100*(f_got-f_target)/f_target:+.0f}%)",
-                  f"f={f_target:.0f} kHz con L={Lg} exigia W fuera de rango")
+            # analogo: se libera L para no incumplir el objetivo
+            l_new = L.solve_L_for_freq(W, f_target, iex_at)
+            l_new, hit_l = _clamp(l_new, L.L_MIN, L.L_MAX)
+            if not hit_l:
+                d.add(Severity.WARNING, "L_M5",
+                      f"cambiada de {Lg} a {l_new:.1f} um para alcanzar "
+                      f"{f_target:.0f} kHz",
+                      f"con L={Lg} fija habria hecho falta W fuera del rango "
+                      f"{L.W_MIN}-{L.W_MAX}")
+                return W, l_new
+            f_got = L.freq(W, l_new, iex_at)
+            d.add(Severity.ERROR, "frecuencia",
+                  f"{f_target:.0f} kHz inalcanzable ni ajustando W y L",
+                  f"lo mas cercano con ambas en rango: {f_got:.0f} kHz "
+                  f"({100*(f_got-f_target)/f_target:+.0f}%)")
+            return W, l_new
         return W, Lg
 
     # ambas libres: hay un grado de libertad. Como gastarlo depende de si hay
