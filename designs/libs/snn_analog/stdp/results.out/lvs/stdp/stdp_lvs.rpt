@@ -1,0 +1,241 @@
+
+Circuit 1 cell nfet_03v3 and Circuit 2 cell nfet_03v3 are black boxes.
+Warning: Equate pins:  cell nfet_03v3 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell nfet_03v3 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: nfet_03v3                       |Circuit 2: nfet_03v3                       
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes nfet_03v3 and nfet_03v3 are equivalent.
+
+Circuit 1 cell pfet_03v3 and Circuit 2 cell pfet_03v3 are black boxes.
+Warning: Equate pins:  cell pfet_03v3 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell pfet_03v3 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: pfet_03v3                       |Circuit 2: pfet_03v3                       
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes pfet_03v3 and pfet_03v3 are equivalent.
+Flattening unmatched subcell Unnamed_ea219f78 in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_9da4e0e1 in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_995e29e7 in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_cd9eb179 in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_cdc668ac in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_2047113f in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_43b1223c in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_4023e7f9 in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_bad5f5e8 in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_7d4e236e in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_4a4441bb in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_e8b16a78 in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_26233c3f in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_682a9ae3 in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_3293ba4a in circuit stdp (0)(1 instance)
+Flattening unmatched subcell Unnamed_1db77b85 in circuit stdp (0)(1 instance)
+
+Class stdp (0):  Merged 4 parallel devices.
+Subcircuit summary:
+Circuit 1: stdp                            |Circuit 2: stdp                            
+-------------------------------------------|-------------------------------------------
+nfet_03v3 (10->7)                          |nfet_03v3 (10) **Mismatch**                
+pfet_03v3 (6->5)                           |pfet_03v3 (6) **Mismatch**                 
+(no matching element)                      |cap_mim_2f0fF (14->3)                      
+Number of devices: 12 **Mismatch**         |Number of devices: 19 **Mismatch**         
+Number of nets: 18 **Mismatch**            |Number of nets: 22 **Mismatch**            
+---------------------------------------------------------------------------------------
+NET mismatches: Class fragments follow (with fanout counts):
+Circuit 1: stdp                            |Circuit 2: stdp                            
+
+---------------------------------------------------------------------------------------
+Net: VSUBS                                 |Net: net6                                  
+  nfet_03v3/4 = 7                          |  nfet_03v3/(1|3) = 2                      
+  nfet_03v3/(1|3) = 8                      |                                           
+  nfet_03v3/2 = 2                          |                                           
+  pfet_03v3/(1|3) = 1                      |                                           
+                                           |                                           
+Net: Unnamed_ea219f78_0/a_n183_n131#       |Net: net7                                  
+  nfet_03v3/(1|3) = 2                      |  nfet_03v3/(1|3) = 2                      
+                                           |                                           
+Net: Unnamed_e8b16a78_0/a_n63_n339#        |Net: net8                                  
+  pfet_03v3/2 = 2                          |  nfet_03v3/(1|3) = 2                      
+                                           |                                           
+Net: Unnamed_bad5f5e8_0/a_63_n131#         |Net: net9                                  
+  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 2                      
+  pfet_03v3/(1|3) = 3                      |                                           
+                                           |                                           
+Net: Unnamed_e8b16a78_0/a_n183_n131#       |Net: net1                                  
+  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 2                      
+                                           |                                           
+Net: /Unnamed_682a9ae3_0/a_63_n131#        |Net: net2                                  
+  pfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 2                      
+                                           |                                           
+Net: /Unnamed_ea219f78_0/a_63_n131#        |Net: net3                                  
+  nfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
+                                           |  nfet_03v3/(1|3) = 1                      
+                                           |                                           
+Net: /Unnamed_995e29e7_0/a_1000_n131#      |Net: net4                                  
+  nfet_03v3/(1|3) = 1                      |  pfet_03v3/2 = 1                          
+                                           |  pfet_03v3/(1|3) = 1                      
+                                           |                                           
+Net: /Unnamed_cd9eb179_0/w_n449_n560#      |Net: vpot                                  
+  pfet_03v3/4 = 1                          |  pfet_03v3/2 = 1                          
+                                           |  cap_mim_2f0fF/2 = 1                      
+                                           |  pfet_03v3/(1|3) = 2                      
+                                           |                                           
+Net: /Unnamed_7d4e236e_0/w_n846_n560#      |Net: vdep                                  
+  pfet_03v3/4 = 1                          |  nfet_03v3/2 = 1                          
+                                           |  nfet_03v3/(1|3) = 2                      
+                                           |  cap_mim_2f0fF/1 = 1                      
+                                           |                                           
+Net: /Unnamed_682a9ae3_0/w_n449_n560#      |Net: net5                                  
+  pfet_03v3/4 = 1                          |  nfet_03v3/(1|3) = 2                      
+                                           |  nfet_03v3/2 = 1                          
+                                           |  pfet_03v3/(1|3) = 1                      
+                                           |                                           
+Net: /Unnamed_1db77b85_0/w_n666_n1529#     |Net: nvpost                                
+  pfet_03v3/4 = 1                          |  pfet_03v3/2 = 1                          
+                                           |                                           
+Net: /Unnamed_7d4e236e_0/a_n460_n339#      |Net: nvpre                                 
+  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
+                                           |                                           
+Net: /Unnamed_682a9ae3_0/a_n63_n339#       |Net: vb_itp                                
+  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
+                                           |                                           
+Net: /Unnamed_1db77b85_0/a_n280_n1309#     |Net: vb_idep                               
+  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
+                                           |                                           
+Net: Unnamed_3293ba4a_0/a_63_n131#         |Net: vpre                                  
+  nfet_03v3/(1|3) = 1                      |  nfet_03v3/2 = 1                          
+  pfet_03v3/(1|3) = 1                      |                                           
+  pfet_03v3/4 = 1                          |                                           
+                                           |                                           
+Net: (no pins)                             |Net: vpost                                 
+  pfet_03v3/(1|3) = 3                      |  nfet_03v3/2 = 1                          
+                                           |                                           
+(no matching net)                          |Net: vb_pot                                
+                                           |  nfet_03v3/2 = 1                          
+                                           |                                           
+(no matching net)                          |Net: vw                                    
+                                           |  pfet_03v3/(1|3) = 1                      
+                                           |  nfet_03v3/(1|3) = 1                      
+                                           |  cap_mim_2f0fF/1 = 1                      
+                                           |                                           
+(no matching net)                          |Net: avdd                                  
+                                           |  pfet_03v3/(1|3) = 4                      
+                                           |  pfet_03v3/4 = 6                          
+                                           |  cap_mim_2f0fF/1 = 1                      
+                                           |                                           
+(no matching net)                          |Net: avss                                  
+                                           |  nfet_03v3/4 = 10                         
+                                           |  nfet_03v3/(1|3) = 4                      
+                                           |  cap_mim_2f0fF/2 = 2                      
+---------------------------------------------------------------------------------------
+DEVICE mismatches: Class fragments follow (with node fanout counts):
+Circuit 1: stdp                            |Circuit 2: stdp                            
+
+---------------------------------------------------------------------------------------
+Instance: Unnamed_995e29e7_0/nfet_03v3:0   |Instance: nfet_03v3:M3                     
+  (1,3) = (18,1)                           |  (1,3) = (3,2)                            
+  2 = 18                                   |  2 = 1                                    
+  4 = 18                                   |  4 = 16                                   
+                                           |                                           
+Instance: Unnamed_cdc668ac_0/nfet_03v3:0   |Instance: nfet_03v3:M4                     
+  (1,3) = (18,18)                          |  (1,3) = (16,2)                           
+  2 = 18                                   |  2 = 4                                    
+  4 = 18                                   |  4 = 16                                   
+                                           |                                           
+Instance: Unnamed_cd9eb179_0/pfet_03v3:0   |Instance: nfet_03v3:M9                     
+  (1,3) = (18,1)                           |  (1,3) = (16,4)                           
+  2 = 2                                    |  2 = 4                                    
+  4 = 1                                    |  4 = 16                                   
+                                           |                                           
+Instance: Unnamed_7d4e236e_0/pfet_03v3:0   |Instance: nfet_03v3:M12                    
+  (1,3) = (4,3)                            |  (1,3) = (4,4)                            
+  2 = 1                                    |  2 = 1                                    
+  4 = 1                                    |  4 = 16                                   
+                                           |                                           
+Instance: Unnamed_682a9ae3_0/pfet_03v3:0   |Instance: nfet_03v3:MCM_1                  
+  (1,3) = (3,1)                            |  (1,3) = (16,2)                           
+  2 = 1                                    |  2 = 1                                    
+  4 = 1                                    |  4 = 16                                   
+                                           |                                           
+Instance: Unnamed_3293ba4a_0/pfet_03v3:0   |Instance: pfet_03v3:M1                     
+  (1,3) = (3,3)                            |  (1,3) = (11,2)                           
+  2 = 2                                    |  2 = 4                                    
+  4 = 3                                    |  4 = 11                                   
+                                           |                                           
+Instance: Unnamed_1db77b85_0/pfet_03v3:0   |Instance: pfet_03v3:M2                     
+  (1,3) = (4,4)                            |  (1,3) = (3,2)                            
+  2 = 1                                    |  2 = 1                                    
+  4 = 1                                    |  4 = 11                                   
+                                           |                                           
+(no matching instance)                     |Instance: pfet_03v3:M7                     
+                                           |  (1,3) = (11,2)                           
+                                           |  2 = 2                                    
+                                           |  4 = 11                                   
+                                           |                                           
+                                           |                                           
+(no matching instance)                     |Instance: pfet_03v3:M8                     
+                                           |  (1,3) = (4,2)                            
+                                           |  2 = 1                                    
+                                           |  4 = 11                                   
+                                           |                                           
+                                           |                                           
+(no matching instance)                     |Instance: pfet_03v3:M17                    
+                                           |  (1,3) = (11,4)                           
+                                           |  2 = 1                                    
+                                           |  4 = 11                                   
+                                           |                                           
+                                           |                                           
+(no matching instance)                     |Instance: pfet_03v3:M16                    
+                                           |  (1,3) = (11,4)                           
+                                           |  2 = 1                                    
+                                           |  4 = 11                                   
+                                           |                                           
+                                           |                                           
+(no matching instance)                     |Instance: cap_mim_2f0fF:Cpot               
+                                           |  1 = 11                                   
+                                           |  2 = 4                                    
+                                           |                                           
+(no matching instance)                     |Instance: cap_mim_2f0fF:CW                 
+                                           |  1 = 3                                    
+                                           |  2 = 16                                   
+                                           |                                           
+(no matching instance)                     |Instance: cap_mim_2f0fF:Cdep               
+                                           |  1 = 4                                    
+                                           |  2 = 16                                   
+---------------------------------------------------------------------------------------
+Netlists do not match.
+Port matching may fail to disambiguate symmetries.
+
+Subcircuit pins:
+Circuit 1: stdp                            |Circuit 2: stdp                            
+-------------------------------------------|-------------------------------------------
+(no pins)                                  |vpost **Mismatch**                         
+(no pin, node is (no pins))                |avss                                       
+(no pin, node is (no pins))                |avdd                                       
+(no pin, node is (no pins))                |nvpost                                     
+(no pin, node is (no pins))                |nvpre                                      
+(no pin, node is (no pins))                |vpre                                       
+(no pin, node is (no pins))                |vb_idep                                    
+(no pin, node is Unnamed_ea219f78_0/a_n63_ |vb_itd                                     
+(no pin, node is (no pins))                |vb_itp                                     
+(no pin, node is (no pins))                |vb_pot                                     
+(no pin, node is (no pins))                |vw                                         
+---------------------------------------------------------------------------------------
+Cell pin lists for stdp and stdp altered to match.
+Device classes stdp and stdp are equivalent.
+
+Final result: Top level cell failed pin matching.
