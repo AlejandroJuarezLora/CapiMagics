@@ -14,6 +14,6 @@
 project:
   title: "Neuromorphic standard cells with gLayout"             # Project title (e.g. "Simple CPU", "PLL", "ADC")
   team: "CapiMagics"                      # Your Team name
-  discord: ""                   # Optional: Discord username (for support / communication)
+  discord: "alejandrojuarezlora"                   # Optional: Discord username (for support / communication)
   description: "Set of analog neuromorphic standard cell to be assembled into a net"  # Short one-line description
   lvs_config: "./designs/libs/snn_analog"
