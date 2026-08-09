@@ -28,11 +28,9 @@ from .laws import (
 )
 from .solver import NOMINAL, design
 from .spec import NeuronDesign, NeuronSpec, Note, Severity
-from .verify import VerifyResult, build_netlist, measure, verify
 
 __all__ = [
     "NeuronSpec", "NeuronDesign", "Note", "Severity", "design", "NOMINAL",
     "freq", "freq_at_iex_ref", "gain", "vth", "swing", "cm_min",
     "iex_window", "c_load_max", "min_source_impedance", "vth_max_at",
-    "verify", "VerifyResult", "build_netlist", "measure",
 ]

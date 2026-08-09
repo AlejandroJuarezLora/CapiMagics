@@ -14,8 +14,14 @@ import subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
 
-from . import laws as L
-from .spec import NeuronDesign
+# lif_design lives in designs/scripts/; add it to the path so this fixture
+# can be run straight from the testbench directory, like tb_ota_5t's.
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[3] / "scripts"))
+
+from lif_design import laws as L
+from lif_design.spec import NeuronDesign
 
 # .tran 1n es obligatorio: con 20n la frecuencia se infla +41% de media y hasta
 # +193% (el integrador salta ciclos y los cuenta como disparos).
@@ -169,7 +175,7 @@ def verify(design_result: NeuronDesign, iex_na: float = L.IEX_REF,
     """
     workdir = Path(workdir)
     if template is None:
-        template = workdir / "tb_charac_isrc.spice"
+        template = workdir / "tb_lif.spice"
 
     p = design_result.params
     W, Lg, cm = p["W_M5"], p["L_M5"], p["Cm"]

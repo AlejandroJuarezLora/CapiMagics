@@ -77,7 +77,8 @@ def _solve_geometry(spec: NeuronSpec, d: NeuronDesign) -> tuple[float, float]:
 
     # que frecuencia se persigue, y a que corriente
     f_target = iex_at = None
-    if spec.freq_range and spec.iex_range:
+    if (spec.freq_range and spec.iex_range
+            and spec.iex_range[1] != spec.iex_range[0]):
         # el objetivo real es la GANANCIA: rango de salida / rango de entrada
         k_req = ((spec.freq_range[1] - spec.freq_range[0]) /
                  (spec.iex_range[1] - spec.iex_range[0]))
@@ -85,6 +86,12 @@ def _solve_geometry(spec: NeuronSpec, d: NeuronDesign) -> tuple[float, float]:
         d.add(Severity.INFO, "ganancia",
               f"k requerida = {k_req:.3f} kHz/nA "
               f"(f {spec.freq_range} kHz sobre Iex {spec.iex_range} nA)")
+    elif spec.freq_range and spec.iex_range:
+        # Iex fija: no hay pendiente que perseguir (seria 0/0), es un punto de
+        # operacion. Se dimensiona para esa frecuencia a esa corriente.
+        f_target, iex_at = spec.freq_range[1], spec.iex_range[1]
+        d.add(Severity.INFO, "frecuencia",
+              f"objetivo puntual: {f_target} kHz a {iex_at} nA")
     elif spec.freq_range:
         f_target, iex_at = spec.freq_range[1], L.IEX_REF
         d.add(Severity.INFO, "frecuencia",

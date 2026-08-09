@@ -36,6 +36,20 @@ class Note:
         return s
 
 
+def _as_range(v):
+    """Normaliza a (lo, hi): un escalar x se vuelve (x, x); None sigue None.
+
+    Todo lo interno trabaja con pares, asi que las capas de resolucion no
+    tienen que distinguir si el usuario pidio un punto o un rango.
+    """
+    if v is None:
+        return None
+    if isinstance(v, (int, float)):
+        return (float(v), float(v))
+    lo, hi = v
+    return (float(lo), float(hi))
+
+
 @dataclass
 class NeuronSpec:
     """Lo que el diseñador pide.
@@ -44,8 +58,12 @@ class NeuronSpec:
     distincion importa porque es lo que da libertad a las capas de resolucion.
 
     Objetivos (prioridad 1):
-        iex_range   rango de corriente que entregara la etapa previa [nA]
-        freq_range  rango de frecuencia deseado a la salida [kHz]
+        iex_range   corriente que entregara la etapa previa [nA]
+        freq_range  frecuencia deseada a la salida [kHz]
+
+        Ambos aceptan un par (lo, hi) para pedir un rango, o un solo
+        numero para pedir ese valor exacto: freq_range=500 equivale a
+        freq_range=(500, 500).
         vth         umbral de disparo [V]
         c_load      carga capacitiva que colgara la etapa siguiente [fF]
 
@@ -58,8 +76,8 @@ class NeuronSpec:
         freq_tolerance  desviacion aceptable al resolver [fraccion]
     """
     # objetivos
-    iex_range: tuple[float, float] | None = None
-    freq_range: tuple[float, float] | None = None
+    iex_range: tuple[float, float] | float | None = None
+    freq_range: tuple[float, float] | float | None = None
     vth: float | None = None
     c_load: float | None = None
 
@@ -72,6 +90,10 @@ class NeuronSpec:
     # contexto
     source_ro: float | None = None
     freq_tolerance: float = 0.05
+
+    def __post_init__(self) -> None:
+        self.iex_range = _as_range(self.iex_range)
+        self.freq_range = _as_range(self.freq_range)
 
     def fixed_dims(self) -> dict[str, float]:
         """Las dimensiones que el usuario fijo explicitamente."""
