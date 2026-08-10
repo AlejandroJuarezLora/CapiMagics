@@ -12,7 +12,6 @@ L 4 960 -310 960 150 {}
 L 4 -690 170 -30 170 {}
 L 4 -690 170 -690 750 {}
 L 4 0 -320 0 580 {}
-L 4 250 -320 250 580 {}
 L 4 0 -320 250 -320 {}
 L 4 0 580 250 580 {}
 L 4 910 -310 960 -310 {}
@@ -44,7 +43,6 @@ T {all ammeters have been removed for LVS } -610 -190 0 0 0.4 0.4 {}
 N 110 -60 110 0 {lab=#net1}
 N 110 300 110 350 {lab=#net2}
 N 490 -270 690 -270 {lab=avdd}
-N 280 -270 280 -210 {lab=avdd}
 N 490 -270 490 -210 {lab=avdd}
 N 110 -120 110 -90 {lab=avdd}
 N 10 30 110 30 {lab=avdd}
@@ -63,7 +61,6 @@ N 150 -90 280 -90 {lab=vpot}
 N 110 160 110 250 {lab=vw}
 N 110 160 140 160 {lab=vw}
 N -180 380 -70 380 {lab=vdep}
-N -70 380 -70 450 {lab=vdep}
 N -70 380 70 380 {lab=vdep}
 N -390 380 -260 380 {lab=#net5}
 N -490 330 -490 350 {lab=#net5}
@@ -126,6 +123,8 @@ N 110 630 110 990 {lab=avss}
 N -90 990 110 990 {lab=avss}
 N -70 510 -70 990 {lab=avss}
 N -490 170 -490 230 {lab=avdd}
+N -70 380 -70 400 {lab=vdep}
+N 280 -270 280 -260 {lab=avdd}
 C {symbols/pfet_03v3.sym} 130 -90 0 1 {name=M1
 L=0.28u
 W=0.22u
@@ -196,12 +195,13 @@ sa=0 sb=0 sd=0
 model=pfet_03v3
 spiceprefix=X
 }
-C {symbols/cap_mim_2f0fF.sym} 280 -180 0 0 {name=Cpot
+C {symbols/cap_mim_2f0fF.sym} 300 -390 0 0 {name=Cpot
 W=5e-6
 L=5e-6
 model=cap_mim_2f0fF
 spiceprefix=X
-m=2}
+m=2
+spice_ignore=true}
 C {iopin.sym} -590 790 0 1 {name=p1 lab=avss}
 C {iopin.sym} -530 -270 0 1 {name=p2 lab=avdd}
 C {lab_pin.sym} 490 -270 1 0 {name=p3 sig_type=std_logic lab=avdd}
@@ -220,13 +220,14 @@ model=pfet_03v3
 spiceprefix=X
 }
 C {lab_pin.sym} 820 190 2 0 {name=p5 sig_type=std_logic lab=avss}
-C {symbols/cap_mim_2f0fF.sym} 170 160 3 0 {name=CW
+C {symbols/cap_mim_2f0fF.sym} -50 80 3 0 {name=CW
 W=5e-6
 L=5e-6
 model=cap_mim_2f0fF
 spiceprefix=X
-m=10}
-C {lab_pin.sym} 200 160 2 0 {name=p7 sig_type=std_logic lab=avss}
+m=10
+spice_ignore=true}
+C {lab_pin.sym} 250 160 2 0 {name=p7 sig_type=std_logic lab=avss}
 C {iopin.sym} 150 30 0 0 {name=p8 lab=nvpost}
 C {iopin.sym} 600 -50 3 0 {name=p9 lab=nvpre}
 C {symbols/nfet_03v3.sym} -470 380 0 1 {name=M9
@@ -257,12 +258,13 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/cap_mim_2f0fF.sym} -70 480 0 1 {name=Cdep
+C {symbols/cap_mim_2f0fF.sym} -70 290 0 1 {name=Cdep
 W=5e-6
 L=5e-6
 model=cap_mim_2f0fF
 spiceprefix=X
-m=2}
+m=1
+spice_ignore=true}
 C {lab_pin.sym} -490 170 1 0 {name=p11 sig_type=std_logic lab=avdd}
 C {iopin.sym} -230 340 3 0 {name=p12 lab=vpost}
 C {lab_pin.sym} -230 460 3 0 {name=p14 sig_type=std_logic lab=avss}
@@ -387,3 +389,6 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
+C {unitcap.sym} -70 510 0 0 {name=x1[0:1]}
+C {unitcap.sym} 250 160 3 0 {name=x2[0:9]}
+C {unitcap.sym} 280 -150 0 0 {name=x3[0:1]}
