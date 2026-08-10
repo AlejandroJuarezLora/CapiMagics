@@ -47,3 +47,6 @@ context/
 *.egg-info/
 build/
 dist/
+
+# clon local de gLayout para pruebas: no forma parte del proyecto
+designs/libs/gLayout/
