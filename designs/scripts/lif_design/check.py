@@ -38,9 +38,19 @@ from glayout import gf180                                       # noqa: E402
 
 from lif_design.build import lif_cell                           # noqa: E402
 
-DECK = os.environ.get(
-    "GF180_DRC",
-    "/tmp/ci102/src/glayout/pdk/gf180_mapped/gf180mcu.drc")
+def _deck():
+    """El deck de DRC que trae el propio glayout instalado.
+
+    Derivado de donde este el paquete, no una ruta fija: asi esto corre en la
+    maquina de cualquiera y no solo en el contenedor donde se escribio.
+    GF180_DRC lo sobreescribe si hace falta apuntar a otro.
+    """
+    import glayout
+    return str(pathlib.Path(glayout.__file__).parent
+               / "pdk" / "gf180_mapped" / "gf180mcu.drc")
+
+
+DECK = os.environ.get("GF180_DRC") or _deck()
 NETCHECK = str(AQUI / "netcheck.py")
 SALIDA = os.environ.get("LIF_OUT", "/tmp")
 FET = dict(multipliers=1, fingers=1, with_substrate_tap=False,
