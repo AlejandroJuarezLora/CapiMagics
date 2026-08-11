@@ -104,14 +104,37 @@ fi
 
 if (ss -ltn 2>/dev/null || netstat -ltn 2>/dev/null) | grep -q ":${PUERTO}\b"; then
     echo
-    echo "== el puerto ${PUERTO} ya esta ocupado, no lanzo otro Jupyter."
-    echo "   Si el que hay es el bueno, uselo. Si no, matelo y repita, o"
-    echo "   pase JUPYTER_PORT_INT=8889."
+    echo "== ya hay un Jupyter escuchando en el ${PUERTO} DENTRO del contenedor."
+    echo "   No lanzo otro. Probablemente sea el que quiere: uselo."
+    echo
+    echo "   OJO: ${PUERTO} es el puerto INTERNO. Desde su maquina hay que"
+    echo "   entrar por el que este mapeado a el, que casi nunca coincide."
+    echo "   Para verlo, desde fuera del contenedor:"
+    echo
+    echo "       docker port \$(hostname) ${PUERTO}"
+    echo
+    echo "   Si el que hay no es el suyo, matelo y repita. NO cambie el"
+    echo "   puerto interno: el unico que su contenedor expone al exterior es"
+    echo "   este, asi que en otro puerto Jupyter arranca pero no se alcanza."
     exit 0
 fi
 
-echo "== Jupyter en el puerto ${PUERTO} (token: lif)"
+# Si hay escritorio (o sea, estamos dentro del VNC), que Jupyter abra la
+# ventana ahi mismo. Sin esto solo escupe una URL, y esa URL lleva al puerto
+# INTERNO, que desde fuera del contenedor no es el que hay que teclear.
+NAVEGADOR="--no-browser"
+if [ -n "${DISPLAY:-}" ] && command -v firefox >/dev/null 2>&1; then
+    NAVEGADOR=""
+    echo "== Jupyter en el ${PUERTO}, abriendo la ventana en el escritorio"
+else
+    echo "== Jupyter en el puerto ${PUERTO} (token: lif)"
+    echo "   Ese es el puerto INTERNO del contenedor. Desde su maquina entre"
+    echo "   por el que este mapeado a el: docker port \$(hostname) ${PUERTO}"
+fi
+
 cd /foss/designs
-exec env PYTHONPATH= LD_LIBRARY_PATH= "${VENV}/bin/python" -m jupyterlab \
-    --ip=0.0.0.0 --port="${PUERTO}" --no-browser \
+# shellcheck disable=SC2086
+exec env PYTHONPATH= LD_LIBRARY_PATH= BROWSER=firefox \
+    "${VENV}/bin/python" -m jupyterlab \
+    --ip=0.0.0.0 --port="${PUERTO}" ${NAVEGADOR} \
     --IdentityProvider.token=lif --ServerApp.root_dir=/foss/designs
