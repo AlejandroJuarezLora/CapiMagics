@@ -66,8 +66,13 @@ import json, os
 import jupyter_core.paths as p
 k = os.path.join(p.jupyter_data_dir(), "kernels", "lif", "kernel.json")
 spec = json.load(open(k))
+# PYTHONPATH y LD_LIBRARY_PATH vacios a proposito: la imagen los trae
+# puestos y se colarian en el kernel segun desde que shell se lance. Los
+# scripts del equipo empiezan con un unset por lo mismo.
 spec["env"] = {"GLAYOUT_BACKEND": "gdstk",
                "PATH": "/foss/tools/klayout:/usr/local/bin:/usr/bin:/bin",
+               "PYTHONPATH": "",
+               "LD_LIBRARY_PATH": "",
                "LIF_OUT": "${SALIDA_NB:-/tmp/nbout}"}
 json.dump(spec, open(k, "w"), indent=1)
 print("  kernel 'lif' registrado con su entorno")
