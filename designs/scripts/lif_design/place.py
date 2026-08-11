@@ -157,6 +157,19 @@ def _well_of(comp, pdk) -> Optional[str]:
 # the two distances
 # --------------------------------------------------------------------------
 
+def _grule(pdk, *layers) -> dict:
+    """A rule between glayers, or {} when the PDK does not define one.
+
+    Missing rules are normal, not exceptional: a marker layer has no spacing
+    to itself, and glayout raises NotImplementedError rather than returning
+    empty. Callers want "no constraint", so that is what they get.
+    """
+    try:
+        return pdk.get_grule(*layers) or {}
+    except Exception:
+        return {}
+
+
 def well_clearance(pdk, a: Cell, b: Cell) -> float:
     """Space the wells demand between two blocks placed side by side.
 
@@ -171,10 +184,7 @@ def well_clearance(pdk, a: Cell, b: Cell) -> float:
     worst = 0.0
     for well_a, inset_a in a.wells:
         for well_b, inset_b in b.wells:
-            try:
-                rule = pdk.get_grule(well_a, well_b) or {}
-            except (KeyError, ValueError):
-                continue
+            rule = _grule(pdk, well_a, well_b)
             need = float(rule.get("min_separation", 0.0)) - inset_a - inset_b
             worst = max(worst, need)
     return worst
@@ -199,10 +209,7 @@ def shared_clearance(pdk, a: Cell, b: Cell) -> tuple[float, Optional[str]]:
     """
     worst, which = 0.0, None
     for glayer in a.layers & b.layers:
-        try:
-            sep = float((pdk.get_grule(glayer) or {}).get("min_separation", 0.0))
-        except (KeyError, ValueError):
-            continue
+        sep = float(_grule(pdk, glayer).get("min_separation", 0.0))
         if sep > worst:
             worst, which = sep, glayer
     return worst, which
@@ -299,34 +306,63 @@ class Rails:
     glayer: str = "met2"
     width: float = 0.0        # rail conductor width, um
     clearance: float = 0.0    # rail to nearest block, um
+    channel: float = 0.0      # routing reserved between the blocks and the rail
 
     @classmethod
-    def minimum(cls, pdk, glayer: str = "met2", width: Optional[float] = None) -> "Rails":
+    def minimum(cls, pdk, glayer: str = "met2", width: Optional[float] = None,
+                tracks: int = 0, track_glayer: str = "met2") -> "Rails":
+        """Rails at minimum width, with room for `tracks` wires beneath them.
+
+        `tracks` is what turns a row of isolated cells into a row that can be
+        wired up. A block's output sits at the top of the device and the next
+        block's input at the bottom -- 2.89 um apart on a gf180 inverter -- so
+        a link between stages has to change height somewhere, and with the
+        rails pushed up against the devices there is nowhere to do it. Left at
+        zero the row still builds; it just cannot be chained, and the attempt
+        shorts the link into whichever rail it runs into.
+        """
         rule = pdk.get_grule(glayer)
         return cls(glayer=glayer,
                    width=float(width if width is not None else rule["min_width"]),
-                   clearance=float(rule["min_separation"]))
+                   clearance=float(rule["min_separation"]),
+                   channel=pitch(pdk, track_glayer) * max(0, tracks))
 
     @classmethod
-    def above(cls, pdk, block: Cell, width: Optional[float] = None) -> "Rails":
-        """Rails on the first layer the block leaves free.
+    def above(cls, pdk, blocks, width: Optional[float] = None,
+              tracks: int = 0) -> "Rails":
+        """Rails on the first layer every block in the row leaves free.
 
-        A rail on a layer the block already uses has to weave around its
+        A rail on a layer some block already uses has to weave around its
         contents; one layer up it crosses them without touching. Same rule
         that decides whether a net can fly over -- rails are just nets that
         every cell in the row connects to.
+
+        It takes the whole row, not one block, because the block that decides
+        the layer need not be the one that decides the height. In a LIF cell
+        the inverter stack is the tallest thing by a wide margin while the
+        mimcap is the only one reaching met3: sizing the rails off the tallest
+        block alone puts them on met3, straight through the cap.
         """
-        level = _level(block.top_layer) + 1
+        if isinstance(blocks, Cell):
+            blocks = [blocks]
+        blocks = list(blocks)
+        highest = max(blocks, key=lambda b: _level(b.top_layer))
+        block = highest
+        level = _level(highest.top_layer) + 1
         if level >= len(_STACK):
             raise ValueError(
-                f"{block.name} reaches {block.top_layer}, the top of the "
+                f"{highest.name} reaches {highest.top_layer}, the top of the "
                 f"stack -- no free layer left for rails")
-        return cls.minimum(pdk, _STACK[level], width)
+        # The channel sits below the rail, so it belongs to the layer the
+        # links will actually run on -- the blocks' own top layer, which is
+        # free between them.
+        return cls.minimum(pdk, _STACK[level], width, tracks=tracks,
+                           track_glayer=block.top_layer or _STACK[0])
 
     @property
     def band(self) -> float:
-        """Vertical space one rail costs the row."""
-        return self.width + self.clearance
+        """Vertical space one rail costs the row, channel included."""
+        return self.channel + self.width + self.clearance
 
 
 # --------------------------------------------------------------------------
@@ -420,6 +456,94 @@ class RowPlan:
                            f"(set by {self.binding[i]})")
         out.extend(f"  note: {n}" for n in self.notes)
         return "\n".join(out)
+
+
+@dataclass
+class Band:
+    """One horizontal strip of the cell, and what sits in it.
+
+    Bands are how a cell stops being a single row. Grouping by device type
+    rather than by function is what makes them worth having: three pfets in
+    one band abut inside a shared nwell, while three inverters placed as units
+    pay NW.2b between every pair. It also leaves the strip beside a long
+    device free for whatever else fits -- on a LIF the capacitors go under
+    M5, which is otherwise 45% dead area.
+    """
+    name: str
+    blocks: list
+    plan: Optional[RowPlan] = None
+    y: float = 0.0          # centre of the band, filled by plan_bands
+
+    @property
+    def height(self) -> float:
+        return max((b.height for b in self.blocks), default=0.0)
+
+
+@dataclass
+class Floorplan:
+    """Bands stacked bottom to top, with the rails outside them."""
+    bands: list
+    width: float = 0.0
+    height: float = 0.0
+    gaps: list = field(default_factory=list)     # between consecutive bands
+    rails: Optional[Rails] = None
+
+    def report(self) -> str:
+        out = [f"floorplan {self.width:.3f} x {self.height:.3f} um"]
+        for i, band in enumerate(self.bands):
+            out.append(f"  y={band.y:8.3f}  {band.name:<12} "
+                       f"{band.plan.width:7.3f} x {band.height:6.3f}"
+                       f"   [{', '.join(b.name for b in band.blocks)}]")
+            if i < len(self.gaps):
+                out.append(f"  {'gap':>9} {self.gaps[i]:6.3f} um")
+        return "\n".join(out)
+
+
+def _band_clearance(pdk, lower: Band, upper: Band) -> float:
+    """Vertical space between two bands.
+
+    Taken as the worst case over every pair of blocks that could face each
+    other across the gap. Conservative on purpose: which block of one band
+    ends up above which of the other depends on x, and the planner does not
+    model that yet.
+    """
+    worst = 0.0
+    for a in lower.blocks:
+        for b in upper.blocks:
+            worst = max(worst, well_clearance(pdk, a, b),
+                        shared_clearance(pdk, a, b)[0])
+    return worst
+
+
+def plan_bands(bands: Sequence[Band], pdk, rails: Optional[Rails] = None,
+               nets: Sequence["Net"] = ()) -> Floorplan:
+    """Lay out bands bottom to top; each band is planned as its own row.
+
+    The rails bound the whole stack rather than each band, so a tall block in
+    one band pushes them out for everybody -- same rule as within a row, one
+    level up.
+    """
+    bands = list(bands)
+    for band in bands:
+        band.plan = plan_row(band.blocks, nets, pdk)
+
+    every = [b for band in bands for b in band.blocks]
+    rails = rails or Rails.above(pdk, every)
+
+    gaps = [_band_clearance(pdk, bands[i], bands[i + 1])
+            for i in range(len(bands) - 1)]
+
+    y = 0.0
+    for i, band in enumerate(bands):
+        band.y = y + band.height / 2
+        y += band.height
+        if i < len(gaps):
+            y += gaps[i]
+
+    return Floorplan(bands=bands,
+                     width=max((b.plan.width for b in bands), default=0.0),
+                     height=y + 2 * rails.band,
+                     gaps=gaps, rails=rails)
 
 
 def plan_row(blocks: Sequence[Cell], nets: Sequence[Net], pdk,
