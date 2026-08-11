@@ -94,6 +94,25 @@ spec["env"] = {"GLAYOUT_BACKEND": "gdstk",
                "LIF_OUT": "${SALIDA_NB}"}
 json.dump(spec, open(k, "w"), indent=1)
 print("  kernel 'lif' registrado con su entorno")
+
+# Los notebooks (los nuestros y los del equipo) declaran 'gldev'. En un
+# contenedor recien creado ese kernel no existe, asi que se abren sin kernel
+# valido y hay que elegirlo a mano -- y el error que da si eliges el
+# equivocado no apunta al kernel por ningun lado.
+#
+# Se crea solo si NO hay uno ya. Si existe es porque lo registro
+# run_GL_conda.sh o run_GL_pyenv.sh, y ese no se toca: pisarlo por la espalda
+# cambiaria el entorno de otra persona sin avisar.
+d = os.path.join(p.jupyter_data_dir(), "kernels", "gldev")
+if os.path.isdir(d):
+    print("  ya hay un kernel 'gldev': NO lo toco.")
+    print("  OJO: si apunta al glayout de designs/libs, ese no sirve para el")
+    print("  motor. Al abrir un notebook cambie a 'LIF motor (gdstk)'.")
+else:
+    os.makedirs(d, exist_ok=True)
+    alias = dict(spec, display_name="GLdev (motor LIF)")
+    json.dump(alias, open(os.path.join(d, "kernel.json"), "w"), indent=1)
+    print("  no habia 'gldev': registrado como alias, los notebooks abren solos")
 PYK
 mkdir -p "${SALIDA_NB}"
 
