@@ -23,7 +23,9 @@ from dataclasses import dataclass
 from typing import Optional
 from warnings import warn
 
+from . import mim as mim_pdk
 from .place import Cell, Rails, Stack, pair, plan_row
+from .spec import Note, Severity
 
 # Ports a glayout FET offers that this module relies on.
 GATE = "multiplier_0_gate_{side}"
@@ -343,7 +345,8 @@ _DRAIN_MID = "multiplier_0_drain_{side}"
 
 
 def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
-             supply_width: float = 1.0, name: str = "lif"):
+             supply_width: float = 1.0, output_inverter: dict | None = None,
+             n_caps: int = 3, name: str = "lif"):
     """A LIF neuron: three inverters, the reset device and the membrane cap.
 
     Laid out in bands rather than as a row of inverters. Grouping by device
@@ -373,37 +376,52 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
 
     from .place import Band, plan_bands
 
+    # The third inverter is the output buffer -- M7/M8 in the netlist -- and
+    # the solver sizes it on its own, by the load it has to drive. The other
+    # two are the ones inside the loop and stay minimum.
+    salida = output_inverter or inverter
+
     pfet_c = pmos(pdk, **inverter)
     nfet_c = nmos(pdk, with_dnwell=False, **inverter)
+    pfet_o_c = pmos(pdk, **salida)
+    nfet_o_c = nmos(pdk, with_dnwell=False, **salida)
     m5_c = nmos(pdk, with_dnwell=False, **m5)
     cap_c = mimcap(pdk, size=(cap_size, cap_size))
 
-    pfet = Cell.from_component("pfet", pfet_c, pdk)
-    nfet = Cell.from_component("nfet", nfet_c, pdk)
     m5_cell = Cell.from_component("M5", m5_c, pdk)
     cap = Cell.from_component("cap", cap_c, pdk)
 
     def clones(cell, n, prefix):
+        # insets included: without them the MIM.1 clearance is computed as if
+        # the cap's met2 plate reached its outline, which it does not, and the
+        # planner asks for more room than the rule wants.
         return [Cell(f"{prefix}{i}", cell.width, cell.height,
-                     cell.wells, cell.layers) for i in range(n)]
+                     cell.wells, cell.layers, cell.insets) for i in range(n)]
 
-    plan = plan_bands([Band("bottom", clones(nfet, 3, "nf") + clones(cap, 3, "cap")),
+    nfet_comps = [nfet_c, nfet_c, nfet_o_c]
+    pfet_comps = [pfet_c, pfet_c, pfet_o_c]
+    nf_cells = [Cell.from_component(f"nf{i}", c, pdk)
+                for i, c in enumerate(nfet_comps)]
+    pf_cells = [Cell.from_component(f"pf{i}", c, pdk)
+                for i, c in enumerate(pfet_comps)]
+
+    plan = plan_bands([Band("bottom", nf_cells + clones(cap, n_caps, "cap")),
                        Band("m5", [m5_cell]),
-                       Band("top", clones(pfet, 3, "pf"))], pdk)
+                       Band("top", pf_cells)], pdk)
     lower, middle, upper = plan.bands
 
     top = Component(name=name)
     nfets, pfets, caps = [], [], []
     for i in range(3):
-        nfets.append(_center_on(top << nfet_c,
-                                lower.plan.x[i] + nfet.width / 2, lower.y))
-    for i in range(3):
+        nfets.append(_center_on(top << nfet_comps[i],
+                                lower.plan.x[i] + nf_cells[i].width / 2, lower.y))
+    for i in range(n_caps):
         caps.append(_center_on(top << cap_c,
                                lower.plan.x[3 + i] + cap.width / 2, lower.y))
     m5_ref = _center_on(top << m5_c, middle.plan.x[0] + m5_cell.width / 2, middle.y)
     for i in range(3):
-        pfets.append(_center_on(top << pfet_c,
-                                upper.plan.x[i] + pfet.width / 2, upper.y))
+        pfets.append(_center_on(top << pfet_comps[i],
+                                upper.plan.x[i] + pf_cells[i].width / 2, upper.y))
 
     # --- each inverter: gate to gate, drain to drain -----------------------
     # The two links must not share a column. gate_S and drain_S both sit at
@@ -658,7 +676,13 @@ def _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
                                                 - float(ring.center[0])))
             up = near.ports["tie_N_top_met_N"]
             x = pdk.snap_to_2xgrid(float(up.center[0]))
-            y0, y1 = float(up.center[1]), float(ring.center[1])
+            # Both ports sit ON the edge of their ring, so a rectangle drawn
+            # between the two centres merely abuts them -- and after snapping
+            # it can fall a few nm short and leave a gap that reads as met2
+            # spacing. Overrun into each ring instead.
+            solape = float(pdk.get_grule("met2")["min_width"])
+            y0 = float(up.center[1]) - solape
+            y1 = float(ring.center[1]) + solape
             hop = top << rectangle(
                 size=pdk.snap_to_2xgrid([width, abs(y1 - y0)]),
                 layer=pdk.get_glayer("met2"), centered=True)
@@ -675,3 +699,69 @@ def _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
 
     return {"vdd": y_vdd, "vss": y_vss, "width": width,
             "glayer": rails.glayer}
+
+# Los inversores del lazo van al minimo: el solver no los dimensiona porque
+# no fijan nada del comportamiento, a diferencia de M5 y del buffer.
+INVERSOR_MINIMO = dict(width=0.22, length=0.28)
+
+FET_POR_DEFECTO = dict(multipliers=1, fingers=1, with_substrate_tap=False,
+                       with_dummy=False, tie_layers=("met2", "met1"), sd_rmult=1)
+
+CAPS = 3          # la membrana se reparte en tres MIM, uno por hueco de banda
+
+# MIM.8a: el area del FuseTop no puede bajar de 25 um2, y el `size` de mimcap
+# ES el FuseTop, asi que 5 um de lado es el minimo absoluto de un MIM.
+LADO_MINIMO = 5.0
+
+
+def from_design(pdk, design, mim: str = mim_pdk.POR_DEFECTO,
+                fet: dict | None = None, name: str = "lif"):
+    """Construye la celda que describe un NeuronDesign.
+
+    Es la union entre la capa que resuelve el comportamiento y la que dibuja.
+    Devuelve (componente, handles, notas); las notas dicen que se perdio al
+    pasar de un numero continuo a geometria, que es donde se va la precision.
+
+    El unico parametro que no sale del diseño es `mim`: cual de las tres
+    opciones de MIM corre la fabrica es una decision de proceso, y cambia
+    cuanta area hace falta para la misma Cm. Ver mim.py.
+    """
+    fet = dict(FET_POR_DEFECTO if fet is None else fet)
+    p = design.params
+    notas = []
+
+    # Repartir la membrana en varios MIM ahorra area muerta, pero cada uno
+    # tiene que seguir siendo legal: se baja el numero hasta que el lado
+    # llegue al minimo.
+    n = CAPS
+    while n > 1 and mim_pdk.lado_para(p["Cm"], mim=mim, n=n) < LADO_MINIMO:
+        n -= 1
+    lado = mim_pdk.lado_para(p["Cm"], mim=mim, n=n)
+    if lado < LADO_MINIMO:
+        notas.append(Note(
+            Severity.WARNING, "Cm",
+            "%.1f fF cabe en menos de un MIM minimo; se usa uno de %.1f um "
+            "y la membrana sube a %.1f fF"
+            % (p["Cm"], LADO_MINIMO, mim_pdk.capacidad(LADO_MINIMO, mim, 1)),
+            chain="MIM.8a: area de FuseTop >= 25 um2"))
+        lado = LADO_MINIMO
+    lado_real = float(pdk.snap_to_2xgrid(lado))
+    cm_real = mim_pdk.capacidad(lado_real, mim=mim, n=n)
+    error = (cm_real - p["Cm"]) / p["Cm"]
+    notas.append(Note(
+        Severity.INFO if abs(error) < 0.02 else Severity.WARNING, "Cm",
+        "pedida %.1f fF -> %d MIM de %.3f um de lado = %.1f fF (%+.1f%%), "
+        "con %s" % (p["Cm"], n, lado_real, cm_real, 100 * error,
+                    mim_pdk.modelo(mim)),
+        chain="snap a rejilla del lado del MIM"))
+
+    top, handles = lif_cell(
+        pdk,
+        inverter=dict(INVERSOR_MINIMO, **fet),
+        m5=dict(width=p["W_M5"], length=p["L_M5"], **fet),
+        output_inverter=dict(width=p["W_M7M8"],
+                             length=INVERSOR_MINIMO["length"], **fet),
+        cap_size=lado_real, n_caps=n, name=name)
+    handles["Cm_real"] = cm_real
+    handles["mim"] = mim_pdk.modelo(mim)
+    return top, handles, notas

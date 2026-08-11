@@ -48,17 +48,21 @@ CASOS = [
     ("todo grande", dict(w_inv=1.00, l_inv=0.50, w_m5=3.50, l_m5=50.0, cap=8.0)),
 ]
 
-ESPERADO = {
-    "membrana":     {"M5_drain", "nfet0_gate", "pfet0_gate",
-                     "cap0_arriba", "cap1_arriba", "cap2_arriba"},
-    "spike_neg":    {"nfet0_drain", "pfet0_drain",
-                     "nfet1_gate", "pfet1_gate", "nfet2_gate", "pfet2_gate"},
-    "realimenta":   {"nfet1_drain", "pfet1_drain", "M5_gate"},
-    "salida":       {"nfet2_drain", "pfet2_drain"},
-    "VDD":          {"riel_VDD", "pfet0_source", "pfet1_source", "pfet2_source"},
-    "VSS":          {"riel_VSS", "M5_source", "nfet0_source", "nfet1_source",
-                     "nfet2_source", "cap0_abajo", "cap1_abajo", "cap2_abajo"},
-}
+def esperado(n_caps):
+    """Las seis redes del LIF. El numero de MIM no es fijo: baja cuando la
+    membrana es pequeña, porque MIM.8a impide un FuseTop de menos de 25 um2."""
+    arriba = {"cap%d_arriba" % i for i in range(n_caps)}
+    abajo = {"cap%d_abajo" % i for i in range(n_caps)}
+    return {
+        "membrana":   {"M5_drain", "nfet0_gate", "pfet0_gate"} | arriba,
+        "spike_neg":  {"nfet0_drain", "pfet0_drain",
+                       "nfet1_gate", "pfet1_gate", "nfet2_gate", "pfet2_gate"},
+        "realimenta": {"nfet1_drain", "pfet1_drain", "M5_gate"},
+        "salida":     {"nfet2_drain", "pfet2_drain"},
+        "VDD":        {"riel_VDD", "pfet0_source", "pfet1_source", "pfet2_source"},
+        "VSS":        {"riel_VSS", "M5_source", "nfet0_source", "nfet1_source",
+                       "nfet2_source"} | abajo,
+    }
 
 MET = {"met1": 34, "met2": 36, "met3": 42, "met4": 46}
 
@@ -115,6 +119,39 @@ def redes(gds, probes):
     return grupos
 
 
+ESPECIFICACIONES = [(200, 100), (300, 100), (800, 100), (2000, 100)]
+
+
+def desde_especificacion():
+    """El camino completo: kHz y nA -> geometria -> GDS verificado."""
+    from engine.spec import NeuronSpec
+    from engine.solver import design as resolver
+    from engine.build import from_design
+
+    fallos = 0
+    print("\n%-12s %-16s %5s  %s" % ("f objetivo", "caja um", "DRC", "topologia"))
+    print("-" * 74)
+    for f_khz, iex in ESPECIFICACIONES:
+        tag = "spec_%d" % f_khz
+        d = resolver(NeuronSpec(freq_range=f_khz, iex_range=iex))
+        top, h, _ = from_design(gf180, d, name=tag)
+        gds = "/tmp/%s.gds" % tag
+        top.write_gds(gds)
+        bb = top.bbox
+        n, cats = drc(gds, tag)
+        json.dump(sondas(h, bb), open("/tmp/%s.json" % tag, "w"))
+        grupos = redes(gds, "/tmp/%s.json" % tag)
+        malas = [red for red, quiero in esperado(len(h["caps"])).items()
+                 if not any(g == quiero for g in grupos)]
+        if malas or n:
+            fallos += 1
+        print("%-12s %6.2f x %6.2f  %5s  %s"
+              % ("%d kHz" % f_khz, bb[1][0] - bb[0][0], bb[1][1] - bb[0][1],
+                 n if not n else "%d %s" % (n, cats),
+                 " ".join(malas) if malas else "ok (%d MIM)" % len(h["caps"])))
+    return fallos
+
+
 def main():
     fallos = 0
     print("%-12s %-16s %5s  %s" % ("caso", "caja um", "DRC", "topologia"))
@@ -141,7 +178,7 @@ def main():
         grupos = redes(gds, "/tmp/%s.json" % tag)
 
         malas = []
-        for red, quiero in ESPERADO.items():
+        for red, quiero in esperado(len(h["caps"])).items():
             if not any(g == quiero for g in grupos):
                 encontrado = next((g for g in grupos if g & quiero), set())
                 malas.append("%s(%s)" % (
@@ -152,6 +189,7 @@ def main():
         print("%-12s %6.2f x %6.2f  %5s  %s"
               % (nombre, bb[1][0] - bb[0][0], bb[1][1] - bb[0][1],
                  n if not n else "%d %s" % (n, cats), estado))
+    fallos += desde_especificacion()
     print("\n%s" % ("todos los casos pasan" if not fallos
                     else "%d caso(s) con problemas" % fallos))
     return 1 if fallos else 0
