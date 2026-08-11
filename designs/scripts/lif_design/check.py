@@ -24,18 +24,25 @@ open. Both show up here as a set that does not match.
 """
 import json
 import os
+import pathlib
 import re
 import subprocess
 import sys
 
-sys.path.insert(0, "/tmp")
+# El paquete se importa por su sitio en el disco, no por una ruta fija: asi
+# esto corre igual desde el repo, desde un notebook o dentro del contenedor.
+AQUI = pathlib.Path(__file__).resolve().parent
+sys.path.insert(0, str(AQUI.parent))
 
 from glayout import gf180                                       # noqa: E402
 
-from engine.build import lif_cell                               # noqa: E402
+from lif_design.build import lif_cell                           # noqa: E402
 
-DECK = "/tmp/ci102/src/glayout/pdk/gf180_mapped/gf180mcu.drc"
-NETCHECK = os.path.join(os.path.dirname(os.path.abspath(__file__)), "netcheck.py")
+DECK = os.environ.get(
+    "GF180_DRC",
+    "/tmp/ci102/src/glayout/pdk/gf180_mapped/gf180mcu.drc")
+NETCHECK = str(AQUI / "netcheck.py")
+SALIDA = os.environ.get("LIF_OUT", "/tmp")
 FET = dict(multipliers=1, fingers=1, with_substrate_tap=False,
            with_dummy=False, tie_layers=("met2", "met1"), sd_rmult=1)
 
@@ -96,7 +103,7 @@ def sondas(handles, bbox):
 
 
 def drc(gds, tag):
-    rep = "/tmp/%s.lyrdb" % tag
+    rep = "%s/%s.lyrdb" % (SALIDA, tag)
     subprocess.run(["klayout", "-b", "-r", DECK, "-rd", "input=" + gds,
                     "-rd", "report=" + rep, "-rd", "mim_option=A"],
                    capture_output=True)
@@ -124,9 +131,9 @@ ESPECIFICACIONES = [(200, 100), (300, 100), (800, 100), (2000, 100)]
 
 def desde_especificacion():
     """El camino completo: kHz y nA -> geometria -> GDS verificado."""
-    from engine.spec import NeuronSpec
-    from engine.solver import design as resolver
-    from engine.build import from_design
+    from lif_design.spec import NeuronSpec
+    from lif_design.solver import design as resolver
+    from lif_design.build import from_design
 
     fallos = 0
     print("\n%-12s %-16s %5s  %s" % ("f objetivo", "caja um", "DRC", "topologia"))
@@ -135,12 +142,12 @@ def desde_especificacion():
         tag = "spec_%d" % f_khz
         d = resolver(NeuronSpec(freq_range=f_khz, iex_range=iex))
         top, h, _ = from_design(gf180, d, name=tag)
-        gds = "/tmp/%s.gds" % tag
+        gds = "%s/%s.gds" % (SALIDA, tag)
         top.write_gds(gds)
         bb = top.bbox
         n, cats = drc(gds, tag)
-        json.dump(sondas(h, bb), open("/tmp/%s.json" % tag, "w"))
-        grupos = redes(gds, "/tmp/%s.json" % tag)
+        json.dump(sondas(h, bb), open("%s/%s.json" % (SALIDA, tag), "w"))
+        grupos = redes(gds, "%s/%s.json" % (SALIDA, tag))
         malas = [red for red, quiero in esperado(len(h["caps"])).items()
                  if not any(g == quiero for g in grupos)]
         if malas or n:
@@ -169,13 +176,13 @@ def main():
             fallos += 1
             continue
 
-        gds = "/tmp/%s.gds" % tag
+        gds = "%s/%s.gds" % (SALIDA, tag)
         top.write_gds(gds)
         bb = top.bbox
         n, cats = drc(gds, tag)
         pr = sondas(h, bb)
-        json.dump(pr, open("/tmp/%s.json" % tag, "w"))
-        grupos = redes(gds, "/tmp/%s.json" % tag)
+        json.dump(pr, open("%s/%s.json" % (SALIDA, tag), "w"))
+        grupos = redes(gds, "%s/%s.json" % (SALIDA, tag))
 
         malas = []
         for red, quiero in esperado(len(h["caps"])).items():
