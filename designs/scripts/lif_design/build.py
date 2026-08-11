@@ -343,7 +343,7 @@ _DRAIN_MID = "multiplier_0_drain_{side}"
 
 
 def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
-             name: str = "lif"):
+             supply_width: float = 1.0, name: str = "lif"):
     """A LIF neuron: three inverters, the reset device and the membrane cap.
 
     Laid out in bands rather than as a row of inverters. Grouping by device
@@ -420,10 +420,13 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
 
     _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
               via_stack, rectangle, evaluate_bbox)
+    rails_y = _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
+                           evaluate_bbox, supply_width, m5_ref, caps)
 
     top.add_port(name="IN", port=nfets[0].ports[_GATE_MID.format(side="W")])
     top.add_port(name="OUT", port=nfets[2].ports[_DRAIN_MID.format(side="W")])
     return top, {"nfets": nfets, "pfets": pfets, "caps": caps, "m5": m5_ref,
+                 "rails": rails_y,
                  "plan": plan}
 
 
@@ -452,21 +455,32 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
         _center_on(top << climb, pdk.snap_to_2xgrid(x), pdk.snap_to_2xgrid(y))
         return (pdk.snap_to_2xgrid(x), pdk.snap_to_2xgrid(y))
 
+    # Both inter-band nets run in the gap between the bottom band and M5,
+    # on separate tracks. Routing the fan-out down at gate level instead --
+    # the obvious choice, since that is where the gate ports are -- puts a
+    # met4 line straight across the nfets, exactly where their sources have
+    # to drop to VSS. The met3 column of a gate spans the whole cell height,
+    # so it can be tapped up here just as well.
+    lower, middle, upper = plan.bands
+    gap_lo = lower.y + lower.height / 2
+    gap_hi = middle.y - middle.height / 2
+    # El paso lo fija la PILA DE VIAS, no la pista: los cuadrados de 0.5 um
+    # de cada aterrizaje son lo que se acerca entre pistas vecinas, no los
+    # 0.28 del conductor. Dimensionarlo con el ancho de pista deja 0.18 um
+    # donde met4 pide 0.30.
+    pitch = vh + float(pdk.get_grule("met4")["min_separation"])
+    y_fan = pdk.snap_to_2xgrid(gap_lo + (gap_hi - gap_lo) / 2 - pitch / 2)
+    y_mem = pdk.snap_to_2xgrid(gap_lo + (gap_hi - gap_lo) / 2 + pitch / 2)
+
     # --- fan-out: inv0 drives inv1 and inv2 --------------------------------
     # The drain's met3 column is NOT above its port -- c_route leaves eastward
-    # before climbing -- so its x comes from the route's own bbox. Above a
-    # gate the column does sit on the port, because that link is a straight
-    # run up the device centre.
-    src = land(float(drain_routes[0].xmax) - width / 2,
-               float(nfets[0].ports[_DRAIN_MID.format(side="E")].center[1]))
-    loads = []
-    for i in (1, 2):
-        port = nfets[i].ports[_GATE_MID.format(side="S")]
-        dx, dy = _into_metal_xy(port, vw, vh)
-        loads.append(land(float(port.center[0]) + dx,
-                          float(port.center[1]) + dy))
-    strip(src, (src[0], loads[0][1]))
-    strip((src[0], loads[0][1]), loads[-1])
+    # before climbing -- so its x comes from the route's own bbox. A gate's
+    # column does sit on its port, because that link is a straight run up the
+    # device centre.
+    src = land(float(drain_routes[0].xmax) - width / 2, y_fan)
+    loads = [land(float(nfets[i].ports[_GATE_MID.format(side="S")].center[0]), y_fan)
+             for i in (1, 2)]
+    strip(src, loads[-1])
 
     # --- membrane: M5 drain, inv0 gate, cap top plates ---------------------
     # inv0's gate column already crosses the M5 band on met3, and M5's drain
@@ -478,16 +492,22 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
                pdk.snap_to_2xgrid(float(drain_n.center[1])
                                   - evaluate_bbox(bridge)[1] / 2))
 
-    # The caps join on met4, run in the gap between bands: the fan-out's own
-    # vertical leg lives below that, so the two never cross.
-    lower, middle, _ = plan.bands
-    y_track = pdk.snap_to_2xgrid(
-        (lower.y + lower.height / 2 + middle.y - middle.height / 2) / 2)
+    # --- feedback: inv1's output drives M5's gate --------------------------
+    # M5's gate is a met2 strip running the length of the device, and inv1's
+    # drain column crosses it on met3 on its way between the bands. So this
+    # needs one via and no route at all, same as the membrane bridge above.
+    # inv0 and inv2 cross it too; only inv1 gets a via.
+    gate_m5 = m5_ref.ports[_GATE_MID.format(side="W")]
+    tap = via_stack(pdk, "met2", "met3")
+    _center_on(top << tap,
+               pdk.snap_to_2xgrid(float(drain_routes[1].xmax) - width / 2),
+               pdk.snap_to_2xgrid(float(gate_m5.center[1])))
+
     y_cap = float(caps[0].ports["top_met_E"].center[1])
-    a = land(gate_x, y_track)
+    a = land(gate_x, y_mem)
     plates = [land(float(r.center[0]), y_cap) for r in caps]
-    strip(a, (plates[0][0], y_track))
-    strip((plates[0][0], y_track), plates[0])
+    strip(a, (plates[0][0], y_mem))
+    strip((plates[0][0], y_mem), plates[0])
     strip(plates[0], plates[-1])
 
 
@@ -501,3 +521,157 @@ def _into_metal_xy(port, w, h):
     if 135 <= angle <= 225:
         return (+w / 2, 0.0)
     return (-w / 2, 0.0)
+
+
+def _free_x(obstacles, lo, hi, need):
+    """Widest window in [lo, hi] that no obstacle x-interval covers.
+
+    The VSS drop from M5 has to cross the bottom band, so where it can go
+    depends on what is placed there -- which moves when the caller changes
+    M5's length or the cap size. Compute the corridor, do not hardcode it.
+    """
+    best, cur = None, lo
+    for a, b in sorted(obstacles):
+        if a - cur >= need and (best is None or a - cur > best[1] - best[0]):
+            best = (cur, a)
+        cur = max(cur, b)
+    if hi - cur >= need and (best is None or hi - cur > best[1] - best[0]):
+        best = (cur, hi)
+    return best
+
+
+def _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
+                 evaluate_bbox, supply_width=1.0, m5_ref=None, caps=()):
+    """VDD over the pfet band, VSS under the nfet band, on met4.
+
+    The drops are short because the bands are ordered so each device type
+    faces its own rail: a pfet's source_N points up at VDD, an nfet's
+    source_S down at VSS. That ordering is not free -- it is why M5 sits
+    between the two halves of every inverter -- but it makes the supply
+    trivial, which is most of the wiring in the cell.
+    """
+    # Supply runs carry the whole cell's current, so they are sized rather
+    # than left at minimum width -- both the rails and the drops that feed
+    # them. Minimum-width metal is for signals.
+    rails = plan.rails
+    layer = pdk.get_glayer(rails.glayer)
+    width = max(supply_width, float(pdk.get_grule(rails.glayer)["min_width"]))
+
+    lower, _, upper = plan.bands
+    # rails.band was sized for a minimum-width rail. Keep the clearance it
+    # asked for and push the wider rail outward, rather than letting the extra
+    # width eat into the gap to the band.
+    grow = width - rails.width
+    y_vdd = pdk.snap_to_2xgrid(upper.y + upper.height / 2 + rails.band + grow
+                               - width / 2)
+    y_vss = pdk.snap_to_2xgrid(lower.y - lower.height / 2 - rails.band - grow
+                               + width / 2)
+    for y in (y_vdd, y_vss):
+        strap = top << rectangle(
+            size=pdk.snap_to_2xgrid([plan.width, width]),
+            layer=layer, centered=True)
+        _center_on(strap, pdk.snap_to_2xgrid(plan.width / 2), y)
+
+    from glayout.routing.straight_route import straight_route
+
+    tie_top = "met2"
+    clear = float(pdk.get_grule(rails.glayer)["min_separation"]) + width / 2
+
+    def tie_to_rail(ref, y_rail, end):
+        """Source -> guard ring -> rail.
+
+        Not source -> rail directly. The ring sits immediately west of the
+        device and its west face is one port 4.1 um tall, so reaching it is a
+        short straight run across ground nobody else uses -- the gate column
+        goes up the middle and the drain column east of it. Dropping from the
+        source instead means threading a met4 line down the height of the
+        cell, which is what crossed the fan-out and membrane tracks and merged
+        them into the supply.
+
+        """
+        src = ref.ports[SOURCE.format(side="W")]
+        ring_in = ref.ports["tie_W_top_met_E"]
+        top << straight_route(pdk, src, ring_in)
+
+        out = ref.ports[f"tie_{end}_top_met_{end}"]
+        # From met2, not met1. tie_layers=(horizontal, vertical) puts the
+        # ring's N and S edges on the first layer, so climbing from met1 here
+        # would add a via1 alongside the one the ring already has -- they land
+        # 0.258um apart and V1.2a wants 0.26.
+        climb1 = via_stack(pdk, tie_top, rails.glayer)
+        w1, h1 = evaluate_bbox(climb1)
+        dx, dy = _into_metal_xy(out, w1, h1)
+        x = pdk.snap_to_2xgrid(float(out.center[0]) + dx)
+        y = pdk.snap_to_2xgrid(float(out.center[1]) + dy)
+        _center_on(top << climb1, x, y)
+        rect = top << rectangle(
+            size=pdk.snap_to_2xgrid([width, abs(y_rail - y)]),
+            layer=layer, centered=True)
+        _center_on(rect, x, pdk.snap_to_2xgrid((y_rail + y) / 2))
+
+    def drop(port, y_rail, x=None, reach_first=False):
+        """Climb from a met2 edge to the rail layer and run a wide strap down.
+
+        reach_first keeps the strap on met2 all the way to the rail and climbs
+        there instead. Use it where the climb would otherwise sit inside a
+        block: at a mimcap the stack's met3 passes 0.09um from the top plate,
+        which is the membrane -- a short waiting to happen, not just M3.2a.
+        """
+        climb = via_stack(pdk, "met2", rails.glayer)
+        w, h = evaluate_bbox(climb)
+        dx, dy = _into_metal_xy(port, w, h)
+        px = pdk.snap_to_2xgrid(float(port.center[0]) + dx if x is None else x)
+        py = pdk.snap_to_2xgrid(float(port.center[1]) + dy)
+        if reach_first:
+            strap = top << rectangle(
+                size=pdk.snap_to_2xgrid([width, abs(y_rail - py) + h]),
+                layer=pdk.get_glayer("met2"), centered=True)
+            _center_on(strap, px, pdk.snap_to_2xgrid((y_rail + py) / 2))
+            py = y_rail
+        _center_on(top << climb, px, py)
+        rect = top << rectangle(size=pdk.snap_to_2xgrid([width, abs(y_rail - py) + h]),
+                                layer=layer, centered=True)
+        _center_on(rect, px, pdk.snap_to_2xgrid((y_rail + py) / 2))
+
+    if m5_ref is not None:
+        # M5 sits in the middle band but its source and bulk belong to VSS at
+        # the bottom, so this drop has to cross the bottom band. Send it down
+        # the widest gap between the blocks placed there.
+        top << straight_route(pdk, m5_ref.ports[SOURCE.format(side="W")],
+                              m5_ref.ports["tie_W_top_met_E"])
+        blocked = [(float(r.bbox[0][0]) - clear, float(r.bbox[1][0]) + clear)
+                   for r in list(nfets) + list(caps)]
+        ring = m5_ref.ports["tie_S_top_met_S"]
+        lo = float(ring.center[0]) - ring.width / 2 + width / 2
+        hi = float(ring.center[0]) + ring.width / 2 - width / 2
+        window = _free_x(blocked, lo, hi, width)
+        if window is not None:
+            drop(ring, y_vss, x=(window[0] + window[1]) / 2)
+        else:
+            # No corridor -- a short M5 shrinks the cell until the bottom band
+            # fills it. Hop to the nfet's ring instead: both are pwell taps on
+            # VSS, that ring is already strapped to the rail, and it sits
+            # directly below by construction, so this route always exists.
+            # Longer electrically than going straight to the rail, which is
+            # why it is the fallback and not the rule.
+            near = min(nfets, key=lambda r: abs(float(r.center[0])
+                                                - float(ring.center[0])))
+            up = near.ports["tie_N_top_met_N"]
+            x = pdk.snap_to_2xgrid(float(up.center[0]))
+            y0, y1 = float(up.center[1]), float(ring.center[1])
+            hop = top << rectangle(
+                size=pdk.snap_to_2xgrid([width, abs(y1 - y0)]),
+                layer=pdk.get_glayer("met2"), centered=True)
+            _center_on(hop, x, pdk.snap_to_2xgrid((y0 + y1) / 2))
+
+    for ref in caps:
+        # bottom plate to VSS; the top plate is already on the membrane
+        drop(ref.ports["bottom_met_S"], y_vss, reach_first=True)
+
+    for ref in pfets:
+        tie_to_rail(ref, y_vdd, "N")
+    for ref in nfets:
+        tie_to_rail(ref, y_vss, "S")
+
+    return {"vdd": y_vdd, "vss": y_vss, "width": width,
+            "glayer": rails.glayer}

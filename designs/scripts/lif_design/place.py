@@ -78,6 +78,11 @@ class Cell:
     height: float
     wells: tuple = ()                 # (glayer, inset from this cell's side edge)
     layers: frozenset = frozenset()   # every glayer the block's geometry uses
+    insets: tuple = ()                # (glayer, how far inside the outline it starts)
+
+    def inset(self, glayer: str) -> float:
+        """How far inside this block's outline `glayer` begins."""
+        return next((v for g, v in self.insets if g == glayer), 0.0)
 
     @property
     def well(self) -> Optional[str]:
@@ -101,7 +106,8 @@ class Cell:
         found = _well_of(comp, pdk)
         return cls(name=name, width=float(w), height=float(h),
                    wells=((found, 0.0),) if found else (),
-                   layers=_layers_of(comp, pdk))
+                   layers=_layers_of(comp, pdk),
+                   insets=_insets_of(comp, pdk))
 
 
 def _polygons(comp):
@@ -136,6 +142,40 @@ def _layers_of(comp, pdk) -> frozenset:
         except Exception:
             continue
     return frozenset(out - {None})
+
+
+def _insets_of(comp, pdk) -> tuple:
+    """How far inside the block's own outline each glayer's geometry starts.
+
+    A mimcap's CAP_MK marker is wider than its met2 plate, so the block's
+    outline overstates where its metal actually is. Spacing that ignores this
+    asks for a bigger gap than the rule wants -- and, where a rule is measured
+    from the metal rather than the outline, can ask for too small a one.
+    Taken as the smallest of the four sides, which is the safe direction.
+    """
+    bb = comp.bbox
+    x0, y0, x1, y1 = float(bb[0][0]), float(bb[0][1]), float(bb[1][0]), float(bb[1][1])
+    per = {}
+    for poly in _polygons(comp):
+        try:
+            glayer = pdk.layer_to_glayer((poly.layer, poly.datatype))
+        except Exception:
+            continue
+        if glayer is None:
+            continue
+        try:
+            pb = poly.bounding_box()
+            px0, py0, px1, py1 = pb[0][0], pb[0][1], pb[1][0], pb[1][1]
+        except Exception:
+            pts = getattr(poly, "points", None)
+            if pts is None:
+                continue
+            xs = [float(q[0]) for q in pts]
+            ys = [float(q[1]) for q in pts]
+            px0, py0, px1, py1 = min(xs), min(ys), max(xs), max(ys)
+        near = min(px0 - x0, x1 - px1, py0 - y0, y1 - py1)
+        per[glayer] = min(per.get(glayer, near), near)
+    return tuple(sorted((g, max(0.0, v)) for g, v in per.items()))
 
 
 def _well_of(comp, pdk) -> Optional[str]:
@@ -200,6 +240,9 @@ def pitch(pdk, glayer: str = "met2") -> float:
     return float(rule["min_width"]) + float(rule["min_separation"])
 
 
+MIM_BOTTOM_TO_MET2 = 1.2          # gf180 MIM.1, option A
+
+
 def shared_clearance(pdk, a: Cell, b: Cell) -> tuple[float, Optional[str]]:
     """Widest separation demanded by a layer both blocks occupy.
 
@@ -212,6 +255,16 @@ def shared_clearance(pdk, a: Cell, b: Cell) -> tuple[float, Optional[str]]:
         sep = float(_grule(pdk, glayer).get("min_separation", 0.0))
         if sep > worst:
             worst, which = sep, glayer
+
+    # MIM.1: a MIM bottom plate owes 1.2um to any other met2, whether that is
+    # another MIM or plain routing metal -- four times met2's own separation.
+    # The gf180 deck only checks this when the run passes mim_option, and it
+    # defaults to "Nan", so a clean DRC report is no evidence either way.
+    for x, y in ((a, b), (b, a)):
+        if "capmet" in x.layers and "met2" in y.layers:
+            need = MIM_BOTTOM_TO_MET2 - x.inset("met2") - y.inset("met2")
+            if need > worst:
+                worst, which = need, "MIM.1"
     return worst, which
 
 
