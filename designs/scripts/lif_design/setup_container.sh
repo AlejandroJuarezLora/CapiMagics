@@ -56,15 +56,41 @@ nmos(gf180, width=0.22, length=0.28, multipliers=1, fingers=1,
 print("  fet de 0.22 um: se construye")
 PY
 
+echo "== kernel de jupyter"
+# Con las variables dentro del kernel: si dependieran de exportarlas en la
+# terminal, el notebook fallaria al abrirlo desde Jupyter y no seria obvio
+# por que. GLAYOUT_BACKEND=gdstk sobre todo -- sin el, glayout no arranca.
+"${VENV}/bin/python" -m ipykernel install --user --name lif     --display-name 'LIF motor (gdstk)' >/dev/null 2>&1
+"${VENV}/bin/python" - <<PYK
+import json, os
+import jupyter_core.paths as p
+k = os.path.join(p.jupyter_data_dir(), "kernels", "lif", "kernel.json")
+spec = json.load(open(k))
+spec["env"] = {"GLAYOUT_BACKEND": "gdstk",
+               "PATH": "/foss/tools/klayout:/usr/local/bin:/usr/bin:/bin",
+               "LIF_OUT": "${SALIDA_NB:-/tmp/nbout}"}
+json.dump(spec, open(k, "w"), indent=1)
+print("  kernel 'lif' registrado con su entorno")
+PYK
+mkdir -p "${SALIDA_NB:-/tmp/nbout}"
+
 cat <<EOF
 
-Listo. Para usarlo:
+Listo. Desde la terminal:
 
-    export GLAYOUT_BACKEND=gdstk
-    export PATH=/foss/tools/klayout:\$PATH
     ${VENV}/bin/python -m nbconvert --to notebook --execute \\
-        --output-dir=/tmp/nbout --ExecutePreprocessor.kernel_name=python3 \\
+        --output-dir=${SALIDA_NB:-/tmp/nbout} --ExecutePreprocessor.kernel_name=lif \\
         /foss/designs/notebooks/3_test_lif_engine.ipynb
 
-GLAYOUT_BACKEND=gdstk no es opcional: sin el, glayout no arranca en esta imagen.
+O desde Jupyter:
+
+    cd /foss/designs && ${VENV}/bin/python -m jupyterlab \\
+        --ip=0.0.0.0 --port=8888 --no-browser --IdentityProvider.token=lif
+
+OJO con dos cosas:
+
+  - Hay que elegir el kernel "LIF motor (gdstk)". El kernel GLdev que declara
+    el notebook NO sirve en esta imagen: su python no tiene glayout instalado.
+  - GLAYOUT_BACKEND=gdstk no es opcional. Sin el, glayout no arranca aqui: cae
+    a un DummyPdk sin fallar del todo, asi que parece que funciona y no.
 EOF
