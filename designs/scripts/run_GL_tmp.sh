@@ -38,8 +38,13 @@ LANZAR="${LANZAR_JUPYTER:-1}"
 
 echo "== gLayout desde ${REPO} rama ${RAMA}"
 if [ -d "${DESTINO}/.git" ]; then
+    # reset --hard, no checkout: este clon es desechable y tiene que quedar
+    # igual que la rama pase lo que pase. Un checkout aborta si alguien dejo
+    # cambios locales ahi -- y entonces el script falla a medias, dejando el
+    # venv apuntando a un glayout que no es el que dice ser.
     git -C "${DESTINO}" fetch -q origin "${RAMA}"
-    git -C "${DESTINO}" checkout -q "origin/${RAMA}"
+    git -C "${DESTINO}" reset -q --hard "origin/${RAMA}"
+    git -C "${DESTINO}" clean -qfd
 else
     rm -rf "${DESTINO}"
     git clone -q --depth 1 -b "${RAMA}" "${REPO}" "${DESTINO}"
