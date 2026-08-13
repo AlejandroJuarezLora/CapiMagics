@@ -92,8 +92,11 @@ import json, os
 import jupyter_core.paths as p
 k = os.path.join(p.jupyter_data_dir(), "kernels", "lif", "kernel.json")
 spec = json.load(open(k))
+# El bin del venv va PRIMERO para que un !pip desde una celda sea el pip que
+# instalo glayout. Con el del sistema delante, "!pip show glayout" responde
+# que no existe aunque el import funcione, que despista mucho.
 spec["env"] = {"GLAYOUT_BACKEND": "gdstk",
-               "PATH": "/foss/tools/klayout:/usr/local/bin:/usr/bin:/bin",
+               "PATH": "${VENV}/bin:/foss/tools/klayout:/usr/local/bin:/usr/bin:/bin",
                "PYTHONPATH": "",
                "LD_LIBRARY_PATH": "",
                "LIF_OUT": "${SALIDA_NB}"}
