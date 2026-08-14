@@ -1,6 +1,6 @@
 ** sch_path: /foss/designs/CapiMagics/sch/stdp/stdp_lvs.sch
-.subckt stdp avss avdd nvpost nvpre vpost vpre vb_idep vb_itd vb_itp vb_pot vw
-*.PININFO avss:B avdd:B nvpost:B nvpre:B vpost:B vpre:B vb_idep:B vb_itd:B vb_itp:B vb_pot:B vw:B
+.subckt stdp_lvs avss avdd nvpost nvpre vpost vpre vb_idep vb_itd vb_itp vb_pot vw iout
+*.PININFO avss:B avdd:B nvpost:B nvpre:B vpost:B vpre:B vb_idep:B vb_itd:B vb_itp:B vb_pot:B vw:B iout:O
 M1 net1 vpot avdd avdd pfet_03v3 L=0.28u W=0.22u nf=1
 M2 vw nvpost net1 avdd pfet_03v3 L=0.28u W=0.22u nf=1
 M3 vw vpre net2 avss nfet_03v3 L=0.28u W=0.22u nf=1
@@ -31,6 +31,7 @@ x2[8] vw avss unitcap
 x2[9] vw avss unitcap
 x3[0] avdd vpot unitcap
 x3[1] avdd vpot unitcap
+M5 iout vw avdd avdd pfet_03v3 L=15u W=0.5u nf=1
 .ends
 
 * expanding   symbol:  unitcap.sym # of pins=2

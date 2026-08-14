@@ -11,9 +11,7 @@ L 4 250 -310 250 150 {}
 L 4 960 -310 960 150 {}
 L 4 -690 170 -30 170 {}
 L 4 -690 170 -690 750 {}
-L 4 0 -320 0 580 {}
 L 4 0 -320 250 -320 {}
-L 4 0 580 250 580 {}
 L 4 910 -310 960 -310 {}
 L 4 910 150 960 150 {}
 T {potentiation unit} 340 120 0 0 0.4 0.4 {}
@@ -40,6 +38,9 @@ T {The m4 transistor was huge,
 
 replaced by smaller in series transistors} 160 790 0 0 0.4 0.4 {}
 T {all ammeters have been removed for LVS } -610 -190 0 0 0.4 0.4 {}
+T {added transistor to provide 
+current to the postsinpatic 
+neuron} 1160 70 0 0 0.4 0.4 {}
 N 110 -60 110 0 {lab=#net1}
 N 110 300 110 350 {lab=#net2}
 N 490 -270 690 -270 {lab=avdd}
@@ -125,6 +126,12 @@ N -70 510 -70 990 {lab=avss}
 N -490 170 -490 230 {lab=avdd}
 N -70 380 -70 400 {lab=vdep}
 N 280 -270 280 -260 {lab=avdd}
+N 820 -270 1040 -270 {lab=avdd}
+N 1040 -270 1040 120 {lab=avdd}
+N 1040 150 1120 150 {lab=avdd}
+N 1120 90 1120 150 {lab=avdd}
+N 1040 90 1120 90 {lab=avdd}
+N 1040 180 1040 240 {lab=iout}
 C {symbols/pfet_03v3.sym} 130 -90 0 1 {name=M1
 L=0.28u
 W=0.22u
@@ -392,3 +399,19 @@ spiceprefix=X
 C {unitcap.sym} -70 510 0 0 {name=x1[0:1]}
 C {unitcap.sym} 250 160 3 0 {name=x2[0:9]}
 C {unitcap.sym} 280 -150 0 0 {name=x3[0:1]}
+C {symbols/pfet_03v3.sym} 1020 150 0 0 {name=M5
+L=15u
+W=0.5u
+nf=1
+mult=1
+ad="'int((nf+1)/2) * W/nf * 0.18u'"
+pd="'2*int((nf+1)/2) * (W/nf + 0.18u)'"
+as="'int((nf+2)/2) * W/nf * 0.18u'"
+ps="'2*int((nf+2)/2) * (W/nf + 0.18u)'"
+nrd="'0.18u / W'" nrs="'0.18u / W'"
+sa=0 sb=0 sd=0
+model=pfet_03v3
+spiceprefix=X
+}
+C {lab_pin.sym} 1000 150 0 0 {name=p6 sig_type=std_logic lab=vw}
+C {opin.sym} 1040 240 0 0 {name=p10 lab=iout}
