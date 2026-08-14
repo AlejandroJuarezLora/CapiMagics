@@ -39,12 +39,17 @@ LAYERS = [
     ((35, 0),  "#111111", "via1",    0.85),
     ((36, 0),  "#d45f3b", "met2",    0.45),
     ((38, 0),  "#222222", "via2",    0.85),
+    # El MIM va entre met2 y met3 (opcion A), asi que se pinta AQUI, no al
+    # final. Pintarlo el ultimo lo ponia por encima de met3, met4 y met5, que
+    # estan fisicamente mas arriba que el.
+    ((75, 0),  "#c026d3", "fusetop", 0.70),
     ((42, 0),  "#2e9e57", "met3",    0.55),
     ((40, 0),  "#333333", "via3",    0.85),
     ((46, 0),  "#8e44ad", "met4",    0.60),
     ((41, 0),  "#333333", "via4",    0.85),
     ((81, 0),  "#e07b39", "met5",    0.60),
-    ((75, 0),  "#c026d3", "fusetop", 0.70),
+    # CAP_MK si va al final a proposito: es un marcador, no ocupa sitio en el
+    # stack, y con alfa muy baja hace de halo sin tapar nada.
     ((117, 5), "#7a7a7a", "CAP_MK",  0.16),
 ]
 
@@ -84,6 +89,15 @@ def draw(ax, gds: str, report: str | None, title: str | None = None) -> None:
             if (poly.layer, poly.datatype) == key:
                 ax.add_patch(MplPoly(poly.points, closed=True, facecolor=colour,
                                      edgecolor="none", alpha=alpha, linewidth=0))
+
+    # El FuseTop queda tapado por el met3 que lo contacta, y es justo la capa
+    # que distingue un MIM bueno de uno en corto -- sin ella el condensador es
+    # un sandwich de metal. Se repasa el contorno por encima de todo para no
+    # perder ese indicador de un vistazo.
+    for poly in polys:
+        if (poly.layer, poly.datatype) == (75, 0):
+            ax.add_patch(MplPoly(poly.points, closed=True, facecolor="none",
+                                 edgecolor="#c026d3", linewidth=1.4, zorder=4))
 
     points, rules = violations(report) if report else ([], Counter())
     for cx, cy in points:

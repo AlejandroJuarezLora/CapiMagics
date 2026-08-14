@@ -24,6 +24,7 @@ from typing import Optional
 from warnings import warn
 
 from . import mim as mim_pdk
+from .place import MIM_BOTTOM_TO_MET2 as MIM_A_MET2
 from .place import Cell, Rails, Stack, pair, plan_row
 from .spec import Note, Severity
 
@@ -346,7 +347,8 @@ _DRAIN_MID = "multiplier_0_drain_{side}"
 
 def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
              supply_width: float = 1.0, output_inverter: dict | None = None,
-             n_caps: int = 3, name: str = "lif"):
+             n_caps: int = 3, rail_layer: Optional[str] = None,
+             name: str = "lif"):
     """A LIF neuron: three inverters, the reset device and the membrane cap.
 
     Laid out in bands rather than as a row of inverters. Grouping by device
@@ -405,9 +407,13 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
     pf_cells = [Cell.from_component(f"pf{i}", c, pdk)
                 for i, c in enumerate(pfet_comps)]
 
+    # rail_layer fuerza la capa de los rieles. Por defecto la decide
+    # Rails.above: la primera que todos los bloques dejan libre.
+    rails_forzados = (Rails.minimum(pdk, rail_layer, width=supply_width)
+                      if rail_layer else None)
     plan = plan_bands([Band("bottom", nf_cells + clones(cap, n_caps, "cap")),
                        Band("m5", [m5_cell]),
-                       Band("top", pf_cells)], pdk)
+                       Band("top", pf_cells)], pdk, rails=rails_forzados)
     lower, middle, upper = plan.bands
 
     top = Component(name=name)
@@ -443,6 +449,7 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
 
     top.add_port(name="IN", port=nfets[0].ports[_GATE_MID.format(side="W")])
     top.add_port(name="OUT", port=nfets[2].ports[_DRAIN_MID.format(side="W")])
+    _pin_labels(pdk, top, rectangle, nfets, pfets, caps, m5_ref, rails_y)
     return top, {"nfets": nfets, "pfets": pfets, "caps": caps, "m5": m5_ref,
                  "rails": rails_y,
                  "plan": plan}
@@ -521,12 +528,80 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
                pdk.snap_to_2xgrid(float(drain_routes[1].xmax) - width / 2),
                pdk.snap_to_2xgrid(float(gate_m5.center[1])))
 
-    y_cap = float(caps[0].ports["top_met_E"].center[1])
+    # Las placas superiores YA son met3, asi que se unen entre si en su propia
+    # capa: nada de subir a met4 desde met3 para volver a bajar en el cap de
+    # al lado. Se ahorra una pila de vias por cap y la tira de met4.
+    m3 = pdk.get_glayer("met3")
+    w3 = float(pdk.get_grule("met3")["min_width"])
+    izq, der = caps[0], caps[-1]
+    y_cap = float(izq.ports["top_met_E"].center[1])
+    # de borde OESTE del primero a borde ESTE del ultimo, para cruzar las tres
+    # placas por encima. Al reves la tira pasa por los huecos y no toca ninguna.
+    x0 = float(izq.ports["top_met_W"].center[0])
+    x1 = float(der.ports["top_met_E"].center[0])
+    # donde baja a met4: en el hueco entre dos caps, o pasado el unico que hay
+    x_hueco = ((float(caps[0].ports["top_met_E"].center[0])
+                + float(caps[1].ports["top_met_W"].center[0])) / 2 if len(caps) > 1
+               else float(caps[0].ports["top_met_E"].center[0]) + 2 * w3)
+    # el puente llega hasta ahi: si se queda corto, el met3 de la pila de vias
+    # roza el de la placa sin tocarlo y eso es espaciado, no conexion.
+    x1 = max(x1, x_hueco + w3)
+    puente = top << rectangle(size=pdk.snap_to_2xgrid([abs(x1 - x0) + w3, w3]),
+                              layer=m3, centered=True)
+    _center_on(puente, pdk.snap_to_2xgrid((x0 + x1) / 2),
+               pdk.snap_to_2xgrid(y_cap))
+
+    # De ahi al inversor. La transicion de capa se hace FUERA del banco: sobre
+    # el cap no se puede bajar a met2 porque MIM.1 pide 1.2 um entre la placa
+    # inferior y cualquier otro met2, y la superior cae dentro de esa huella.
     a = land(gate_x, y_mem)
-    plates = [land(float(r.center[0]), y_cap) for r in caps]
-    strip(a, (plates[0][0], y_mem))
-    strip((plates[0][0], y_mem), plates[0])
-    strip(plates[0], plates[-1])
+    # El puente sigue en met3 hasta SALIR del banco por el oeste, y solo
+    # entonces baja a met2. Bajar encima del cap cruza la placa inferior, que
+    # es VSS: MIM.4 dentro de la huella y MIM.1 justo encima. Se entra por un
+    # extremo (la membrana, oeste) y se sale por el otro (VSS, sur).
+    # La transicion a met4 va en el HUECO entre el primer y el segundo cap, no
+    # encima de una placa. El deck de LVS descarta del grafo de conectividad
+    # cualquier via que solape el FuseTop --
+    #     via3_n_cap = via3.not(fusetop)
+    # -- asi que una pila puesta sobre la placa deja la membrana desconectada
+    # para el extractor aunque el metal se toque.
+    salida = land(x_hueco, y_cap)
+    strip(a, (salida[0], y_mem))
+    strip((salida[0], y_mem), salida)
+
+
+def _pin_labels(pdk, top, rectangle, nfets, pfets, caps, m5_ref, rails):
+    """Marcas de pin para que el LVS sepa como se llama cada red.
+
+    En gf180 met*_pin y met*_label son la MISMA capa, y no conduce: la marca
+    tiene que caer ENCIMA de metal que ya exista, o el extractor no encuentra
+    conductor bajo el texto y la red sale sin nombre. Y centrada sobre el
+    punto, no alineada por un borde -- el centro de un puerto esta en el borde
+    de su metal y mirando hacia afuera, asi que alinear por ahi deja la marca
+    tangente. Es la leccion del PR 103 en diff_pair.
+    """
+    lado = 0.27
+
+    def marca(glayer, texto, x, y):
+        capa = pdk.get_glayer(glayer + "_pin")
+        m = top << rectangle(size=(lado, lado), layer=capa, centered=True)
+        _center_on(m, pdk.snap_to_2xgrid(x), pdk.snap_to_2xgrid(y))
+        top.add_label(text=texto, layer=capa,
+                      position=(pdk.snap_to_2xgrid(x), pdk.snap_to_2xgrid(y)))
+
+    riel = rails["glayer"]
+    ancho = float(pdk.get_grule(riel)["min_width"])
+    medio = float(nfets[1].center[0])
+    marca(riel, "Vdd", medio, rails["vdd"])
+    marca(riel, "Vss", medio, rails["vss"])
+
+    # Iin es la membrana: la placa superior del primer cap, que es met3
+    p = caps[0].ports["top_met_E"]
+    marca("met3", "Iin", float(p.center[0]) - ancho, float(p.center[1]))
+    # spike y spike_neg salen de las columnas met3 de los drenadores
+    for nombre, ref in (("spike_neg", nfets[0]), ("spike", nfets[2])):
+        d = ref.ports[_DRAIN_MID.format(side="N")]
+        marca("met3", nombre, float(d.center[0]), float(d.center[1]))
 
 
 def _into_metal_xy(port, w, h):
