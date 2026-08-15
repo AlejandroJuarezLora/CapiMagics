@@ -53,6 +53,9 @@ def _deck():
 DECK = os.environ.get("GF180_DRC") or _deck()
 NETCHECK = str(AQUI / "netcheck.py")
 SALIDA = os.environ.get("LIF_OUT", "/tmp")
+# LIF_RAIL_LAYER fuerza la capa de los rieles en todo el barrido, para poder
+# medir la celda entera en un stack de 3 metales.
+RIEL = os.environ.get("LIF_RAIL_LAYER") or None
 FET = dict(multipliers=1, fingers=1, with_substrate_tap=False,
            with_dummy=False, tie_layers=("met2", "met1"), sd_rmult=1)
 
@@ -151,7 +154,7 @@ def desde_especificacion():
     for f_khz, iex in ESPECIFICACIONES:
         tag = "spec_%d" % f_khz
         d = resolver(NeuronSpec(freq_range=f_khz, iex_range=iex))
-        top, h, _ = from_design(gf180, d, name=tag)
+        top, h, _ = from_design(gf180, d, rail_layer=RIEL, name=tag)
         gds = "%s/%s.gds" % (SALIDA, tag)
         top.write_gds(gds)
         bb = top.bbox
@@ -180,7 +183,7 @@ def main():
                 gf180,
                 inverter=dict(width=kw["w_inv"], length=kw["l_inv"], **FET),
                 m5=dict(width=kw["w_m5"], length=kw["l_m5"], **FET),
-                cap_size=kw["cap"], name=tag)
+                cap_size=kw["cap"], rail_layer=RIEL, name=tag)
         except Exception as exc:
             print("%-12s no genera: %s" % (nombre, str(exc)[:52]))
             fallos += 1
