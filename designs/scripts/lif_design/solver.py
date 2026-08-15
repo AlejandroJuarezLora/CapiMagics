@@ -102,6 +102,17 @@ def _solve_geometry(spec: NeuronSpec, d: NeuronDesign) -> tuple[float, float]:
         return (W if W is not None else NOMINAL["W_M5"],
                 Lg if Lg is not None else NOMINAL["L_M5"])
 
+    # F_MAX es un limite medido, no de las leyes: sobre el, el reset no llega a
+    # completarse y la celda deja de disparar como predice la ley. Las leyes
+    # despejan igual y devuelven una geometria de aspecto razonable, asi que
+    # sin este aviso el motor entrega en silencio un diseño que no funciona.
+    if f_target > L.F_MAX:
+        d.add(Severity.WARNING, "frecuencia",
+              f"{f_target:.0f} kHz esta sobre el maximo medido "
+              f"({L.F_MAX:.0f} kHz): la geometria sale de las leyes, pero el "
+              f"reset no completa y la celda no llegara a esa frecuencia",
+              chain=f"F_MAX={L.F_MAX:.0f} kHz (el reset tarda ~215 ns)")
+
     if W is not None and Lg is not None:
         # sobre-determinado: ambas fijas Y hay objetivo de frecuencia
         f_real = L.freq(W, Lg, iex_at)
