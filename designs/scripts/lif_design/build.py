@@ -790,7 +790,8 @@ LADO_MINIMO = 5.0
 
 
 def from_design(pdk, design, mim: str = mim_pdk.POR_DEFECTO,
-                fet: dict | None = None, name: str = "lif"):
+                fet: dict | None = None, rail_layer: Optional[str] = None,
+                name: str = "lif"):
     """Construye la celda que describe un NeuronDesign.
 
     Es la union entre la capa que resuelve el comportamiento y la que dibuja.
@@ -836,7 +837,7 @@ def from_design(pdk, design, mim: str = mim_pdk.POR_DEFECTO,
         m5=dict(width=p["W_M5"], length=p["L_M5"], **fet),
         output_inverter=dict(width=p["W_M7M8"],
                              length=INVERSOR_MINIMO["length"], **fet),
-        cap_size=lado_real, n_caps=n, name=name)
+        cap_size=lado_real, n_caps=n, rail_layer=rail_layer, name=name)
     handles["Cm_real"] = cm_real
     handles["mim"] = mim_pdk.modelo(mim)
     return top, handles, notas
