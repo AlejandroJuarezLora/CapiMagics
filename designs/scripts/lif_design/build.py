@@ -836,8 +836,10 @@ def _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
                 size=pdk.snap_to_2xgrid([width, abs(y1 - y0)]),
                 layer=pdk.get_glayer("met1"), centered=True)
             _center_on(hop, x, pdk.snap_to_2xgrid((y0 + y1) / 2))
-            puente_v = via_stack(pdk, "met1", "met2")
-            _center_on(top << puente_v, x, pdk.snap_to_2xgrid(float(up.center[1])))
+            # Sin via propia: el anillo del nfet ya lleva met1 bajo todo su
+            # perimetro, asi que el salto entra por su misma capa. Ponerle una
+            # aqui la deja a 0.258 um de las que el anillo ya tiene, y V1.2a
+            # pide 0.26 -- la misma trampa que documenta tie_to_rail.
 
     for ref in caps:
         # bottom plate to VSS; the top plate is already on the membrane
