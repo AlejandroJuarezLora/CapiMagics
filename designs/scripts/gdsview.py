@@ -33,21 +33,24 @@ from matplotlib.patches import Polygon as MplPoly
 
 # gf180. nombre -> (capa, datatype, color, alpha)
 CAPAS = {
+    # Un metal por familia de color, bien separadas: met1 y met2 compartian dos
+    # azules y en pantalla eran el mismo. Las vias van todas en negro -- son
+    # cuadraditos y lo unico que importa de ellas es donde estan.
     "nwell":   ((21, 0),  "#94a3b8", 0.20),
     "diff":    ((22, 0),  "#a16207", 0.35),
-    "poly2":   ((30, 0),  "#dc2626", 0.35),
+    "poly2":   ((30, 0),  "#be123c", 0.35),
     "nplus":   ((32, 0),  "#4ade80", 0.15),
     "pplus":   ((31, 0),  "#f472b6", 0.15),
     "contact": ((33, 0),  "#111827", 0.85),
-    "met1":    ((34, 0),  "#0ea5e9", 0.45),
+    "met1":    ((34, 0),  "#a855f7", 0.45),   # morado
     "via1":    ((35, 0),  "#111827", 0.85),
-    "met2":    ((36, 0),  "#2563eb", 0.45),
+    "met2":    ((36, 0),  "#2563eb", 0.45),   # azul
     "via2":    ((38, 0),  "#111827", 0.85),
-    "met3":    ((42, 0),  "#16a34a", 0.40),
-    "via3":    ((40, 0),  "#7c3aed", 0.90),
-    "met4":    ((46, 0),  "#ea580c", 0.35),
-    "via4":    ((41, 0),  "#0891b2", 0.90),
-    "met5":    ((81, 0),  "#dc2626", 0.30),
+    "met3":    ((42, 0),  "#16a34a", 0.40),   # verde
+    "via3":    ((40, 0),  "#111827", 0.90),
+    "met4":    ((46, 0),  "#ea580c", 0.35),   # naranja
+    "via4":    ((41, 0),  "#111827", 0.90),
+    "met5":    ((81, 0),  "#dc2626", 0.30),   # rojo
     "fusetop": ((75, 0),  "#c026d3", 0.00),   # solo contorno
     "cap_mk":  ((117, 5), "#f59e0b", 0.12),
     "mim_l_mk":((117, 10),"#eab308", 0.12),
@@ -95,6 +98,15 @@ def red_en(gds, celda, punto):
 
     metales = {m: region(m) for m in ("met1", "met2", "met3", "met4", "met5")}
     vias = {v: region(v) for _, v, _ in PILA}
+
+    # Las vias que caen sobre el FuseTop son el dielectrico del MIM, no un
+    # contacto: unen el plato de abajo con el de arriba solo en apariencia. El
+    # deck del PDK las saca de la conectividad (`via2_n_cap = via2.not(fusetop)`)
+    # y aqui hay que hacer lo mismo, o el condensador sale en cortocircuito.
+    capmet = region("fusetop")
+    if not capmet.is_empty():
+        for v in list(vias):
+            vias[v] = vias[v] - capmet
 
     # semilla: el poligono de metal que contiene el punto
     px, py = punto
@@ -165,7 +177,10 @@ def main(argv=None):
             sys.exit(f"celda '{a.celda}' no esta. hay: {', '.join(sorted(celdas))}")
         cell = celdas[a.celda]
     else:
-        cell = lib.cells[0]
+        # la de nivel superior, no la primera de la lista: en un GDS jerarquico
+        # `cells[0]` suele ser una subcelda y la vista sale de unas micras
+        superiores = lib.top_level()
+        cell = superiores[0] if superiores else lib.cells[0]
     polys = cell.get_polygons()
 
     visibles = [n for n in (a.orden and _lista(a.orden) or ORDEN) if n in CAPAS]
