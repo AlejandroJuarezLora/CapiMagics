@@ -39,6 +39,8 @@ SOURCE = "multiplier_0_source_{side}"
 # with whatever it passes.
 TIE = "tie_{end}_top_met_E"
 
+RIEL_POR_DEFECTO = "met3"     # deja met4 libre para el ruteo entre neuronas
+
 
 @dataclass
 class Inverter:
@@ -347,7 +349,7 @@ _DRAIN_MID = "multiplier_0_drain_{side}"
 
 def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
              supply_width: float = 1.0, output_inverter: dict | None = None,
-             n_caps: int = 3, rail_layer: Optional[str] = None,
+             n_caps: int = 3, rail_layer: Optional[str] = RIEL_POR_DEFECTO,
              name: str = "lif"):
     """A LIF neuron: three inverters, the reset device and the membrane cap.
 
@@ -407,8 +409,15 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
     pf_cells = [Cell.from_component(f"pf{i}", c, pdk)
                 for i, c in enumerate(pfet_comps)]
 
-    # rail_layer fuerza la capa de los rieles. Por defecto la decide
-    # Rails.above: la primera que todos los bloques dejan libre.
+    # Por defecto met3, y con eso met4 queda entero libre para el ruteo entre
+    # neuronas -- que es lo que decide si un array se puede rutear por encima
+    # de las celdas o hay que abrirle calles.
+    #
+    # Rails.above no llega sola a met3: ve que el mimcap ocupa esa capa con su
+    # placa superior y sube un piso. Es cierto que la ocupa, pero los rieles
+    # corren por los extremos de la celda y no cruzan el banco en ningun punto,
+    # asi que la regla es conservadora, no incorrecta. Pasar `rail_layer=None`
+    # devuelve esa eleccion automatica.
     rails_forzados = (Rails.minimum(pdk, rail_layer, width=supply_width)
                       if rail_layer else None)
     plan = plan_bands([Band("bottom", nf_cells + clones(cap, n_caps, "cap")),
@@ -868,7 +877,7 @@ LADO_MINIMO = 5.0
 
 
 def from_design(pdk, design, mim: str = mim_pdk.POR_DEFECTO,
-                fet: dict | None = None, rail_layer: Optional[str] = None,
+                fet: dict | None = None, rail_layer: Optional[str] = RIEL_POR_DEFECTO,
                 name: str = "lif"):
     """Construye la celda que describe un NeuronDesign.
 
