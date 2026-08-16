@@ -253,8 +253,14 @@ def shared_clearance(pdk, a: Cell, b: Cell) -> tuple[float, Optional[str]]:
     worst, which = 0.0, None
     for glayer in a.layers & b.layers:
         sep = float(_grule(pdk, glayer).get("min_separation", 0.0))
-        if sep > worst:
-            worst, which = sep, glayer
+        # Descontando lo que cada capa esta metida en su contorno, igual que
+        # hace MIM.1 mas abajo. Sin esto la separacion se pide entre bordes de
+        # bloque y no entre el metal de verdad: el capmet de un mimcap empieza
+        # 1.8 um dentro, asi que exigir 1.2 entre contornos dejaba 4.8 um entre
+        # FuseTops donde la regla pide 1.2 -- 2.4 um regalados por hueco.
+        need = sep - a.inset(glayer) - b.inset(glayer)
+        if need > worst:
+            worst, which = need, glayer
 
     # MIM.1: a MIM bottom plate owes 1.2um to any other met2, whether that is
     # another MIM or plain routing metal -- four times met2's own separation.
