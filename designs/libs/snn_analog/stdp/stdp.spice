@@ -68,25 +68,25 @@ X0 a_63_n131# a_n63_n339# a_n183_n131# w_n449_n560# pfet_03v3 ad=0.3p pd=2.2u as
 X0 a_1000_n131# a_n1000_n339# a_n1120_n131# a_n1330_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=10u
 .ends
 
-.subckt stdp nvpost nvpre vpost vpre vb_idep vb_itd vb_itp vb_pot vw Iout
-Xxm5_0 vw vw vw Iout xm5
+.subckt stdp avdd nvpost nvpre vpost vpre vb_idep vb_itd vb_itp vb_pot vw Iout
+Xxm5_0 vw avdd avdd Iout xm5
 Xxm3_0 vw vw vpre xm4_0/a_63_n131# xm3
-Xxm1_0 xm1_0/a_63_n131# vw vw vw xm1
+Xxm1_0 xm1_0/a_63_n131# avdd avdd avdd xm1
 Xxmcm_chain_4_0 vw vw xmcm_chain_4_0/a_1000_n131# xmcm_chain_4_0/a_n1000_n339# xmcm_chain_4
-Xxm8_0 xm8_0/a_63_n131# nvpre vw vw xm8
+Xxm8_0 xm8_0/a_63_n131# nvpre avdd avdd xm8
 Xxmcm_chain_2_0 xmcm_chain_3_0/a_1000_n131# vw xmcm_chain_2_0/a_1000_n131# xmcm_chain_4_0/a_n1000_n339#
 + xmcm_chain_2
-Xxm16_0 vw vb_idep vw xm9_0/a_63_n131# xm16
+Xxm16_0 avdd vb_idep avdd xm9_0/a_63_n131# xm16
 Xxmcm_chain_0_0 xmcm_chain_1_0/a_1000_n131# vw vw vb_itd xmcm_chain_0
 Xxm4_0 xm4_0/a_63_n131# vw vw vw xm4
 Xxm12_0 xm9_0/a_63_n131# vw vpost vw xm12
-Xxm2_0 vw nvpost vw xm1_0/a_63_n131# xm2
+Xxm2_0 vw nvpost avdd xm1_0/a_63_n131# xm2
 Xxmcm_1_0 vb_pot vw xm7_0/a_63_n131# vw xmcm_1
 Xxm9_0 xm9_0/a_63_n131# vw xm9_0/a_63_n131# vw xm9
 Xxmcm_chain_3_0 xmcm_chain_4_0/a_1000_n131# vw xmcm_chain_3_0/a_1000_n131# xmcm_chain_4_0/a_n1000_n339#
 + xmcm_chain_3
-Xxm17_0 vb_itp vw vw vw xm17
-Xxm7_0 xm7_0/a_63_n131# xm8_0/a_63_n131# vw vw xm7
+Xxm17_0 vb_itp avdd avdd avdd xm17
+Xxm7_0 xm7_0/a_63_n131# xm8_0/a_63_n131# avdd avdd xm7
 Xxmcm_chain_1_0 xmcm_chain_2_0/a_1000_n131# vw xmcm_chain_1_0/a_1000_n131# xmcm_chain_4_0/a_n1000_n339#
 + xmcm_chain_1
 .ends

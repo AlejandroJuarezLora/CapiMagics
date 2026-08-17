@@ -1,5 +1,5 @@
 ** sch_path: /foss/designs/CapiMagics/sch/stdp/stdp_lvs.sch
-.subckt stdp_lvs avss avdd nvpost nvpre vpost vpre vb_idep vb_itd vb_itp vb_pot vw iout
+.subckt stdp avss avdd nvpost nvpre vpost vpre vb_idep vb_itd vb_itp vb_pot vw iout
 *.PININFO avss:B avdd:B nvpost:B nvpre:B vpost:B vpre:B vb_idep:B vb_itd:B vb_itp:B vb_pot:B vw:B iout:O
 M1 net1 vpot avdd avdd pfet_03v3 L=0.28u W=0.22u nf=1
 M2 vw nvpost net1 avdd pfet_03v3 L=0.28u W=0.22u nf=1
