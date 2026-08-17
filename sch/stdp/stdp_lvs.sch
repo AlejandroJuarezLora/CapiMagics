@@ -41,8 +41,8 @@ T {all ammeters have been removed for LVS } -610 -190 0 0 0.4 0.4 {}
 T {added transistor to provide 
 current to the postsinpatic 
 neuron} 1160 70 0 0 0.4 0.4 {}
-N 110 -60 110 0 {lab=#net1}
-N 110 300 110 350 {lab=#net2}
+N 110 -60 110 0 {lab=n1}
+N 110 300 110 350 {lab=n2}
 N 490 -270 690 -270 {lab=avdd}
 N 490 -270 490 -210 {lab=avdd}
 N 110 -120 110 -90 {lab=avdd}
@@ -53,9 +53,9 @@ N 280 -150 280 -90 {lab=vpot}
 N 280 -10 490 -10 {lab=vpot}
 N 820 -270 820 -10 {lab=avdd}
 N 690 -270 820 -270 {lab=avdd}
-N 820 20 820 50 {lab=#net3}
+N 820 20 820 50 {lab=n4}
 N 820 110 820 130 {lab=avss}
-N 630 -10 780 -10 {lab=#net4}
+N 630 -10 780 -10 {lab=n3}
 N 490 -10 570 -10 {lab=vpot}
 N 280 -90 280 -10 {lab=vpot}
 N 150 -90 280 -90 {lab=vpot}
@@ -63,11 +63,11 @@ N 110 160 110 250 {lab=vw}
 N 110 160 140 160 {lab=vw}
 N -180 380 -70 380 {lab=vdep}
 N -70 380 70 380 {lab=vdep}
-N -390 380 -260 380 {lab=#net5}
-N -490 330 -490 350 {lab=#net5}
+N -390 380 -260 380 {lab=n5}
+N -490 330 -490 350 {lab=n5}
 N -490 230 -490 250 {lab=avdd}
-N -490 330 -390 330 {lab=#net5}
-N -390 330 -390 380 {lab=#net5}
+N -490 330 -390 330 {lab=n5}
+N -390 330 -390 380 {lab=n5}
 N 110 470 110 630 {lab=avss}
 N -490 380 -490 630 {lab=avss}
 N 600 -10 600 70 {lab=avdd}
@@ -83,8 +83,8 @@ N -590 790 -490 790 {lab=avss}
 N 280 -270 490 -270 {lab=avdd}
 N 110 60 110 160 {lab=vw}
 N -200 380 -180 380 {lab=vdep}
-N -490 310 -490 330 {lab=#net5}
-N -450 380 -390 380 {lab=#net5}
+N -490 310 -490 330 {lab=n5}
+N -450 380 -390 380 {lab=n5}
 N -490 250 -490 280 {lab=avdd}
 N -570 280 -530 280 {lab=vb_idep}
 N -240 570 -220 570 {lab=vb_itd}
@@ -98,13 +98,13 @@ N 820 130 820 190 {lab=avss}
 N 490 -140 490 -80 {lab=vpot}
 N -230 570 -220 570 {lab=vb_itd}
 N -220 570 -220 660 {lab=vb_itd}
-N -180 600 -180 630 {lab=#net6}
-N -180 690 -180 720 {lab=#net7}
+N -180 600 -180 630 {lab=n6}
+N -180 690 -180 720 {lab=n7}
 N -180 570 -90 570 {lab=avss}
 N -90 570 -90 700 {lab=avss}
 N -180 660 -90 660 {lab=avss}
 N -220 660 -220 750 {lab=vb_itd}
-N -180 780 -180 810 {lab=#net8}
+N -180 780 -180 810 {lab=n8}
 N -90 660 -90 790 {lab=avss}
 N -180 750 -90 750 {lab=avss}
 N -220 840 -220 930 {lab=vb_itd}
@@ -112,7 +112,7 @@ N -180 960 -180 990 {lab=avss}
 N -90 840 -90 970 {lab=avss}
 N -180 930 -90 930 {lab=avss}
 N -220 750 -220 840 {lab=vb_itd}
-N -180 870 -180 900 {lab=#net9}
+N -180 870 -180 900 {lab=n9}
 N -180 840 -90 840 {lab=avss}
 N -90 790 -90 840 {lab=avss}
 N -90 970 -90 990 {lab=avss}
@@ -368,7 +368,7 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/nfet_03v3.sym} -200 930 0 0 {name=MCM_8
+C {symbols/nfet_03v3.sym} -200 840 0 0 {name=MCM_8
 L=10u
 W=0.5u
 nf=1
@@ -382,7 +382,7 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {symbols/nfet_03v3.sym} -200 840 0 0 {name=MCM_9
+C {symbols/nfet_03v3.sym} -200 930 0 0 {name=MCM_9
 L=10u
 W=0.5u
 nf=1
@@ -415,3 +415,13 @@ spiceprefix=X
 }
 C {lab_pin.sym} 1000 150 0 0 {name=p6 sig_type=std_logic lab=vw}
 C {opin.sym} 1040 240 0 0 {name=p10 lab=iout}
+C {lab_pin.sym} -340 380 1 0 {name=p17 sig_type=std_logic lab=n5}
+C {lab_pin.sym} 110 330 0 0 {name=p22 sig_type=std_logic lab=n2}
+C {lab_pin.sym} 110 -30 0 0 {name=p24 sig_type=std_logic lab=n1
+}
+C {lab_pin.sym} 710 -10 1 0 {name=p25 sig_type=std_logic lab=n3}
+C {lab_pin.sym} 820 30 2 0 {name=p26 sig_type=std_logic lab=n4}
+C {lab_pin.sym} -180 620 2 0 {name=p27 sig_type=std_logic lab=n6}
+C {lab_pin.sym} -180 700 2 0 {name=p28 sig_type=std_logic lab=n7}
+C {lab_pin.sym} -180 790 2 0 {name=p29 sig_type=std_logic lab=n8}
+C {lab_pin.sym} -180 890 2 0 {name=p30 sig_type=std_logic lab=n9}
