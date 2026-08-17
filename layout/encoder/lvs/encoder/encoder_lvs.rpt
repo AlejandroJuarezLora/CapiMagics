@@ -28,17 +28,17 @@ Circuit 1: nfet_03v3                       |Circuit 2: nfet_03v3
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes nfet_03v3 and nfet_03v3 are equivalent.
-Flattening unmatched subcell Unnamed_687ce1f3 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell Unnamed_7de0eb72 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell Unnamed_71491ec0 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell Unnamed_163aa12f in circuit encoder (0)(1 instance)
-Flattening unmatched subcell Unnamed_eb5a1b4d in circuit encoder (0)(1 instance)
-Flattening unmatched subcell Unnamed_71054d7a in circuit encoder (0)(1 instance)
-Flattening unmatched subcell Unnamed_d49171d2 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell Unnamed_02d15547 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell Unnamed_3e36827e in circuit encoder (0)(1 instance)
-Flattening unmatched subcell Unnamed_29e4af9f in circuit encoder (0)(1 instance)
-Flattening unmatched subcell Unnamed_93cf1c6d in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm5 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm3 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm11 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm1 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm8 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm6 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm4 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm2 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm10 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm9 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm7 in circuit encoder (0)(1 instance)
 
 Class encoder (0):  Merged 2 parallel devices.
 Subcircuit summary:
@@ -47,7 +47,7 @@ Circuit 1: encoder                         |Circuit 2: encoder
 pfet_03v3 (7->5)                           |pfet_03v3 (7) **Mismatch**                 
 nfet_03v3 (4)                              |nfet_03v3 (4)                              
 Number of devices: 9 **Mismatch**          |Number of devices: 11 **Mismatch**         
-Number of nets: 10 **Mismatch**            |Number of nets: 12 **Mismatch**            
+Number of nets: 8 **Mismatch**             |Number of nets: 12 **Mismatch**            
 ---------------------------------------------------------------------------------------
 NET mismatches: Class fragments follow (with fanout counts):
 Circuit 1: encoder                         |Circuit 2: encoder                         
@@ -57,26 +57,33 @@ Net: Vdd                                   |Net: Vdd
   pfet_03v3/(1|3) = 5                      |  pfet_03v3/(1|3) = 7                      
   pfet_03v3/4 = 5                          |  pfet_03v3/4 = 7                          
                                            |                                           
-Net: Unnamed_687ce1f3_0/a_186_n173#        |Net: Iex_3_i                               
+Net: xm5_0/a_186_n173#                     |Net: Iex_3_i                               
   pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
                                            |                                           
-Net: Unnamed_163aa12f_0/a_186_n173#        |Net: Iex_4_i                               
+Net: xm6_0/a_186_n173#                     |Net: Iex_4_i                               
   pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
                                            |                                           
-Net: Unnamed_eb5a1b4d_0/a_28_n281#         |Net: Iex_1_i                               
-  pfet_03v3/2 = 2                          |  pfet_03v3/(1|3) = 1                      
-  nfet_03v3/(1|3) = 1                      |                                           
+Net: Vss                                   |Net: Vss                                   
+  nfet_03v3/4 = 4                          |  nfet_03v3/4 = 4                          
+  nfet_03v3/(1|3) = 6                      |  nfet_03v3/(1|3) = 2                      
   pfet_03v3/(1|3) = 1                      |                                           
+  pfet_03v3/2 = 2                          |                                           
                                            |                                           
-Net: Unnamed_93cf1c6d_0/a_28_n281#         |Net: x                                     
+Net: xm4_0/a_28_n281#                      |Net: x                                     
   pfet_03v3/2 = 2                          |  nfet_03v3/(1|3) = 1                      
-  nfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/2 = 3                          
+  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
+  nfet_03v3/(1|3) = 1                      |  pfet_03v3/2 = 3                          
                                            |                                           
 (no matching net)                          |Net: y                                     
                                            |  nfet_03v3/(1|3) = 1                      
                                            |  pfet_03v3/(1|3) = 1                      
                                            |  pfet_03v3/2 = 3                          
+                                           |                                           
+(no matching net)                          |Net: a                                     
+                                           |  nfet_03v3/(1|3) = 3                      
+                                           |                                           
+(no matching net)                          |Net: Iex_1_i                               
+                                           |  pfet_03v3/(1|3) = 1                      
                                            |                                           
 (no matching net)                          |Net: Iex_2_i                               
                                            |  pfet_03v3/(1|3) = 1                      
@@ -85,22 +92,22 @@ DEVICE mismatches: Class fragments follow (with node fanout counts):
 Circuit 1: encoder                         |Circuit 2: encoder                         
 
 ---------------------------------------------------------------------------------------
-Instance: Unnamed_687ce1f3_0/pfet_03v3:0   |Instance: pfet_03v3:m3                     
+Instance: xm5_0/pfet_03v3:0                |Instance: pfet_03v3:m3                     
   (1,3) = (10,1)                           |  (1,3) = (14,5)                           
+  2 = 13                                   |  2 = 5                                    
+  4 = 10                                   |  4 = 14                                   
+                                           |                                           
+Instance: xm3_0/pfet_03v3:0                |Instance: pfet_03v3:m4                     
+  (1,3) = (13,10)                          |  (1,3) = (14,5)                           
+  2 = 13                                   |  2 = 5                                    
+  4 = 10                                   |  4 = 14                                   
+                                           |                                           
+Instance: xm6_0/pfet_03v3:0                |Instance: pfet_03v3:m5                     
+  (1,3) = (10,1)                           |  (1,3) = (14,1)                           
   2 = 4                                    |  2 = 5                                    
   4 = 10                                   |  4 = 14                                   
                                            |                                           
-Instance: Unnamed_163aa12f_0/pfet_03v3:0   |Instance: pfet_03v3:m4                     
-  (1,3) = (10,1)                           |  (1,3) = (14,5)                           
-  2 = 4                                    |  2 = 5                                    
-  4 = 10                                   |  4 = 14                                   
-                                           |                                           
-Instance: Unnamed_eb5a1b4d_0/pfet_03v3:0   |Instance: pfet_03v3:m5                     
-  (1,3) = (10,4)                           |  (1,3) = (14,1)                           
-  2 = 4                                    |  2 = 5                                    
-  4 = 10                                   |  4 = 14                                   
-                                           |                                           
-Instance: Unnamed_93cf1c6d_0/pfet_03v3:0   |Instance: pfet_03v3:m7                     
+Instance: xm4_0/pfet_03v3:0                |Instance: pfet_03v3:m7                     
   (1,3) = (10,4)                           |  (1,3) = (14,1)                           
   2 = 4                                    |  2 = 5                                    
   4 = 10                                   |  4 = 14                                   
@@ -124,13 +131,13 @@ Subcircuit pins:
 Circuit 1: encoder                         |Circuit 2: encoder                         
 -------------------------------------------|-------------------------------------------
 Vdd                                        |Iex_2_i **Mismatch**                       
-Vss                                        |Vss                                        
-(no pin, node is Unnamed_93cf1c6d_0/a_28_n |Vdd                                        
-(no pin, node is Unnamed_29e4af9f_0/a_n100 |Vin                                        
-(no pin, node is Unnamed_29e4af9f_0/a_n100 |Vin_neg                                    
-(no pin, node is Unnamed_93cf1c6d_0/a_28_n |Iex_1_i                                    
-(no pin, node is Unnamed_93cf1c6d_0/a_28_n |Iex_3_i                                    
-(no pin, node is Unnamed_93cf1c6d_0/a_28_n |Iex_4_i                                    
+Vss                                        |Iex_1_i **Mismatch**                       
+(no pin, node is xm4_0/a_28_n281#)         |Vdd                                        
+(no pin, node is xm4_0/a_28_n281#)         |Vss                                        
+(no pin, node is xm2_0/a_n1000_n339#)      |Vin                                        
+(no pin, node is xm2_0/a_n1000_n339#)      |Vin_neg                                    
+(no pin, node is xm4_0/a_28_n281#)         |Iex_3_i                                    
+(no pin, node is xm4_0/a_28_n281#)         |Iex_4_i                                    
 ---------------------------------------------------------------------------------------
 Cell pin lists for encoder and encoder altered to match.
 Device classes encoder and encoder are equivalent.
