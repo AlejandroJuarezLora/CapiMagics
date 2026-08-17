@@ -1,0 +1,6 @@
+.subckt current_mirror avdd avss B A
+M1 A A avss avss nfet_03v3 L=0.28u W=4u nf=1
+M2 B A avss avss nfet_03v3 L=4u W=4u nf=1
+M3 B B avdd avdd pfet_03v3 L=0.5u W=8u nf=1
+M4 A A avdd avdd pfet_03v3 L=0.5u W=1.6u nf=1
+.ends
