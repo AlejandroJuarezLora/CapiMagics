@@ -1,0 +1,39 @@
+DESIGN_NAME: layer_output
+
+# --- RTL del top: instancia las 2 neuronas (x1, x2) ---
+VERILOG_FILES:
+  - dir::src/layer_output.v
+
+# --- Declaracion de la macro neurona_lvs ---
+# Solo se cuenta con gds y lef (unicas vistas obligatorias).
+# PENDIENTE: el LEF actual (neurona_lvs.lef) solo tiene el pin
+# "spike" definido con geometria; faltan Vdd, Vss, Iin y spike_neg.
+# Debe completarse antes de correr Floorplan/Placement/Routing.
+MACROS:
+  neurona_lvs:
+    gds:
+      - /eda/designs/CapiMagics/layout/lif/neurona_lvs.gds
+    lef:
+      - /eda/designs/CapiMagics/layout/lif/neurona_lvs.lef
+
+    # Calculado igual que en layer_input, a partir del LEF real:
+    # SIZE 57.860 BY 27.250 (W x H, en um). Margen de 10um a los
+    # bordes del die y 10um de canal de ruteo entre instancias
+    # (altura de fila = 27.25 + 10 = 37.25um):
+    instances:
+      x1:
+        location: [10, 10]
+        orientation: N
+      x2:
+        location: [10, 47.25]
+        orientation: N
+
+# --- Floorplan calculado a partir del LEF real de neurona_lvs ---
+# Ancho:  10 (margen izq) + 57.86 (macro) + 10 (margen der) = 77.86 -> 80
+# Alto:   10 (margen inf) + 2*27.25 (macros) + 1*10 (canal) + 10 (margen sup)
+#         = 10 + 54.5 + 10 + 10 = 84.5 -> 85
+DIE_AREA: [0, 0, 80, 85]
+FP_SIZING: absolute
+
+PDK: gf180mcuD
+STD_CELL_LIBRARY: gf180mcu_fd_sc_mcu7t5v0
