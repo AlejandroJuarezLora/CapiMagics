@@ -1,49 +1,49 @@
 * NGSPICE file created from neurona_lvs.ext - technology: gf180mcuD
 
-.subckt Unnamed_93ab5598 a_64_n131# w_n450_n560# a_n64_n339# a_n184_n131# VSUBS
+.subckt Unnamed_6ef8fc62 a_n5000_n414# a_n5120_n205# a_n5330_n579# a_5000_n205#
+X0 a_5000_n205# a_n5000_n414# a_n5120_n205# a_n5330_n579# nfet_03v3 ad=0.75p pd=3.7u as=0.75p ps=3.7u w=1.25u l=50u
+C0 a_n5000_n414# a_5000_n205# 0.16313f
+C1 a_n5000_n414# a_n5120_n205# 1.79587f
+C2 a_n5120_n205# a_5000_n205# 4.41454f
+C3 a_5000_n205# a_n5330_n579# 5.24766f
+C4 a_n5120_n205# a_n5330_n579# 1.123f
+C5 a_n5000_n414# a_n5330_n579# 21.826f
+.ends
+
+.subckt Unnamed_89a8896a a_64_n131# w_n450_n560# a_n64_n339# a_n184_n131# VSUBS
 X0 a_64_n131# a_n64_n339# a_n184_n131# w_n450_n560# pfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=0.64u
-C0 a_n184_n131# a_64_n131# 0.33132f
-C1 a_64_n131# w_n450_n560# 0.48547f
-C2 a_n184_n131# w_n450_n560# 0.22492f
+C0 w_n450_n560# a_n64_n339# 0.46029f
+C1 a_n184_n131# a_64_n131# 0.33132f
+C2 w_n450_n560# a_64_n131# 0.48547f
 C3 a_64_n131# a_n64_n339# 0.01761f
-C4 a_n184_n131# a_n64_n339# 0.04083f
-C5 w_n450_n560# a_n64_n339# 0.46029f
+C4 w_n450_n560# a_n184_n131# 0.22492f
+C5 a_n184_n131# a_n64_n339# 0.04083f
 C6 a_64_n131# VSUBS 0.04567f
 C7 a_n184_n131# VSUBS 0.04433f
 C8 a_n64_n339# VSUBS 0.0526f
 C9 w_n450_n560# VSUBS 3.77582f
 .ends
 
-.subckt Unnamed_36760ba3 a_64_n131# a_n394_n504# a_n64_n339# a_n184_n131#
+.subckt Unnamed_32beef5d a_64_n131# a_n394_n504# a_n64_n339# a_n184_n131#
 X0 a_64_n131# a_n64_n339# a_n184_n131# a_n394_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=0.64u
-C0 a_64_n131# a_n64_n339# 0.01761f
-C1 a_64_n131# a_n184_n131# 0.33132f
-C2 a_n64_n339# a_n184_n131# 0.04083f
+C0 a_n64_n339# a_n184_n131# 0.04083f
+C1 a_n64_n339# a_64_n131# 0.01761f
+C2 a_64_n131# a_n184_n131# 0.33132f
 C3 a_64_n131# a_n394_n504# 0.53111f
 C4 a_n184_n131# a_n394_n504# 0.26925f
 C5 a_n64_n339# a_n394_n504# 0.51289f
 .ends
 
-.subckt Unnamed_ff4a224e a_n5000_n414# a_n5120_n205# a_n5330_n579# a_5000_n205#
-X0 a_5000_n205# a_n5000_n414# a_n5120_n205# a_n5330_n579# nfet_03v3 ad=0.75p pd=3.7u as=0.75p ps=3.7u w=1.25u l=50u
-C0 a_5000_n205# a_n5000_n414# 0.16313f
-C1 a_5000_n205# a_n5120_n205# 4.41454f
-C2 a_n5000_n414# a_n5120_n205# 1.79587f
-C3 a_5000_n205# a_n5330_n579# 5.24766f
-C4 a_n5120_n205# a_n5330_n579# 1.123f
-C5 a_n5000_n414# a_n5330_n579# 21.826f
-.ends
-
 .subckt neurona_lvs vss
-XUnnamed_93ab5598_0 vss vss Unnamed_93ab5598_2/a_64_n131# vss vss Unnamed_93ab5598
-XUnnamed_93ab5598_1 vss vss Unnamed_93ab5598_2/a_64_n131# vss vss Unnamed_93ab5598
-XUnnamed_93ab5598_2 Unnamed_93ab5598_2/a_64_n131# vss Unnamed_93ab5598_2/a_n64_n339#
-+ vss vss Unnamed_93ab5598
-XUnnamed_36760ba3_0 vss vss Unnamed_93ab5598_2/a_64_n131# vss Unnamed_36760ba3
-XUnnamed_ff4a224e_0 vss vss vss vss Unnamed_ff4a224e
-XUnnamed_36760ba3_1 vss vss Unnamed_93ab5598_2/a_64_n131# vss Unnamed_36760ba3
-XUnnamed_36760ba3_2 Unnamed_93ab5598_2/a_64_n131# vss Unnamed_93ab5598_2/a_n64_n339#
-+ vss Unnamed_36760ba3
+XUnnamed_6ef8fc62_0 vss vss vss vss Unnamed_6ef8fc62
+XUnnamed_89a8896a_0 vss vss Unnamed_89a8896a_2/a_64_n131# vss vss Unnamed_89a8896a
+XUnnamed_89a8896a_1 vss vss Unnamed_89a8896a_2/a_64_n131# vss vss Unnamed_89a8896a
+XUnnamed_89a8896a_2 Unnamed_89a8896a_2/a_64_n131# vss Unnamed_89a8896a_2/a_n64_n339#
++ vss vss Unnamed_89a8896a
+XUnnamed_32beef5d_0 vss vss Unnamed_89a8896a_2/a_64_n131# vss Unnamed_32beef5d
+XUnnamed_32beef5d_1 vss vss Unnamed_89a8896a_2/a_64_n131# vss Unnamed_32beef5d
+XUnnamed_32beef5d_2 Unnamed_89a8896a_2/a_64_n131# vss Unnamed_89a8896a_2/a_n64_n339#
++ vss Unnamed_32beef5d
 R0 vss.n538 vss.n262 18200
 R1 vss.n539 vss.n261 18200
 R2 vss.n538 vss.n537 14243.8
@@ -5264,7 +5264,7 @@ R5216 spike.n576 spike.n575 0.00748758
 R5217 spike.n121 spike.n120 0.00641376
 R5218 spike.n125 spike.n120 0.00641376
 R5219 spike.n122 vss 0.00347
-C0 Unnamed_93ab5598_2/a_64_n131# Unnamed_93ab5598_2/a_n64_n339# 0.67458f
+C0 Unnamed_89a8896a_2/a_64_n131# Unnamed_89a8896a_2/a_n64_n339# 0.67458f
 C1 spike.n0 vss 0.00363f
 C2 spike.n1 vss 0.00213f
 C3 spike.n2 vss 0.0729f
@@ -7565,7 +7565,7 @@ C2297 vss.n573 vss 0
 C2298 vss.n574 vss 0
 C2299 vss.n575 vss 0
 C2300 vss.n576 vss 0
-C2301 Unnamed_93ab5598_2/a_64_n131# vss 0.7065f
-C2302 Unnamed_93ab5598_2/a_n64_n339# vss -0.16387f
+C2301 Unnamed_89a8896a_2/a_64_n131# vss 0.7065f
+C2302 Unnamed_89a8896a_2/a_n64_n339# vss -0.16387f
 .ends
 

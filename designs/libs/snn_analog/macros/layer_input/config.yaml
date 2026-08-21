@@ -1,44 +1,88 @@
+meta:
+  version: 3
+  flow: Classic
+
 DESIGN_NAME: layer_input
 
-# --- RTL del top: instancia las 4 neuronas
 VERILOG_FILES:
-  - dir::src/layer_input.v
-# --- Declaracion de la macro neurona_input_current ---
-MACROS:
-  neurona_input_current:
-    gds:
-      - /eda/designs/CapiMagics/designs/libs/snn_analog/lif/neurona_input_current.gds
-    lef:
-      - /eda/designs/CapiMagics/designs/libs/snn_analog/lif/neurona_input_current.lef
+  - dir::layer_input.v
 
-    # Posicion/orientacion de cada instancia. Los nombres deben
-    # coincidir EXACTAMENTE con los nombres de instancia en layer_input.v
-    # Calculado a partir del LEF real: SIZE 57.860 BY 27.250 (W x H, en um)
-    # Margen de 10um a los bordes del die y 10um de canal de ruteo
-    # entre cada instancia (altura de fila = 27.25 + 10 = 37.25um):
-    #   x1: y = 10
-    #   x2: y = 10 + 37.25         = 47.25
-    #   x3: y = 47.25 + 37.25      = 84.5
-    #   x4: y = 84.5 + 37.25       = 121.75
+# --- Parámetros de Floorplaning ---
+FP_SIZING: absolute
+DIE_AREA:
+  - 0
+  - 0
+  - 142
+  - 82
+CORE_AREA:
+  - 5
+  - 5
+  - 137
+  - 77
+
+# --- Alimentación y Potencia ---
+VDD_NETS:
+  - avdd
+  - VDD
+GND_NETS:
+  - avss
+  - VSS
+
+# --- Conexiones de Potencia para los Macros ---
+# Mapea las redes de alimentación del diseño (avdd/avss) a los pines del LEF (Vdd/Vss)
+PDN_MACRO_CONNECTIONS:
+  - "x.* avdd avss Vdd Vss"
+
+# --- Desactivar Optimización y Reparación de Celdas Estándar Temporal en lo que arreglan lo de los capacitores :/, Esto se deberia de cambiar a true cuando se tenga cada uno de los parametros conectado a cada uno de sus pines, debido a que no se encuentran, esto se debe que libreline lo quiere reparar para llegar al vdd del elemento, pero como no existe da error, para evitar eso se desactivo temporalmente para seguir con el flujo lo mas deseado posible y observar que todo funciona correctamente---
+
+#A evaluar 
+RUN_POST_GPL_DESIGN_REPAIR: false
+RUN_REPAIR_DESIGN: false
+
+#forzoso mantener desactivado 
+RUN_CTS: false
+##
+
+# --- Reglas de Enrutamiento y Capas (GF180MCU) ---
+PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+RT_MIN_LAYER: Metal3
+RT_MAX_LAYER: Metal5
+ROUTING_CORES: 12
+GRT_ALLOW_CONGESTION: true
+
+# --- Halo y Espaciado de Macros ---
+FP_MACRO_HORIZONTAL_HALO: 2
+FP_MACRO_VERTICAL_HALO: 2
+
+# --- Definición de Macros Analógicos ---
+MACROS:
+  neurona_lvs:
+    gds:
+      - dir::../../lif/neurona_lvs.gds
+    lef:
+      - dir::../../lif/neurona_lvs.lef
+    spice:
+      - dir::../../lif/neurona_lvs.spice
+    vh:
+      - dir::../../lif/neurona_lvs.v
     instances:
       x1:
-        location: [10, 10]
+        location:
+          - 10
+          - 10
         orientation: N
       x2:
-        location: [10, 47.25]
+        location:
+          - 73
+          - 10
         orientation: N
       x3:
-        location: [10, 84.5]
+        location:
+          - 10
+          - 43
         orientation: N
       x4:
-        location: [10, 121.75]
+        location:
+          - 73
+          - 43
         orientation: N
-
-# --- Floorplan calculado a partir del LEF real de neurona_lvs ---
-# Ancho:  10 (margen izq) + 57.86 (macro) + 10 (margen der) = 77.86 -> 80
-# Alto:   10 (margen inf) + 4*27.25 (macros) + 3*10 (canales) + 10 (margen sup)
-#         = 10 + 109 + 30 + 10 = 159
-DIE_AREA: [0, 0, 80, 159]
-FP_SIZING: absolute
-PDK: gf180mcuD
-STD_CELL_LIBRARY: gf180mcu_fd_sc_mcu7t5v0
