@@ -1,5 +1,0 @@
-module Encoder(
-
-);
-
-endmodule

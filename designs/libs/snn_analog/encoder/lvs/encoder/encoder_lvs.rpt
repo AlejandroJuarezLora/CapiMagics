@@ -40,99 +40,32 @@ Flattening unmatched subcell xm10 in circuit encoder (0)(1 instance)
 Flattening unmatched subcell xm9 in circuit encoder (0)(1 instance)
 Flattening unmatched subcell xm7 in circuit encoder (0)(1 instance)
 
-Class encoder (0):  Merged 2 parallel devices.
 Subcircuit summary:
 Circuit 1: encoder                         |Circuit 2: encoder                         
 -------------------------------------------|-------------------------------------------
-pfet_03v3 (7->5)                           |pfet_03v3 (7) **Mismatch**                 
+pfet_03v3 (7)                              |pfet_03v3 (7)                              
 nfet_03v3 (4)                              |nfet_03v3 (4)                              
-Number of devices: 9 **Mismatch**          |Number of devices: 11 **Mismatch**         
-Number of nets: 10 **Mismatch**            |Number of nets: 12 **Mismatch**            
+Number of devices: 11                      |Number of devices: 11                      
+Number of nets: 12                         |Number of nets: 12                         
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: encoder                         |Circuit 2: encoder                         
-
----------------------------------------------------------------------------------------
-Net: Vdd                                   |Net: Vdd                                   
-  pfet_03v3/(1|3) = 5                      |  pfet_03v3/(1|3) = 7                      
-  pfet_03v3/4 = 5                          |  pfet_03v3/4 = 7                          
-                                           |                                           
-Net: xm5_0/a_186_n173#                     |Net: Iex_3_i                               
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |                                           
-Net: xm6_0/a_186_n173#                     |Net: Iex_4_i                               
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |                                           
-Net: xm3_0/a_28_n281#                      |Net: Iex_1_i                               
-  pfet_03v3/2 = 2                          |  pfet_03v3/(1|3) = 1                      
-  pfet_03v3/(1|3) = 1                      |                                           
-  nfet_03v3/(1|3) = 1                      |                                           
-                                           |                                           
-Net: xm4_0/a_28_n281#                      |Net: x                                     
-  pfet_03v3/2 = 2                          |  nfet_03v3/(1|3) = 1                      
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-  nfet_03v3/(1|3) = 1                      |  pfet_03v3/2 = 3                          
-                                           |                                           
-(no matching net)                          |Net: y                                     
-                                           |  nfet_03v3/(1|3) = 1                      
-                                           |  pfet_03v3/(1|3) = 1                      
-                                           |  pfet_03v3/2 = 3                          
-                                           |                                           
-(no matching net)                          |Net: Iex_2_i                               
-                                           |  pfet_03v3/(1|3) = 1                      
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
-Circuit 1: encoder                         |Circuit 2: encoder                         
-
----------------------------------------------------------------------------------------
-Instance: xm5_0/pfet_03v3:0                |Instance: pfet_03v3:m3                     
-  (1,3) = (10,1)                           |  (1,3) = (14,5)                           
-  2 = 4                                    |  2 = 5                                    
-  4 = 10                                   |  4 = 14                                   
-                                           |                                           
-Instance: xm3_0/pfet_03v3:0                |Instance: pfet_03v3:m4                     
-  (1,3) = (10,4)                           |  (1,3) = (14,5)                           
-  2 = 4                                    |  2 = 5                                    
-  4 = 10                                   |  4 = 14                                   
-                                           |                                           
-Instance: xm6_0/pfet_03v3:0                |Instance: pfet_03v3:m5                     
-  (1,3) = (10,1)                           |  (1,3) = (14,1)                           
-  2 = 4                                    |  2 = 5                                    
-  4 = 10                                   |  4 = 14                                   
-                                           |                                           
-Instance: xm4_0/pfet_03v3:0                |Instance: pfet_03v3:m7                     
-  (1,3) = (10,4)                           |  (1,3) = (14,1)                           
-  2 = 4                                    |  2 = 5                                    
-  4 = 10                                   |  4 = 14                                   
-                                           |                                           
-(no matching instance)                     |Instance: pfet_03v3:m6                     
-                                           |  (1,3) = (14,1)                           
-                                           |  2 = 5                                    
-                                           |  4 = 14                                   
-                                           |                                           
-                                           |                                           
-(no matching instance)                     |Instance: pfet_03v3:m8                     
-                                           |  (1,3) = (14,1)                           
-                                           |  2 = 5                                    
-                                           |  4 = 14                                   
-                                           |                                           
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
 Subcircuit pins:
 Circuit 1: encoder                         |Circuit 2: encoder                         
 -------------------------------------------|-------------------------------------------
-Vdd                                        |Iex_2_i **Mismatch**                       
 Vss                                        |Vss                                        
-(no pin, node is xm4_0/a_28_n281#)         |Vdd                                        
-(no pin, node is xm2_0/a_n1000_n339#)      |Vin                                        
-(no pin, node is xm2_0/a_n1000_n339#)      |Vin_neg                                    
-(no pin, node is xm4_0/a_28_n281#)         |Iex_1_i                                    
-(no pin, node is xm4_0/a_28_n281#)         |Iex_3_i                                    
-(no pin, node is xm4_0/a_28_n281#)         |Iex_4_i                                    
+Vin                                        |Vin                                        
+Vin_neg                                    |Vin_neg                                    
+Iex_2_i                                    |Iex_2_i                                    
+Iex_3_i                                    |Iex_3_i                                    
+Iex_4_i                                    |Iex_4_i                                    
+Iex_1_i                                    |Iex_1_i                                    
+Vdd                                        |Vdd                                        
 ---------------------------------------------------------------------------------------
-Cell pin lists for encoder and encoder altered to match.
+Cell pin lists are equivalent.
 Device classes encoder and encoder are equivalent.
 
-Final result: Top level cell failed pin matching.
+Final result: Circuits match uniquely.
+.

@@ -2,12 +2,12 @@
 
 .subckt xm5 a_n1500_n339# a_n1620_n131# w_n1886_n560# a_1500_n131# VSUBS
 X0 a_1500_n131# a_n1500_n339# a_n1620_n131# w_n1886_n560# pfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=15u
-C0 w_n1886_n560# a_n1620_n131# 0.45972f
-C1 a_1500_n131# a_n1500_n339# 0.06934f
-C2 a_n1620_n131# a_1500_n131# 1.44038f
-C3 a_n1620_n131# a_n1500_n339# 0.6108f
-C4 w_n1886_n560# a_1500_n131# 1.82938f
-C5 w_n1886_n560# a_n1500_n339# 6.38155f
+C0 w_n1886_n560# a_n1500_n339# 6.38155f
+C1 a_n1620_n131# a_1500_n131# 1.44038f
+C2 w_n1886_n560# a_1500_n131# 1.82938f
+C3 a_1500_n131# a_n1500_n339# 0.06934f
+C4 w_n1886_n560# a_n1620_n131# 0.45972f
+C5 a_n1620_n131# a_n1500_n339# 0.6108f
 C6 a_1500_n131# VSUBS 0.06141f
 C7 a_n1620_n131# VSUBS 0.05599f
 C8 a_n1500_n339# VSUBS 0.30906f
@@ -16,9 +16,9 @@ C9 w_n1886_n560# VSUBS 15.2029f
 
 .subckt xm3 a_63_n131# a_n393_n504# a_n63_n339# a_n183_n131#
 X0 a_63_n131# a_n63_n339# a_n183_n131# a_n393_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=0.63u
-C0 a_n63_n339# a_63_n131# 0.01741f
-C1 a_63_n131# a_n183_n131# 0.33209f
-C2 a_n63_n339# a_n183_n131# 0.04027f
+C0 a_n63_n339# a_n183_n131# 0.04027f
+C1 a_n63_n339# a_63_n131# 0.01741f
+C2 a_63_n131# a_n183_n131# 0.33209f
 C3 a_63_n131# a_n393_n504# 0.53054f
 C4 a_n183_n131# a_n393_n504# 0.26905f
 C5 a_n63_n339# a_n393_n504# 0.50927f
@@ -26,12 +26,12 @@ C5 a_n63_n339# a_n393_n504# 0.50927f
 
 .subckt xm1 a_63_n131# a_n63_n339# w_n449_n560# a_n183_n131# VSUBS
 X0 a_63_n131# a_n63_n339# a_n183_n131# w_n449_n560# pfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=0.63u
-C0 w_n449_n560# a_n183_n131# 0.2249f
-C1 a_63_n131# a_n63_n339# 0.01741f
-C2 a_n183_n131# a_63_n131# 0.33209f
-C3 a_n183_n131# a_n63_n339# 0.04027f
-C4 w_n449_n560# a_63_n131# 0.48511f
-C5 w_n449_n560# a_n63_n339# 0.45684f
+C0 w_n449_n560# a_n63_n339# 0.45684f
+C1 a_n183_n131# a_63_n131# 0.33209f
+C2 w_n449_n560# a_63_n131# 0.48511f
+C3 a_63_n131# a_n63_n339# 0.01741f
+C4 w_n449_n560# a_n183_n131# 0.2249f
+C5 a_n183_n131# a_n63_n339# 0.04027f
 C6 a_63_n131# VSUBS 0.04546f
 C7 a_n183_n131# VSUBS 0.04416f
 C8 a_n63_n339# VSUBS 0.05243f
@@ -40,9 +40,9 @@ C9 w_n449_n560# VSUBS 3.76898f
 
 .subckt xmcm_chain_4 a_n1120_n131# a_n1330_n504# a_1000_n131# a_n1000_n339#
 X0 a_1000_n131# a_n1000_n339# a_n1120_n131# a_n1330_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=10u
-C0 a_n1000_n339# a_1000_n131# 0.06176f
-C1 a_1000_n131# a_n1120_n131# 1.01551f
-C2 a_n1000_n339# a_n1120_n131# 0.42273f
+C0 a_n1000_n339# a_n1120_n131# 0.42273f
+C1 a_n1000_n339# a_1000_n131# 0.06176f
+C2 a_1000_n131# a_n1120_n131# 1.01551f
 C3 a_1000_n131# a_n1330_n504# 1.43795f
 C4 a_n1120_n131# a_n1330_n504# 0.4423f
 C5 a_n1000_n339# a_n1330_n504# 4.53847f
@@ -50,12 +50,12 @@ C5 a_n1000_n339# a_n1330_n504# 4.53847f
 
 .subckt xm8 a_63_n131# a_n63_n339# w_n449_n560# a_n183_n131# VSUBS
 X0 a_63_n131# a_n63_n339# a_n183_n131# w_n449_n560# pfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=0.63u
-C0 w_n449_n560# a_n183_n131# 0.2249f
-C1 a_63_n131# a_n63_n339# 0.01741f
-C2 a_n183_n131# a_63_n131# 0.33209f
-C3 a_n183_n131# a_n63_n339# 0.04027f
-C4 w_n449_n560# a_63_n131# 0.48511f
-C5 w_n449_n560# a_n63_n339# 0.45684f
+C0 w_n449_n560# a_n63_n339# 0.45684f
+C1 a_n183_n131# a_63_n131# 0.33209f
+C2 w_n449_n560# a_63_n131# 0.48511f
+C3 a_63_n131# a_n63_n339# 0.01741f
+C4 w_n449_n560# a_n183_n131# 0.2249f
+C5 a_n183_n131# a_n63_n339# 0.04027f
 C6 a_63_n131# VSUBS 0.04546f
 C7 a_n183_n131# VSUBS 0.04416f
 C8 a_n63_n339# VSUBS 0.05243f
@@ -64,9 +64,9 @@ C9 w_n449_n560# VSUBS 3.76898f
 
 .subckt xmcm_chain_2 a_n1120_n131# a_n1330_n504# a_1000_n131# a_n1000_n339#
 X0 a_1000_n131# a_n1000_n339# a_n1120_n131# a_n1330_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=10u
-C0 a_n1000_n339# a_1000_n131# 0.06176f
-C1 a_1000_n131# a_n1120_n131# 1.01551f
-C2 a_n1000_n339# a_n1120_n131# 0.42273f
+C0 a_n1000_n339# a_n1120_n131# 0.42273f
+C1 a_n1000_n339# a_1000_n131# 0.06176f
+C2 a_1000_n131# a_n1120_n131# 1.01551f
 C3 a_1000_n131# a_n1330_n504# 1.43795f
 C4 a_n1120_n131# a_n1330_n504# 0.4423f
 C5 a_n1000_n339# a_n1330_n504# 4.53847f
@@ -74,12 +74,12 @@ C5 a_n1000_n339# a_n1330_n504# 4.53847f
 
 .subckt xm16 a_n400_n1101# a_n280_n1309# w_n666_n1529# a_280_n1101# VSUBS
 X0 a_280_n1101# a_n280_n1309# a_n400_n1101# w_n666_n1529# pfet_03v3 ad=6.12p pd=21.6u as=6.12p ps=21.6u w=10.2u l=2.8u
-C0 w_n666_n1529# a_n400_n1101# 1.08957f
-C1 a_280_n1101# a_n280_n1309# 0.57005f
-C2 a_n400_n1101# a_280_n1101# 0.72266f
-C3 a_n400_n1101# a_n280_n1309# 0.64393f
-C4 w_n666_n1529# a_280_n1101# 1.53123f
-C5 w_n666_n1529# a_n280_n1309# 1.30956f
+C0 w_n666_n1529# a_n280_n1309# 1.30956f
+C1 a_n400_n1101# a_280_n1101# 0.72266f
+C2 w_n666_n1529# a_280_n1101# 1.53123f
+C3 a_280_n1101# a_n280_n1309# 0.57005f
+C4 w_n666_n1529# a_n400_n1101# 1.08957f
+C5 a_n400_n1101# a_n280_n1309# 0.64393f
 C6 a_280_n1101# VSUBS 0.28176f
 C7 a_n400_n1101# VSUBS 0.30514f
 C8 a_n280_n1309# VSUBS 0.12268f
@@ -88,9 +88,9 @@ C9 w_n666_n1529# VSUBS 13.9301f
 
 .subckt xmcm_chain_0 a_n1120_n131# a_n1330_n504# a_1000_n131# a_n1000_n339#
 X0 a_1000_n131# a_n1000_n339# a_n1120_n131# a_n1330_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=10u
-C0 a_n1000_n339# a_1000_n131# 0.06176f
-C1 a_1000_n131# a_n1120_n131# 1.01551f
-C2 a_n1000_n339# a_n1120_n131# 0.42273f
+C0 a_n1000_n339# a_n1120_n131# 0.42273f
+C1 a_n1000_n339# a_1000_n131# 0.06176f
+C2 a_1000_n131# a_n1120_n131# 1.01551f
 C3 a_1000_n131# a_n1330_n504# 1.43795f
 C4 a_n1120_n131# a_n1330_n504# 0.4423f
 C5 a_n1000_n339# a_n1330_n504# 4.53847f
@@ -98,9 +98,9 @@ C5 a_n1000_n339# a_n1330_n504# 4.53847f
 
 .subckt xm4 a_63_n131# a_n393_n504# a_n63_n339# a_n183_n131#
 X0 a_63_n131# a_n63_n339# a_n183_n131# a_n393_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=0.63u
-C0 a_n63_n339# a_63_n131# 0.01741f
-C1 a_63_n131# a_n183_n131# 0.33209f
-C2 a_n63_n339# a_n183_n131# 0.04027f
+C0 a_n63_n339# a_n183_n131# 0.04027f
+C1 a_n63_n339# a_63_n131# 0.01741f
+C2 a_63_n131# a_n183_n131# 0.33209f
 C3 a_63_n131# a_n393_n504# 0.53054f
 C4 a_n183_n131# a_n393_n504# 0.26905f
 C5 a_n63_n339# a_n393_n504# 0.50927f
@@ -108,9 +108,9 @@ C5 a_n63_n339# a_n393_n504# 0.50927f
 
 .subckt xm12 a_63_n131# a_n393_n504# a_n63_n339# a_n183_n131#
 X0 a_63_n131# a_n63_n339# a_n183_n131# a_n393_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=0.63u
-C0 a_n63_n339# a_63_n131# 0.01741f
-C1 a_63_n131# a_n183_n131# 0.33209f
-C2 a_n63_n339# a_n183_n131# 0.04027f
+C0 a_n63_n339# a_n183_n131# 0.04027f
+C1 a_n63_n339# a_63_n131# 0.01741f
+C2 a_63_n131# a_n183_n131# 0.33209f
 C3 a_63_n131# a_n393_n504# 0.53054f
 C4 a_n183_n131# a_n393_n504# 0.26905f
 C5 a_n63_n339# a_n393_n504# 0.50927f
@@ -118,12 +118,12 @@ C5 a_n63_n339# a_n393_n504# 0.50927f
 
 .subckt xm2 a_63_n131# a_n63_n339# w_n449_n560# a_n183_n131# VSUBS
 X0 a_63_n131# a_n63_n339# a_n183_n131# w_n449_n560# pfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=0.63u
-C0 w_n449_n560# a_n183_n131# 0.2249f
-C1 a_63_n131# a_n63_n339# 0.01741f
-C2 a_n183_n131# a_63_n131# 0.33209f
-C3 a_n183_n131# a_n63_n339# 0.04027f
-C4 w_n449_n560# a_63_n131# 0.48511f
-C5 w_n449_n560# a_n63_n339# 0.45684f
+C0 w_n449_n560# a_n63_n339# 0.45684f
+C1 a_n183_n131# a_63_n131# 0.33209f
+C2 w_n449_n560# a_63_n131# 0.48511f
+C3 a_63_n131# a_n63_n339# 0.01741f
+C4 w_n449_n560# a_n183_n131# 0.2249f
+C5 a_n183_n131# a_n63_n339# 0.04027f
 C6 a_63_n131# VSUBS 0.04546f
 C7 a_n183_n131# VSUBS 0.04416f
 C8 a_n63_n339# VSUBS 0.05243f
@@ -132,9 +132,9 @@ C9 w_n449_n560# VSUBS 3.76898f
 
 .subckt xmcm_1 a_n280_n350# a_n400_n141# a_280_n141# a_n610_n515#
 X0 a_280_n141# a_n280_n350# a_n400_n141# a_n610_n515# nfet_03v3 ad=0.366p pd=2.42u as=0.366p ps=2.42u w=0.61u l=2.8u
-C0 a_n280_n350# a_280_n141# 0.04694f
-C1 a_280_n141# a_n400_n141# 0.4351f
-C2 a_n280_n350# a_n400_n141# 0.1455f
+C0 a_n280_n350# a_n400_n141# 0.1455f
+C1 a_n280_n350# a_280_n141# 0.04694f
+C2 a_280_n141# a_n400_n141# 0.4351f
 C3 a_280_n141# a_n610_n515# 0.76826f
 C4 a_n400_n141# a_n610_n515# 0.3279f
 C5 a_n280_n350# a_n610_n515# 1.4155f
@@ -142,9 +142,9 @@ C5 a_n280_n350# a_n610_n515# 1.4155f
 
 .subckt xm9 a_63_n131# a_n393_n504# a_n63_n339# a_n183_n131#
 X0 a_63_n131# a_n63_n339# a_n183_n131# a_n393_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=0.63u
-C0 a_n63_n339# a_63_n131# 0.01741f
-C1 a_63_n131# a_n183_n131# 0.33209f
-C2 a_n63_n339# a_n183_n131# 0.04027f
+C0 a_n63_n339# a_n183_n131# 0.04027f
+C1 a_n63_n339# a_63_n131# 0.01741f
+C2 a_63_n131# a_n183_n131# 0.33209f
 C3 a_63_n131# a_n393_n504# 0.53054f
 C4 a_n183_n131# a_n393_n504# 0.26905f
 C5 a_n63_n339# a_n393_n504# 0.50927f
@@ -152,9 +152,9 @@ C5 a_n63_n339# a_n393_n504# 0.50927f
 
 .subckt xmcm_chain_3 a_n1120_n131# a_n1330_n504# a_1000_n131# a_n1000_n339#
 X0 a_1000_n131# a_n1000_n339# a_n1120_n131# a_n1330_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=10u
-C0 a_n1000_n339# a_1000_n131# 0.06176f
-C1 a_1000_n131# a_n1120_n131# 1.01551f
-C2 a_n1000_n339# a_n1120_n131# 0.42273f
+C0 a_n1000_n339# a_n1120_n131# 0.42273f
+C1 a_n1000_n339# a_1000_n131# 0.06176f
+C2 a_1000_n131# a_n1120_n131# 1.01551f
 C3 a_1000_n131# a_n1330_n504# 1.43795f
 C4 a_n1120_n131# a_n1330_n504# 0.4423f
 C5 a_n1000_n339# a_n1330_n504# 4.53847f
@@ -162,12 +162,12 @@ C5 a_n1000_n339# a_n1330_n504# 4.53847f
 
 .subckt xm17 a_n460_n339# w_n846_n560# a_n580_n131# a_460_n131# VSUBS
 X0 a_460_n131# a_n460_n339# a_n580_n131# w_n846_n560# pfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=4.6u
-C0 w_n846_n560# a_n580_n131# 0.30191f
-C1 a_460_n131# a_n460_n339# 0.04912f
-C2 a_n580_n131# a_460_n131# 0.57434f
-C3 a_n580_n131# a_n460_n339# 0.21491f
-C4 w_n846_n560# a_460_n131# 0.87034f
-C5 w_n846_n560# a_n460_n339# 2.05763f
+C0 w_n846_n560# a_n460_n339# 2.05763f
+C1 a_n580_n131# a_460_n131# 0.57434f
+C2 w_n846_n560# a_460_n131# 0.87034f
+C3 a_460_n131# a_n460_n339# 0.04912f
+C4 w_n846_n560# a_n580_n131# 0.30191f
+C5 a_n580_n131# a_n460_n339# 0.21491f
 C6 a_460_n131# VSUBS 0.04483f
 C7 a_n580_n131# VSUBS 0.04363f
 C8 a_n460_n339# VSUBS 0.12333f
@@ -176,12 +176,12 @@ C9 w_n846_n560# VSUBS 6.90762f
 
 .subckt xm7 a_63_n131# a_n63_n339# w_n449_n560# a_n183_n131# VSUBS
 X0 a_63_n131# a_n63_n339# a_n183_n131# w_n449_n560# pfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=0.63u
-C0 w_n449_n560# a_n183_n131# 0.2249f
-C1 a_63_n131# a_n63_n339# 0.01741f
-C2 a_n183_n131# a_63_n131# 0.33209f
-C3 a_n183_n131# a_n63_n339# 0.04027f
-C4 w_n449_n560# a_63_n131# 0.48511f
-C5 w_n449_n560# a_n63_n339# 0.45684f
+C0 w_n449_n560# a_n63_n339# 0.45684f
+C1 a_n183_n131# a_63_n131# 0.33209f
+C2 w_n449_n560# a_63_n131# 0.48511f
+C3 a_63_n131# a_n63_n339# 0.01741f
+C4 w_n449_n560# a_n183_n131# 0.2249f
+C5 a_n183_n131# a_n63_n339# 0.04027f
 C6 a_63_n131# VSUBS 0.04546f
 C7 a_n183_n131# VSUBS 0.04416f
 C8 a_n63_n339# VSUBS 0.05243f
@@ -190,9 +190,9 @@ C9 w_n449_n560# VSUBS 3.76898f
 
 .subckt xmcm_chain_1 a_n1120_n131# a_n1330_n504# a_1000_n131# a_n1000_n339#
 X0 a_1000_n131# a_n1000_n339# a_n1120_n131# a_n1330_n504# nfet_03v3 ad=0.3p pd=2.2u as=0.3p ps=2.2u w=0.5u l=10u
-C0 a_n1000_n339# a_1000_n131# 0.06176f
-C1 a_1000_n131# a_n1120_n131# 1.01551f
-C2 a_n1000_n339# a_n1120_n131# 0.42273f
+C0 a_n1000_n339# a_n1120_n131# 0.42273f
+C1 a_n1000_n339# a_1000_n131# 0.06176f
+C2 a_1000_n131# a_n1120_n131# 1.01551f
 C3 a_1000_n131# a_n1330_n504# 1.43795f
 C4 a_n1120_n131# a_n1330_n504# 0.4423f
 C5 a_n1000_n339# a_n1330_n504# 4.53847f
@@ -3199,83 +3199,83 @@ R2976 vb_idep vb_idep.n0 18.7425
 R2977 vb_itp vb_itp.n0 4.99353
 R2978 nvpre nvpre.n0 24.608
 R2979 nvpost nvpost.n0 24.608
-C0 xmcm_chain_2_0/a_1000_n131# xmcm_chain_4_0/a_1000_n131# 0.00555f
-C1 xm9_0/a_63_n131# vpost 0.02214f
-C2 xmcm_chain_3_0/a_1000_n131# vb_pot 0
-C3 xm7_0/a_63_n131# vpost 0
-C4 xmcm_chain_1_0/a_1000_n131# xmcm_chain_4_0/a_1000_n131# 0.01434f
-C5 xm9_0/a_63_n131# xm4_0/a_63_n131# 0.0142f
-C6 xmcm_chain_2_0/a_1000_n131# vpre 0
-C7 xm8_0/a_63_n131# vb_itp 0
-C8 xm1_0/a_63_n131# avdd 1.1665f
-C9 xmcm_chain_4_0/a_n1000_n339# vb_itd 0.0203f
-C10 xm9_0/a_63_n131# xmcm_chain_4_0/a_n1000_n339# 0.00198f
-C11 vpre xmcm_chain_1_0/a_1000_n131# 0
-C12 vb_pot vb_itd 0.00689f
-C13 xm9_0/a_63_n131# vb_pot 0
-C14 xm7_0/a_63_n131# vb_pot 0.01448f
-C15 xmcm_chain_3_0/a_1000_n131# vb_itd 0.00376f
-C16 xm9_0/a_63_n131# xmcm_chain_3_0/a_1000_n131# 0
-C17 xm1_0/a_63_n131# Iout 0
-C18 vb_itp avdd 0.05892f
-C19 xm7_0/a_63_n131# xmcm_chain_3_0/a_1000_n131# 0
-C20 xm8_0/a_63_n131# avdd 0.83436f
-C21 vb_idep avdd 0.10619f
-C22 xmcm_chain_1_0/a_1000_n131# vb_idep 0
-C23 xm9_0/a_63_n131# nvpre 0
-C24 xm7_0/a_63_n131# nvpre 0
-C25 xmcm_chain_4_0/a_1000_n131# xmcm_chain_4_0/a_n1000_n339# 0.12631f
-C26 Iout xm8_0/a_63_n131# 0
-C27 vpre xm4_0/a_63_n131# 0
-C28 xm1_0/a_63_n131# xm4_0/a_63_n131# 0.01204f
-C29 xm9_0/a_63_n131# vb_itd 0
-C30 xm7_0/a_63_n131# vb_itd 0
-C31 xmcm_chain_2_0/a_1000_n131# xmcm_chain_1_0/a_1000_n131# 0.07902f
-C32 xm9_0/a_63_n131# xm7_0/a_63_n131# 0.47751f
-C33 xmcm_chain_1_0/a_1000_n131# avdd 0.01135f
-C34 xmcm_chain_4_0/a_1000_n131# xmcm_chain_3_0/a_1000_n131# 0.04151f
-C35 vpre xmcm_chain_4_0/a_n1000_n339# 0
-C36 Iout avdd 0.08486f
-C37 xm7_0/a_63_n131# nvpost 0.00625f
-C38 xmcm_chain_2_0/a_1000_n131# vpost 0
-C39 xmcm_chain_4_0/a_1000_n131# vb_itd 0.0025f
-C40 xmcm_chain_1_0/a_1000_n131# vpost 0
-C41 xmcm_chain_2_0/a_1000_n131# xm4_0/a_63_n131# 0
-C42 xm4_0/a_63_n131# avdd 0
-C43 xmcm_chain_1_0/a_1000_n131# xm4_0/a_63_n131# 0
-C44 xmcm_chain_2_0/a_1000_n131# xmcm_chain_4_0/a_n1000_n339# 0.12554f
-C45 xm1_0/a_63_n131# xm7_0/a_63_n131# 0.07138f
-C46 xmcm_chain_2_0/a_1000_n131# vb_pot 0.00131f
-C47 nvpre vb_itp 0.00736f
-C48 xmcm_chain_1_0/a_1000_n131# xmcm_chain_4_0/a_n1000_n339# 0.04758f
-C49 nvpre xm8_0/a_63_n131# 0.03214f
-C50 xmcm_chain_1_0/a_1000_n131# vb_pot 0.00218f
-C51 xmcm_chain_2_0/a_1000_n131# xmcm_chain_3_0/a_1000_n131# 0.04151f
-C52 xm9_0/a_63_n131# vb_itp 0.02002f
-C53 xm1_0/a_63_n131# nvpost 0.00559f
-C54 xmcm_chain_1_0/a_1000_n131# xmcm_chain_3_0/a_1000_n131# 0.04858f
-C55 xm9_0/a_63_n131# xm8_0/a_63_n131# 0
-C56 vb_idep vb_itd 0.00343f
-C57 xm9_0/a_63_n131# vb_idep 0.10503f
-C58 xm7_0/a_63_n131# xm8_0/a_63_n131# 0.13673f
-C59 nvpre avdd 0.03715f
-C60 xmcm_chain_4_0/a_n1000_n339# vpost 0
-C61 vpost vb_pot 0.00676f
-C62 nvpost xm8_0/a_63_n131# 0.00736f
-C63 xmcm_chain_2_0/a_1000_n131# xm9_0/a_63_n131# 0.00189f
-C64 avdd vb_itd 0.02038f
-C65 xmcm_chain_4_0/a_n1000_n339# xm4_0/a_63_n131# 0
-C66 xm9_0/a_63_n131# avdd 0.86205f
-C67 xmcm_chain_2_0/a_1000_n131# xm7_0/a_63_n131# 0
-C68 vpost xmcm_chain_3_0/a_1000_n131# 0
-C69 xmcm_chain_1_0/a_1000_n131# vb_itd 0.05658f
-C70 xm7_0/a_63_n131# avdd 0.8372f
-C71 xmcm_chain_1_0/a_1000_n131# xm9_0/a_63_n131# 0.00444f
-C72 xmcm_chain_1_0/a_1000_n131# xm7_0/a_63_n131# 0.00601f
-C73 nvpost avdd 0.04809f
-C74 Iout xm7_0/a_63_n131# 0
-C75 xmcm_chain_4_0/a_n1000_n339# vb_pot 0.00454f
-C76 xmcm_chain_4_0/a_n1000_n339# xmcm_chain_3_0/a_1000_n131# 0.15956f
+C0 vb_itd xm7_0/a_63_n131# 0
+C1 vpre xm4_0/a_63_n131# 0
+C2 avdd Iout 0.08486f
+C3 xm9_0/a_63_n131# vb_idep 0.10503f
+C4 nvpost xm7_0/a_63_n131# 0.00625f
+C5 xmcm_chain_2_0/a_1000_n131# xm9_0/a_63_n131# 0.00189f
+C6 xmcm_chain_2_0/a_1000_n131# xm7_0/a_63_n131# 0
+C7 xmcm_chain_4_0/a_1000_n131# xmcm_chain_4_0/a_n1000_n339# 0.12631f
+C8 xmcm_chain_1_0/a_1000_n131# vb_itd 0.05658f
+C9 vb_itd xmcm_chain_3_0/a_1000_n131# 0.00376f
+C10 nvpost xm8_0/a_63_n131# 0.00736f
+C11 vpost vb_pot 0.00676f
+C12 avdd vb_itd 0.02038f
+C13 xm9_0/a_63_n131# xm4_0/a_63_n131# 0.0142f
+C14 vb_itp nvpre 0.00736f
+C15 xmcm_chain_1_0/a_1000_n131# vb_idep 0
+C16 xmcm_chain_2_0/a_1000_n131# xmcm_chain_1_0/a_1000_n131# 0.07902f
+C17 xm1_0/a_63_n131# xm7_0/a_63_n131# 0.07138f
+C18 xmcm_chain_2_0/a_1000_n131# xmcm_chain_3_0/a_1000_n131# 0.04151f
+C19 avdd nvpost 0.04809f
+C20 xm9_0/a_63_n131# vb_itp 0.02002f
+C21 avdd vb_idep 0.10619f
+C22 xm9_0/a_63_n131# vb_pot 0
+C23 xm7_0/a_63_n131# vb_pot 0.01448f
+C24 xmcm_chain_1_0/a_1000_n131# xm4_0/a_63_n131# 0
+C25 xm8_0/a_63_n131# vb_itp 0
+C26 avdd xm4_0/a_63_n131# 0
+C27 xm9_0/a_63_n131# vpost 0.02214f
+C28 xm1_0/a_63_n131# avdd 1.1665f
+C29 xmcm_chain_4_0/a_1000_n131# vb_itd 0.0025f
+C30 vb_itd xmcm_chain_4_0/a_n1000_n339# 0.0203f
+C31 vpost xm7_0/a_63_n131# 0
+C32 xmcm_chain_1_0/a_1000_n131# vb_pot 0.00218f
+C33 vb_pot xmcm_chain_3_0/a_1000_n131# 0
+C34 avdd vb_itp 0.05892f
+C35 xm9_0/a_63_n131# nvpre 0
+C36 xmcm_chain_2_0/a_1000_n131# xmcm_chain_4_0/a_1000_n131# 0.00555f
+C37 xmcm_chain_2_0/a_1000_n131# xmcm_chain_4_0/a_n1000_n339# 0.12554f
+C38 vpre xmcm_chain_1_0/a_1000_n131# 0
+C39 xm7_0/a_63_n131# nvpre 0
+C40 xm9_0/a_63_n131# xm7_0/a_63_n131# 0.47751f
+C41 xmcm_chain_1_0/a_1000_n131# vpost 0
+C42 vpost xmcm_chain_3_0/a_1000_n131# 0
+C43 xm8_0/a_63_n131# nvpre 0.03214f
+C44 xmcm_chain_4_0/a_n1000_n339# xm4_0/a_63_n131# 0
+C45 xm9_0/a_63_n131# xm8_0/a_63_n131# 0
+C46 xm8_0/a_63_n131# xm7_0/a_63_n131# 0.13673f
+C47 xm9_0/a_63_n131# xmcm_chain_1_0/a_1000_n131# 0.00444f
+C48 xm9_0/a_63_n131# xmcm_chain_3_0/a_1000_n131# 0
+C49 avdd nvpre 0.03715f
+C50 xmcm_chain_1_0/a_1000_n131# xm7_0/a_63_n131# 0.00601f
+C51 xm7_0/a_63_n131# xmcm_chain_3_0/a_1000_n131# 0
+C52 avdd xm9_0/a_63_n131# 0.86205f
+C53 xmcm_chain_4_0/a_n1000_n339# vb_pot 0.00454f
+C54 avdd xm7_0/a_63_n131# 0.8372f
+C55 vpre xmcm_chain_4_0/a_n1000_n339# 0
+C56 xm1_0/a_63_n131# Iout 0
+C57 vb_itd vb_idep 0.00343f
+C58 vpost xmcm_chain_4_0/a_n1000_n339# 0
+C59 avdd xm8_0/a_63_n131# 0.83436f
+C60 xmcm_chain_1_0/a_1000_n131# xmcm_chain_3_0/a_1000_n131# 0.04858f
+C61 avdd xmcm_chain_1_0/a_1000_n131# 0.01135f
+C62 xm9_0/a_63_n131# xmcm_chain_4_0/a_n1000_n339# 0.00198f
+C63 xm1_0/a_63_n131# nvpost 0.00559f
+C64 xmcm_chain_2_0/a_1000_n131# xm4_0/a_63_n131# 0
+C65 vb_itd vb_pot 0.00689f
+C66 xmcm_chain_2_0/a_1000_n131# vb_pot 0.00131f
+C67 xmcm_chain_4_0/a_1000_n131# xmcm_chain_1_0/a_1000_n131# 0.01434f
+C68 xmcm_chain_1_0/a_1000_n131# xmcm_chain_4_0/a_n1000_n339# 0.04758f
+C69 xmcm_chain_4_0/a_1000_n131# xmcm_chain_3_0/a_1000_n131# 0.04151f
+C70 xmcm_chain_4_0/a_n1000_n339# xmcm_chain_3_0/a_1000_n131# 0.15956f
+C71 xm7_0/a_63_n131# Iout 0
+C72 xm1_0/a_63_n131# xm4_0/a_63_n131# 0.01204f
+C73 xmcm_chain_2_0/a_1000_n131# vpre 0
+C74 xmcm_chain_2_0/a_1000_n131# vpost 0
+C75 xm8_0/a_63_n131# Iout 0
+C76 xm9_0/a_63_n131# vb_itd 0
 C77 vpost.n0 vw 0.00112f
 C78 vb_pot.n0 vw 0.00359f
 C79 vb_itd.n0 vw 0.00142f

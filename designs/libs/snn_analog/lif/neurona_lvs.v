@@ -1,9 +1,9 @@
 module neurona_lvs (
-    input  wire Vdd,
-    input  wire Vss,
-    input  wire Iin,
-    output wire spike,
-    output wire spike_neg
+    inout  Vdd,   // alimentacion
+    inout  Vss,   // tierra
+    input  Iin,   // corriente de entrada
+    output spike,     // salida de disparo
+    output spike_neg  // salida de disparo negada
 );
 
 endmodule
