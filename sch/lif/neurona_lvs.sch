@@ -1,4 +1,4 @@
-v {xschem version=3.4.8RC file_version=1.3}
+v {xschem version=3.4.8RC file_version=1.2}
 G {}
 K {}
 V {}
@@ -25,7 +25,7 @@ T {-The maximum frequency achieved
 T {Abraham Alejandro Salazar Hernandez
 Carlos Ricardo Cueva León} 470 230 0 0 0.3 0.3 {}
 N 270 140 270 200 {lab=spike_neg}
-N 80 140 80 200 {lab=integration}
+N 80 140 80 200 {lab=Iin}
 N 120 170 270 170 {lab=spike_neg}
 N 270 -10 270 50 {lab=spike_neg}
 N 210 20 270 20 {lab=spike_neg}
@@ -37,7 +37,7 @@ N -50 230 310 230 {lab=Vss}
 N -50 200 -50 230 {lab=Vss}
 N 310 170 420 170 {lab=spike/reset}
 N -100 200 -90 200 {lab=spike/reset}
-N -50 170 80 170 {lab=integration}
+N -50 170 80 170 {lab=Iin}
 N 210 20 210 170 {lab=spike_neg}
 N 310 50 310 80 {lab=GND}
 N 310 -40 310 -10 {lab=Vdd}
@@ -50,10 +50,10 @@ N 250 250 430 250 {lab=spike/reset}
 N 250 250 250 270 {lab=spike/reset}
 N 20 270 250 270 {lab=spike/reset}
 N 120 230 120 250 {lab=Vss}
-N -50 120 -50 170 {lab=integration}
+N -50 120 -50 170 {lab=Iin}
 C {symbols/pfet_03v3.sym} 100 140 0 0 {name=M1
 L=0.28u
-W=0.22u
+W=0.5u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -67,7 +67,7 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 100 200 0 0 {name=M2
 L=0.28u
-W=0.22u
+W=0.5u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -81,7 +81,7 @@ spiceprefix=X
 }
 C {symbols/pfet_03v3.sym} 290 140 0 0 {name=M3
 L=0.28u
-W=0.22u
+W=0.5u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -95,7 +95,7 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 290 200 0 0 {name=M4
 L=0.28u
-W=0.22u
+W=0.5u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -109,7 +109,7 @@ spiceprefix=X
 }
 C {symbols/pfet_03v3.sym} 290 -10 0 0 {name=M7
 L=0.28u
-W=0.22u
+W=0.5u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -123,7 +123,7 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} 290 50 0 0 {name=M8
 L=0.28u
-W=0.22u
+W=0.5u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -137,7 +137,7 @@ spiceprefix=X
 }
 C {symbols/nfet_03v3.sym} -70 200 0 0 {name=M5
 L=50u
-W=1.25u
+W=2.3u
 nf=1
 m=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"
@@ -175,8 +175,8 @@ C {lab_pin.sym} 50 -120 2 0 {name=p18 sig_type=std_logic lab=Iin}
 C {lab_pin.sym} 50 0 2 0 {name=p19 sig_type=std_logic lab=spike_neg}
 C {lab_pin.sym} 50 -30 2 0 {name=p20 sig_type=std_logic lab=spike}
 C {symbols/cap_mim_2f0fF.sym} 20 200 0 0 {name=C2
-W=5e-6
-L=5e-6
+W=20e-6
+L=14e-6
 model=cap_mim_2f0fF
 spiceprefix=X
 m=3}
