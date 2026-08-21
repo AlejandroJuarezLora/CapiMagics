@@ -258,9 +258,14 @@ MACRO encoder
         RECT 10.280 11.305 10.780 11.805 ;
         RECT 11.080 11.305 11.580 11.805 ;
       LAYER Metal2 ;
+<<<<<<< HEAD
         RECT 1.930 11.305 11.930 11.805 ;
       LAYER Metal3 ;
         RECT 1.930 11.305 2.430 11.805 ;
+=======
+        RECT 1.930 11.805 2.430 12.055 ;
+        RECT 1.930 11.305 11.930 11.805 ;
+>>>>>>> main
     END
   END Vin
   PIN Vin_neg
@@ -280,11 +285,70 @@ MACRO encoder
         RECT 38.420 11.305 38.920 11.805 ;
         RECT 39.220 11.305 39.720 11.805 ;
       LAYER Metal2 ;
+<<<<<<< HEAD
         RECT 30.070 11.305 40.070 11.805 ;
       LAYER Metal3 ;
         RECT 30.070 11.305 30.570 11.805 ;
     END
   END Vin_neg
+=======
+        RECT 30.070 11.805 30.570 12.055 ;
+        RECT 30.070 11.305 40.070 11.805 ;
+    END
+  END Vin_neg
+  PIN Iex_1_i
+    ANTENNADIFFAREA 0.558000 ;
+    PORT
+      LAYER Metal1 ;
+        RECT 17.580 22.775 18.080 23.275 ;
+        RECT 17.600 21.210 18.060 22.775 ;
+        RECT 17.580 20.710 18.080 21.210 ;
+        RECT 17.600 20.495 18.060 20.710 ;
+      LAYER Metal2 ;
+        RECT 15.160 22.775 18.080 23.275 ;
+        RECT 17.580 20.495 18.080 21.425 ;
+    END
+  END Iex_1_i
+  PIN Iex_2_i
+    ANTENNADIFFAREA 0.558000 ;
+    PORT
+      LAYER Metal1 ;
+        RECT 10.060 22.775 10.560 23.275 ;
+        RECT 10.080 21.210 10.540 22.775 ;
+        RECT 10.060 20.710 10.560 21.210 ;
+        RECT 10.080 20.495 10.540 20.710 ;
+      LAYER Metal2 ;
+        RECT 7.640 22.775 10.560 23.275 ;
+        RECT 10.060 20.495 10.560 21.425 ;
+    END
+  END Iex_2_i
+  PIN Iex_3_i
+    ANTENNADIFFAREA 0.558000 ;
+    PORT
+      LAYER Metal1 ;
+        RECT 38.860 22.775 39.360 23.275 ;
+        RECT 38.880 21.210 39.340 22.775 ;
+        RECT 38.860 20.710 39.360 21.210 ;
+        RECT 38.880 20.495 39.340 20.710 ;
+      LAYER Metal2 ;
+        RECT 36.440 22.775 39.360 23.275 ;
+        RECT 38.860 20.495 39.360 21.425 ;
+    END
+  END Iex_3_i
+  PIN Iex_4_i
+    ANTENNADIFFAREA 0.558000 ;
+    PORT
+      LAYER Metal1 ;
+        RECT 31.340 22.775 31.840 23.275 ;
+        RECT 31.360 21.210 31.820 22.775 ;
+        RECT 31.340 20.710 31.840 21.210 ;
+        RECT 31.360 20.495 31.820 20.710 ;
+      LAYER Metal2 ;
+        RECT 28.920 22.775 31.840 23.275 ;
+        RECT 31.340 20.495 31.840 21.425 ;
+    END
+  END Iex_4_i
+>>>>>>> main
   OBS
       LAYER Metal1 ;
         RECT 2.540 23.835 3.040 24.335 ;
