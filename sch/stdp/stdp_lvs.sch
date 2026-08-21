@@ -396,9 +396,9 @@ sa=0 sb=0 sd=0
 model=nfet_03v3
 spiceprefix=X
 }
-C {unitcap.sym} -70 510 0 0 {name=x1[0:1]}
-C {unitcap.sym} 250 160 3 0 {name=x2[0:9]}
-C {unitcap.sym} 280 -150 0 0 {name=x3[0:1]}
+C {stdp/unitcap.sym} -70 510 0 0 {name=x1[0:1]}
+C {stdp/unitcap.sym} 250 160 3 0 {name=x2[0:9]}
+C {stdp/unitcap.sym} 280 -150 0 0 {name=x3[0:1]}
 C {symbols/pfet_03v3.sym} 1020 150 0 0 {name=M5
 L=15u
 W=0.5u
