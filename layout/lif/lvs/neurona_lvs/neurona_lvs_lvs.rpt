@@ -12,9 +12,9 @@ Cell pfet_03v3 (1) disconnected node: source
 Cell pfet_03v3 (1) disconnected node: bulk
 Equate elements:  no current cell.
 Device classes pfet_03v3 and pfet_03v3 are equivalent.
-Flattening unmatched subcell Unnamed_54a41707 in circuit neurona_lvs (0)(1 instance)
-Flattening unmatched subcell Unnamed_8c97fff4 in circuit neurona_lvs (0)(3 instances)
-Flattening unmatched subcell Unnamed_9baf7a04 in circuit neurona_lvs (0)(3 instances)
+Flattening unmatched subcell Unnamed_20771673 in circuit neurona_lvs (0)(1 instance)
+Flattening unmatched subcell Unnamed_f33c6f5c in circuit neurona_lvs (0)(3 instances)
+Flattening unmatched subcell Unnamed_fab9c559 in circuit neurona_lvs (0)(3 instances)
 
 Class neurona_lvs (0):  Merged 2 parallel devices.
 Subcircuit summary:
@@ -37,7 +37,7 @@ Net: vss                                   |Net: Vss
   pfet_03v3/(1|3) = 3                      |                                           
   pfet_03v3/4 = 2                          |                                           
                                            |                                           
-Net: Unnamed_9baf7a04_2/a_n64_n339#        |Net: GND                                   
+Net: Unnamed_fab9c559_2/a_n64_n339#        |Net: GND                                   
   nfet_03v3/2 = 1                          |  nfet_03v3/(drain|source) = 1             
   pfet_03v3/2 = 1                          |  nfet_03v3/bulk = 1                       
                                            |                                           
@@ -62,7 +62,7 @@ Net: Unnamed_9baf7a04_2/a_n64_n339#        |Net: GND
 ---------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------
-Net: Unnamed_9baf7a04_2/a_64_n131#         |Net: Iin                                   
+Net: Unnamed_fab9c559_2/a_64_n131#         |Net: Iin                                   
   nfet_03v3/2 = 1                          |  pfet_03v3/gate = 1                       
   nfet_03v3/(1|3) = 1                      |  nfet_03v3/gate = 1                       
   pfet_03v3/2 = 1                          |  nfet_03v3/(drain|source) = 1             
@@ -72,12 +72,12 @@ DEVICE mismatches: Class fragments follow (with node fanout counts):
 Circuit 1: neurona_lvs                     |Circuit 2: neurona_lvs                     
 
 ---------------------------------------------------------------------------------------
-Instance: Unnamed_54a41707_0/nfet_03v3:0   |Instance: nfet_03v3:4                      
+Instance: Unnamed_20771673_0/nfet_03v3:0   |Instance: nfet_03v3:4                      
   (1,3) = (14,14)                          |  (drain,source) = (7,3)                   
   2 = 14                                   |  gate = 6                                 
   4 = 14                                   |  bulk = 7                                 
                                            |                                           
-Instance: Unnamed_9baf7a04_2/pfet_03v3:0   |Instance: nfet_03v3:8                      
+Instance: Unnamed_fab9c559_2/pfet_03v3:0   |Instance: nfet_03v3:8                      
   (1,3) = (14,4)                           |  (drain,source) = (2,2)                   
   2 = 2                                    |  gate = 6                                 
   4 = 14                                   |  bulk = 2                                 
@@ -105,10 +105,10 @@ Subcircuit pins:
 Circuit 1: neurona_lvs                     |Circuit 2: neurona_lvs                     
 -------------------------------------------|-------------------------------------------
 vss                                        |spike **Mismatch**                         
-(no pin, node is Unnamed_9baf7a04_2/a_n64_ |Vdd                                        
-(no pin, node is Unnamed_9baf7a04_2/a_n64_ |Vss                                        
-(no pin, node is Unnamed_9baf7a04_2/a_64_n |Iin                                        
-(no pin, node is Unnamed_9baf7a04_2/a_n64_ |spike_neg                                  
+(no pin, node is Unnamed_fab9c559_2/a_n64_ |Vdd                                        
+(no pin, node is Unnamed_fab9c559_2/a_n64_ |Vss                                        
+(no pin, node is Unnamed_fab9c559_2/a_64_n |Iin                                        
+(no pin, node is Unnamed_fab9c559_2/a_n64_ |spike_neg                                  
 ---------------------------------------------------------------------------------------
 Cell pin lists for neurona_lvs and neurona_lvs altered to match.
 Device classes neurona_lvs and neurona_lvs are equivalent.
