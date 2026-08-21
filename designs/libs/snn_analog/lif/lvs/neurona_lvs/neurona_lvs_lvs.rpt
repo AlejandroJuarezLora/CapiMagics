@@ -8,7 +8,11 @@ Equate elements:  no current cell.
 Device classes pfet_03v3 and pfet_03v3 are equivalent.
 
 Subcircuit summary:
+<<<<<<< HEAD
+Circuit 1: Unnamed_658c6911                |Circuit 2: Unnamed_658c6911                
+=======
 Circuit 1: Unnamed_6ef8fc62                |Circuit 2: Unnamed_6ef8fc62                
+>>>>>>> main
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
 (no matching element)                      |c (6)                                      
@@ -16,29 +20,52 @@ Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
 NET mismatches: Class fragments follow (with fanout counts):
+<<<<<<< HEAD
+Circuit 1: Unnamed_658c6911                |Circuit 2: Unnamed_658c6911                
+
+---------------------------------------------------------------------------------------
+Net: a_64_n131#                            |Net: a_64_n131#                            
+=======
 Circuit 1: Unnamed_6ef8fc62                |Circuit 2: Unnamed_6ef8fc62                
 
 ---------------------------------------------------------------------------------------
 Net: a_5000_n205#                          |Net: a_5000_n205#                          
+>>>>>>> main
   nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
                                            |  c/bottom = 2                             
                                            |  c/top = 1                                
                                            |                                           
+<<<<<<< HEAD
+Net: a_n64_n339#                           |Net: a_n64_n339#                           
+  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
+                                           |  c/top = 3                                
+                                           |                                           
+Net: a_n184_n131#                          |Net: a_n184_n131#                          
+=======
 Net: a_n5000_n414#                         |Net: a_n5000_n414#                         
   nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
                                            |  c/top = 3                                
                                            |                                           
 Net: a_n5120_n205#                         |Net: a_n5120_n205#                         
+>>>>>>> main
   nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
                                            |  c/bottom = 1                             
                                            |  c/top = 2                                
                                            |                                           
+<<<<<<< HEAD
+Net: a_n394_n504#                          |Net: a_n394_n504#                          
+=======
 Net: a_n5330_n579#                         |Net: a_n5330_n579#                         
+>>>>>>> main
   nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
                                            |  c/bottom = 3                             
 ---------------------------------------------------------------------------------------
 DEVICE mismatches: Class fragments follow (with node fanout counts):
+<<<<<<< HEAD
+Circuit 1: Unnamed_658c6911                |Circuit 2: Unnamed_658c6911                
+=======
 Circuit 1: Unnamed_6ef8fc62                |Circuit 2: Unnamed_6ef8fc62                
+>>>>>>> main
 
 ---------------------------------------------------------------------------------------
 (no matching instance)                     |Instance: c:0                              
@@ -67,10 +94,17 @@ Circuit 1: Unnamed_6ef8fc62                |Circuit 2: Unnamed_6ef8fc62
 ---------------------------------------------------------------------------------------
 Netlists do not match.
 Port matching may fail to disambiguate symmetries.
+<<<<<<< HEAD
+  Flattening non-matched subcircuits Unnamed_658c6911 Unnamed_658c6911
+
+Subcircuit summary:
+Circuit 1: Unnamed_c18146f8                |Circuit 2: Unnamed_c18146f8                
+=======
   Flattening non-matched subcircuits Unnamed_6ef8fc62 Unnamed_6ef8fc62
 
 Subcircuit summary:
 Circuit 1: Unnamed_89a8896a                |Circuit 2: Unnamed_89a8896a                
+>>>>>>> main
 -------------------------------------------|-------------------------------------------
 pfet_03v3 (1)                              |pfet_03v3 (1)                              
 (no matching element)                      |c (10)                                     
@@ -78,11 +112,28 @@ Number of devices: 1 **Mismatch**          |Number of devices: 11 **Mismatch**
 Number of nets: 4 **Mismatch**             |Number of nets: 5 **Mismatch**             
 ---------------------------------------------------------------------------------------
 NET mismatches: Class fragments follow (with fanout counts):
+<<<<<<< HEAD
+Circuit 1: Unnamed_c18146f8                |Circuit 2: Unnamed_c18146f8                
+=======
 Circuit 1: Unnamed_89a8896a                |Circuit 2: Unnamed_89a8896a                
+>>>>>>> main
 
 ---------------------------------------------------------------------------------------
 Net: a_64_n131#                            |Net: a_64_n131#                            
   pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
+<<<<<<< HEAD
+                                           |  c/top = 4                                
+                                           |                                           
+Net: a_n184_n131#                          |Net: a_n184_n131#                          
+  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
+                                           |  c/bottom = 3                             
+                                           |  c/top = 1                                
+                                           |                                           
+Net: a_n64_n339#                           |Net: a_n64_n339#                           
+  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
+                                           |  c/bottom = 2                             
+                                           |  c/top = 2                                
+=======
                                            |  c/bottom = 2                             
                                            |  c/top = 2                                
                                            |                                           
@@ -99,12 +150,22 @@ Net: a_n64_n339#                           |Net: a_n64_n339#
 Net: w_n450_n560#                          |Net: w_n450_n560#                          
   pfet_03v3/4 = 1                          |  pfet_03v3/4 = 1                          
                                            |  c/top = 4                                
+>>>>>>> main
+                                           |                                           
+Net: w_n450_n560#                          |Net: w_n450_n560#                          
+  pfet_03v3/4 = 1                          |  pfet_03v3/4 = 1                          
+                                           |  c/top = 3                                
+                                           |  c/bottom = 1                             
                                            |                                           
 (no matching net)                          |Net: VSUBS                                 
                                            |  c/bottom = 4                             
 ---------------------------------------------------------------------------------------
 DEVICE mismatches: Class fragments follow (with node fanout counts):
+<<<<<<< HEAD
+Circuit 1: Unnamed_c18146f8                |Circuit 2: Unnamed_c18146f8                
+=======
 Circuit 1: Unnamed_89a8896a                |Circuit 2: Unnamed_89a8896a                
+>>>>>>> main
 
 ---------------------------------------------------------------------------------------
 (no matching instance)                     |Instance: c:0                              
@@ -149,10 +210,17 @@ Circuit 1: Unnamed_89a8896a                |Circuit 2: Unnamed_89a8896a
 ---------------------------------------------------------------------------------------
 Netlists do not match.
 Port matching may fail to disambiguate symmetries.
+<<<<<<< HEAD
+  Flattening non-matched subcircuits Unnamed_c18146f8 Unnamed_c18146f8
+
+Subcircuit summary:
+Circuit 1: Unnamed_6ef8ebff                |Circuit 2: Unnamed_6ef8ebff                
+=======
   Flattening non-matched subcircuits Unnamed_89a8896a Unnamed_89a8896a
 
 Subcircuit summary:
 Circuit 1: Unnamed_32beef5d                |Circuit 2: Unnamed_32beef5d                
+>>>>>>> main
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
 (no matching element)                      |c (6)                                      
@@ -160,14 +228,33 @@ Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
 NET mismatches: Class fragments follow (with fanout counts):
+<<<<<<< HEAD
+Circuit 1: Unnamed_6ef8ebff                |Circuit 2: Unnamed_6ef8ebff                
+
+---------------------------------------------------------------------------------------
+Net: a_5000_n205#                          |Net: a_5000_n205#                          
+  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
+                                           |  c/bottom = 2                             
+                                           |  c/top = 1                                
+                                           |                                           
+Net: a_n5000_n414#                         |Net: a_n5000_n414#                         
+  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
+                                           |  c/top = 3                                
+                                           |                                           
+Net: a_n5120_n205#                         |Net: a_n5120_n205#                         
+=======
 Circuit 1: Unnamed_32beef5d                |Circuit 2: Unnamed_32beef5d                
 
 ---------------------------------------------------------------------------------------
 Net: a_64_n131#                            |Net: a_64_n131#                            
+>>>>>>> main
   nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
                                            |  c/bottom = 1                             
                                            |  c/top = 2                                
                                            |                                           
+<<<<<<< HEAD
+Net: a_n5330_n579#                         |Net: a_n5330_n579#                         
+=======
 Net: a_n64_n339#                           |Net: a_n64_n339#                           
   nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
                                            |  c/top = 3                                
@@ -178,11 +265,16 @@ Net: a_n184_n131#                          |Net: a_n184_n131#
                                            |  c/top = 1                                
                                            |                                           
 Net: a_n394_n504#                          |Net: a_n394_n504#                          
+>>>>>>> main
   nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
                                            |  c/bottom = 3                             
 ---------------------------------------------------------------------------------------
 DEVICE mismatches: Class fragments follow (with node fanout counts):
+<<<<<<< HEAD
+Circuit 1: Unnamed_6ef8ebff                |Circuit 2: Unnamed_6ef8ebff                
+=======
 Circuit 1: Unnamed_32beef5d                |Circuit 2: Unnamed_32beef5d                
+>>>>>>> main
 
 ---------------------------------------------------------------------------------------
 (no matching instance)                     |Instance: c:0                              
@@ -211,7 +303,11 @@ Circuit 1: Unnamed_32beef5d                |Circuit 2: Unnamed_32beef5d
 ---------------------------------------------------------------------------------------
 Netlists do not match.
 Port matching may fail to disambiguate symmetries.
+<<<<<<< HEAD
+  Flattening non-matched subcircuits Unnamed_6ef8ebff Unnamed_6ef8ebff
+=======
   Flattening non-matched subcircuits Unnamed_32beef5d Unnamed_32beef5d
+>>>>>>> main
 
 Class neurona_lvs (0):  Merged 2 parallel devices.
 Subcircuit summary:
@@ -227,16 +323,22 @@ NET mismatches: Class fragments follow (with fanout counts):
 Circuit 1: neurona_lvs                     |Circuit 2: neurona_lvs                     
 
 ---------------------------------------------------------------------------------------
-Net: vss                                   |Net: Vss                                   
+Net: Vss                                   |Net: Vss                                   
   nfet_03v3/(1|3) = 5                      |  nfet_03v3/(1|3) = 3                      
   nfet_03v3/4 = 3                          |  nfet_03v3/4 = 3                          
   nfet_03v3/2 = 1                          |  cap_mim_2f0fF/2 = 1                      
   pfet_03v3/(1|3) = 3                      |                                           
   pfet_03v3/4 = 2                          |                                           
                                            |                                           
+<<<<<<< HEAD
+Net: Unnamed_c18146f8_2/a_n64_n339#        |Net: GND                                   
+  nfet_03v3/2 = 1                          |  nfet_03v3/(1|3) = 1                      
+  pfet_03v3/2 = 1                          |  nfet_03v3/4 = 1                          
+=======
 Net: Unnamed_89a8896a_2/a_n64_n339#        |Net: GND                                   
   pfet_03v3/2 = 1                          |  nfet_03v3/(1|3) = 1                      
   nfet_03v3/2 = 1                          |  nfet_03v3/4 = 1                          
+>>>>>>> main
                                            |                                           
 (no matching net)                          |Net: spike_neg                             
                                            |  pfet_03v3/(1|3) = 1                      
@@ -259,22 +361,36 @@ Net: Unnamed_89a8896a_2/a_n64_n339#        |Net: GND
 ---------------------------------------------------------------------------------------
 
 ---------------------------------------------------------------------------------------
+<<<<<<< HEAD
+Net: Unnamed_c18146f8_2/a_64_n131#         |Net: Iin                                   
+=======
 Net: Unnamed_89a8896a_2/a_64_n131#         |Net: Iin                                   
   pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
   pfet_03v3/(1|3) = 1                      |  cap_mim_2f0fF/1 = 1                      
+>>>>>>> main
   nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
   nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
+  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
+  pfet_03v3/(1|3) = 1                      |  cap_mim_2f0fF/1 = 1                      
 ---------------------------------------------------------------------------------------
 DEVICE mismatches: Class fragments follow (with node fanout counts):
 Circuit 1: neurona_lvs                     |Circuit 2: neurona_lvs                     
 
 ---------------------------------------------------------------------------------------
+<<<<<<< HEAD
+Instance: Unnamed_6ef8ebff_0/nfet_03v3:0   |Instance: nfet_03v3:4                      
+=======
 Instance: Unnamed_6ef8fc62_0/nfet_03v3:0   |Instance: nfet_03v3:4                      
+>>>>>>> main
   (1,3) = (14,14)                          |  (1,3) = (7,3)                            
   2 = 14                                   |  2 = 6                                    
   4 = 14                                   |  4 = 7                                    
                                            |                                           
+<<<<<<< HEAD
+Instance: Unnamed_c18146f8_2/pfet_03v3:0   |Instance: nfet_03v3:8                      
+=======
 Instance: Unnamed_89a8896a_2/pfet_03v3:0   |Instance: nfet_03v3:8                      
+>>>>>>> main
   (1,3) = (14,4)                           |  (1,3) = (2,2)                            
   2 = 2                                    |  2 = 6                                    
   4 = 14                                   |  4 = 2                                    
@@ -301,11 +417,19 @@ Port matching may fail to disambiguate symmetries.
 Subcircuit pins:
 Circuit 1: neurona_lvs                     |Circuit 2: neurona_lvs                     
 -------------------------------------------|-------------------------------------------
+<<<<<<< HEAD
+Vss                                        |spike **Mismatch**                         
+(no pin, node is Unnamed_c18146f8_2/a_n64_ |Vdd                                        
+(no pin, node is Unnamed_c18146f8_2/a_n64_ |Vss                                        
+(no pin, node is Unnamed_c18146f8_2/a_64_n |Iin                                        
+(no pin, node is Unnamed_c18146f8_2/a_n64_ |spike_neg                                  
+=======
 vss                                        |spike **Mismatch**                         
 (no pin, node is Unnamed_89a8896a_2/a_n64_ |Vdd                                        
 (no pin, node is Unnamed_89a8896a_2/a_n64_ |Vss                                        
 (no pin, node is Unnamed_89a8896a_2/a_64_n |Iin                                        
 (no pin, node is Unnamed_89a8896a_2/a_n64_ |spike_neg                                  
+>>>>>>> main
 ---------------------------------------------------------------------------------------
 Cell pin lists for neurona_lvs and neurona_lvs altered to match.
 Device classes neurona_lvs and neurona_lvs are equivalent.
