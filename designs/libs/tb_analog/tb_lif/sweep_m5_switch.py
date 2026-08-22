@@ -38,8 +38,8 @@ M5_VIEJO = (1.25, 50.0)    # el del barrido original
 
 # Malla principal: M5 minimo, se mueven Cm e Iex. La corriente sube con Cm
 # para que el periodo no se dispare y el transitorio quede acotado.
-MALLA = [(M5_MIN, cm, iex)
-         for cm in (50.0, 100.0, 150.0, 300.0)
+MALLA = [(M5_MIN, Cm, iex)
+         for Cm in (50.0, 100.0, 150.0, 300.0)
          for iex in (100.0, 200.0, 400.0)]
 
 # Control del mecanismo: mismo Cm e Iex, tres tamaños de M5. Si la frecuencia
@@ -52,12 +52,12 @@ def periodo_esperado_us(cm_ff: float, iex_na: float) -> float:
     return cm_ff * 1e-15 * DV_ESPERADO / (iex_na * 1e-9) * 1e6
 
 
-def corre(m5, cm, iex, etiqueta):
+def corre(m5, Cm, iex, etiqueta):
     w, l = m5
-    t_per = periodo_esperado_us(cm, iex)
+    t_per = periodo_esperado_us(Cm, iex)
     # 6 periodos utiles mas el arranque que measure() descarta
     tstop = max(8.0, fx.SKIP_US + 8 * t_per)
-    params = {"W_M5": w, "L_M5": l, "Cm": cm}
+    params = {"W_M5": w, "L_M5": l, "Cm": Cm}
     netlist = fx.build_netlist(params, iex, PLANTILLA, tstop_us=tstop)
 
     with tempfile.TemporaryDirectory() as d:
@@ -71,8 +71,8 @@ def corre(m5, cm, iex, etiqueta):
             return {"error": " ".join(cola) or "sin raw"}
         m = fx.measure(str(raw))
 
-    f_ideal = iex / (cm * DV_ESPERADO) * 1e3      # kHz
-    m.update({"W_M5": w, "L_M5": l, "Cm": cm, "iex": iex,
+    f_ideal = iex / (Cm * DV_ESPERADO) * 1e3      # kHz
+    m.update({"W_M5": w, "L_M5": l, "Cm": Cm, "iex": iex,
               "tstop_us": tstop, "f_ideal": f_ideal, "etiqueta": etiqueta})
     return m
 
@@ -94,14 +94,14 @@ def linea(r):
 def main(destino=None):
     filas = []
     print("CONTROL DEL MECANISMO -- mismo Cm e Iex, distinto M5")
-    for m5, cm, iex in CONTROL:
-        r = corre(m5, cm, iex, "control")
+    for m5, Cm, iex in CONTROL:
+        r = corre(m5, Cm, iex, "control")
         filas.append(r)
         print("  " + linea(r), flush=True)
 
     print("\nMALLA -- M5 minimo, se mueven Cm e Iex")
-    for m5, cm, iex in MALLA:
-        r = corre(m5, cm, iex, "malla")
+    for m5, Cm, iex in MALLA:
+        r = corre(m5, Cm, iex, "malla")
         filas.append(r)
         print("  " + linea(r), flush=True)
 

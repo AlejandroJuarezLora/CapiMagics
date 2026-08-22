@@ -75,5 +75,5 @@ def test_membrane_stays_positive(result):
 def test_cm_above_floor():
     """Cm must clear the oscillation floor Cm_min = 8.94 * W^1.038 * L^0.700."""
     p = design(_spec()).params
-    floor = L.cm_min(p["W_M5"], p["L_M5"])
+    floor = L.Cm_min(p["W_M5"], p["L_M5"])
     assert p["Cm"] > floor, f"Cm {p['Cm']:.1f} fF is under the {floor:.1f} fF floor"

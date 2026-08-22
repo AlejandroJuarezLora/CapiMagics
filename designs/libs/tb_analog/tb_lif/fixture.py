@@ -77,7 +77,7 @@ def build_netlist(params: dict[str, float], iex_na: float,
     text = Path(template).read_text(encoding="utf-8", errors="ignore")
     W = params["W_M5"]
     Lg = params["L_M5"]
-    cm = params["Cm"]
+    Cm = params["Cm"]
     w78 = params.get("W_M7M8", 0.22)
 
     if tstop_us is None:
@@ -87,7 +87,7 @@ def build_netlist(params: dict[str, float], iex_na: float,
                   text, flags=re.M)
     text = text.replace("L=50u W=1.25u", f"L={Lg:g}u W={W:g}u")
     text = re.sub(r"^C1 integration Vss [\d.]+f",
-                  f"C1 integration Vss {cm:g}f", text, flags=re.M)
+                  f"C1 integration Vss {Cm:g}f", text, flags=re.M)
     # buffer de salida (M7/M8), solo si se pidio distinto del minimo
     if abs(w78 - 0.22) > 1e-9:
         text = text.replace(
@@ -178,10 +178,10 @@ def verify(design_result: NeuronDesign, iex_na: float = L.IEX_REF,
         template = workdir / "tb_lif.spice"
 
     p = design_result.params
-    W, Lg, cm = p["W_M5"], p["L_M5"], p["Cm"]
+    W, Lg, Cm = p["W_M5"], p["L_M5"], p["Cm"]
     f_pred = L.freq(W, Lg, iex_na)
 
-    tag = f"verify_{W:g}_{Lg:g}_{cm:g}_{iex_na:g}".replace(".", "p")
+    tag = f"verify_{W:g}_{Lg:g}_{Cm:g}_{iex_na:g}".replace(".", "p")
     raw_rel = f"{tag}.raw"
     netlist = build_netlist(p, iex_na, template, freq_hint_khz=f_pred)
     netlist = netlist.replace("tb_charac_isrc.raw", raw_rel)
@@ -193,8 +193,8 @@ def verify(design_result: NeuronDesign, iex_na: float = L.IEX_REF,
                        raw_path=str(workdir / raw_rel))
     res.predicted = {
         "f": round(f_pred, 1),
-        "Vth": round(L.vth(W, Lg, cm), 3),
-        "swing": round(L.swing(W, Lg, cm), 3),
+        "Vth": round(L.vth(W, Lg, Cm), 3),
+        "swing": round(L.swing(W, Lg, Cm), 3),
     }
 
     try:

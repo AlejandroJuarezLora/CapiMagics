@@ -54,16 +54,16 @@ def capacidad(lado: float, mim: str = POR_DEFECTO, n: int = 1) -> float:
     return n * (cox * lado * lado + capsw * 4.0 * lado)
 
 
-def lado_para(cm: float, mim: str = POR_DEFECTO, n: int = 1) -> float:
-    """Lado [um] de cada uno de n MIM cuadrados que sumen cm [fF].
+def lado_para(Cm: float, mim: str = POR_DEFECTO, n: int = 1) -> float:
+    """Lado [um] de cada uno de n MIM cuadrados que sumen Cm [fF].
 
-    Invierte cox*s^2 + capsw*4s = cm/n, que es una cuadratica con una sola
+    Invierte cox*s^2 + capsw*4s = Cm/n, que es una cuadratica con una sola
     raiz positiva.
     """
-    if cm <= 0 or n < 1:
-        raise ValueError("cm debe ser positivo y n al menos 1")
+    if Cm <= 0 or n < 1:
+        raise ValueError("Cm debe ser positivo y n al menos 1")
     cox, capsw = DENSIDADES[mim]
-    objetivo = cm / n
+    objetivo = Cm / n
     b = 4.0 * capsw
     return (-b + (b * b + 4.0 * cox * objetivo) ** 0.5) / (2.0 * cox)
 
