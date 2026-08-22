@@ -18,7 +18,7 @@ PDK minimum (`W/L = 0.22/0.28 µm`).
 
 ## 1. The design laws
 
-Five laws describe the cell. All were fitted on `.tran 1n` data and validated
+Six laws describe the cell. All were fitted on `.tran 1n` data and validated
 against points outside the fitting grid.
 
 ### Frequency
@@ -91,6 +91,34 @@ frequency shifts under 0.7% with `C_load` from 0 to 1600 fF.
 The inverter is balanced: pull-up (M7) matches pull-down (M8) at equal W, so
 the spike is symmetric. Drive is independent of everything else — re-measured at
 `L_M5 = 25 µm` it gives 84.97 vs 85.07 µA/µm, under 1% apart.
+
+### Input capacitance
+
+```math
+C_{in}[\text{fF}] = 0.945 + 0.865 \cdot W_{M5}[\mu\text{m}]
+```
+
+Measured as `C_total − Cm`, where `C_total = Iex / (dV/dt)` on the integration
+ramp — the current source charging the node *is* the measurement. LOO 0.67%
+RMS, external validation 0.56% RMS on a disjoint grid.
+
+**Affine, not a power law**, for the same reason as `Vth`: there is a physical
+constant term. The 0.945 is the M1/M2 gate pair, which hangs off the node even
+at minimum M5; the `0.865·W` is M5's drain junction. A pure power law is forced
+through the origin and misses by −21% at `W = 0.22`. Only `W` enters — four
+pairs of `L` measured, under 1.5% apart.
+
+**Do not use it to correct `f`.** The frequency law was fitted on full-circuit
+simulations that already contain this `C_in`; adding it again double-counts.
+Its uses are the interface contract (this is the `c_load` the previous stage
+must drive) and as the baseline against which layout interconnect parasitics
+are measured once the GDS is extracted.
+
+`C_in` is the dual of `c_load`: our `c_load` is the next cell's `C_in`, and our
+`C_in` is the previous cell's `c_load`. In the design system it is a *predicted
+output*, never an objective — a `cin_max` in the spec is checked, not solved,
+because 1.1–4.0 fF over the whole envelope is too narrow a band for the
+constraint to ever bind.
 
 ---
 
@@ -232,6 +260,15 @@ Grid deliberately disjoint from the fitting grid: `W ∈ {0.75, 1.4, 2.1}` ×
 | `f` | −0.00% | 1.23% | 2.59% |
 | `Vth` | −0.63% | 0.90% | 1.61% |
 | `swing` | −0.58% | 1.11% | 1.88% |
+| `C_in` | +0.40% | 0.56% | 0.98% |
+
+`C_in` used the same grids plus two points at `W = 0.3` and `W = 0.22`, below
+the fitting grid's lower edge of 0.5 — a 2.3× extrapolation. The affine law
+held there (−0.06%, +0.98%) while a power law fitted on the same points
+collapsed (−14%, −21%). Note that this 0.56% measures the law on the surface
+`Cm = 2·Cm_min(W,L)`, where both grids live; off that surface it deviates up to
+15%. The number that bounds the deliverable is 0.15% of frequency — see
+section 8.
 
 Extrapolation-only subset (L=50): −1.08%, −1.04%, +0.11%. **The laws do not
 break outside their fitting range**, and the LOO estimate of 3.1% turned out
@@ -338,3 +375,39 @@ Design system that consumes them: [`../design/`](../design/).
   another degree of freedom.
 - **Resistive output load.** The STDP synapse presents MOS gates (capacitive
   only), so this was not needed — but it would matter for a different load.
+
+### Open lead: `C_in` also depends on the swing
+
+`C_in = 0.945 + 0.865·W` has structured residuals. At fixed geometry, sweeping
+`Cm` moves `C_in` — but the exponent is `+0.098` at `W = 0.5` and `−0.023` at
+`W = 2.5`. **Opposite signs**, so no separable `C_in = a(1+bW)·Cm^c` exists.
+
+Sorting every point by membrane swing instead of by geometry collapses them
+onto one curve. With `g = C_in − 0.865·W`:
+
+| swing [V] | 0.141 | 0.242 | 0.425 | 0.463 | 0.486 | 0.587 | 0.720 | 0.797 | 0.976 | 1.282 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `g` | 1.188 | **0.818** | 1.018 | 1.030 | 0.968 | 1.010 | 0.977 | 0.957 | 0.918 | 0.878 |
+| `W` | 0.5 | 2.5 | 0.5 | 0.22 | 2.5 | 0.22 | 0.35 | 0.35 | 2.5 | 0.5 |
+
+Nine of ten points, from four `W` values spanning 11×, lie on a single
+monotone curve — more swing, less `C_in`. It predicted two fresh points to
+0.1% and 0.2%. The mechanism fits: `g` is the M1/M2 gate capacitance, strongly
+voltage-dependent, averaged over the window the membrane traverses — and the
+swing *is* that window. Since `swing = 4.114·W^0.951·L^1.065·Cm^-1.006`, what
+looked like separate `Cm` and `L` dependences are one variable seen twice.
+
+The bold point (`W = 2.5`, `Cm = 1200`) misses by 26% and is unexplained. Its
+voltage window is nearly identical to a point that fits, so window position
+does not account for it.
+
+**Deliberately not modelled.** The residual reaches 15% of `C_in` in the
+large-`Cm`/small-`W` corner, but `C_in` only carries weight when `Cm` is small,
+and there the law is accurate. The product stays under **0.15% of frequency**
+across the entire space the solver reaches — eight times below the frequency
+law's own 1.23% RMS. Refining a correction far below the error of what it
+corrects buys nothing.
+
+Worth reopening if M1/M2 are ever sized (the 0.945 term *is* those gates, so
+the law would need refitting, not refining), if `CM_FLOOR` drops well below
+50 fF, or to publish the mechanism.
