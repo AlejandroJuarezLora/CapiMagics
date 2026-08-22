@@ -36,7 +36,8 @@ sys.path.insert(0, str(AQUI.parent))
 
 from glayout import gf180                                       # noqa: E402
 
-from lif_design.build import lif_cell                           # noqa: E402
+from lif_design.build import (lif_cell, _cap_glayers,           # noqa: E402
+                              _CAP_TOP, _CAP_BOT)
 
 def _deck():
     """El deck de DRC que trae el propio glayout instalado.
@@ -87,7 +88,7 @@ def esperado(n_caps):
                        "nfet2_source"} | abajo,
     }
 
-MET = {"met1": 34, "met2": 36, "met3": 42, "met4": 46}
+MET = {"met1": 34, "met2": 36, "met3": 42, "met4": 46, "met5": 81}
 
 
 def sondas(handles, bbox):
@@ -95,11 +96,17 @@ def sondas(handles, bbox):
     L = MET[r["glayer"]]
     mid = float(bbox[0][0] + bbox[1][0]) / 2
     pr = {"riel_VDD": [L, 0, mid, r["vdd"]], "riel_VSS": [L, 0, mid, r["vss"]]}
+    # Las capas del MIM salen del PDK: gf180 lo ofrece en met2/met3 o en
+    # met4/met5 y son excluyentes. Con los numeros escritos a mano la sonda
+    # cae en una capa vacia y la red sale "partida" sin que nada este mal.
+    g_top, g_bot = _cap_glayers(gf180)
+    l_top, l_bot = MET[g_top], MET[g_bot]
     for i, c in enumerate(handles["caps"]):
-        q = c.ports["top_met_S"]
-        pr["cap%d_arriba" % i] = [42, 0, float(q.center[0]), float(q.center[1]) + 0.25]
-        b = c.ports["bottom_met_S"]
-        pr["cap%d_abajo" % i] = [36, 0, float(b.center[0]), float(b.center[1]) + 0.25]
+        q = c.ports[_CAP_TOP.format(end="S")]
+        pr["cap%d_arriba" % i] = [l_top, 0, float(q.center[0]), float(q.center[1]) + 0.25]
+        # la placa inferior se pincha en su metal, bajo la extension sur
+        b = c.ports[_CAP_BOT.format(end="S")]
+        pr["cap%d_abajo" % i] = [l_bot, 0, float(b.center[0]), float(b.center[1]) + 0.25]
     for tag, lst in (("nfet", handles["nfets"]), ("pfet", handles["pfets"])):
         for i, ref in enumerate(lst):
             for nombre, puerto in (("source", "multiplier_0_source_W"),
@@ -118,10 +125,23 @@ def sondas(handles, bbox):
     return pr
 
 
-def drc(gds, tag):
+def _mim_option(pdk):
+    """A o B, segun donde ponga el PDK las placas del MIM.
+
+    No se fija a mano: el deck de la opcion equivocada busca la placa
+    inferior en la capa que no es, `mim_virtual` sale vacio, y MIM.3 acusa
+    al condensador de no tener placa. Un falso positivo que parece un fallo
+    de layout.
+    """
+    bottom = pdk.layer_to_glayer(pdk.get_grule("capmet")["capmetbottom"])
+    return "A" if bottom == "met2" else "B"
+
+
+def drc(gds, tag, pdk=gf180):
     rep = "%s/%s.lyrdb" % (SALIDA, tag)
     subprocess.run(["klayout", "-b", "-r", DECK, "-rd", "input=" + gds,
-                    "-rd", "report=" + rep, "-rd", "mim_option=A"],
+                    "-rd", "report=" + rep,
+                    "-rd", "mim_option=" + _mim_option(pdk)],
                    capture_output=True)
     texto = open(rep).read()
     cuenta = {}

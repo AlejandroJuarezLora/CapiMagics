@@ -464,6 +464,26 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
                  "plan": plan}
 
 
+# Puertos del mimcap. La placa superior sale por `top_met_*`; la inferior no
+# tiene puerto propio a nivel superior, se saca por la extension al sur, que
+# la sube a la capa de la placa superior. Ver _cap_glayers.
+_CAP_TOP = "top_met_{end}"
+_CAP_BOT = "bot_via_S_top_met_{end}"
+
+
+def _cap_glayers(pdk):
+    """(capa de la placa superior, capa de la inferior) segun el PDK.
+
+    No se escriben a mano: gf180 ofrece el MIM entre met2/met3 (opcion A) o
+    entre met4/met5 (opcion B), y son excluyentes a nivel de proceso. Suponer
+    una deja el ruteo aterrizando dos niveles por debajo de la placa, sin via
+    que lo salve y sin error -- el condensador queda flotando.
+    """
+    g = pdk.get_grule("capmet")
+    return (pdk.layer_to_glayer(g["capmettop"]),
+            pdk.layer_to_glayer(g["capmetbottom"]))
+
+
 def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
               via_stack, rectangle, evaluate_bbox):
     """Fan-out and membrane node, both on met2.
@@ -485,7 +505,7 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     climb = via_stack(pdk, "met2", "met3")
     vw, vh = evaluate_bbox(climb)
 
-    def strip(a, b):
+    def strip(a, b, capa=None):
         """Un tramo, con la capa que le toca por su direccion.
 
         Bajar TODO a met2 es lo que rompe: el tramo vertical que va de la
@@ -494,8 +514,11 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
         que ser por direccion, no por funcion.
         """
         horizontal = abs(b[0] - a[0]) >= abs(b[1] - a[1])
-        layer = m2 if horizontal else m3
-        w = width if horizontal else width_v
+        if capa is not None:
+            layer, w = pdk.get_glayer(capa), float(pdk.get_grule(capa)["min_width"])
+        else:
+            layer = m2 if horizontal else m3
+            w = width if horizontal else width_v
         rect = top << rectangle(
             size=pdk.snap_to_2xgrid([abs(b[0] - a[0]) + w,
                                      abs(b[1] - a[1]) + w]),
@@ -503,8 +526,9 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
         _center_on(rect, pdk.snap_to_2xgrid((a[0] + b[0]) / 2),
                    pdk.snap_to_2xgrid((a[1] + b[1]) / 2))
 
-    def land(x, y):
-        _center_on(top << climb, pdk.snap_to_2xgrid(x), pdk.snap_to_2xgrid(y))
+    def land(x, y, hasta="met3"):
+        pila = climb if hasta == "met3" else via_stack(pdk, "met2", hasta)
+        _center_on(top << pila, pdk.snap_to_2xgrid(x), pdk.snap_to_2xgrid(y))
         return (pdk.snap_to_2xgrid(x), pdk.snap_to_2xgrid(y))
 
     # Both inter-band nets run in the gap between the bottom band and M5,
@@ -539,8 +563,14 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     # pila queda ENCIMA de la placa inferior y MIM.1 se mide en vertical: 1.2
     # um desde el borde alto de la placa hasta el pad, no solo de lado.
     if caps:
+        # MIM.1 mide 1.2 um de la placa inferior a cualquier otro poligono de
+        # SU capa. La pila de la esquina sube desde met2 hasta la capa de la
+        # placa superior, asi que atraviesa la inferior sea cual sea la
+        # opcion y le tiene que guardar la distancia. Se mide contra el borde
+        # alto del metal del cap, que sobresale del FuseTop, no contra el
+        # FuseTop.
         mim1 = float(pdk.get_grule("capmet")["min_separation"])
-        placa = float(caps[0].ports["bottom_met_N"].center[1])
+        placa = max(float(c.ymax) for c in caps)
         lo = max(lo, placa + mim1 + vh / 2)
     centro = (lo + hi) / 2
     y_fan = pdk.snap_to_2xgrid(centro - pitch / 2)
@@ -580,30 +610,65 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     # Las placas superiores YA son met3, asi que se unen entre si en su propia
     # capa: nada de subir a met4 desde met3 para volver a bajar en el cap de
     # al lado. Se ahorra una pila de vias por cap y la tira de met4.
-    m3 = pdk.get_glayer("met3")
-    w3 = float(pdk.get_grule("met3")["min_width"])
+    # El puente corre por la capa de la placa superior, sea cual sea: asi se
+    # funde con ella y no hace falta via sobre el FuseTop. Con el MIM en
+    # met2/met3 esa capa es met3 y coincide con la vertical de la disciplina;
+    # con el MIM en met4/met5 el puente sube a met5 y el vertical le lleva.
+    g_top, _ = _cap_glayers(pdk)
+    m3 = pdk.get_glayer(g_top)
+    w3 = float(pdk.get_grule(g_top)["min_width"])
     izq, der = caps[0], caps[-1]
-    y_cap = float(izq.ports["top_met_E"].center[1])
+    y_cap = float(izq.ports[_CAP_TOP.format(end="E")].center[1])
     # de borde OESTE del primero a borde ESTE del ultimo, para cruzar las tres
     # placas por encima. Al reves la tira pasa por los huecos y no toca ninguna.
-    x0 = float(izq.ports["top_met_W"].center[0])
-    x1 = float(der.ports["top_met_E"].center[0])
+    x0 = float(izq.ports[_CAP_TOP.format(end="W")].center[0])
+    x1 = float(der.ports[_CAP_TOP.format(end="E")].center[0])
     # La subida a met3 va sobre el PRIMER condensador, a media placa. Llegando
     # ya en met3 no hace falta via sobre el FuseTop: el vertical baja y se
     # funde con la placa superior, que es de su misma capa. Y aterrizar en
     # mitad de la placa reparte mejor que entrar por un borde.
     # La via en si queda muy por encima del FuseTop -- en el canal -- asi que
     # tampoco cae en la exclusion de conectividad del deck de LVS.
-    x_sube = pdk.snap_to_2xgrid(float(izq.center[0]))
-    puente = top << rectangle(size=pdk.snap_to_2xgrid([abs(x1 - x0) + w3, w3]),
+    # Con la placa en la capa vertical basta con caer a media placa: el
+    # metal se funde y no hay via. En cualquier otro caso hace falta una, y
+    # tiene que quedar FUERA del FuseTop, asi que se busca el hueco entre la
+    # primera y la segunda placa. Con un solo cap no hay hueco y se sale por
+    # el oeste, mas alla del borde.
+    if True:
+        x_sube = pdk.snap_to_2xgrid(float(izq.center[0]))
+    else:
+        # La pila crea su propio pad en la capa de la placa inferior, asi que
+        # tiene que guardarle MIM.1 -- 1.2 um -- igual que cualquier otro
+        # poligono de esa capa. En el hueco entre placas no cabe: ese hueco ES
+        # 1.2 um, el minimo, y el pad quedaria a 0.35 de cada lado. Va al
+        # OESTE del banco, donde solo tiene una placa de la que apartarse y el
+        # canal entre inversores y condensadores esta vacio.
+        mim1 = float(pdk.get_grule("capmet")["min_separation"])
+        x_sube = pdk.snap_to_2xgrid(float(izq.xmin) - mim1 - vw / 2)
+    # El puente se estira hasta donde baje la membrana, que puede quedar al
+    # oeste de la primera placa.
+    xa, xb = min(x0, x_sube), max(x1, x_sube)
+    puente = top << rectangle(size=pdk.snap_to_2xgrid([abs(xb - xa) + w3, w3]),
                               layer=m3, centered=True)
-    _center_on(puente, pdk.snap_to_2xgrid((x0 + x1) / 2),
+    _center_on(puente, pdk.snap_to_2xgrid((xa + xb) / 2),
                pdk.snap_to_2xgrid(y_cap))
 
     # De ahi al inversor. La transicion de capa se hace FUERA del banco: sobre
     # el cap no se puede bajar a met2 porque MIM.1 pide 1.2 um entre la placa
     # inferior y cualquier otro met2, y la superior cae dentro de esa huella.
-    a = land(gate_x, y_mem)
+    # El tramo largo de la membrana sube a met4. Es la red sensible de la
+    # celda -- el nodo de integracion que fija la frecuencia -- y met2 es el
+    # carril mas poblado. Arriba corre sola, con menos vecinos que le acoplen.
+    # Solo se puede cuando el MIM NO esta en met4: alli met4 es la placa
+    # inferior y la pista tendria que guardarle MIM.1 en todo su recorrido.
+    # La membrana corre por la capa de la placa superior. Asi llega al banco
+    # y se funde con las placas sin una sola via, que es lo que hacia la
+    # opcion A cuando esa capa era met3. Con el MIM arriba la pista sube a
+    # met5 y se lleva de paso la ventaja: sale del carril met2, que es el mas
+    # poblado, y la red sensible de la celda deja de tener vecinos que le
+    # acoplen.
+    via_mem = g_top
+    a = land(gate_x, y_mem, hasta=via_mem)
     # El puente sigue en met3 hasta SALIR del banco por el oeste, y solo
     # entonces baja a met2. Bajar encima del cap cruza la placa inferior, que
     # es VSS: MIM.4 dentro de la huella y MIM.1 justo encima. Se entra por un
@@ -618,9 +683,19 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     # entrega al vertical de met3. Esta al oeste del banco, fuera de la huella
     # de MIM.1, asi que el met2 nunca llega a acercarse a una placa inferior.
     # De ahi baja en met3 y entra directo en el puente.
-    esquina = land(x_sube, y_mem)
-    strip(a, esquina)
-    strip(esquina, (pdk.snap_to_2xgrid(x_sube), pdk.snap_to_2xgrid(y_cap)))
+    esquina = land(x_sube, y_mem, hasta=via_mem)
+    strip(a, esquina, capa=via_mem)
+    strip(esquina, (pdk.snap_to_2xgrid(x_sube), pdk.snap_to_2xgrid(y_cap)),
+          capa=via_mem)
+
+    # Si la placa superior NO es la capa vertical de la disciplina, el tramo
+    # anterior deja la membrana dos niveles por debajo del puente y hay que
+    # salvar. La pila no puede caer sobre el FuseTop: el deck de LVS descarta
+    # del grafo de conectividad las vias que lo solapan --
+    #     via4_n_cap = via4.not(fusetop)
+    # -- asi que el condensador quedaria flotando para el extractor aunque el
+    # metal se toque. Va en el hueco entre placas, que es donde no hay ninguna.
+    # Sin pila al llegar: la pista YA es la capa de la placa.
 
 
 def _pin_labels(pdk, top, rectangle, nfets, pfets, caps, m5_ref, rails):
@@ -649,7 +724,7 @@ def _pin_labels(pdk, top, rectangle, nfets, pfets, caps, m5_ref, rails):
     marca(riel, "Vss", medio, rails["vss"])
 
     # Iin es la membrana: la placa superior del primer cap, que es met3
-    p = caps[0].ports["top_met_E"]
+    p = caps[0].ports[_CAP_TOP.format(end="E")]
     marca("met3", "Iin", float(p.center[0]) - ancho, float(p.center[1]))
     # spike y spike_neg salen de las columnas met3 de los drenadores
     for nombre, ref in (("spike_neg", nfets[0]), ("spike", nfets[2])):
@@ -755,23 +830,38 @@ def _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
             layer=layer, centered=True)
         _center_on(rect, x, pdk.snap_to_2xgrid((y_rail + y) / 2))
 
-    def drop(port, y_rail, x=None, reach_first=False):
-        """Climb from a met2 edge to the rail layer and run a wide strap down.
+    def drop(port, y_rail, x=None, reach_first=False, desde="met2",
+             entrar=True):
+        """Salva de una capa a la del riel y baja con una correa ancha.
 
-        reach_first keeps the strap on met2 all the way to the rail and climbs
-        there instead. Use it where the climb would otherwise sit inside a
-        block: at a mimcap the stack's met3 passes 0.09um from the top plate,
-        which is the membrane -- a short waiting to happen, not just M3.2a.
+        `desde` es la capa del puerto de partida. Casi siempre met2, pero la
+        placa inferior del mimcap sale por la capa de la placa superior, que
+        puede estar por ENCIMA del riel -- con el MIM en met4/met5 la pila va
+        hacia abajo, no hacia arriba. via_stack quiere (inferior, superior),
+        asi que se ordenan.
+
+        reach_first mantiene la correa en `desde` hasta el riel y salva alli.
+        Se usa donde la pila caeria dentro de un bloque: sobre un mimcap el
+        met3 de la pila pasa a 0.09 um de la placa superior, que es la
+        membrana -- un corto esperando, no solo un M3.2a.
         """
-        climb = via_stack(pdk, "met2", rails.glayer)
+        orden = ("met1", "met2", "met3", "met4", "met5")
+        a, b = sorted((desde, rails.glayer), key=orden.index)
+        climb = via_stack(pdk, a, b)
         w, h = evaluate_bbox(climb)
         dx, dy = _into_metal_xy(port, w, h)
+        if not entrar:
+            # El desplazamiento "hacia dentro del metal" busca que la pila
+            # quede sobre conductor. En la extension del mimcap eso empuja la
+            # correa hacia la placa superior, que esta a 0.6 um: el borde
+            # acaba rozandola y funde las dos placas. Aqui se sale recto.
+            dy = 0.0
         px = pdk.snap_to_2xgrid(float(port.center[0]) + dx if x is None else x)
         py = pdk.snap_to_2xgrid(float(port.center[1]) + dy)
         if reach_first:
             strap = top << rectangle(
                 size=pdk.snap_to_2xgrid([width, abs(y_rail - py) + h]),
-                layer=pdk.get_glayer("met2"), centered=True)
+                layer=pdk.get_glayer(desde), centered=True)
             _center_on(strap, px, pdk.snap_to_2xgrid((y_rail + py) / 2))
             py = y_rail
         _center_on(top << climb, px, py)
@@ -852,7 +942,12 @@ def _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
 
     for ref in caps:
         # bottom plate to VSS; the top plate is already on the membrane
-        drop(ref.ports["bottom_met_S"], y_vss, reach_first=True)
+        # La placa inferior sale por la extension sur, ya subida a la capa
+        # de la placa superior. Con el MIM arriba eso queda por encima del
+        # riel y la pila baja; drop lo resuelve por si sola.
+        g_top, _ = _cap_glayers(pdk)
+        drop(ref.ports[_CAP_BOT.format(end="S")], y_vss,
+             reach_first=True, desde=g_top, entrar=False)
 
     for ref in pfets:
         tie_to_rail(ref, y_vdd, "N")
