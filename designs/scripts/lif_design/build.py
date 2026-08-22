@@ -1032,7 +1032,7 @@ def from_design(pdk, design, mim: str = mim_pdk.POR_DEFECTO,
         Severity.INFO if abs(error) < 0.02 else Severity.WARNING, "Cm",
         "pedida %.1f fF -> %d MIM de %.3f um de lado = %.1f fF (%+.1f%%), "
         "con %s" % (p["Cm"], n, lado_real, cm_real, 100 * error,
-                    mim_pdk.modelo(mim)),
+                    mim_pdk.modelo(pdk, mim)),
         chain="snap a rejilla del lado del MIM"))
 
     top, handles = lif_cell(
@@ -1043,5 +1043,5 @@ def from_design(pdk, design, mim: str = mim_pdk.POR_DEFECTO,
                              length=INVERSOR_MINIMO["length"], **fet),
         cap_size=lado_real, n_caps=n, rail_layer=rail_layer, name=name)
     handles["Cm_real"] = cm_real
-    handles["mim"] = mim_pdk.modelo(mim)
+    handles["mim"] = mim_pdk.modelo(pdk, mim)
     return top, handles, notas

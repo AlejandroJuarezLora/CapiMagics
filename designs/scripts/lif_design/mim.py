@@ -26,10 +26,26 @@ DENSIDADES = {
     "2f0": (1.990, 0.238),
 }
 
-# Opcion A del DRC = placa inferior en metal2. Es donde glayout dibuja el MIM
-# y por tanto la unica coherente con lo que generamos hoy.
-PAR_METALES = "m2m3"
-DRC_OPTION = "A"
+def par_metales(pdk) -> str:
+    """La pareja de metales del MIM, como la nombra el PDK: "m2m3", "m4m5"...
+
+    No se escribe: gf180 trae un subcircuito por pareja -- cap_mim_2f0_m2m3,
+    _m3m4, _m4m5, _m5m6 -- y cual toca depende de donde el PDK ponga capmet.
+    Los coeficientes son IDENTICOS en todas (c_cox 1.99e-3, c_capsw 2.383e-10):
+    el sandwich es el mismo nitruro y solo cambia a que altura se inserta, asi
+    que la capacidad no depende de la pareja. El nombre si, y con el el LVS:
+    declarar m2m3 una celda construida en met4/met5 da el valor correcto y el
+    dispositivo equivocado.
+    """
+    bot = pdk.layer_to_glayer(pdk.get_grule("capmet")["capmetbottom"])
+    top = pdk.layer_to_glayer(pdk.get_grule("capmet")["capmettop"])
+    return "m%sm%s" % (bot[3:], top[3:])
+
+
+def drc_option(pdk) -> str:
+    """A o B, segun donde ponga el PDK la placa inferior."""
+    bot = pdk.layer_to_glayer(pdk.get_grule("capmet")["capmetbottom"])
+    return "A" if bot == "met2" else "B"
 
 # Decidido por dos criterios, en este orden:
 #
@@ -68,6 +84,6 @@ def lado_para(Cm: float, mim: str = POR_DEFECTO, n: int = 1) -> float:
     return (-b + (b * b + 4.0 * cox * objetivo) ** 0.5) / (2.0 * cox)
 
 
-def modelo(mim: str = POR_DEFECTO) -> str:
+def modelo(pdk, mim: str = POR_DEFECTO) -> str:
     """Nombre del subcircuito del PDK que hay que usar al simular."""
-    return "cap_mim_%s_%s_noshield" % (mim, PAR_METALES)
+    return "cap_mim_%s_%s_noshield" % (mim, par_metales(pdk))
