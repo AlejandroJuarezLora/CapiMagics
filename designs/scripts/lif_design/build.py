@@ -628,7 +628,7 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     # tiene que quedar FUERA del FuseTop, asi que se busca el hueco entre la
     # primera y la segunda placa. Con un solo cap no hay hueco y se sale por
     # el oeste, mas alla del borde.
-    if False:
+    if True:
         x_sube = pdk.snap_to_2xgrid(float(izq.center[0]))
     else:
         # La pila crea su propio pad en la capa de la placa inferior, asi que
@@ -677,7 +677,10 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     # entrega al vertical de met3. Esta al oeste del banco, fuera de la huella
     # de MIM.1, asi que el met2 nunca llega a acercarse a una placa inferior.
     # De ahi baja en met3 y entra directo en el puente.
-    esquina = land(x_sube, y_mem, hasta=via_mem)
+    # La esquina NO lleva pila: los dos tramos son la capa de la placa, asi
+    # que es un simple doblez. Ponerle una la hace atravesar met1..met4 y
+    # tocar lo que haya debajo -- que aqui es la columna del ultimo inversor.
+    esquina = (pdk.snap_to_2xgrid(x_sube), pdk.snap_to_2xgrid(y_mem))
     strip(a, esquina, capa=via_mem)
     strip(esquina, (pdk.snap_to_2xgrid(x_sube), pdk.snap_to_2xgrid(y_cap)),
           capa=via_mem)
