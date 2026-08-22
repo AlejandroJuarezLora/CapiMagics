@@ -137,11 +137,25 @@ def _mim_option(pdk):
     return "A" if bottom == "met2" else "B"
 
 
+def _metal_level(pdk):
+    """Cuantos metales tiene la pila, como los nombra el deck.
+
+    Hay que pasarlo: el deck del PDK asume 5LM si falta, pero la copia que
+    trae glayout asume 6LM. Con 6LM el deck cree que la cima es metaltop, asi
+    que `topmin1_via` pasa a ser via4 -- que es justo la via del MIM en
+    opcion B -- y MIMTM.10 acusa al condensador de tener vias prohibidas
+    dentro de si mismo. Ciento y pico violaciones que no existen.
+    """
+    n = sum(1 for i in range(1, 7) if "met%d" % i in pdk.glayers)
+    return "%dLM" % n
+
+
 def drc(gds, tag, pdk=gf180):
     rep = "%s/%s.lyrdb" % (SALIDA, tag)
     subprocess.run(["klayout", "-b", "-r", DECK, "-rd", "input=" + gds,
                     "-rd", "report=" + rep,
-                    "-rd", "mim_option=" + _mim_option(pdk)],
+                    "-rd", "mim_option=" + _mim_option(pdk),
+                    "-rd", "metal_level=" + _metal_level(pdk)],
                    capture_output=True)
     texto = open(rep).read()
     cuenta = {}
