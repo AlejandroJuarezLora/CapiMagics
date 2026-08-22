@@ -418,7 +418,18 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
     # corren por los extremos de la celda y no cruzan el banco en ningun punto,
     # asi que la regla es conservadora, no incorrecta. Pasar `rail_layer=None`
     # devuelve esa eleccion automatica.
-    rails_forzados = (Rails.minimum(pdk, rail_layer, width=supply_width)
+    # Con el MIM en met4/met5 la separacion del riel deja de decidirla met3.
+    # La correa de la placa inferior aterriza en el riel viniendo de met5, y
+    # esa pila deja un pad de met4 justo bajo el banco: contra la placa, que
+    # tambien es met4, manda MIM.1 y no la separacion de met3, que es cuatro
+    # veces menor. Sin esto la celda sale con una violacion por condensador.
+    holgura = None
+    if n_caps:
+        g_bot = pdk.layer_to_glayer(pdk.get_grule("capmet")["capmetbottom"])
+        if g_bot != rail_layer:
+            holgura = float(pdk.get_grule("capmet")["min_separation"])
+    rails_forzados = (Rails.minimum(pdk, rail_layer, width=supply_width,
+                                    clearance=holgura)
                       if rail_layer else None)
     plan = plan_bands([Band("bottom", nf_cells + clones(cap, n_caps, "cap")),
                        Band("m5", [m5_cell]),

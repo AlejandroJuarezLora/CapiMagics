@@ -369,7 +369,8 @@ class Rails:
 
     @classmethod
     def minimum(cls, pdk, glayer: str = "met2", width: Optional[float] = None,
-                tracks: int = 0, track_glayer: str = "met2") -> "Rails":
+                tracks: int = 0, track_glayer: str = "met2",
+                clearance: Optional[float] = None) -> "Rails":
         """Rails at minimum width, with room for `tracks` wires beneath them.
 
         `tracks` is what turns a row of isolated cells into a row that can be
@@ -379,11 +380,18 @@ class Rails:
         rails pushed up against the devices there is nowhere to do it. Left at
         zero the row still builds; it just cannot be chained, and the attempt
         shorts the link into whichever rail it runs into.
+
+        `clearance` sobreescribe la separacion. La del riel se calcula con la
+        regla de SU capa, y basta mientras lo unico que se le acerque sea
+        metal de esa capa. No basta cuando algo aterriza en el riel viniendo
+        de arriba: la pila deja un pad en cada capa que atraviesa, y uno de
+        esos puede caer bajo una regla mas dura que la del riel.
         """
         rule = pdk.get_grule(glayer)
         return cls(glayer=glayer,
                    width=float(width if width is not None else rule["min_width"]),
-                   clearance=float(rule["min_separation"]),
+                   clearance=float(rule["min_separation"]
+                                   if clearance is None else clearance),
                    channel=pitch(pdk, track_glayer) * max(0, tracks))
 
     @classmethod
