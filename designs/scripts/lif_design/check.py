@@ -66,6 +66,9 @@ CASOS = [
     ("M5 ancho",    dict(w_inv=0.22, l_inv=0.28, w_m5=3.50, l_m5=50.0, cap=5.0)),
     ("cap grande",  dict(w_inv=0.22, l_inv=0.28, w_m5=1.25, l_m5=50.0, cap=8.0)),
     ("todo grande", dict(w_inv=1.00, l_inv=0.50, w_m5=3.50, l_m5=50.0, cap=8.0)),
+    # esquina baja: M5 en los dos minimos a la vez. El anillo de M5 se queda
+    # mas estrecho que el paso de las pistas, que es donde el ruteo aprieta.
+    ("todo minimo", dict(w_inv=0.22, l_inv=0.28, w_m5=0.22, l_m5=20.0, cap=5.0)),
 ]
 
 def esperado(n_caps):
@@ -139,7 +142,26 @@ def redes(gds, probes):
     return grupos
 
 
-ESPECIFICACIONES = [(200, 100), (300, 100), (800, 100), (2000, 100)]
+# Las cuatro primeras barren frecuencia por la misma ruta del solver (f fija
+# con Iex fija). Las tres siguientes entran por rutas distintas Y salen con
+# geometrias que ninguna de las anteriores produce -- ese es el criterio para
+# estar aqui, porque cada caso cuesta un DRC completo.
+# Un objetivo de ganancia (freq_range e iex_range los dos en rango) NO esta:
+# recorre codigo distinto en el solver pero resuelve por (f_hi, iex_hi), asi
+# que da el mismo GDS que el caso de 800 kHz. Vive en el notebook.
+ESPECIFICACIONES = [
+    ("200 kHz",     dict(freq_range=200, iex_range=100)),
+    ("300 kHz",     dict(freq_range=300, iex_range=100)),
+    ("800 kHz",     dict(freq_range=800, iex_range=100)),
+    ("2000 kHz",    dict(freq_range=2000, iex_range=100)),
+    # el umbral entra en juego y arrastra Cm, o sea el numero de MIM
+    ("umbral 2.0V", dict(freq_range=800, iex_range=100, vth=2.0)),
+    # extremo bajo de corriente verificado: saca W_M5 casi al minimo (0.222)
+    ("Iex 5 nA",    dict(freq_range=300, iex_range=5)),
+    # unica ruta que dimensiona el bufer de salida: W_M7M8 sube y el
+    # inversor de salida cambia de tamaño en el layout
+    ("carga 800fF", dict(freq_range=800, iex_range=100, c_load=800)),
+]
 
 
 def desde_especificacion():
@@ -149,11 +171,11 @@ def desde_especificacion():
     from lif_design.build import from_design
 
     fallos = 0
-    print("\n%-12s %-16s %5s  %s" % ("f objetivo", "caja um", "DRC", "topologia"))
+    print("\n%-12s %-16s %5s  %s" % ("spec", "caja um", "DRC", "topologia"))
     print("-" * 74)
-    for f_khz, iex in ESPECIFICACIONES:
-        tag = "spec_%d" % f_khz
-        d = resolver(NeuronSpec(freq_range=f_khz, iex_range=iex))
+    for nombre, kw in ESPECIFICACIONES:
+        tag = "spec_" + re.sub(r"\W+", "_", nombre)
+        d = resolver(NeuronSpec(**kw))
         top, h, _ = from_design(gf180, d, rail_layer=RIEL, name=tag)
         gds = "%s/%s.gds" % (SALIDA, tag)
         top.write_gds(gds)
@@ -166,7 +188,7 @@ def desde_especificacion():
         if malas or n:
             fallos += 1
         print("%-12s %6.2f x %6.2f  %5s  %s"
-              % ("%d kHz" % f_khz, bb[1][0] - bb[0][0], bb[1][1] - bb[0][1],
+              % (nombre, bb[1][0] - bb[0][0], bb[1][1] - bb[0][1],
                  n if not n else "%d %s" % (n, cats),
                  " ".join(malas) if malas else "ok (%d MIM)" % len(h["caps"])))
     return fallos
