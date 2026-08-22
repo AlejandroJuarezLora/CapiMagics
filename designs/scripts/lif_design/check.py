@@ -55,8 +55,14 @@ DECK = os.environ.get("GF180_DRC") or _deck()
 NETCHECK = str(AQUI / "netcheck.py")
 SALIDA = os.environ.get("LIF_OUT", "/tmp")
 # LIF_RAIL_LAYER fuerza la capa de los rieles en todo el barrido, para poder
-# medir la celda entera en un stack de 3 metales.
+# medir la celda entera en un stack de 3 metales. Sin la variable NO se pasa
+# rail_layer, para que valga el defecto del paquete: pasar None pide la
+# eleccion automatica, y esa mira la capa mas alta de la fila. Con el MIM en
+# met4/met5 la mas alta es la placa superior y no queda piso encima, asi que
+# levanta. La regla es conservadora -- los rieles corren por los extremos y
+# no cruzan el banco -- pero no lo sabe.
 RIEL = os.environ.get("LIF_RAIL_LAYER") or None
+_RIEL_KW = {"rail_layer": RIEL} if RIEL else {}
 FET = dict(multipliers=1, fingers=1, with_substrate_tap=False,
            with_dummy=False, tie_layers=("met2", "met1"), sd_rmult=1)
 
@@ -210,7 +216,7 @@ def desde_especificacion():
     for nombre, kw in ESPECIFICACIONES:
         tag = "spec_" + re.sub(r"\W+", "_", nombre)
         d = resolver(NeuronSpec(**kw))
-        top, h, _ = from_design(gf180, d, rail_layer=RIEL, name=tag)
+        top, h, _ = from_design(gf180, d, name=tag, **_RIEL_KW)
         gds = "%s/%s.gds" % (SALIDA, tag)
         top.write_gds(gds)
         bb = top.bbox
@@ -239,7 +245,7 @@ def main():
                 gf180,
                 inverter=dict(width=kw["w_inv"], length=kw["l_inv"], **FET),
                 m5=dict(width=kw["w_m5"], length=kw["l_m5"], **FET),
-                cap_size=kw["cap"], rail_layer=RIEL, name=tag)
+                cap_size=kw["cap"], name=tag, **_RIEL_KW)
         except Exception as exc:
             print("%-12s no genera: %s" % (nombre, str(exc)[:52]))
             fallos += 1
