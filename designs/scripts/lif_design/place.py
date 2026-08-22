@@ -396,7 +396,7 @@ class Rails:
 
     @classmethod
     def above(cls, pdk, blocks, width: Optional[float] = None,
-              tracks: int = 0) -> "Rails":
+              tracks: int = 0, clearance: Optional[float] = None) -> "Rails":
         """Rails on the first layer every block in the row leaves free.
 
         A rail on a layer some block already uses has to weave around its
@@ -409,22 +409,37 @@ class Rails:
         the inverter stack is the tallest thing by a wide margin while the
         mimcap is the only one reaching met3: sizing the rails off the tallest
         block alone puts them on met3, straight through the cap.
+
+        Un bloque que llega a la CIMA de la pila no participa: la regla
+        consiste en subir un piso y ahi no queda ninguno. Ese bloque no puede
+        tener rieles por encima ni aunque se quiera, asi que dejarlo decidir
+        solo sirve para no devolver nada. Es el caso del mimcap con el MIM en
+        met4/met5 -- su placa superior es met5 y antes esto levantaba.
+
+        Excluirlo traslada una responsabilidad al llamante: los rieles no
+        pueden cruzar ese bloque, y quien coloca la fila tiene que ponerlo
+        donde no lo hagan. En la celda LIF se cumple porque los rieles corren
+        por los extremos y el banco esta dentro.
         """
         if isinstance(blocks, Cell):
             blocks = [blocks]
         blocks = list(blocks)
-        highest = max(blocks, key=lambda b: _level(b.top_layer))
+        cima = len(_STACK) - 1
+        elegibles = [b for b in blocks if _level(b.top_layer) < cima]
+        if not elegibles:
+            raise ValueError(
+                "every block in the row reaches "
+                f"{_STACK[cima]}, the top of the stack -- no free layer left "
+                "for rails")
+        highest = max(elegibles, key=lambda b: _level(b.top_layer))
         block = highest
         level = _level(highest.top_layer) + 1
-        if level >= len(_STACK):
-            raise ValueError(
-                f"{highest.name} reaches {highest.top_layer}, the top of the "
-                f"stack -- no free layer left for rails")
         # The channel sits below the rail, so it belongs to the layer the
         # links will actually run on -- the blocks' own top layer, which is
         # free between them.
         return cls.minimum(pdk, _STACK[level], width, tracks=tracks,
-                           track_glayer=block.top_layer or _STACK[0])
+                           track_glayer=block.top_layer or _STACK[0],
+                           clearance=clearance)
 
     @property
     def band(self) -> float:
@@ -583,7 +598,8 @@ def _band_clearance(pdk, lower: Band, upper: Band) -> float:
 
 
 def plan_bands(bands: Sequence[Band], pdk, rails: Optional[Rails] = None,
-               nets: Sequence["Net"] = ()) -> Floorplan:
+               nets: Sequence["Net"] = (),
+               rail_clearance: Optional[float] = None) -> Floorplan:
     """Lay out bands bottom to top; each band is planned as its own row.
 
     The rails bound the whole stack rather than each band, so a tall block in
@@ -595,7 +611,7 @@ def plan_bands(bands: Sequence[Band], pdk, rails: Optional[Rails] = None,
         band.plan = plan_row(band.blocks, nets, pdk)
 
     every = [b for band in bands for b in band.blocks]
-    rails = rails or Rails.above(pdk, every)
+    rails = rails or Rails.above(pdk, every, clearance=rail_clearance)
 
     gaps = [_band_clearance(pdk, bands[i], bands[i + 1])
             for i in range(len(bands) - 1)]

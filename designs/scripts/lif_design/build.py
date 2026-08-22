@@ -433,7 +433,8 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
                       if rail_layer else None)
     plan = plan_bands([Band("bottom", nf_cells + clones(cap, n_caps, "cap")),
                        Band("m5", [m5_cell]),
-                       Band("top", pf_cells)], pdk, rails=rails_forzados)
+                       Band("top", pf_cells)], pdk, rails=rails_forzados,
+                      rail_clearance=holgura)
     lower, middle, upper = plan.bands
 
     top = Component(name=name)
