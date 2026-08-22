@@ -15,6 +15,8 @@ etiquetas que no existen.
 """
 from __future__ import annotations
 
+from . import mim as mim_pdk
+
 # Nodos internos. `integration` es la membrana y va al pin Iin -- la fuente de
 # corriente entra ahi, asi que el nodo del integrador ES el puerto de entrada.
 _RESET = "spike/reset"
@@ -23,12 +25,16 @@ _RESET = "spike/reset"
 def de_diseño(design, handles, name: str = "lif") -> str:
     """Netlist SPICE del diseño, para comparar contra el GDS.
 
-    `handles` viene de from_design: aporta el nombre del modelo del MIM y el
-    lado real de la placa, que no son del solver sino del generador -- el lado
-    se ajusta a la rejilla y el modelo depende de donde el PDK ponga capmet.
+    Todas las cifras salen de `handles`, no de `design`: son las del generador,
+    ya subidas a la rejilla del GDS, y el modelo del MIM depende de donde el
+    PDK ponga capmet. `design` se mantiene en la firma porque es lo que
+    identifica de que diseño es este netlist.
     """
-    p = design.params
-    w_inv, l_inv = 0.22, 0.28          # los inversores van al minimo
+    del design  # la topologia es fija; las dimensiones vienen de handles
+    # Lo DIBUJADO, no lo pedido: from_design sube cada dimension a la rejilla
+    # del GDS, y el comparador ve el ancho que hay en el layout.
+    d = handles["dims"]
+    w_inv, l_inv = d["W_inv"], d["L_inv"]   # los inversores van al minimo
     n_caps = len(handles["caps"])
     lado = float(handles["cap_lado"])
 
@@ -47,17 +53,22 @@ def de_diseño(design, handles, name: str = "lif") -> str:
         fet("4", _RESET, "spike_neg", "Vss", "Vss", "nfet_03v3", w_inv, l_inv),
         # inversor 2: el bufer de salida, el unico que el solver dimensiona
         fet("7", "spike", "spike_neg", "Vdd", "Vdd", "pfet_03v3",
-            p["W_M7M8"], l_inv),
+            d["W_M7M8"], l_inv),
         fet("8", "spike", "spike_neg", "Vss", "Vss", "nfet_03v3",
-            p["W_M7M8"], l_inv),
+            d["W_M7M8"], l_inv),
         # M5, el interruptor que descarga la membrana
         fet("5", "Iin", _RESET, "Vss", "Vss", "nfet_03v3",
-            p["W_M5"], p["L_M5"]),
+            d["W_M5"], d["L_M5"]),
         # el banco. m=n en vez de n instancias: el comparador combina
         # dispositivos en paralelo, asi que las dos formas casan con la
         # extraccion, y una sola linea dice lo que hay.
-        "XC1 Iin Vss %s c_width=%gu c_length=%gu m=%d"
-        % (handles["mim"], lado, lado, n_caps),
+        #
+        # W/L/M, no c_width/c_length: el lector del deck de gf180
+        # (custom_classes.lvs) traduce W*L*M -> area y (W+L)*M*2 -> perimetro,
+        # que es con lo que compara. Cualquier otro nombre lo ignora en
+        # silencio y el condensador entra con area cero.
+        "XC1 Iin Vss %s W=%gu L=%gu M=%d"
+        % (mim_pdk.modelo_lvs(), lado, lado, n_caps),
         ".ends",
     ]
     return "\n".join(lineas) + "\n"

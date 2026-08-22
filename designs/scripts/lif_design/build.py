@@ -19,6 +19,8 @@ survived.
 """
 from __future__ import annotations
 
+from decimal import ROUND_UP, Decimal
+
 from dataclasses import dataclass
 from typing import Optional
 from warnings import warn
@@ -470,7 +472,8 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
 
     top.add_port(name="IN", port=nfets[0].ports[_GATE_MID.format(side="W")])
     top.add_port(name="OUT", port=nfets[2].ports[_DRAIN_MID.format(side="W")])
-    _pin_labels(pdk, top, rectangle, nfets, pfets, caps, m5_ref, rails_y)
+    _pin_labels(pdk, top, rectangle, nfets, pfets, caps, m5_ref, rails_y,
+                drain_routes)
     return top, {"nfets": nfets, "pfets": pfets, "caps": caps, "m5": m5_ref,
                  "rails": rails_y,
                  "plan": plan}
@@ -720,7 +723,8 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     # Sin pila al llegar: la pista YA es la capa de la placa.
 
 
-def _pin_labels(pdk, top, rectangle, nfets, pfets, caps, m5_ref, rails):
+def _pin_labels(pdk, top, rectangle, nfets, pfets, caps, m5_ref, rails,
+                drain_routes):
     """Marcas de pin para que el LVS sepa como se llama cada red.
 
     En gf180 met*_pin y met*_label son la MISMA capa, y no conduce: la marca
@@ -753,10 +757,20 @@ def _pin_labels(pdk, top, rectangle, nfets, pfets, caps, m5_ref, rails):
     g_top = _cap_glayers(pdk)[0]
     p = caps[0].ports[_CAP_TOP.format(end="E")]
     marca(g_top, "Iin", float(p.center[0]) - ancho, float(p.center[1]))
-    # spike y spike_neg salen de las columnas met3 de los drenadores
-    for nombre, ref in (("spike_neg", nfets[0]), ("spike", nfets[2])):
-        d = ref.ports[_DRAIN_MID.format(side="N")]
-        marca("met3", nombre, float(d.center[0]), float(d.center[1]))
+    # spike y spike_neg van sobre la RUTA del drenador, no sobre el puerto
+    # _DRAIN_MID: en un fet de un dedo ese puerto comparte el x del centro
+    # del dispositivo con la puerta, y por ahi corre la columna de met3 que
+    # une las puertas -- que en el inversor 0 es la membrana. La marca caia
+    # ahi y nombraba la red equivocada. El drenador sale por el ESTE con un
+    # c_route, y ese es el conductor que hay que nombrar.
+    #
+    # netcheck no lo veia porque camina el metal y no mira etiquetas; el LVS
+    # lo reporto en su primera ejecucion como "extra top-level pin".
+    w3 = float(pdk.get_grule("met3")["min_width"])
+    for nombre, ref, ruta in (("spike_neg", nfets[0], drain_routes[0]),
+                              ("spike", nfets[2], drain_routes[2])):
+        d = ref.ports[_DRAIN_MID.format(side="E")]
+        marca("met3", nombre, float(ruta.xmax) - w3 / 2, float(d.center[1]))
 
 
 def _into_metal_xy(port, w, h):
@@ -998,6 +1012,28 @@ CAPS = 3          # la membrana se reparte en tres MIM, uno por hueco de banda
 LADO_MINIMO = 5.0
 
 
+# Paso al que sale dibujada una dimension centrada: el GDS se escribe a 0.005
+# um y tanto la placa del MIM como el canal de un FET van centrados, asi que
+# cada borde cae en media unidad. `snap_to_2xgrid` no basta porque usa
+# `pdk.grid_size`, que en gf180 dice 0.001.
+REJILLA_DIBUJO = Decimal("0.01")
+
+
+def en_rejilla(valor: float) -> float:
+    """Dimension [um] que se dibuja exactamente como se pide.
+
+    Sin esto lo pedido y lo dibujado divergen en menos de una centesima y el
+    LVS lo ve: un MIM de 5.864 sale de 5.87 y su area no es la que declara el
+    netlist; un M5 de 1.671 sale de 1.68 y el comparador marca el ancho.
+
+    Se redondea hacia ARRIBA, como `snap_to_2xgrid`, para no perder ni
+    capacidad ni corriente respecto a lo que el solver pidio.
+    """
+    return float(REJILLA_DIBUJO
+                 * (Decimal(str(valor)) / REJILLA_DIBUJO).quantize(
+                     1, rounding=ROUND_UP))
+
+
 def from_design(pdk, design, mim: str = mim_pdk.POR_DEFECTO,
                 fet: dict | None = None, rail_layer: Optional[str] = RIEL_POR_DEFECTO,
                 name: str = "lif"):
@@ -1030,7 +1066,7 @@ def from_design(pdk, design, mim: str = mim_pdk.POR_DEFECTO,
             % (p["Cm"], LADO_MINIMO, mim_pdk.capacidad(LADO_MINIMO, mim, 1)),
             chain="MIM.8a: area de FuseTop >= 25 um2"))
         lado = LADO_MINIMO
-    lado_real = float(pdk.snap_to_2xgrid(lado))
+    lado_real = en_rejilla(lado)
     cm_real = mim_pdk.capacidad(lado_real, mim=mim, n=n)
     error = (cm_real - p["Cm"]) / p["Cm"]
     notas.append(Note(
@@ -1040,13 +1076,22 @@ def from_design(pdk, design, mim: str = mim_pdk.POR_DEFECTO,
                     mim_pdk.modelo(pdk, mim)),
         chain="snap a rejilla del lado del MIM"))
 
+    # Las dimensiones que de verdad se dibujan. El netlist de referencia lee
+    # de aqui, no de design.params: si declarase lo pedido, el LVS marcaria la
+    # diferencia de rejilla como un ancho que no casa.
+    dims = {k: en_rejilla(p[k]) for k in ("W_M5", "L_M5", "W_M7M8")}
+    dims.update(W_inv=en_rejilla(INVERSOR_MINIMO["width"]),
+                L_inv=en_rejilla(INVERSOR_MINIMO["length"]))
+
     top, handles = lif_cell(
         pdk,
-        inverter=dict(INVERSOR_MINIMO, **fet),
-        m5=dict(width=p["W_M5"], length=p["L_M5"], **fet),
-        output_inverter=dict(width=p["W_M7M8"],
-                             length=INVERSOR_MINIMO["length"], **fet),
+        inverter=dict(INVERSOR_MINIMO, width=dims["W_inv"],
+                      length=dims["L_inv"], **fet),
+        m5=dict(width=dims["W_M5"], length=dims["L_M5"], **fet),
+        output_inverter=dict(width=dims["W_M7M8"],
+                             length=dims["L_inv"], **fet),
         cap_size=lado_real, n_caps=n, rail_layer=rail_layer, name=name)
+    handles["dims"] = dims
     handles["Cm_real"] = cm_real
     handles["mim"] = mim_pdk.modelo(pdk, mim)
     handles["cap_lado"] = lado_real

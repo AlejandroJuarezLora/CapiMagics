@@ -85,5 +85,24 @@ def lado_para(Cm: float, mim: str = POR_DEFECTO, n: int = 1) -> float:
 
 
 def modelo(pdk, mim: str = POR_DEFECTO) -> str:
-    """Nombre del subcircuito del PDK que hay que usar al simular."""
+    """Nombre del subcircuito del PDK que hay que usar al SIMULAR.
+
+    Lleva la pareja de metales porque el PDK trae uno por cada una. Para el
+    LVS no sirve: ver modelo_lvs.
+    """
     return "cap_mim_%s_%s_noshield" % (mim, par_metales(pdk))
+
+
+def modelo_lvs(mim: str = POR_DEFECTO) -> str:
+    """Nombre del dispositivo tal como lo EXTRAE el deck de LVS.
+
+    No es el mismo que el de simulacion, y confundirlos cuesta un LVS que
+    falla con "layout device not in schematic" sin que nada este mal en el
+    layout. El deck declara
+
+        extract_devices(capacitor('cap_mim_2f0fF', 2.0e-15, MIMCap), ...)
+
+    sin sufijo de metales: la extraccion no distingue la pareja, solo la
+    densidad. Asi que este nombre es el mismo en opcion A y en B.
+    """
+    return "cap_mim_%sfF" % mim
