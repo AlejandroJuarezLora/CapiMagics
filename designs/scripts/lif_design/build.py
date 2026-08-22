@@ -562,16 +562,10 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     # La pista de membrana sube a met3 sobre el primer condensador, asi que su
     # pila queda ENCIMA de la placa inferior y MIM.1 se mide en vertical: 1.2
     # um desde el borde alto de la placa hasta el pad, no solo de lado.
-    if caps:
-        # MIM.1 mide 1.2 um de la placa inferior a cualquier otro poligono de
-        # SU capa. La pila de la esquina sube desde met2 hasta la capa de la
-        # placa superior, asi que atraviesa la inferior sea cual sea la
-        # opcion y le tiene que guardar la distancia. Se mide contra el borde
-        # alto del metal del cap, que sobresale del FuseTop, no contra el
-        # FuseTop.
-        mim1 = float(pdk.get_grule("capmet")["min_separation"])
-        placa = max(float(c.ymax) for c in caps)
-        lo = max(lo, placa + mim1 + vh / 2)
+    # Sin margen vertical contra las placas: la pista de membrana corre por
+    # la capa de la placa SUPERIOR y la separacion de MIM.1 se mide contra la
+    # INFERIOR, que es otra capa. Quien si tiene que apartarse es la pila de
+    # la esquina, que atraviesa met4 -- y por eso va donde no hay cap debajo.
     centro = (lo + hi) / 2
     y_fan = pdk.snap_to_2xgrid(centro - pitch / 2)
     y_mem = pdk.snap_to_2xgrid(centro + pitch / 2)
@@ -634,7 +628,7 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     # tiene que quedar FUERA del FuseTop, asi que se busca el hueco entre la
     # primera y la segunda placa. Con un solo cap no hay hueco y se sale por
     # el oeste, mas alla del borde.
-    if True:
+    if False:
         x_sube = pdk.snap_to_2xgrid(float(izq.center[0]))
     else:
         # La pila crea su propio pad en la capa de la placa inferior, asi que

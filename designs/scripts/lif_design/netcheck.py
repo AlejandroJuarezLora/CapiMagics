@@ -19,7 +19,8 @@ import pya
 # metal, the via above it, metal, ... The order is what makes a via adjacent
 # to the two layers it connects.
 STACK = [("met1", 34, 0), ("via1", 35, 0), ("met2", 36, 0), ("via2", 38, 0),
-         ("met3", 42, 0), ("via3", 40, 0), ("met4", 46, 0)]
+         ("met3", 42, 0), ("via3", 40, 0), ("met4", 46, 0), ("via4", 41, 0),
+         ("met5", 81, 0)]
 METAL = STACK[0::2]
 VIA = STACK[1::2]
 
@@ -35,16 +36,27 @@ def polys(num, dt):
 
 shapes = {name: polys(num, dt) for name, num, dt in STACK}
 
-# The MIM top plate is FuseTop, and the via2 that lands on it contacts *that*,
-# not the met2 bottom plate underneath. Treating capmet as invisible welds the
-# two plates together and reports every capacitor as a dead short. Split via2
+# The MIM top plate is FuseTop, and the via that lands on it contacts *that*,
+# not the bottom plate underneath. Treating capmet as invisible welds the two
+# plates together and reports every capacitor as a dead short. Split that via
 # into the part over FuseTop and the rest, and give capmet its own nodes.
+#
+# WHICH via depends on where the PDK puts the MIM: via2 with the plates on
+# met2/met3 (option A), via4 with them on met4/met5 (option B). gf180 offers
+# both and they are exclusive at the process level, so this looks at the
+# layout instead of assuming: the via layer that actually overlaps FuseTop is
+# the one to split. Splitting the wrong one leaves the plates welded, and the
+# real connections -- which live on the metals the split via reaches -- come
+# out invisible.
 CAPMET = ("capmet", 75, 0)
 shapes[CAPMET[0]] = polys(CAPMET[1], CAPMET[2])
 _capmet = pya.Region([p for p in shapes[CAPMET[0]]])
-_via2 = pya.Region([p for p in shapes["via2"]])
-shapes["via2"] = list(_via2.not_(_capmet).each())
-shapes["via2_cap"] = list(_via2.and_(_capmet).each())
+_cap_via = next((n for n, _, _ in VIA
+                 if pya.Region([p for p in shapes[n]]).interacting(_capmet).count()),
+                "via2")
+_v = pya.Region([p for p in shapes[_cap_via]])
+shapes[_cap_via] = list(_v.not_(_capmet).each())
+shapes[_cap_via + "_cap"] = list(_v.and_(_capmet).each())
 
 # every merged metal polygon is one node; vias only join them
 CONDUCTOR = [m[0] for m in METAL] + [CAPMET[0]]
@@ -78,7 +90,11 @@ def hits(poly, layer):
 
 welds = [(vname, METAL[k][0], METAL[k + 1][0])
          for k, (vname, _, _) in enumerate(VIA)]
-welds.append(("via2_cap", CAPMET[0], "met3"))
+# La via sobre el FuseTop une la placa superior con el metal de ARRIBA, no con
+# el de abajo: ese es el sandwich. Cual sea ese metal depende de la opcion, y
+# sale de la misma pila que la via detectada.
+_k = [n for n, _, _ in VIA].index(_cap_via)
+welds.append((_cap_via + "_cap", CAPMET[0], METAL[_k + 1][0]))
 
 for vname, below, above in welds:
     for via in shapes[vname]:
