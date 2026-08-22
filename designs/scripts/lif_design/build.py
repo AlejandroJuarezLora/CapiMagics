@@ -745,9 +745,14 @@ def _pin_labels(pdk, top, rectangle, nfets, pfets, caps, m5_ref, rails):
     marca(riel, "Vdd", medio, rails["vdd"])
     marca(riel, "Vss", medio, rails["vss"])
 
-    # Iin es la membrana: la placa superior del primer cap, que es met3
+    # Iin es la membrana, y se marca sobre la placa superior del primer cap.
+    # La capa sale del PDK: met3 con el MIM en met2/met3, met5 con el en
+    # met4/met5. Escribirla a mano deja la marca flotando sobre una capa
+    # vacia, el extractor no encuentra conductor bajo el texto y la red sale
+    # sin nombre -- que es como el LVS lo reporta: "missing top-level pin".
+    g_top = _cap_glayers(pdk)[0]
     p = caps[0].ports[_CAP_TOP.format(end="E")]
-    marca("met3", "Iin", float(p.center[0]) - ancho, float(p.center[1]))
+    marca(g_top, "Iin", float(p.center[0]) - ancho, float(p.center[1]))
     # spike y spike_neg salen de las columnas met3 de los drenadores
     for nombre, ref in (("spike_neg", nfets[0]), ("spike", nfets[2])):
         d = ref.ports[_DRAIN_MID.format(side="N")]
@@ -1044,4 +1049,5 @@ def from_design(pdk, design, mim: str = mim_pdk.POR_DEFECTO,
         cap_size=lado_real, n_caps=n, rail_layer=rail_layer, name=name)
     handles["Cm_real"] = cm_real
     handles["mim"] = mim_pdk.modelo(pdk, mim)
+    handles["cap_lado"] = lado_real
     return top, handles, notas
