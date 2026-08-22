@@ -97,15 +97,15 @@ def _vth_numerator(W: float, L: float) -> float:
     return -16.83 * W + 0.4884 * L + 1.766 * W * L
 
 
-def vth(W: float, L: float, cm: float) -> float:
+def vth(W: float, L: float, Cm: float) -> float:
     """Vth [V] de la membrana.  RMS 1.32%.
 
     Ortogonal a Iex: varia <1.2% con la corriente x16.
     """
-    return 1.2792 + _vth_numerator(W, L) / cm
+    return 1.2792 + _vth_numerator(W, L) / Cm
 
 
-def solve_cm_for_vth(W: float, L: float, vth_target: float) -> float:
+def solve_Cm_for_vth(W: float, L: float, vth_target: float) -> float:
     """Cm [fF] que da vth_target con (W,L) fijas.
 
     Lanza ValueError si vth_target <= 1.2792 (la asintota de la ley): por
@@ -127,25 +127,54 @@ def vth_max_at(W: float, L: float) -> float:
     Esta es la razon de que f y Vth esten acoplados: f baja -> W*L grande ->
     Cm_min grande -> Vth acotado.
     """
-    return vth(W, L, cm_min(W, L))
+    return vth(W, L, Cm_min(W, L))
 
 
 # --- swing -----------------------------------------------------------------
-def swing(W: float, L: float, cm: float) -> float:
+def swing(W: float, L: float, Cm: float) -> float:
     """Excursion de la membrana [V].  RMS 1.68%.
 
     Exponentes ~ (1, 1, -1): es W*L/Cm, carga acoplada sobre capacitancia.
     """
-    return 4.114 * W ** 0.951 * L ** 1.065 * cm ** -1.006
+    return 4.114 * W ** 0.951 * L ** 1.065 * Cm ** -1.006
 
 
 # --- limite de operacion ---------------------------------------------------
-def cm_min(W: float, L: float) -> float:
+def Cm_min(W: float, L: float) -> float:
     """Cm [fF] minimo para que la membrana no salga del riel.
 
     Conservadora 10-25%: la frontera medida esta en 0.75-0.93 x este valor.
     """
     return 8.94 * W ** 1.038 * L ** 0.700
+
+
+# --- entrada ---------------------------------------------------------------
+def c_in(W: float) -> float:
+    """Capacidad [fF] que la fuente de corriente ve en el nodo de membrana,
+    aparte de Cm.  LOO 0.67% RMS, validacion externa 0.56% RMS.
+
+    NO es potencia sino afin, y por la misma razon que Vth: hay un termino
+    constante fisico. El 0.945 son las puertas de M1/M2, que cuelgan del nodo
+    aunque M5 sea minimo; el 0.865*W es la union de drenador de M5. Una
+    potencia pura tendria que pasar por el origen y falla -21% en W=0.22.
+
+    Solo depende de W. L no entra (4 pares de L medidos, <1.5% entre ellos).
+
+    OJO, NO usar para corregir freq(): la ley de frecuencia se ajusto sobre
+    simulaciones del circuito completo, con este C_in ya dentro. Sumarlo otra
+    vez lo cuenta dos veces. Esto sirve para el contrato hacia la etapa previa
+    (es el c_load que esa etapa debe manejar) y como linea base contra la que
+    medir la parasita de interconexion cuando se extraiga el layout.
+
+    Residuo conocido: C_in tambien depende de la excursion, no solo de W --
+    a mas swing, menos C_in. Entra por ahi lo que parecian dependencias de Cm
+    y de L. Esto se lleva hasta el 15% del valor de C_in en las esquinas de
+    Cm grande con W pequeña, pero como C_in solo pesa cuando Cm es pequeño, la
+    desviacion que traslada a la frecuencia queda bajo 0.15% en todo el
+    espacio que el solver alcanza. Sin modelar a proposito: afinarlo mas seria
+    afinar una correccion muy por debajo del error de la ley que corrige.
+    """
+    return 0.945 + 0.865 * W
 
 
 # --- salida ----------------------------------------------------------------

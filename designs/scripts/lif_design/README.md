@@ -24,12 +24,19 @@ dimensions **µm**, capacitance **fF**, current **nA**.
 | threshold | `Vth = 1.2792 + (−16.83W + 0.4884L + 1.766WL)/Cm` | 1.32% |
 | swing | `swing = 4.114 · W⁰·⁹⁵¹ · L¹·⁰⁶⁵ · Cm⁻¹·⁰⁰⁶` | 1.68% |
 | oscillation floor | `Cm_min = 8.94 · W¹·⁰³⁸ · L⁰·⁷⁰⁰` | — |
+| input capacitance | `C_in = 0.945 + 0.865 · W` | 0.67% |
 
 Externally validated on 18 points outside the fitting grid: frequency error
 −0.00% mean, 1.23% RMS.
 
 W and L are M5, the integrator transistor. The inverters (M1–M4) are not
 characterised — they are sized as ordinary digital gates.
+
+`C_in` is what the cell presents to whatever drives current into it, on top of
+`Cm`. It is a predicted output, never an objective: it depends only on `W_M5`,
+and 1.1–4.0 fF across the envelope is too narrow to constrain anything. A
+`c_in_max` in the spec is checked, not solved. **It must not be added to `f`** —
+the frequency law was fitted on simulations that already include it.
 
 ## Validity range
 

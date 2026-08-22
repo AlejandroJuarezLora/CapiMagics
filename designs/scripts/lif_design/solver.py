@@ -56,16 +56,16 @@ def design(spec: NeuronSpec) -> NeuronDesign:
     W, Lg = _solve_geometry(spec, d)
 
     # ---- capa 2: Cm desde el threshold -----------------------------------
-    cm = _solve_cm(spec, d, W, Lg)
+    Cm = _solve_cm(spec, d, W, Lg)
 
     # ---- capa 3: buffer de salida (independiente) ------------------------
     w78 = _solve_buffer(spec, d)
 
     d.params = {"W_M5": round(W, 3), "L_M5": round(Lg, 2),
-                "Cm": round(cm, 1), "W_M7M8": round(w78, 3)}
+                "Cm": round(Cm, 1), "W_M7M8": round(w78, 3)}
 
     # ---- capa 4: validacion y prediccion ---------------------------------
-    _validate(d, W, Lg, cm)
+    _validate(d, W, Lg, Cm, spec)
     _predict(d, spec)
     return d
 
@@ -286,45 +286,45 @@ def _adjusted_geometry(spec: NeuronSpec, d: NeuronDesign, f_target: float,
 # --------------------------------------------------------------------------
 def _solve_cm(spec: NeuronSpec, d: NeuronDesign, W: float, Lg: float) -> float:
     """Cm desde el threshold, o el minimo con margen si no se pidio."""
-    floor = max(L.cm_min(W, Lg), L.CM_FLOOR)
+    floor = max(L.Cm_min(W, Lg), L.CM_FLOOR)
 
     if spec.vth is None:
-        cm = spec.Cm if spec.Cm is not None else 1.2 * floor
+        Cm = spec.Cm if spec.Cm is not None else 1.2 * floor
         if spec.Cm is not None and spec.Cm < floor:
             d.add(Severity.WARNING, "Cm",
                   f"subida de {spec.Cm} a {floor:.0f} fF: bajo Cm_min la "
                   "membrana sale del riel",
-                  f"Cm_min(W={W:.2f}, L={Lg:.1f}) = {L.cm_min(W, Lg):.0f} fF")
-            cm = floor
+                  f"Cm_min(W={W:.2f}, L={Lg:.1f}) = {L.Cm_min(W, Lg):.0f} fF")
+            Cm = floor
         elif spec.Cm is None:
             d.add(Severity.INFO, "Cm",
-                  f"sin objetivo de Vth; se usa 1.2 x Cm_min = {cm:.0f} fF "
+                  f"sin objetivo de Vth; se usa 1.2 x Cm_min = {Cm:.0f} fF "
                   "(margen sobre el limite de operacion)")
-        return cm
+        return Cm
 
     # hay objetivo de Vth
     try:
-        cm = L.solve_cm_for_vth(W, Lg, spec.vth)
+        Cm = L.solve_Cm_for_vth(W, Lg, spec.vth)
     except ValueError as e:
         d.add(Severity.ERROR, "Vth", str(e))
         return max(floor, NOMINAL["Cm"])
 
-    if cm < floor:
+    if Cm < floor:
         # el Vth pedido exige menos Cm del permitido -> acoplamiento f/Vth
         vmax = L.vth(W, Lg, floor)
         d.add(Severity.ERROR, "Vth",
-              f"Vth={spec.vth:.3f} V exigiria Cm={cm:.0f} fF, bajo el minimo "
+              f"Vth={spec.vth:.3f} V exigiria Cm={Cm:.0f} fF, bajo el minimo "
               f"de {floor:.0f} fF",
-              f"W*L={W*Lg:.0f} um2 -> Cm_min={L.cm_min(W, Lg):.0f} fF -> "
+              f"W*L={W*Lg:.0f} um2 -> Cm_min={L.Cm_min(W, Lg):.0f} fF -> "
               f"Vth <= {vmax:.3f} V. La frecuencia y el threshold estan "
               "acoplados: f baja exige W*L grande, que exige Cm grande, que "
               "baja Vth")
         return floor
-    if spec.Cm is not None and abs(spec.Cm - cm) / cm > 0.05:
+    if spec.Cm is not None and abs(spec.Cm - Cm) / Cm > 0.05:
         d.add(Severity.WARNING, "Cm",
-              f"cambiada de {spec.Cm} a {cm:.0f} fF para lograr "
+              f"cambiada de {spec.Cm} a {Cm:.0f} fF para lograr "
               f"Vth={spec.vth:.3f} V")
-    return cm
+    return Cm
 
 
 def _solve_buffer(spec: NeuronSpec, d: NeuronDesign) -> float:
@@ -345,7 +345,8 @@ def _solve_buffer(spec: NeuronSpec, d: NeuronDesign) -> float:
 
 
 # --------------------------------------------------------------------------
-def _validate(d: NeuronDesign, W: float, Lg: float, cm: float) -> None:
+def _validate(d: NeuronDesign, W: float, Lg: float, Cm: float,
+              spec: NeuronSpec) -> None:
     """Limites duros sobre TODO, incluidas las dimensiones fijadas."""
     if not (L.W_MIN <= W <= L.W_MAX):
         d.add(Severity.WARNING, "W_M5",
@@ -359,21 +360,31 @@ def _validate(d: NeuronDesign, W: float, Lg: float, cm: float) -> None:
         d.add(Severity.WARNING, "L_M5",
               f"{Lg:.1f} um: bajo {L.L_PRECISE_MIN} um el error de la ley de "
               "frecuencia sube de ~1% a 5-7%")
-    if cm < L.cm_min(W, Lg):
+    if Cm < L.Cm_min(W, Lg):
         d.add(Severity.WARNING, "Cm",
-              f"{cm:.0f} fF esta bajo Cm_min={L.cm_min(W, Lg):.0f} fF; la "
+              f"{Cm:.0f} fF esta bajo Cm_min={L.Cm_min(W, Lg):.0f} fF; la "
               "membrana puede salir del riel (la ley es conservadora 10-25%, "
               "asi que puede funcionar igualmente)")
-    v = L.vth(W, Lg, cm)
+    v = L.vth(W, Lg, Cm)
     if v >= L.VDD:
         d.add(Severity.ERROR, "Vth",
               f"el diseño da Vth={v:.2f} V, sobre VDD={L.VDD} V")
+    if spec.c_in_max is not None:
+        ci = L.c_in(W)
+        if ci > spec.c_in_max:
+            # solo se comprueba: C_in depende exclusivamente de W_M5, que es
+            # el ultimo eslabon de la cadena de ajuste. Resolverlo aqui seria
+            # gastar el mando mas caro por un margen de 1.1-4.0 fF.
+            d.add(Severity.WARNING, "C_in",
+                  f"el diseño presenta C_in={ci:.2f} fF a la etapa previa, "
+                  f"sobre el maximo pedido de {spec.c_in_max:.2f} fF; haria "
+                  f"falta W_M5 <= {(spec.c_in_max - 0.945) / 0.865:.3f} um")
 
 
 def _predict(d: NeuronDesign, spec: NeuronSpec) -> None:
     """Comportamiento esperado y requisitos sobre el entorno."""
     W, Lg = d.params["W_M5"], d.params["L_M5"]
-    cm, w78 = d.params["Cm"], d.params["W_M7M8"]
+    Cm, w78 = d.params["Cm"], d.params["W_M7M8"]
     lo, hi = L.iex_window(W, Lg)
     ir = spec.iex_range or (lo, min(hi, 200.0))
 
@@ -382,10 +393,11 @@ def _predict(d: NeuronDesign, spec: NeuronSpec) -> None:
         "f a 100 nA [kHz]": round(L.freq_at_iex_ref(W, Lg), 1),
         "f en el rango [kHz]": (round(L.freq(W, Lg, ir[0]), 1),
                                 round(L.freq(W, Lg, ir[1]), 1)),
-        "Vth [V]": round(L.vth(W, Lg, cm), 3),
-        "swing [V]": round(L.swing(W, Lg, cm), 3),
-        "Cm_min [fF]": round(L.cm_min(W, Lg), 1),
+        "Vth [V]": round(L.vth(W, Lg, Cm), 3),
+        "swing [V]": round(L.swing(W, Lg, Cm), 3),
+        "Cm_min [fF]": round(L.Cm_min(W, Lg), 1),
         "ventana Iex [nA]": (round(lo, 1), round(hi, 1)),
+        "C_in [fF]": round(L.c_in(W), 2),
         "C_load max [fF]": round(L.c_load_max(w78), 1),
     }
 

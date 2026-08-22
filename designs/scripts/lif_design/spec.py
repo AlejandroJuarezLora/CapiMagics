@@ -73,6 +73,13 @@ class NeuronSpec:
     Contexto:
         source_ro   impedancia de salida de la fuente de corriente [ohm].
                     Si se da, el sistema calcula el error esperado.
+        c_in_max    capacidad maxima que la etapa previa puede manejar [fF].
+                    Dual de c_load: nuestro c_load es el C_in de la celda
+                    siguiente, y nuestro C_in es el c_load de la anterior.
+                    Se comprueba, no se resuelve: C_in solo va de 1.1 a 4.0 fF
+                    en todo el envolvente, asi que la cota practicamente nunca
+                    puede morder. Si algun dia lo hace, sube a objetivo y
+                    compite con la frecuencia por W_M5.
         freq_tolerance  desviacion aceptable al resolver [fraccion]
     """
     # objetivos
@@ -89,6 +96,7 @@ class NeuronSpec:
 
     # contexto
     source_ro: float | None = None
+    c_in_max: float | None = None
     freq_tolerance: float = 0.05
 
     def __post_init__(self) -> None:
