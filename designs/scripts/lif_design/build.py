@@ -39,7 +39,12 @@ SOURCE = "multiplier_0_source_{side}"
 # with whatever it passes.
 TIE = "tie_{end}_top_met_E"
 
-RIEL_POR_DEFECTO = "met3"     # deja met4 libre para el ruteo entre neuronas
+# met3 es la capa mas alta que los transistores dejan libre. Con el MIM en
+# met4/met5 (opcion B, la que sigue el equipo) esas dos ya no lo estan sobre
+# la huella del banco, asi que met3 no se elige por dejar met4 abierto: se
+# elige porque es la que hay. Fuera del banco met4 y met5 siguen disponibles
+# para el ruteo entre neuronas.
+RIEL_POR_DEFECTO = "met3"
 
 
 @dataclass
@@ -409,15 +414,10 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
     pf_cells = [Cell.from_component(f"pf{i}", c, pdk)
                 for i, c in enumerate(pfet_comps)]
 
-    # Por defecto met3, y con eso met4 queda entero libre para el ruteo entre
-    # neuronas -- que es lo que decide si un array se puede rutear por encima
-    # de las celdas o hay que abrirle calles.
-    #
-    # Rails.above no llega sola a met3: ve que el mimcap ocupa esa capa con su
-    # placa superior y sube un piso. Es cierto que la ocupa, pero los rieles
-    # corren por los extremos de la celda y no cruzan el banco en ningun punto,
-    # asi que la regla es conservadora, no incorrecta. Pasar `rail_layer=None`
-    # devuelve esa eleccion automatica.
+    # Por defecto met3. Rails.above llega sola a la misma capa: el mimcap esta
+    # en la cima de la pila y no participa en una regla que consiste en subir
+    # un piso, asi que decide el mas alto de los que quedan. Pasar
+    # `rail_layer=None` devuelve esa eleccion automatica, y coincide.
     # Con el MIM en met4/met5 la separacion del riel deja de decidirla met3.
     # La correa de la placa inferior aterriza en el riel viniendo de met5, y
     # esa pila deja un pad de met4 justo bajo el banco: contra la placa, que
@@ -503,8 +503,8 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     met3 is taken end to end by the per-inverter columns, so a horizontal run
     there would touch every one of them. The obvious way out was met4, above
     everything -- but the channel between the bottom band and M5 is empty on
-    met2 as well, and going down instead of up keeps met4 free for whoever
-    routes between neurons.
+    met2 as well, and going down instead of up leaves met4 to the
+    mimcap, whose bottom plate lives there under option B.
 
     It also falls out of one rule instead of a decision per wire: met2 runs
     horizontal, met3 runs vertical. Every crossing then lands on a different
