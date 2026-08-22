@@ -571,6 +571,19 @@ def _wire_lif(pdk, top, nfets, caps, m5_ref, drain_routes, plan,
     techo = float(m5_ref.ports["tie_S_top_met_S"].center[1])
     suelo = max(float(r.ports["tie_N_top_met_N"].center[1]) for r in nfets)
     lo, hi = suelo + margen, techo - margen
+    if caps:
+        # El suelo lo marcan los nfet... salvo cuando el banco crece mas que
+        # ellos. Con Cm grande la placa superior sube por encima de la banda,
+        # y como la pista de membrana comparte SU capa, la separacion de esa
+        # capa decide donde puede ir la pista. Misma red, asi que el corto no
+        # es el problema: lo es la regla, que se mide igual entre poligonos
+        # del mismo nodo.
+        g_top = _cap_glayers(pdk)[0]
+        regla = pdk.get_grule(g_top)
+        placa = max(float(c.ports[_CAP_TOP.format(end="N")].center[1])
+                    for c in caps)
+        lo = max(lo, placa + float(regla["min_separation"])
+                 + float(regla["min_width"]) / 2)
     # La pista de membrana sube a met3 sobre el primer condensador, asi que su
     # pila queda ENCIMA de la placa inferior y MIM.1 se mide en vertical: 1.2
     # um desde el borde alto de la placa hasta el pad, no solo de lado.
