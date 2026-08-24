@@ -42,19 +42,6 @@ Circuit 1: cap_mim_2f0_m4m5_noshield       |Circuit 2: cap_mim_2f0_m4m5_noshield
 Cell pin lists are equivalent.
 Device classes cap_mim_2f0_m4m5_noshield and cap_mim_2f0_m4m5_noshield are equivalent.
 
-Circuit 1 cell cap_mim_2f0_m4m5_noshield and Circuit 2 cell cap_mim_2f0fF are black boxes.
-Warning: Equate pins:  cell cap_mim_2f0_m4m5_noshield is a placeholder, treated as a black box.
-Warning: Equate pins:  cell cap_mim_2f0fF is a placeholder, treated as a black box.
-
-Subcircuit pins:
-Circuit 1: cap_mim_2f0_m4m5_noshield       |Circuit 2: cap_mim_2f0fF                   
--------------------------------------------|-------------------------------------------
-1                                          |1                                          
-2                                          |2                                          
----------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes cap_mim_2f0_m4m5_noshield and cap_mim_2f0fF are equivalent.
-
 Subcircuit summary:
 Circuit 1: xm5                             |Circuit 2: xm5                             
 -------------------------------------------|-------------------------------------------
@@ -488,81 +475,48 @@ a_n1330_n504#                              |a_n1330_n504#
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes xmcm_chain_1 and xmcm_chain_1 are equivalent.
-Flattening unmatched subcell unitcap in circuit stdp (1)(14 instances)
 
-Flattening instances of xm12 in cell stdp (0) makes a better match
-Flattening instances of xm4 in cell stdp (0) makes a better match
-Flattening instances of xmcm_chain_1 in cell stdp (0) makes a better match
-Flattening instances of xm7 in cell stdp (0) makes a better match
-Flattening instances of cw in cell stdp (0) makes a better match
-Flattening instances of xmcm_chain_3 in cell stdp (0) makes a better match
-Flattening instances of xm3 in cell stdp (0) makes a better match
-Flattening instances of xmcm_chain_0 in cell stdp (0) makes a better match
-Flattening instances of xmcm_chain_4 in cell stdp (0) makes a better match
-Flattening instances of xmcm_1 in cell stdp (0) makes a better match
-Flattening instances of xm2 in cell stdp (0) makes a better match
-Flattening instances of xm8 in cell stdp (0) makes a better match
-Flattening instances of xm9 in cell stdp (0) makes a better match
-Flattening instances of xm16 in cell stdp (0) makes a better match
-Flattening instances of xm1 in cell stdp (0) makes a better match
-Flattening instances of cdep in cell stdp (0) makes a better match
-Flattening instances of xm5 in cell stdp (0) makes a better match
-Flattening instances of xm17 in cell stdp (0) makes a better match
-Flattening instances of xmcm_chain_2 in cell stdp (0) makes a better match
-Flattening instances of cpot in cell stdp (0) makes a better match
-Making another compare attempt.
-
-Class stdp (1):  Merged 11 parallel devices.
 Subcircuit summary:
 Circuit 1: stdp                            |Circuit 2: stdp                            
 -------------------------------------------|-------------------------------------------
-pfet_03v3 (7)                              |pfet_03v3 (7)                              
-nfet_03v3 (10)                             |nfet_03v3 (10)                             
-cap_mim_2f0_m4m5_noshield (14->3)          |cap_mim_2f0_m4m5_noshield (14->3)          
+xm5 (1)                                    |xm5 (1)                                    
+xm3 (1)                                    |xm3 (1)                                    
+xm1 (1)                                    |xm1 (1)                                    
+xmcm_chain_4 (1)                           |xmcm_chain_4 (1)                           
+cpot (1)                                   |cpot (1)                                   
+xm8 (1)                                    |xm8 (1)                                    
+xmcm_chain_2 (1)                           |xmcm_chain_2 (1)                           
+xm16 (1)                                   |xm16 (1)                                   
+xmcm_chain_0 (1)                           |xmcm_chain_0 (1)                           
+cw (1)                                     |cw (1)                                     
+xm4 (1)                                    |xm4 (1)                                    
+xm12 (1)                                   |xm12 (1)                                   
+xm2 (1)                                    |xm2 (1)                                    
+cdep (1)                                   |cdep (1)                                   
+xmcm_1 (1)                                 |xmcm_1 (1)                                 
+xm9 (1)                                    |xm9 (1)                                    
+xmcm_chain_3 (1)                           |xmcm_chain_3 (1)                           
+xm17 (1)                                   |xm17 (1)                                   
+xm7 (1)                                    |xm7 (1)                                    
+xmcm_chain_1 (1)                           |xmcm_chain_1 (1)                           
 Number of devices: 20                      |Number of devices: 20                      
 Number of nets: 23                         |Number of nets: 23                         
 ---------------------------------------------------------------------------------------
-Netlists match uniquely with property errors.
-xm3_0/nfet_03v3:0 vs. nfet_03v3:3:
- l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
- w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
-xm4_0/nfet_03v3:0 vs. nfet_03v3:4:
- l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
- w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
-xm9_0/nfet_03v3:0 vs. nfet_03v3:9:
- l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
- w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
-xm12_0/nfet_03v3:0 vs. nfet_03v3:12:
- l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
- w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
-xm1_0/pfet_03v3:0 vs. pfet_03v3:1:
- l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
- w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
-xm7_0/pfet_03v3:0 vs. pfet_03v3:7:
- l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
- w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
-xm2_0/pfet_03v3:0 vs. pfet_03v3:2:
- l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
- w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
-xm8_0/pfet_03v3:0 vs. pfet_03v3:8:
- l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
- w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
-xm17_0/pfet_03v3:0 vs. pfet_03v3:17:
- w circuit1: 5e-07   circuit2: 3e-07   (delta=50%, cutoff=1%)
+Netlists match uniquely.
 
 Subcircuit pins:
 Circuit 1: stdp                            |Circuit 2: stdp                            
 -------------------------------------------|-------------------------------------------
 vb_itd                                     |vb_itd                                     
 avss                                       |avss                                       
+Iout                                       |Iout                                       
 vpre                                       |vpre                                       
-nvpost                                     |nvpost                                     
 nvpre                                      |nvpre                                      
+vb_idep                                    |vb_idep                                    
 vpost                                      |vpost                                      
+nvpost                                     |nvpost                                     
 vb_pot                                     |vb_pot                                     
 vb_itp                                     |vb_itp                                     
-vb_idep                                    |vb_idep                                    
-Iout                                       |iout                                       
 avdd                                       |avdd                                       
 vw                                         |vw                                         
 ---------------------------------------------------------------------------------------
@@ -570,7 +524,4 @@ Cell pin lists are equivalent.
 Device classes stdp and stdp are equivalent.
 
 Final result: Circuits match uniquely.
-Property errors were found.
-
-The following cells had property errors:
- stdp
+.
