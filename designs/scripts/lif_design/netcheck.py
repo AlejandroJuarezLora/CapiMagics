@@ -5,9 +5,12 @@
 probes.json maps a name to [layer, datatype, x, y]. Probes that come out with
 the same net id are electrically one node; the report groups them.
 
-Why not an extractor. magic's gf180 techfile puts the MIM at metal4/metal5
-while our stack is 3LM with the MIM at met2/met3, so `ext2spice` cannot see
-the capacitors and reports plates on nets that make no geometric sense.
+Why not an extractor. This was written when our stack had the MIM at
+met2/met3 while magic's gf180 techfile puts it at metal4/metal5, so `ext2spice`
+could not see the capacitors and reported plates on nets that made no geometric
+sense. On MIM option B the two agree again, but this stays: it is fast, needs
+no magic, and answers the question that matters here -- what is welded to what.
+Devices and their parameters are the LVS's job.
 KLayout's LayoutToNetlist is honest about geometry but prunes nets that hold
 no device or pin, which is most of a supply grid. So this walks the metal
 itself: merge each layer, then let every via weld the shapes it lands on.
