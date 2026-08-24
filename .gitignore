@@ -42,3 +42,5 @@ tools/
 context/
 
 *.gds.backup
+
+designs/out.svg
