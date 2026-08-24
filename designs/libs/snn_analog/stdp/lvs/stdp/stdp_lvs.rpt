@@ -59,289 +59,89 @@ Subcircuit summary:
 Circuit 1: xm5                             |Circuit 2: xm5                             
 -------------------------------------------|-------------------------------------------
 pfet_03v3 (1)                              |pfet_03v3 (1)                              
-(no matching element)                      |c (10)                                     
-Number of devices: 1 **Mismatch**          |Number of devices: 11 **Mismatch**         
-Number of nets: 4 **Mismatch**             |Number of nets: 5 **Mismatch**             
+Number of devices: 1                       |Number of devices: 1                       
+Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm5                             |Circuit 2: xm5                             
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_1500_n131#                          |Net: a_1500_n131#                          
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 2                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n1620_n131#                         |Net: a_n1620_n131#                         
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |  c/bottom = 1                             
-                                           |                                           
-Net: a_n1500_n339#                         |Net: a_n1500_n339#                         
-  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
-                                           |  c/top = 4                                
-                                           |                                           
-Net: w_n1886_n560#                         |Net: w_n1886_n560#                         
-  pfet_03v3/4 = 1                          |  pfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
-                                           |  c/top = 1                                
-                                           |                                           
-(no matching net)                          |Net: VSUBS                                 
-                                           |  c/bottom = 4                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm5                             |Circuit 2: xm5                             
-
+-------------------------------------------|-------------------------------------------
+a_n1500_n339#                              |a_n1500_n339#                              
+a_n1620_n131#                              |a_n1620_n131#                              
+a_1500_n131#                               |a_1500_n131#                               
+w_n1886_n560#                              |w_n1886_n560#                              
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:6                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:7                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:8                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:9                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm5 xm5
+Cell pin lists are equivalent.
+Device classes xm5 and xm5 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xm3                             |Circuit 2: xm3                             
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
-(no matching element)                      |c (6)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**          
+Number of devices: 1                       |Number of devices: 1                       
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm3                             |Circuit 2: xm3                             
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_63_n131#                            |Net: a_63_n131#                            
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 1                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n63_n339#                           |Net: a_n63_n339#                           
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
-                                           |  c/bottom = 2                             
-                                           |  c/top = 1                                
-                                           |                                           
-Net: a_n183_n131#                          |Net: a_n183_n131#                          
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |                                           
-Net: a_n393_n504#                          |Net: a_n393_n504#                          
-  nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm3                             |Circuit 2: xm3                             
-
+-------------------------------------------|-------------------------------------------
+a_n63_n339#                                |a_n63_n339#                                
+a_n183_n131#                               |a_n183_n131#                               
+a_63_n131#                                 |a_63_n131#                                 
+a_n393_n504#                               |a_n393_n504#                               
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm3 xm3
+Cell pin lists are equivalent.
+Device classes xm3 and xm3 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xm1                             |Circuit 2: xm1                             
 -------------------------------------------|-------------------------------------------
 pfet_03v3 (1)                              |pfet_03v3 (1)                              
-(no matching element)                      |c (10)                                     
-Number of devices: 1 **Mismatch**          |Number of devices: 11 **Mismatch**         
-Number of nets: 4 **Mismatch**             |Number of nets: 5 **Mismatch**             
+Number of devices: 1                       |Number of devices: 1                       
+Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm1                             |Circuit 2: xm1                             
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_63_n131#                            |Net: a_63_n131#                            
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 2                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n183_n131#                          |Net: a_n183_n131#                          
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |  c/bottom = 1                             
-                                           |                                           
-Net: a_n63_n339#                           |Net: a_n63_n339#                           
-  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
-                                           |  c/top = 4                                
-                                           |                                           
-Net: w_n449_n560#                          |Net: w_n449_n560#                          
-  pfet_03v3/4 = 1                          |  pfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
-                                           |  c/top = 1                                
-                                           |                                           
-(no matching net)                          |Net: VSUBS                                 
-                                           |  c/bottom = 4                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm1                             |Circuit 2: xm1                             
-
+-------------------------------------------|-------------------------------------------
+a_n63_n339#                                |a_n63_n339#                                
+a_n183_n131#                               |a_n183_n131#                               
+a_63_n131#                                 |a_63_n131#                                 
+w_n449_n560#                               |w_n449_n560#                               
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:6                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:7                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:8                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:9                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm1 xm1
+Cell pin lists are equivalent.
+Device classes xm1 and xm1 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xmcm_chain_4                    |Circuit 2: xmcm_chain_4                    
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
-(no matching element)                      |c (6)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**          
+Number of devices: 1                       |Number of devices: 1                       
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xmcm_chain_4                    |Circuit 2: xmcm_chain_4                    
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_1000_n131#                          |Net: a_1000_n131#                          
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 1                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n1000_n339#                         |Net: a_n1000_n339#                         
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
-                                           |  c/bottom = 2                             
-                                           |  c/top = 1                                
-                                           |                                           
-Net: a_n1120_n131#                         |Net: a_n1120_n131#                         
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |                                           
-Net: a_n1330_n504#                         |Net: a_n1330_n504#                         
-  nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xmcm_chain_4                    |Circuit 2: xmcm_chain_4                    
-
+-------------------------------------------|-------------------------------------------
+a_n1000_n339#                              |a_n1000_n339#                              
+a_n1120_n131#                              |a_n1120_n131#                              
+a_1000_n131#                               |a_1000_n131#                               
+a_n1330_n504#                              |a_n1330_n504#                              
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xmcm_chain_4 xmcm_chain_4
+Cell pin lists are equivalent.
+Device classes xmcm_chain_4 and xmcm_chain_4 are equivalent.
 
 Class cpot (0):  Merged 1 parallel devices.
 Class cpot (1):  Merged 1 parallel devices.
@@ -349,333 +149,107 @@ Subcircuit summary:
 Circuit 1: cpot                            |Circuit 2: cpot                            
 -------------------------------------------|-------------------------------------------
 cap_mim_2f0_m4m5_noshield (2->1)           |cap_mim_2f0_m4m5_noshield (2->1)           
-(no matching element)                      |c (3)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 4 **Mismatch**          
-Number of nets: 2 **Mismatch**             |Number of nets: 3 **Mismatch**             
+Number of devices: 1                       |Number of devices: 1                       
+Number of nets: 2                          |Number of nets: 2                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: cpot                            |Circuit 2: cpot                            
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: m4_n500_n500#                         |Net: m4_n500_n500#                         
-  cap_mim_2f0_m4m5_noshield/1 = 1          |  cap_mim_2f0_m4m5_noshield/1 = 1          
-                                           |  c/top = 2                                
-                                           |                                           
-Net: m4_n700_n700#                         |Net: m4_n700_n700#                         
-  cap_mim_2f0_m4m5_noshield/2 = 1          |  cap_mim_2f0_m4m5_noshield/2 = 1          
-                                           |  c/bottom = 1                             
-                                           |  c/top = 1                                
-                                           |                                           
-(no matching net)                          |Net: VSUBS                                 
-                                           |  c/bottom = 2                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: cpot                            |Circuit 2: cpot                            
-
+-------------------------------------------|-------------------------------------------
+m4_n500_n500#                              |m4_n500_n500#                              
+m4_n700_n700#                              |m4_n700_n700#                              
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 3                                  
-                                           |  bottom = 3                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 3                                  
-                                           |  bottom = 2                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 3                                  
-                                           |  bottom = 2                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits cpot cpot
+Cell pin lists are equivalent.
+Device classes cpot and cpot are equivalent.
 
 Subcircuit summary:
 Circuit 1: xm8                             |Circuit 2: xm8                             
 -------------------------------------------|-------------------------------------------
 pfet_03v3 (1)                              |pfet_03v3 (1)                              
-(no matching element)                      |c (10)                                     
-Number of devices: 1 **Mismatch**          |Number of devices: 11 **Mismatch**         
-Number of nets: 4 **Mismatch**             |Number of nets: 5 **Mismatch**             
+Number of devices: 1                       |Number of devices: 1                       
+Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm8                             |Circuit 2: xm8                             
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_63_n131#                            |Net: a_63_n131#                            
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 2                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n183_n131#                          |Net: a_n183_n131#                          
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |  c/bottom = 1                             
-                                           |                                           
-Net: a_n63_n339#                           |Net: a_n63_n339#                           
-  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
-                                           |  c/top = 4                                
-                                           |                                           
-Net: w_n449_n560#                          |Net: w_n449_n560#                          
-  pfet_03v3/4 = 1                          |  pfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
-                                           |  c/top = 1                                
-                                           |                                           
-(no matching net)                          |Net: VSUBS                                 
-                                           |  c/bottom = 4                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm8                             |Circuit 2: xm8                             
-
+-------------------------------------------|-------------------------------------------
+a_n63_n339#                                |a_n63_n339#                                
+a_n183_n131#                               |a_n183_n131#                               
+a_63_n131#                                 |a_63_n131#                                 
+w_n449_n560#                               |w_n449_n560#                               
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:6                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:7                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:8                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:9                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm8 xm8
+Cell pin lists are equivalent.
+Device classes xm8 and xm8 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xmcm_chain_2                    |Circuit 2: xmcm_chain_2                    
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
-(no matching element)                      |c (6)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**          
+Number of devices: 1                       |Number of devices: 1                       
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xmcm_chain_2                    |Circuit 2: xmcm_chain_2                    
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_1000_n131#                          |Net: a_1000_n131#                          
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 1                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n1000_n339#                         |Net: a_n1000_n339#                         
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
-                                           |  c/bottom = 2                             
-                                           |  c/top = 1                                
-                                           |                                           
-Net: a_n1120_n131#                         |Net: a_n1120_n131#                         
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |                                           
-Net: a_n1330_n504#                         |Net: a_n1330_n504#                         
-  nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xmcm_chain_2                    |Circuit 2: xmcm_chain_2                    
-
+-------------------------------------------|-------------------------------------------
+a_n1000_n339#                              |a_n1000_n339#                              
+a_n1120_n131#                              |a_n1120_n131#                              
+a_1000_n131#                               |a_1000_n131#                               
+a_n1330_n504#                              |a_n1330_n504#                              
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xmcm_chain_2 xmcm_chain_2
+Cell pin lists are equivalent.
+Device classes xmcm_chain_2 and xmcm_chain_2 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xm16                            |Circuit 2: xm16                            
 -------------------------------------------|-------------------------------------------
 pfet_03v3 (1)                              |pfet_03v3 (1)                              
-(no matching element)                      |c (10)                                     
-Number of devices: 1 **Mismatch**          |Number of devices: 11 **Mismatch**         
-Number of nets: 4 **Mismatch**             |Number of nets: 5 **Mismatch**             
+Number of devices: 1                       |Number of devices: 1                       
+Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm16                            |Circuit 2: xm16                            
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_280_n1101#                          |Net: a_280_n1101#                          
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 2                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n400_n1101#                         |Net: a_n400_n1101#                         
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |  c/bottom = 1                             
-                                           |                                           
-Net: a_n280_n1309#                         |Net: a_n280_n1309#                         
-  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
-                                           |  c/top = 4                                
-                                           |                                           
-Net: w_n666_n1529#                         |Net: w_n666_n1529#                         
-  pfet_03v3/4 = 1                          |  pfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
-                                           |  c/top = 1                                
-                                           |                                           
-(no matching net)                          |Net: VSUBS                                 
-                                           |  c/bottom = 4                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm16                            |Circuit 2: xm16                            
-
+-------------------------------------------|-------------------------------------------
+a_n280_n1309#                              |a_n280_n1309#                              
+a_n400_n1101#                              |a_n400_n1101#                              
+a_280_n1101#                               |a_280_n1101#                               
+w_n666_n1529#                              |w_n666_n1529#                              
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:6                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:7                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:8                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:9                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm16 xm16
+Cell pin lists are equivalent.
+Device classes xm16 and xm16 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xmcm_chain_0                    |Circuit 2: xmcm_chain_0                    
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
-(no matching element)                      |c (6)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**          
+Number of devices: 1                       |Number of devices: 1                       
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xmcm_chain_0                    |Circuit 2: xmcm_chain_0                    
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_1000_n131#                          |Net: a_1000_n131#                          
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 1                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n1000_n339#                         |Net: a_n1000_n339#                         
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
-                                           |  c/bottom = 2                             
-                                           |  c/top = 1                                
-                                           |                                           
-Net: a_n1120_n131#                         |Net: a_n1120_n131#                         
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |                                           
-Net: a_n1330_n504#                         |Net: a_n1330_n504#                         
-  nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xmcm_chain_0                    |Circuit 2: xmcm_chain_0                    
-
+-------------------------------------------|-------------------------------------------
+a_n1000_n339#                              |a_n1000_n339#                              
+a_n1120_n131#                              |a_n1120_n131#                              
+a_1000_n131#                               |a_1000_n131#                               
+a_n1330_n504#                              |a_n1330_n504#                              
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xmcm_chain_0 xmcm_chain_0
+Cell pin lists are equivalent.
+Device classes xmcm_chain_0 and xmcm_chain_0 are equivalent.
 
 Class cw (0):  Merged 9 parallel devices.
 Class cw (1):  Merged 9 parallel devices.
@@ -683,251 +257,85 @@ Subcircuit summary:
 Circuit 1: cw                              |Circuit 2: cw                              
 -------------------------------------------|-------------------------------------------
 cap_mim_2f0_m4m5_noshield (10->1)          |cap_mim_2f0_m4m5_noshield (10->1)          
-(no matching element)                      |c (3)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 4 **Mismatch**          
-Number of nets: 2 **Mismatch**             |Number of nets: 3 **Mismatch**             
+Number of devices: 1                       |Number of devices: 1                       
+Number of nets: 2                          |Number of nets: 2                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: cw                              |Circuit 2: cw                              
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: m4_n500_n500#                         |Net: m4_n500_n500#                         
-  cap_mim_2f0_m4m5_noshield/1 = 1          |  cap_mim_2f0_m4m5_noshield/1 = 1          
-                                           |  c/top = 2                                
-                                           |                                           
-Net: m4_n700_n700#                         |Net: m4_n700_n700#                         
-  cap_mim_2f0_m4m5_noshield/2 = 1          |  cap_mim_2f0_m4m5_noshield/2 = 1          
-                                           |  c/bottom = 1                             
-                                           |  c/top = 1                                
-                                           |                                           
-(no matching net)                          |Net: VSUBS                                 
-                                           |  c/bottom = 2                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: cw                              |Circuit 2: cw                              
-
+-------------------------------------------|-------------------------------------------
+m4_n500_n500#                              |m4_n500_n500#                              
+m4_n700_n700#                              |m4_n700_n700#                              
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 3                                  
-                                           |  bottom = 3                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 3                                  
-                                           |  bottom = 2                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 3                                  
-                                           |  bottom = 2                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits cw cw
+Cell pin lists are equivalent.
+Device classes cw and cw are equivalent.
 
 Subcircuit summary:
 Circuit 1: xm4                             |Circuit 2: xm4                             
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
-(no matching element)                      |c (6)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**          
+Number of devices: 1                       |Number of devices: 1                       
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm4                             |Circuit 2: xm4                             
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_63_n131#                            |Net: a_63_n131#                            
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 1                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n63_n339#                           |Net: a_n63_n339#                           
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
-                                           |  c/bottom = 2                             
-                                           |  c/top = 1                                
-                                           |                                           
-Net: a_n183_n131#                          |Net: a_n183_n131#                          
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |                                           
-Net: a_n393_n504#                          |Net: a_n393_n504#                          
-  nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm4                             |Circuit 2: xm4                             
-
+-------------------------------------------|-------------------------------------------
+a_n63_n339#                                |a_n63_n339#                                
+a_n183_n131#                               |a_n183_n131#                               
+a_63_n131#                                 |a_63_n131#                                 
+a_n393_n504#                               |a_n393_n504#                               
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm4 xm4
+Cell pin lists are equivalent.
+Device classes xm4 and xm4 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xm12                            |Circuit 2: xm12                            
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
-(no matching element)                      |c (6)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**          
+Number of devices: 1                       |Number of devices: 1                       
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm12                            |Circuit 2: xm12                            
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_63_n131#                            |Net: a_63_n131#                            
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 1                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n63_n339#                           |Net: a_n63_n339#                           
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
-                                           |  c/bottom = 2                             
-                                           |  c/top = 1                                
-                                           |                                           
-Net: a_n183_n131#                          |Net: a_n183_n131#                          
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |                                           
-Net: a_n393_n504#                          |Net: a_n393_n504#                          
-  nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm12                            |Circuit 2: xm12                            
-
+-------------------------------------------|-------------------------------------------
+a_n63_n339#                                |a_n63_n339#                                
+a_n183_n131#                               |a_n183_n131#                               
+a_63_n131#                                 |a_63_n131#                                 
+a_n393_n504#                               |a_n393_n504#                               
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm12 xm12
+Cell pin lists are equivalent.
+Device classes xm12 and xm12 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xm2                             |Circuit 2: xm2                             
 -------------------------------------------|-------------------------------------------
 pfet_03v3 (1)                              |pfet_03v3 (1)                              
-(no matching element)                      |c (10)                                     
-Number of devices: 1 **Mismatch**          |Number of devices: 11 **Mismatch**         
-Number of nets: 4 **Mismatch**             |Number of nets: 5 **Mismatch**             
+Number of devices: 1                       |Number of devices: 1                       
+Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm2                             |Circuit 2: xm2                             
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_63_n131#                            |Net: a_63_n131#                            
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 2                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n183_n131#                          |Net: a_n183_n131#                          
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |  c/bottom = 1                             
-                                           |                                           
-Net: a_n63_n339#                           |Net: a_n63_n339#                           
-  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
-                                           |  c/top = 4                                
-                                           |                                           
-Net: w_n449_n560#                          |Net: w_n449_n560#                          
-  pfet_03v3/4 = 1                          |  pfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
-                                           |  c/top = 1                                
-                                           |                                           
-(no matching net)                          |Net: VSUBS                                 
-                                           |  c/bottom = 4                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm2                             |Circuit 2: xm2                             
-
+-------------------------------------------|-------------------------------------------
+a_n63_n339#                                |a_n63_n339#                                
+a_n183_n131#                               |a_n183_n131#                               
+a_63_n131#                                 |a_63_n131#                                 
+w_n449_n560#                               |w_n449_n560#                               
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:6                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:7                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:8                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:9                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm2 xm2
+Cell pin lists are equivalent.
+Device classes xm2 and xm2 are equivalent.
 
 Class cdep (0):  Merged 1 parallel devices.
 Class cdep (1):  Merged 1 parallel devices.
@@ -935,562 +343,234 @@ Subcircuit summary:
 Circuit 1: cdep                            |Circuit 2: cdep                            
 -------------------------------------------|-------------------------------------------
 cap_mim_2f0_m4m5_noshield (2->1)           |cap_mim_2f0_m4m5_noshield (2->1)           
-(no matching element)                      |c (3)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 4 **Mismatch**          
-Number of nets: 2 **Mismatch**             |Number of nets: 3 **Mismatch**             
+Number of devices: 1                       |Number of devices: 1                       
+Number of nets: 2                          |Number of nets: 2                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
+Netlists match uniquely.
+
+Subcircuit pins:
 Circuit 1: cdep                            |Circuit 2: cdep                            
-
+-------------------------------------------|-------------------------------------------
+m4_n500_n500#                              |m4_n500_n500#                              
+m4_n700_n700#                              |m4_n700_n700#                              
 ---------------------------------------------------------------------------------------
-Net: m4_n500_n500#                         |Net: m4_n500_n500#                         
-  cap_mim_2f0_m4m5_noshield/1 = 1          |  cap_mim_2f0_m4m5_noshield/1 = 1          
-                                           |  c/top = 2                                
-                                           |                                           
-Net: m4_n700_n700#                         |Net: m4_n700_n700#                         
-  cap_mim_2f0_m4m5_noshield/2 = 1          |  cap_mim_2f0_m4m5_noshield/2 = 1          
-                                           |  c/bottom = 1                             
-                                           |  c/top = 1                                
-                                           |                                           
-(no matching net)                          |Net: VSUBS                                 
-                                           |  c/bottom = 2                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
-Circuit 1: cdep                            |Circuit 2: cdep                            
-
----------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 3                                  
-                                           |  bottom = 3                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 3                                  
-                                           |  bottom = 2                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 3                                  
-                                           |  bottom = 2                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits cdep cdep
+Cell pin lists are equivalent.
+Device classes cdep and cdep are equivalent.
 
 Subcircuit summary:
 Circuit 1: xmcm_1                          |Circuit 2: xmcm_1                          
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
-(no matching element)                      |c (6)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**          
+Number of devices: 1                       |Number of devices: 1                       
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xmcm_1                          |Circuit 2: xmcm_1                          
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_280_n141#                           |Net: a_280_n141#                           
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 1                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n280_n350#                          |Net: a_n280_n350#                          
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
-                                           |  c/bottom = 2                             
-                                           |  c/top = 1                                
-                                           |                                           
-Net: a_n400_n141#                          |Net: a_n400_n141#                          
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |                                           
-Net: a_n610_n515#                          |Net: a_n610_n515#                          
-  nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xmcm_1                          |Circuit 2: xmcm_1                          
-
+-------------------------------------------|-------------------------------------------
+a_n280_n350#                               |a_n280_n350#                               
+a_n400_n141#                               |a_n400_n141#                               
+a_280_n141#                                |a_280_n141#                                
+a_n610_n515#                               |a_n610_n515#                               
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xmcm_1 xmcm_1
+Cell pin lists are equivalent.
+Device classes xmcm_1 and xmcm_1 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xm9                             |Circuit 2: xm9                             
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
-(no matching element)                      |c (6)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**          
+Number of devices: 1                       |Number of devices: 1                       
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm9                             |Circuit 2: xm9                             
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_63_n131#                            |Net: a_63_n131#                            
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 1                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n63_n339#                           |Net: a_n63_n339#                           
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
-                                           |  c/bottom = 2                             
-                                           |  c/top = 1                                
-                                           |                                           
-Net: a_n183_n131#                          |Net: a_n183_n131#                          
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |                                           
-Net: a_n393_n504#                          |Net: a_n393_n504#                          
-  nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm9                             |Circuit 2: xm9                             
-
+-------------------------------------------|-------------------------------------------
+a_n63_n339#                                |a_n63_n339#                                
+a_n183_n131#                               |a_n183_n131#                               
+a_63_n131#                                 |a_63_n131#                                 
+a_n393_n504#                               |a_n393_n504#                               
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm9 xm9
+Cell pin lists are equivalent.
+Device classes xm9 and xm9 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xmcm_chain_3                    |Circuit 2: xmcm_chain_3                    
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
-(no matching element)                      |c (6)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**          
+Number of devices: 1                       |Number of devices: 1                       
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xmcm_chain_3                    |Circuit 2: xmcm_chain_3                    
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_1000_n131#                          |Net: a_1000_n131#                          
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 1                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n1000_n339#                         |Net: a_n1000_n339#                         
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
-                                           |  c/bottom = 2                             
-                                           |  c/top = 1                                
-                                           |                                           
-Net: a_n1120_n131#                         |Net: a_n1120_n131#                         
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |                                           
-Net: a_n1330_n504#                         |Net: a_n1330_n504#                         
-  nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xmcm_chain_3                    |Circuit 2: xmcm_chain_3                    
-
+-------------------------------------------|-------------------------------------------
+a_n1000_n339#                              |a_n1000_n339#                              
+a_n1120_n131#                              |a_n1120_n131#                              
+a_1000_n131#                               |a_1000_n131#                               
+a_n1330_n504#                              |a_n1330_n504#                              
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xmcm_chain_3 xmcm_chain_3
+Cell pin lists are equivalent.
+Device classes xmcm_chain_3 and xmcm_chain_3 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xm17                            |Circuit 2: xm17                            
 -------------------------------------------|-------------------------------------------
 pfet_03v3 (1)                              |pfet_03v3 (1)                              
-(no matching element)                      |c (10)                                     
-Number of devices: 1 **Mismatch**          |Number of devices: 11 **Mismatch**         
-Number of nets: 4 **Mismatch**             |Number of nets: 5 **Mismatch**             
+Number of devices: 1                       |Number of devices: 1                       
+Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm17                            |Circuit 2: xm17                            
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_460_n131#                           |Net: a_460_n131#                           
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 2                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n580_n131#                          |Net: a_n580_n131#                          
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |  c/bottom = 1                             
-                                           |                                           
-Net: a_n460_n339#                          |Net: a_n460_n339#                          
-  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
-                                           |  c/top = 4                                
-                                           |                                           
-Net: w_n846_n560#                          |Net: w_n846_n560#                          
-  pfet_03v3/4 = 1                          |  pfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
-                                           |  c/top = 1                                
-                                           |                                           
-(no matching net)                          |Net: VSUBS                                 
-                                           |  c/bottom = 4                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm17                            |Circuit 2: xm17                            
-
+-------------------------------------------|-------------------------------------------
+a_n460_n339#                               |a_n460_n339#                               
+a_n580_n131#                               |a_n580_n131#                               
+a_460_n131#                                |a_460_n131#                                
+w_n846_n560#                               |w_n846_n560#                               
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:6                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:7                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:8                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:9                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm17 xm17
+Cell pin lists are equivalent.
+Device classes xm17 and xm17 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xm7                             |Circuit 2: xm7                             
 -------------------------------------------|-------------------------------------------
 pfet_03v3 (1)                              |pfet_03v3 (1)                              
-(no matching element)                      |c (10)                                     
-Number of devices: 1 **Mismatch**          |Number of devices: 11 **Mismatch**         
-Number of nets: 4 **Mismatch**             |Number of nets: 5 **Mismatch**             
+Number of devices: 1                       |Number of devices: 1                       
+Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xm7                             |Circuit 2: xm7                             
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_63_n131#                            |Net: a_63_n131#                            
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 2                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n183_n131#                          |Net: a_n183_n131#                          
-  pfet_03v3/(1|3) = 1                      |  pfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |  c/bottom = 1                             
-                                           |                                           
-Net: a_n63_n339#                           |Net: a_n63_n339#                           
-  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
-                                           |  c/top = 4                                
-                                           |                                           
-Net: w_n449_n560#                          |Net: w_n449_n560#                          
-  pfet_03v3/4 = 1                          |  pfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
-                                           |  c/top = 1                                
-                                           |                                           
-(no matching net)                          |Net: VSUBS                                 
-                                           |  c/bottom = 4                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xm7                             |Circuit 2: xm7                             
-
+-------------------------------------------|-------------------------------------------
+a_n63_n339#                                |a_n63_n339#                                
+a_n183_n131#                               |a_n183_n131#                               
+a_63_n131#                                 |a_63_n131#                                 
+w_n449_n560#                               |w_n449_n560#                               
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 5                                  
-                                           |  bottom = 5                               
-                                           |                                           
-(no matching instance)                     |Instance: c:6                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:7                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:8                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:9                              
-                                           |  top = 5                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xm7 xm7
+Cell pin lists are equivalent.
+Device classes xm7 and xm7 are equivalent.
 
 Subcircuit summary:
 Circuit 1: xmcm_chain_1                    |Circuit 2: xmcm_chain_1                    
 -------------------------------------------|-------------------------------------------
 nfet_03v3 (1)                              |nfet_03v3 (1)                              
-(no matching element)                      |c (6)                                      
-Number of devices: 1 **Mismatch**          |Number of devices: 7 **Mismatch**          
+Number of devices: 1                       |Number of devices: 1                       
 Number of nets: 4                          |Number of nets: 4                          
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: xmcm_chain_1                    |Circuit 2: xmcm_chain_1                    
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
 
----------------------------------------------------------------------------------------
-Net: a_1000_n131#                          |Net: a_1000_n131#                          
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/bottom = 1                             
-                                           |  c/top = 2                                
-                                           |                                           
-Net: a_n1000_n339#                         |Net: a_n1000_n339#                         
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
-                                           |  c/bottom = 2                             
-                                           |  c/top = 1                                
-                                           |                                           
-Net: a_n1120_n131#                         |Net: a_n1120_n131#                         
-  nfet_03v3/(1|3) = 1                      |  nfet_03v3/(1|3) = 1                      
-                                           |  c/top = 3                                
-                                           |                                           
-Net: a_n1330_n504#                         |Net: a_n1330_n504#                         
-  nfet_03v3/4 = 1                          |  nfet_03v3/4 = 1                          
-                                           |  c/bottom = 3                             
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
+Subcircuit pins:
 Circuit 1: xmcm_chain_1                    |Circuit 2: xmcm_chain_1                    
-
+-------------------------------------------|-------------------------------------------
+a_n1000_n339#                              |a_n1000_n339#                              
+a_n1120_n131#                              |a_n1120_n131#                              
+a_1000_n131#                               |a_1000_n131#                               
+a_n1330_n504#                              |a_n1330_n504#                              
 ---------------------------------------------------------------------------------------
-(no matching instance)                     |Instance: c:0                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:1                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:2                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:3                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:4                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
-                                           |                                           
-(no matching instance)                     |Instance: c:5                              
-                                           |  top = 4                                  
-                                           |  bottom = 4                               
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
-  Flattening non-matched subcircuits xmcm_chain_1 xmcm_chain_1
+Cell pin lists are equivalent.
+Device classes xmcm_chain_1 and xmcm_chain_1 are equivalent.
 Flattening unmatched subcell unitcap in circuit stdp (1)(14 instances)
 
-Class stdp (0):  Merged 1 parallel devices.
+Flattening instances of xm12 in cell stdp (0) makes a better match
+Flattening instances of xm4 in cell stdp (0) makes a better match
+Flattening instances of xmcm_chain_1 in cell stdp (0) makes a better match
+Flattening instances of xm7 in cell stdp (0) makes a better match
+Flattening instances of cw in cell stdp (0) makes a better match
+Flattening instances of xmcm_chain_3 in cell stdp (0) makes a better match
+Flattening instances of xm3 in cell stdp (0) makes a better match
+Flattening instances of xmcm_chain_0 in cell stdp (0) makes a better match
+Flattening instances of xmcm_chain_4 in cell stdp (0) makes a better match
+Flattening instances of xmcm_1 in cell stdp (0) makes a better match
+Flattening instances of xm2 in cell stdp (0) makes a better match
+Flattening instances of xm8 in cell stdp (0) makes a better match
+Flattening instances of xm9 in cell stdp (0) makes a better match
+Flattening instances of xm16 in cell stdp (0) makes a better match
+Flattening instances of xm1 in cell stdp (0) makes a better match
+Flattening instances of cdep in cell stdp (0) makes a better match
+Flattening instances of xm5 in cell stdp (0) makes a better match
+Flattening instances of xm17 in cell stdp (0) makes a better match
+Flattening instances of xmcm_chain_2 in cell stdp (0) makes a better match
+Flattening instances of cpot in cell stdp (0) makes a better match
+Making another compare attempt.
+
 Class stdp (1):  Merged 11 parallel devices.
 Subcircuit summary:
 Circuit 1: stdp                            |Circuit 2: stdp                            
 -------------------------------------------|-------------------------------------------
 pfet_03v3 (7)                              |pfet_03v3 (7)                              
 nfet_03v3 (10)                             |nfet_03v3 (10)                             
-cap_mim_2f0_m4m5_noshield (14->2)          |cap_mim_2f0_m4m5_noshield (14->3) **Mismat 
-Number of devices: 19 **Mismatch**         |Number of devices: 20 **Mismatch**         
-Number of nets: 21 **Mismatch**            |Number of nets: 23 **Mismatch**            
+cap_mim_2f0_m4m5_noshield (14->3)          |cap_mim_2f0_m4m5_noshield (14->3)          
+Number of devices: 20                      |Number of devices: 20                      
+Number of nets: 23                         |Number of nets: 23                         
 ---------------------------------------------------------------------------------------
-NET mismatches: Class fragments follow (with fanout counts):
-Circuit 1: stdp                            |Circuit 2: stdp                            
-
----------------------------------------------------------------------------------------
-Net: vw                                    |Net: vw                                    
-  pfet_03v3/(1|3) = 2                      |  pfet_03v3/(1|3) = 1                      
-  nfet_03v3/(1|3) = 8                      |  nfet_03v3/(1|3) = 1                      
-  nfet_03v3/4 = 10                         |  cap_mim_2f0fF/1 = 1                      
-  pfet_03v3/2 = 1                          |  pfet_03v3/2 = 1                          
-  nfet_03v3/2 = 2                          |                                           
-  cap_mim_2f0_m4m5_noshield/1 = 1          |                                           
-                                           |                                           
-Net: /cw_0/m4_n700_n700#                   |Net: n4                                    
-  cap_mim_2f0_m4m5_noshield/2 = 1          |  pfet_03v3/(1|3) = 1                      
-                                           |  nfet_03v3/(1|3) = 1                      
-                                           |                                           
-Net: xmcm_chain_4_0/a_n1000_n339#          |Net: vdep                                  
-  nfet_03v3/2 = 4                          |  nfet_03v3/2 = 1                          
-                                           |  nfet_03v3/(1|3) = 2                      
-                                           |  cap_mim_2f0fF/1 = 1                      
-                                           |                                           
-(no matching net)                          |Net: avss                                  
-                                           |  nfet_03v3/4 = 10                         
-                                           |  nfet_03v3/(1|3) = 4                      
-                                           |  cap_mim_2f0fF/2 = 2                      
-                                           |                                           
-(no matching net)                          |Net: vb_itd                                
-                                           |  nfet_03v3/2 = 5                          
----------------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------------
-Net: xmcm_chain_4_0/a_1000_n131#           |Net: n9                                    
-  nfet_03v3/(1|3) = 2                      |  nfet_03v3/(1|3) = 2                      
-                                           |                                           
-Net: xmcm_chain_1_0/a_1000_n131#           |Net: n6                                    
-  nfet_03v3/(1|3) = 2                      |  nfet_03v3/(1|3) = 2                      
----------------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------------
-Net: vb_itd                                |Net: vb_pot                                
-  nfet_03v3/2 = 1                          |  nfet_03v3/2 = 1                          
----------------------------------------------------------------------------------------
-DEVICE mismatches: Class fragments follow (with node fanout counts):
-Circuit 1: stdp                            |Circuit 2: stdp                            
-
----------------------------------------------------------------------------------------
-Instance: cw_0/cap_mim_2f0_m4m5_noshield:0 |Instance: unitcap:1[0]/cap_mim_2f0fF:Cdep  
-  1 = 24                                   |  1 = 4                                    
-  2 = 1                                    |  2 = 16                                   
-                                           |                                           
-(no matching instance)                     |Instance: unitcap:2[0]/cap_mim_2f0fF:Cdep  
-                                           |  1 = 4                                    
-                                           |  2 = 16                                   
----------------------------------------------------------------------------------------
-
----------------------------------------------------------------------------------------
-Instance: xmcm_chain_0_0/nfet_03v3:0       |Instance: nfet_03v3:CM_5                   
-  (1,3) = (24,2)                           |  (1,3) = (4,2)                            
-  2 = 1                                    |  2 = 5                                    
-  4 = 24                                   |  4 = 16                                   
-                                           |                                           
-Instance: xmcm_chain_4_0/nfet_03v3:0       |Instance: nfet_03v3:CM_9                   
-  (1,3) = (24,2)                           |  (1,3) = (16,2)                           
-  2 = 4                                    |  2 = 5                                    
-  4 = 24                                   |  4 = 16                                   
-                                           |                                           
-Instance: xmcm_1_0/nfet_03v3:0             |Instance: nfet_03v3:CM_1                   
-  (1,3) = (24,24)                          |  (1,3) = (16,2)                           
-  2 = 24                                   |  2 = 1                                    
-  4 = 24                                   |  4 = 16                                   
----------------------------------------------------------------------------------------
-Netlists do not match.
-Port matching may fail to disambiguate symmetries.
+Netlists match uniquely with property errors.
+xm3_0/nfet_03v3:0 vs. nfet_03v3:3:
+ l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
+ w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
+xm4_0/nfet_03v3:0 vs. nfet_03v3:4:
+ l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
+ w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
+xm9_0/nfet_03v3:0 vs. nfet_03v3:9:
+ l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
+ w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
+xm12_0/nfet_03v3:0 vs. nfet_03v3:12:
+ l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
+ w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
+xm1_0/pfet_03v3:0 vs. pfet_03v3:1:
+ l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
+ w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
+xm7_0/pfet_03v3:0 vs. pfet_03v3:7:
+ l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
+ w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
+xm2_0/pfet_03v3:0 vs. pfet_03v3:2:
+ l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
+ w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
+xm8_0/pfet_03v3:0 vs. pfet_03v3:8:
+ l circuit1: 6.3e-07   circuit2: 2.8e-07   (delta=76.9%, cutoff=1%)
+ w circuit1: 5e-07   circuit2: 2.2e-07   (delta=77.8%, cutoff=1%)
+xm17_0/pfet_03v3:0 vs. pfet_03v3:17:
+ w circuit1: 5e-07   circuit2: 3e-07   (delta=50%, cutoff=1%)
 
 Subcircuit pins:
 Circuit 1: stdp                            |Circuit 2: stdp                            
 -------------------------------------------|-------------------------------------------
-vw                                         |(no pin, node is n4)                       
-vb_itp                                     |vb_itp                                     
-vb_idep                                    |vb_idep                                    
+vb_itd                                     |vb_itd                                     
+avss                                       |avss                                       
+vpre                                       |vpre                                       
 nvpost                                     |nvpost                                     
 nvpre                                      |nvpre                                      
-vb_itd                                     |vb_pot **Mismatch**                        
-vpre                                       |vpre                                       
 vpost                                      |vpost                                      
+vb_pot                                     |vb_pot                                     
+vb_itp                                     |vb_itp                                     
+vb_idep                                    |vb_idep                                    
 Iout                                       |iout                                       
 avdd                                       |avdd                                       
-(no pin, node is xmcm_chain_4_0/a_n1000_n3 |avss                                       
-(no pin, node is xmcm_chain_4_0/a_n1000_n3 |vb_itd                                     
-(no pin, node is xmcm_chain_4_0/a_n1000_n3 |vw                                         
+vw                                         |vw                                         
 ---------------------------------------------------------------------------------------
-Cell pin lists for stdp and stdp altered to match.
+Cell pin lists are equivalent.
 Device classes stdp and stdp are equivalent.
 
-Final result: Top level cell failed pin matching.
+Final result: Circuits match uniquely.
+Property errors were found.
+
+The following cells had property errors:
+ stdp
