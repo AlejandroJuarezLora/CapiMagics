@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lif-design"
+version = "0.1.0"
+description = "Design system for the LIF neuron cell (GF180MCU)"
+requires-python = ">=3.9"
+# Sin dependencias a proposito: solo stdlib. Son ~15 pow() por diseño y
+# arrastrar numpy costaria 100 ms de importacion para un calculo de 50 us.
+dependencies = []
+
+[tool.setuptools]
+packages = ["design"]

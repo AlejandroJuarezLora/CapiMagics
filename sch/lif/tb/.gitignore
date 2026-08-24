@@ -1,1 +1,8 @@
+# artefactos de simulacion (regenerables corriendo los scripts)
+raws_*/
+netlists_*/
 _sim_output/
+*.raw
+
+# netlists que genera design/verify.py al comprobar un diseño
+verify_*.spice
