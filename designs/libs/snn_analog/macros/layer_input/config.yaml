@@ -7,52 +7,89 @@ DESIGN_NAME: layer_input
 VERILOG_FILES:
   - dir::layer_input.v
 
-# --- Parámetros de Floorplaning ---
+# --- Parámetros de Floorplanning ---
 FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 142
-  - 82
+  - 485
+  - 245
 CORE_AREA:
   - 5
   - 5
-  - 137
-  - 77
+  - 480
+  - 240
 
 # --- Alimentación y Potencia ---
 VDD_NETS:
-  - avdd
-  - VDD
+  - vdd
 GND_NETS:
-  - avss
-  - VSS
+  - vss
 
-# --- Conexiones de Potencia para los Macros ---
-# Mapea las redes de alimentación del diseño (avdd/avss) a los pines del LEF (Vdd/Vss)
+# Mapeo de alimentación para los macros analógicos
 PDN_MACRO_CONNECTIONS:
-  - "x.* avdd avss Vdd Vss"
+  - "x1 vdd vss vdd vss"
+  - "x2 vdd vss vdd vss"
+  - "x3 vdd vss vdd vss"
+  - "x4 vdd vss vdd vss"
 
-# --- Desactivar Optimización y Reparación de Celdas Estándar Temporal en lo que arreglan lo de los capacitores :/, Esto se deberia de cambiar a true cuando se tenga cada uno de los parametros conectado a cada uno de sus pines, debido a que no se encuentran, esto se debe que libreline lo quiere reparar para llegar al vdd del elemento, pero como no existe da error, para evitar eso se desactivo temporalmente para seguir con el flujo lo mas deseado posible y observar que todo funciona correctamente---
+FP_PDN_MACRO_HOOKS: 
+  - "x1 vdd vss vdd vss"
+  - "x2 vdd vss vdd vss"
+  - "x3 vdd vss vdd vss"
+  - "x4 vdd vss vdd vss"
 
-#A evaluar 
+
+# --- Desactivar pasos digitales innecesarios para diseño analógico puro ---
 RUN_POST_GPL_DESIGN_REPAIR: false
 RUN_REPAIR_DESIGN: false
-
-#forzoso mantener desactivado 
 RUN_CTS: false
-##
+RUN_POST_CTS_RESIZER_TIMING: false
+RUN_POST_GRT_RESIZER_TIMING: false
+RUN_HEURISTIC_DIODE_INSERTION: false
 
-# --- Reglas de Enrutamiento y Capas (GF180MCU) ---
+# --- Desactivar la cuadrícula de celdas estándar en PDN ---
+FP_PDN_ENABLE_RAILS: false
+FP_PDN_MULTILAYER: false
+FP_PDN_AUTO_ADJUST: false
+
+# Asegurar que el floorplan inicialice el grid de sitio estándar del PDK aunque no haya celdas
+FP_PDN_CHECK_NODES: false
+RUN_TAP_ENDCAP_INSERTION: false
+
+
+
+
+# --- Enrutamiento (GF180MCU) ---
 PRIMARY_GDSII_STREAMOUT_TOOL: klayout
 RT_MIN_LAYER: Metal3
 RT_MAX_LAYER: Metal5
 ROUTING_CORES: 12
 GRT_ALLOW_CONGESTION: true
 
-# --- Halo y Espaciado de Macros ---
-FP_MACRO_HORIZONTAL_HALO: 2
-FP_MACRO_VERTICAL_HALO: 2
+# --- Halo para aislar la macro del generador de PDN ---
+FP_MACRO_HORIZONTAL_HALO: 4
+FP_MACRO_VERTICAL_HALO: 4
+
+
+#PND
+
+# PDN - Straps
+PDN_VWIDTH: 5
+PDN_HWIDTH: 5
+PDN_VSPACING: 1
+PDN_HSPACING: 1
+PDN_VPITCH: 75
+PDN_HPITCH: 75
+
+# PDN - Core ring
+PDN_CORE_RING: True
+# Maximum metal width without slotting: 30um
+PDN_CORE_RING_VWIDTH: 25
+PDN_CORE_RING_HWIDTH: 25
+#PDN_CORE_RING_CONNECT_TO_PADS: True
+PDN_ENABLE_PINS: False
+
 
 # --- Definición de Macros Analógicos ---
 MACROS:
@@ -62,27 +99,27 @@ MACROS:
     lef:
       - dir::../../lif/neurona_lvs.lef
     spice:
-      - dir::../../lif/neurona_lvs.spice
+      - dir::../../lif/neurona_sch.spice
     vh:
       - dir::../../lif/neurona_lvs.v
     instances:
       x1:
         location:
-          - 10
-          - 10
+          - 50
+          - 50
         orientation: N
       x2:
         location:
-          - 73
-          - 10
+          - 200
+          - 50
         orientation: N
       x3:
         location:
-          - 10
-          - 43
+          - 50
+          - 150
         orientation: N
       x4:
         location:
-          - 73
-          - 43
+          - 200
+          - 150
         orientation: N
