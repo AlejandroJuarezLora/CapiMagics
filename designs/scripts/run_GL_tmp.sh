@@ -4,7 +4,8 @@
 #
 #     bash /foss/designs/scripts/run_GL_tmp.sh
 #
-# TEMPORAL: esto sobra el dia que entren los PR 100, 102, 103 y 104 en
+# TEMPORAL: esto sobra el dia que entren los PR 100, 102, 103, 104, 113
+# y 114 en
 # ReaLLMASIC/gLayout. Mientras tanto hace falta, por tres razones:
 #
 #   1. glayout de upstream NO ARRANCA en esta imagen. Su backend por defecto
@@ -13,10 +14,9 @@
 #      fallar del todo: parece que funciona y no funciona. Con
 #      GLAYOUT_BACKEND=gdstk si arranca, y por eso la variable no es opcional.
 #
-#   2. En gf180 el mimcap sale con las placas EN CORTO. capmet apunta a
-#      CAP_MK, que es solo un marcador, en vez de a FuseTop, asi que el
-#      condensador se queda sin dielectrico. No lo detecta el DRC ni la
-#      extraccion habitual.
+#   2. En gf180 el mimcap sale con las placas EN CORTO si le falta el
+#      FuseTop que define el dielectrico. No lo detecta el DRC ni la
+#      extraccion habitual, asi que se comprueba al arrancar.
 #
 #   3. Los transistores por debajo de ~0.36 um de ancho no se pueden
 #      construir.
@@ -29,7 +29,7 @@
 set -euo pipefail
 
 REPO="${GLAYOUT_REPO:-https://github.com/carloscl03/gLayout.git}"
-RAMA="${GLAYOUT_RAMA:-capimagics-base}"
+RAMA="${GLAYOUT_RAMA:-capimagics-optionB}"
 DESTINO="${GLAYOUT_DIR:-/tmp/glayout}"
 VENV="${GLAYOUT_VENV:-/tmp/venv}"
 SALIDA_NB="${LIF_OUT:-/tmp/nbout}"
@@ -42,7 +42,11 @@ if [ -d "${DESTINO}/.git" ]; then
     # igual que la rama pase lo que pase. Un checkout aborta si alguien dejo
     # cambios locales ahi -- y entonces el script falla a medias, dejando el
     # venv apuntando a un glayout que no es el que dice ser.
-    git -C "${DESTINO}" fetch -q origin "${RAMA}"
+    # Refspec explicito: el clon es --depth 1 de UNA rama, asi que su
+    # refspec no cubre las demas y un `fetch origin otra-rama` deja el
+    # commit en FETCH_HEAD sin crear origin/otra-rama. Con el destino
+    # escrito a mano la referencia existe siempre.
+    git -C "${DESTINO}" fetch -q origin "${RAMA}:refs/remotes/origin/${RAMA}"
     git -C "${DESTINO}" reset -q --hard "origin/${RAMA}"
     git -C "${DESTINO}" clean -qfd
 else
@@ -65,9 +69,23 @@ import glayout
 from glayout import gf180
 
 print("  glayout:  ", os.path.dirname(glayout.__file__))
-print("  capmet -> ", gf180.glayers.get("capmet"), "(tiene que ser fusetop)")
-assert gf180.glayers.get("capmet") == "fusetop", \
-    "capmet apunta al marcador: este glayout genera los MIM en corto"
+# Se comprueba el RESULTADO, no el mapeo. Con el mimcap anterior el
+# dielectrico salia de `capmet`, y apuntar a CAP_MK dejaba las placas en
+# corto; desde el PR #106 de glayout CAP_MK es el valor correcto -- es el
+# marcador -- y el dielectrico lo define el FuseTop que dibuja el propio
+# mimcap. Mirar la capa dibujada vale para los dos casos.
+import os as _os, tempfile as _tmp
+import gdstk as _gdstk
+from glayout.primitives.mimcap import mimcap as _mimcap
+_c = _mimcap(gf180, size=(5.0, 5.0))
+with _tmp.TemporaryDirectory() as _d:
+    _p = _os.path.join(_d, "m.gds")
+    _c.write_gds(_p)
+    _top = _gdstk.read_gds(_p).top_level()[0]
+    _top.flatten()
+    _capas = {(x.layer, x.datatype) for x in _top.polygons}
+assert (75, 0) in _capas,     "el MIM sale sin FuseTop: este glayout genera los condensadores en corto"
+print("  MIM con FuseTop: el dielectrico esta definido")
 
 from glayout.primitives.fet import nmos
 nmos(gf180, width=0.22, length=0.28, multipliers=1, fingers=1,
