@@ -1,0 +1,147 @@
+meta:
+  version: 3
+  flow: Classic
+
+DESIGN_NAME: stdp_4x2
+
+# --- RTL del top ---
+VERILOG_FILES:
+  - dir::stdp_4x2.v
+
+# --- Parámetros de Floorplaning (Alineados a rejilla 7T GF180MCU) ---
+FP_SIZING: absolute
+DIE_AREA:
+  - 0
+  - 0
+  - 450
+  - 200
+CORE_AREA:
+  - 10.08
+  - 11.76
+  - 430.08
+  - 180.32
+
+# --- Manejo de Verificaciones para Diseños Analógicos / Macros ---
+ERROR_ON_LINTER_ERRORS: false
+ERROR_ON_LINTER_WARNINGS: false
+ERROR_ON_UNMAPPED_CELLS: false
+ERROR_ON_SYNTH_CHECKS: false
+ERROR_ON_NL_ASSIGN_STATEMENTS: false
+
+SYNTH_ELABORATE_ONLY: true
+SYNTH_CHECKS_ALLOW_TRISTATE: true
+SYNTH_AUTONAME: true
+SYNTH_SPLITNETS: false
+
+# --- Desactivar Optimizaciones Digitales sobre Bloques Analógicos ---
+RUN_POST_GPL_DESIGN_REPAIR: false
+RUN_REPAIR_DESIGN: false
+RUN_CTS: false
+
+# --- Alimentación y Potencia ---
+VDD_NETS:
+  - avdd
+  - VDD
+  
+GND_NETS:
+  - avss
+  - VSS
+
+# --- Red de Distribución de Potencia (Railing Puro sin Ring ni Straps Multicapa) ---
+PDN_ENABLE_RAILS: true
+PDN_RAIL_LAYER: Metal1
+
+# Desactivar Power Ring y correas multicapa para evitar conflictos de capas con macros
+PDN_CORE_RING: false
+PDN_MULTILAYER: false
+
+# Conexión directa de alimentación a los pines y rieles de cada macro
+PDN_MACRO_CONNECTIONS:
+  - ".*x.* avdd avss VDD VSS"
+
+PDN_ENABLE_GLOBAL_CONNECTIONS: true
+
+# --- Reglas de Enrutamiento y Capas (GF180MCU) ---
+PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+RT_MIN_LAYER: Metal3
+RT_MAX_LAYER: Metal5
+DRT_THREADS: 12
+GRT_ALLOW_CONGESTION: true
+
+# --- Halo y Espaciado de Macros ---
+FP_MACRO_HORIZONTAL_HALO: 2
+FP_MACRO_VERTICAL_HALO: 2
+
+# --- Definición de Macros Analógicos ---
+MACROS:
+  stdp:
+    gds:
+      - dir::../../stdp/stdp.gds
+    lef:
+      - dir::../../stdp/stdp.lef
+    spice:
+      - dir::../../stdp/stdp.spice
+    vh:
+      - dir::../../stdp/stdp.v
+    instances:
+      x1:
+        location:
+          - 20.00
+          - 20.00
+        orientation: N
+      x2:
+        location:
+          - 103.08
+          - 20.00
+        orientation: N
+      x3:
+        location:
+          - 186.16
+          - 20.00
+        orientation: N
+      x4:
+        location:
+          - 269.24
+          - 20.00
+        orientation: N
+      x5:
+        location:
+          - 20.00
+          - 67.60
+        orientation: N
+      x6:
+        location:
+          - 103.08
+          - 67.60
+        orientation: N
+      x7:
+        location:
+          - 186.16
+          - 67.60
+        orientation: N
+      x8:
+        location:
+          - 269.24
+          - 67.60
+        orientation: N
+
+  Current_limit:
+    gds:
+      - dir::../../Current_limit/Current_limit.gds
+    lef:
+      - dir::../../Current_limit/Current_limit.lef
+    spice:
+      - dir::../../Current_limit/Current_limit.spice
+    vh:
+      - dir::../../Current_limit/Current_limit.v
+    instances:
+      x9:
+        location:
+          - 20.00
+          - 115.20
+        orientation: N
+      x10:
+        location:
+          - 336.295
+          - 115.20
+        orientation: N
