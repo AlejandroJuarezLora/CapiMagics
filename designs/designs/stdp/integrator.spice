@@ -1,0 +1,37 @@
+* NGSPICE file created from integrator.ext - technology: gf180mcuD
+
+.subckt xm3 a_n50_n389# a_n388_n554# a_28_n181# a_n178_n181#
+X0 a_28_n181# a_n50_n389# a_n178_n181# a_n388_n554# nfet_03v3 ad=0.75p pd=3.5u as=0.75p ps=3.5u w=1u l=0.28u
+.ends
+
+.subckt xm1 a_n50_n389# w_n444_n610# a_28_n181# a_n178_n181#
+X0 a_28_n181# a_n50_n389# a_n178_n181# w_n444_n610# pfet_03v3 ad=0.75p pd=3.5u as=0.75p ps=3.5u w=1u l=0.28u
+.ends
+
+.subckt xm6 a_n388_n554# a_28_n181# a_n178_n181#
+X0 a_28_n181# a_n50_n389# a_n178_n181# a_n388_n554# nfet_03v3 ad=0.75p pd=3.5u as=0.75p ps=3.5u w=1u l=0.28u
+.ends
+
+.subckt xm2 a_n50_n389# a_n388_n554# a_28_n181# a_n178_n181#
+X0 a_28_n181# a_n50_n389# a_n178_n181# a_n388_n554# nfet_03v3 ad=0.75p pd=3.5u as=0.75p ps=3.5u w=1u l=0.28u
+.ends
+
+.subckt xc3 m4_n1968_n1968# m4_n1768_n1768#
+X0 m4_n1768_n1768# m4_n1968_n1968# cap_mim_2f0_m4m5_noshield c_width=17.68u c_length=17.68u
+X1 m4_n1768_n1768# m4_n1968_n1968# cap_mim_2f0_m4m5_noshield c_width=17.68u c_length=17.68u
+X2 m4_n1768_n1768# m4_n1968_n1968# cap_mim_2f0_m4m5_noshield c_width=17.68u c_length=17.68u
+X3 m4_n1768_n1768# m4_n1968_n1968# cap_mim_2f0_m4m5_noshield c_width=17.68u c_length=17.68u
+X4 m4_n1768_n1768# m4_n1968_n1968# cap_mim_2f0_m4m5_noshield c_width=17.68u c_length=17.68u
+X5 m4_n1768_n1768# m4_n1968_n1968# cap_mim_2f0_m4m5_noshield c_width=17.68u c_length=17.68u
+X6 m4_n1768_n1768# m4_n1968_n1968# cap_mim_2f0_m4m5_noshield c_width=17.68u c_length=17.68u
+X7 m4_n1768_n1768# m4_n1968_n1968# cap_mim_2f0_m4m5_noshield c_width=17.68u c_length=17.68u
+.ends
+
+.subckt integrator avss
+Xxm3_0 xm3_0/a_28_n181# avss xm3_0/a_28_n181# xm3_0/a_n178_n181# xm3
+Xxm1_0 avss avss avss xm6_0/a_n178_n181# xm1
+Xxm6_0 avss avss xm6_0/a_n178_n181# xm6
+Xxm2_0 xm3_0/a_28_n181# avss avss xm3_0/a_n178_n181# xm2
+Xxc3_0 avss xm6_0/a_n178_n181# xc3
+.ends
+
