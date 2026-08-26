@@ -8,6 +8,7 @@ MACRO neurona_lvs
   ORIGIN 13.000 20.460 ;
   SIZE 79.500 BY 61.310 ;
   PIN vss
+    USE GROUND ;
     ANTENNADIFFAREA 62.992199 ;
     PORT
       LAYER Pwell ;
@@ -122,6 +123,7 @@ MACRO neurona_lvs
     END
   END vss
   PIN vdd
+    USE POWER ;
     ANTENNADIFFAREA 18.837000 ;
     PORT
       LAYER Nwell ;
