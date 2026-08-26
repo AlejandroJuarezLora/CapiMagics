@@ -103,6 +103,7 @@ MACRO encoder
     END
   END Iex_4_i
   PIN Vdd
+    USE POWER;
     ANTENNADIFFAREA 54.005398 ;
     PORT
       LAYER Nwell ;
@@ -265,6 +266,7 @@ MACRO encoder
     END
   END Vdd
   PIN Vss
+    USE GROUND;
     ANTENNADIFFAREA 37.930798 ;
     PORT
       LAYER Pwell ;
