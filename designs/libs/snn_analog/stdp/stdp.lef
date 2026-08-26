@@ -9,6 +9,7 @@ MACRO stdp
   SIZE 102.980 BY 76.880 ;
   PIN avdd
     ANTENNADIFFAREA 70.643997 ;
+    USE POWER;
     PORT
       LAYER Nwell ;
         RECT 0.000 29.855 18.860 35.455 ;
@@ -175,6 +176,7 @@ MACRO stdp
     END
   END avdd
   PIN avss
+    USE GROUND;
     ANTENNADIFFAREA 96.039597 ;
     PORT
       LAYER Pwell ;
