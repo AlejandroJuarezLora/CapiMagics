@@ -1,5 +1,5 @@
 module current_limit (
-    input  avdd,
+    inout  avdd,
     input  i_SUM,
     output ifwd
 );

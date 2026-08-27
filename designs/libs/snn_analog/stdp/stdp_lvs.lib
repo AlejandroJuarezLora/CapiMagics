@@ -1,0 +1,78 @@
+library(stdp_lvs) {
+  time_unit : "1ns";
+  voltage_unit : "1V";
+  current_unit : "1uA";
+  pulling_resistance_unit : "1kohm";
+  leakage_power_unit : "1nW";
+  capacitive_load_unit(1,pf);
+
+  slew_derate_from_library : 1.0;
+  slew_lower_threshold_pct_fall : 20.0;
+  slew_upper_threshold_pct_fall : 80.0;
+  slew_lower_threshold_pct_rise : 20.0;
+  slew_upper_threshold_pct_rise : 80.0;
+  input_threshold_pct_fall : 50.0;
+  input_threshold_pct_rise : 50.0;
+  output_threshold_pct_fall : 50.0;
+  output_threshold_pct_rise : 50.0;
+
+  cell(stdp_lvs) {
+    pin(nvpre) {
+      direction : input ;
+      max_transition : 2.5;
+      capacitance : 0.001; 
+    }
+    pin(nvpost) {
+      direction : input ;
+      max_transition : 2.5;
+      capacitance : 0.001; 
+    }
+    pin(vpre) {
+      direction : input ;
+      max_transition : 2.5;
+      capacitance : 0.001; 
+    }
+    pin(vpost) {
+      direction : input ;
+      max_transition : 2.5;
+      capacitance : 0.001; 
+    }
+    pin(vb_itd) {
+      direction : input ;
+      max_transition : 2.5;
+      capacitance : 0.001; 
+    }
+    pin(vb_idep) {
+      direction : input ;
+      max_transition : 2.5;
+      capacitance : 0.001; 
+    }
+    pin(vb_itp) {
+      direction : input ;
+      max_transition : 2.5;
+      capacitance : 0.001; 
+    }
+    pin(vb_pot) {
+      direction : input ;
+      max_transition : 2.5;
+      capacitance : 0.001; 
+    }
+    pin(vw) {
+      direction : input ;
+      max_transition : 2.5;
+      capacitance : 0.001; 
+    }
+    pin(iout) {
+      direction : output ;
+      capacitance : 0.001; 
+    }
+    pin(avdd) {
+      direction : inout ;
+      capacitance : 0.001; 
+    }
+    pin(avss) {
+      direction : inout ;
+      capacitance : 0.001; 
+    }
+  }
+}
