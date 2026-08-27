@@ -1,0 +1,53 @@
+library (stdp_lib) {
+  cell (stdp) {
+    area : 8301.50;
+    pin (avdd) {
+      direction : inout;
+      pg_type : primary_power;
+    }
+    pin (avss) {
+      direction : inout;
+      pg_type : primary_ground;
+    }
+    pin (nvpost) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin (nvpre) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin (vpost) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin (vpre) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin (vb_idep) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin (vb_itd) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin (vb_itp) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin (vb_pot) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin (vw) {
+      direction : input;
+      capacitance : 0.001;
+    }
+    pin (Iout) {
+      direction : output;
+      capacitance : 0.001;
+    }
+  }
+}
