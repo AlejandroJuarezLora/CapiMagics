@@ -469,6 +469,7 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
               via_stack, rectangle, evaluate_bbox)
     rails_y = _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
                            evaluate_bbox, supply_width, m5_ref, caps)
+    rails_y = _al_origen(top, rails_y)
 
     top.add_port(name="IN", port=nfets[0].ports[_GATE_MID.format(side="W")])
     top.add_port(name="OUT", port=nfets[2].ports[_DRAIN_MID.format(side="W")])
@@ -997,6 +998,31 @@ def _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
 
     return {"vdd": y_vdd, "vss": y_vss, "width": width,
             "glayer": rails.glayer}
+
+def _al_origen(top, rails_y):
+    """Lleva la esquina inferior izquierda de la celda a (0, 0).
+
+    Un macro se integra por su LEF, que declara un origen. Si la geometria
+    vive en (0, -2.21) y el LEF dice (0, 0), la herramienta coloca el bloque
+    creyendo una cosa y el metal aparece desplazado: pistas que no conectan
+    y violaciones en el borde, y no al colocar sino despues de rutear.
+
+    Va aqui, despues de los rieles y antes de los puertos y las etiquetas:
+    las referencias arrastran sus puertos al moverse, pero `rails_y` lleva
+    coordenadas absolutas en float que no se enteran, asi que se corrigen a
+    mano. Las etiquetas de pin todavia no existen y se dibujaran ya en su
+    sitio.
+    """
+    dx, dy = top.bbox[0]
+    if abs(dx) < 1e-9 and abs(dy) < 1e-9:
+        return rails_y
+    for ref in top.references:
+        ref.movex(-dx).movey(-dy)
+    corregido = dict(rails_y)
+    for k in ("vdd", "vss"):
+        corregido[k] = float(rails_y[k]) - dy
+    return corregido
+
 
 # Los inversores del lazo van al minimo: el solver no los dimensiona porque
 # no fijan nada del comportamiento, a diferencia de M5 y del buffer.
