@@ -1,0 +1,445 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO layer_input
+  CLASS BLOCK ;
+  FOREIGN layer_input ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 150.000 BY 550.000 ;
+  PIN Iext1
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.280000 ;
+    ANTENNADIFFAREA 1.380000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 69.440 0.560 70.000 ;
+    END
+  END Iext1
+  PIN Iext2
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.280000 ;
+    ANTENNADIFFAREA 1.380000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 206.080 0.560 206.640 ;
+    END
+  END Iext2
+  PIN Iext3
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.280000 ;
+    ANTENNADIFFAREA 1.380000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 342.720 0.560 343.280 ;
+    END
+  END Iext3
+  PIN Iext4
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.280000 ;
+    ANTENNADIFFAREA 1.380000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 0.000 479.360 0.560 479.920 ;
+    END
+  END Iext4
+  PIN VDD
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER Metal4 ;
+        RECT -7.180 1.780 -5.680 547.020 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 155.200 1.780 156.700 547.020 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -7.180 1.780 156.700 3.280 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -7.180 545.520 156.700 547.020 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 28.540 -1.420 29.540 550.220 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 103.540 -1.420 104.540 550.220 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 37.830 159.900 38.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 112.830 159.900 113.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 187.830 159.900 188.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 262.830 45.080 263.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 337.830 159.900 338.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 412.830 159.900 413.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 487.830 159.900 488.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 134.780 262.830 159.900 263.830 ;
+    END
+  END VDD
+  PIN VSS
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER Metal4 ;
+        RECT -10.380 -1.420 -8.880 550.220 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 158.400 -1.420 159.900 550.220 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 -1.420 159.900 0.080 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 548.720 159.900 550.220 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 31.540 -1.420 32.540 550.220 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 106.540 -1.420 107.540 550.220 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 40.830 159.900 41.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 115.830 159.900 116.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 190.830 159.900 191.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 265.830 159.900 266.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 340.830 159.900 341.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 415.830 159.900 416.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 490.830 159.900 491.830 ;
+    END
+  END VSS
+  PIN nvout_1
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.560000 ;
+    ANTENNADIFFAREA 0.750000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 149.440 103.040 150.000 103.600 ;
+    END
+  END nvout_1
+  PIN nvout_2
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.560000 ;
+    ANTENNADIFFAREA 0.750000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 149.440 239.680 150.000 240.240 ;
+    END
+  END nvout_2
+  PIN nvout_3
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.560000 ;
+    ANTENNADIFFAREA 0.750000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 149.440 376.320 150.000 376.880 ;
+    END
+  END nvout_3
+  PIN nvout_4
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.560000 ;
+    ANTENNADIFFAREA 0.750000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 149.440 512.960 150.000 513.520 ;
+    END
+  END nvout_4
+  PIN vdd
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER Metal4 ;
+        RECT -0.780 8.180 0.720 540.620 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 148.800 8.180 150.300 540.620 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -0.780 8.180 150.300 9.680 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -0.780 539.120 150.300 540.620 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 22.540 -1.420 23.540 550.220 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 97.540 -1.420 98.540 550.220 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 31.830 159.900 32.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 106.830 40.080 107.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 181.830 68.860 182.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 256.830 40.080 257.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 331.830 159.900 332.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 406.830 40.080 407.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 481.830 159.900 482.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 105.980 181.830 159.900 182.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 139.780 106.830 159.900 107.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 139.780 256.830 159.900 257.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 139.780 406.830 159.900 407.830 ;
+    END
+  END vdd
+  PIN vout_1
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.750000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 149.440 34.720 150.000 35.280 ;
+    END
+  END vout_1
+  PIN vout_2
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.750000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 149.440 171.360 150.000 171.920 ;
+    END
+  END vout_2
+  PIN vout_3
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.750000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 149.440 308.000 150.000 308.560 ;
+    END
+  END vout_3
+  PIN vout_4
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.750000 ;
+    PORT
+      LAYER Metal3 ;
+        RECT 149.440 444.640 150.000 445.200 ;
+    END
+  END vout_4
+  PIN vss
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER Metal4 ;
+        RECT -3.980 4.980 -2.480 543.820 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 152.000 4.980 153.500 543.820 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -3.980 4.980 153.500 6.480 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -3.980 542.320 153.500 543.820 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 25.540 -1.420 26.540 550.220 ;
+    END
+    PORT
+      LAYER Metal4 ;
+        RECT 100.540 -1.420 101.540 550.220 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 34.830 159.900 35.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 109.830 40.080 110.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 184.830 76.250 185.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 259.830 45.080 260.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 334.830 159.900 335.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 409.830 40.080 410.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT -10.380 484.830 159.900 485.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 98.590 184.830 159.900 185.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 134.780 259.830 159.900 260.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 139.780 109.830 159.900 110.830 ;
+    END
+    PORT
+      LAYER Metal5 ;
+        RECT 139.780 409.830 159.900 410.830 ;
+    END
+  END vss
+  OBS
+      LAYER Nwell ;
+        RECT 63.000 70.430 116.860 391.020 ;
+      LAYER Metal1 ;
+        RECT 63.190 70.640 116.630 390.810 ;
+      LAYER Metal2 ;
+        RECT 52.250 51.220 127.250 409.030 ;
+      LAYER Metal3 ;
+        RECT 0.560 512.660 149.140 513.380 ;
+        RECT 0.560 480.220 149.440 512.660 ;
+        RECT 0.860 479.060 149.440 480.220 ;
+        RECT 0.560 445.500 149.440 479.060 ;
+        RECT 0.560 444.340 149.140 445.500 ;
+        RECT 0.560 377.180 149.440 444.340 ;
+        RECT 0.560 376.020 149.140 377.180 ;
+        RECT 0.560 343.580 149.440 376.020 ;
+        RECT 0.860 342.420 149.440 343.580 ;
+        RECT 0.560 308.860 149.440 342.420 ;
+        RECT 0.560 307.700 149.140 308.860 ;
+        RECT 0.560 240.540 149.440 307.700 ;
+        RECT 0.560 239.380 149.140 240.540 ;
+        RECT 0.560 206.940 149.440 239.380 ;
+        RECT 0.860 205.780 149.440 206.940 ;
+        RECT 0.560 172.220 149.440 205.780 ;
+        RECT 0.560 171.060 149.140 172.220 ;
+        RECT 0.560 103.900 149.440 171.060 ;
+        RECT 0.560 102.740 149.140 103.900 ;
+        RECT 0.560 70.300 149.440 102.740 ;
+        RECT 0.860 69.140 149.440 70.300 ;
+        RECT 0.560 35.580 149.440 69.140 ;
+        RECT 0.560 34.860 149.140 35.580 ;
+      LAYER Metal4 ;
+        RECT 1.260 34.810 22.240 513.430 ;
+        RECT 23.840 34.810 25.240 513.430 ;
+        RECT 26.840 34.810 28.240 513.430 ;
+        RECT 29.840 34.810 31.240 513.430 ;
+        RECT 32.840 34.810 97.240 513.430 ;
+        RECT 98.840 34.810 100.240 513.430 ;
+        RECT 101.840 34.810 103.240 513.430 ;
+        RECT 104.840 34.810 106.240 513.430 ;
+        RECT 107.840 34.810 148.260 513.430 ;
+      LAYER Metal5 ;
+        RECT 45.980 342.430 128.860 411.310 ;
+        RECT 45.980 339.430 128.860 340.230 ;
+        RECT 45.980 336.430 128.860 337.230 ;
+        RECT 45.980 333.430 128.860 334.230 ;
+        RECT 45.980 267.430 128.860 331.230 ;
+        RECT 45.980 192.430 128.860 265.230 ;
+        RECT 45.980 189.430 128.860 190.230 ;
+        RECT 45.980 186.430 128.860 187.230 ;
+        RECT 76.850 184.230 97.990 186.430 ;
+        RECT 45.980 183.430 128.860 184.230 ;
+        RECT 69.460 181.230 105.380 183.430 ;
+        RECT 45.980 117.430 128.860 181.230 ;
+        RECT 45.980 114.430 128.860 115.230 ;
+        RECT 45.980 49.970 128.860 112.230 ;
+  END
+END layer_input
+END LIBRARY
+

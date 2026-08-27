@@ -7,119 +7,129 @@ DESIGN_NAME: layer_input
 VERILOG_FILES:
   - dir::layer_input.v
 
-# --- Parámetros de Floorplanning ---
-FP_SIZING: absolute
+FP_PIN_ORDER_CFG: dir::pin.cfg
+
+# # --- Absolute SDC Paths ---
+# PNR_SDC_FILE: /foss/designs/libs/snn_analog/lif/neurona_lvs.sdc
+# SIGNOFF_SDC_FILE: /foss/designs/libs/snn_analog/lif/neurona_lvs.sdc
+
+# --- Floorplanning ---
+FP_SIZING: absolute 
 DIE_AREA:
   - 0
   - 0
-  - 485
-  - 245
-CORE_AREA:
-  - 5
-  - 5
-  - 480
-  - 240
+  - 150
+  - 550
 
-# --- Alimentación y Potencia ---
+# --- Power Grid (PDN) ---
 VDD_NETS:
   - vdd
+  - VDD
 GND_NETS:
   - vss
+  - VSS
 
-# Mapeo de alimentación para los macros analógicos
+PDN_ENABLE_RAILS: false
+PDN_MULTILAYER: true
+PDN_VWIDTH: 1
+PDN_HWIDTH: 1
+PDN_VSPACING: 2
+PDN_HSPACING: 2
+PDN_VPITCH: 75
+PDN_HPITCH: 75
+PDN_CORE_RING: true
+PDN_CORE_RING_VWIDTH: 1.5
+PDN_CORE_RING_HWIDTH: 1.5
+
+# Connect Macro Power/Ground Pins to Global Net
 PDN_MACRO_CONNECTIONS:
   - "x1 vdd vss vdd vss"
   - "x2 vdd vss vdd vss"
   - "x3 vdd vss vdd vss"
   - "x4 vdd vss vdd vss"
 
-FP_PDN_MACRO_HOOKS: 
-  - "x1 vdd vss vdd vss"
-  - "x2 vdd vss vdd vss"
-  - "x3 vdd vss vdd vss"
-  - "x4 vdd vss vdd vss"
-
-
-# --- Desactivar pasos digitales innecesarios para diseño analógico puro ---
+# --- Blackbox & Analog Optimization (Valid LibreLane Flags) ---
+PL_TIMING_DRIVEN: false            # Disables OpenROAD timing-driven placement
 RUN_POST_GPL_DESIGN_REPAIR: false
 RUN_REPAIR_DESIGN: false
 RUN_CTS: false
 RUN_POST_CTS_RESIZER_TIMING: false
 RUN_POST_GRT_RESIZER_TIMING: false
 RUN_HEURISTIC_DIODE_INSERTION: false
-
-# --- Desactivar la cuadrícula de celdas estándar en PDN ---
-FP_PDN_ENABLE_RAILS: false
-FP_PDN_MULTILAYER: false
-FP_PDN_AUTO_ADJUST: false
-
-# Asegurar que el floorplan inicialice el grid de sitio estándar del PDK aunque no haya celdas
-FP_PDN_CHECK_NODES: false
+RUN_FILL_INSERTION: false
 RUN_TAP_ENDCAP_INSERTION: false
+ERROR_ON_PDN_VIOLATIONS: false
 
+# --- Direct LEF/GDS Blackbox Include ---
+EXTRA_LEFS:
+  - /foss/designs/libs/snn_analog/lif/neurona_lvs.lef
+EXTRA_GDS:
+  - /foss/designs/libs/snn_analog/lif/neurona_lvs.gds
 
-
-
-# --- Enrutamiento (GF180MCU) ---
+# --- Routing (GF180MCU) ---
 PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+MAGIC_ZEROIZE_ORIGIN: false
+ERROR_ON_MAGIC_DRC: false
+KLAYOUT_FILLER_OPTIONS:
+  Metal2_ignore_active: true
+MAGIC_EXT_UNIQUE: notopports
+
+MAGIC_GDS_FLATGLOB:
+- "*_CDNS_*"
+- "*$$*"
+- "M1_N*"
+- "M1_P*"
+- "M2_M1*"
+- "M3_M2*"
+- "nmos_5p0*"
+- "nmos_1p2*"
+- "pmos_5p0*"
+- "pmos_1p2*"
+- "via1_*"
+- "ypass_gate*"
+- "G_ring_*"
+- "dcap_103*"
+- "din_*"
+- "mux821_*"
+- "rdummy_*"
+- "pmoscap_*"
+- "xdec_*"
+- "ypredec*"
+- "xpredec*"
+- "prexdec_*"
+- "xdec8_*"
+- "xdec16_*"
+- "xdec32_*"
+- "sa_*"
 RT_MIN_LAYER: Metal3
 RT_MAX_LAYER: Metal5
 ROUTING_CORES: 12
 GRT_ALLOW_CONGESTION: true
 
-# --- Halo para aislar la macro del generador de PDN ---
-FP_MACRO_HORIZONTAL_HALO: 4
-FP_MACRO_VERTICAL_HALO: 4
-
-
-#PND
-
-# PDN - Straps
-PDN_VWIDTH: 5
-PDN_HWIDTH: 5
-PDN_VSPACING: 1
-PDN_HSPACING: 1
-PDN_VPITCH: 75
-PDN_HPITCH: 75
-
-# PDN - Core ring
-PDN_CORE_RING: True
-# Maximum metal width without slotting: 30um
-PDN_CORE_RING_VWIDTH: 25
-PDN_CORE_RING_HWIDTH: 25
-#PDN_CORE_RING_CONNECT_TO_PADS: True
-PDN_ENABLE_PINS: False
-
-
-# --- Definición de Macros Analógicos ---
+# --- Analog Macro Instantiation ---
 MACROS:
   neurona_lvs:
     gds:
-      - dir::../../lif/neurona_lvs.gds
+      - /foss/designs/libs/snn_analog/lif/neurona_lvs.gds
     lef:
-      - dir::../../lif/neurona_lvs.lef
+      - /foss/designs/libs/snn_analog/lif/neurona_lvs.lef
     spice:
-      - dir::../../lif/neurona_sch.spice
+      - /foss/designs/libs/snn_analog/lif/neurona_lvs.spice
     vh:
-      - dir::../../lif/neurona_lvs.v
+      - /foss/designs/libs/snn_analog/lif/neurona_lvs.v
+    lib:
+      "*":
+        - /foss/designs/libs/snn_analog/lif/neurona_lvs.lib
     instances:
       x1:
-        location:
-          - 50
-          - 50
+        location: [50, 50]
         orientation: N
       x2:
-        location:
-          - 200
-          - 50
+        location: [50, 150]
         orientation: N
       x3:
-        location:
-          - 50
-          - 150
+        location: [50, 250]
         orientation: N
       x4:
-        location:
-          - 200
-          - 150
+        location: [50, 350]
         orientation: N
