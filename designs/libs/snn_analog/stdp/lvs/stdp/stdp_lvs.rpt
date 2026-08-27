@@ -500,7 +500,7 @@ xm17 (1)                                   |xm17 (1)
 xm7 (1)                                    |xm7 (1)                                    
 xmcm_chain_1 (1)                           |xmcm_chain_1 (1)                           
 Number of devices: 20                      |Number of devices: 20                      
-Number of nets: 23                         |Number of nets: 23                         
+Number of nets: 22                         |Number of nets: 22                         
 ---------------------------------------------------------------------------------------
 Netlists match uniquely.
 
