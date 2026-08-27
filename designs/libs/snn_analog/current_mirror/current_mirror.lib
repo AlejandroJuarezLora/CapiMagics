@@ -1,11 +1,4 @@
-library(current_mirror) {
-  time_unit : "1ns";
-  voltage_unit : "1V";
-  current_unit : "1uA";
-  pulling_resistance_unit : "1kohm";
-  leakage_power_unit : "1nW";
-  capacitive_load_unit(1,pf);
-
+library (current_mirror_lib) {
   slew_derate_from_library : 1.0;
   slew_lower_threshold_pct_fall : 20.0;
   slew_upper_threshold_pct_fall : 80.0;
@@ -15,23 +8,23 @@ library(current_mirror) {
   input_threshold_pct_rise : 50.0;
   output_threshold_pct_fall : 50.0;
   output_threshold_pct_rise : 50.0;
-
-  cell(current_mirror) {
-    pin(B) {
-      direction : output ;
-      capacitance : 0.001; 
+  cell (current_mirror) {
+    area : 2789.81;
+    pin (Avdd) {
+      direction : inout;
+      pg_type : primary_power;
     }
-    pin(A) {
-      direction : output ;
-      capacitance : 0.001; 
+    pin (Avss) {
+      direction : inout;
+      pg_type : primary_ground;
     }
-    pin(Avdd) {
-      direction : inout ;
-      capacitance : 0.001; 
+    pin (B) {
+      direction : output;
+      capacitance : 0.001;
     }
-    pin(Avss) {
-      direction : inout ;
-      capacitance : 0.001; 
+    pin (A) {
+      direction : input;
+      capacitance : 0.001;
     }
   }
 }
