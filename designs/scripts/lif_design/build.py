@@ -470,6 +470,7 @@ def lif_cell(pdk, inverter: dict, m5: dict, cap_size: float = 5.0,
     rails_y = _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
                            evaluate_bbox, supply_width, m5_ref, caps)
     rails_y = _al_origen(top, rails_y)
+    _boundary(pdk, top, rectangle)
 
     top.add_port(name="IN", port=nfets[0].ports[_GATE_MID.format(side="W")])
     top.add_port(name="OUT", port=nfets[2].ports[_DRAIN_MID.format(side="W")])
@@ -998,6 +999,24 @@ def _rails_bands(pdk, top, pfets, nfets, plan, via_stack, rectangle,
 
     return {"vdd": y_vdd, "vss": y_vss, "width": width,
             "glayer": rails.glayer}
+
+def _boundary(pdk, top, rectangle):
+    """Marca el contorno del macro en la capa (0,0).
+
+    LibreLane no deduce donde acaba un bloque mirando su metal: lee esta
+    capa. No se fabrica -- es una marca de contorno, como el PR_boundary de
+    otros flujos -- y el equipo la ha fijado para todas las celdas del
+    D14_topcell.
+
+    Se dibuja despues de llevar la celda al origen, asi que va de (0,0) a la
+    esquina opuesta y coincide exactamente con lo que el LEF va a declarar.
+    """
+    ancho = float(top.xmax - top.xmin)
+    alto = float(top.ymax - top.ymin)
+    marco = top << rectangle(size=(ancho, alto), layer=(0, 0), centered=False)
+    marco.movex(float(top.xmin)).movey(float(top.ymin))
+    return marco
+
 
 def _al_origen(top, rails_y):
     """Lleva la esquina inferior izquierda de la celda a (0, 0).
