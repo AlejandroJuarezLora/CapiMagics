@@ -1,0 +1,50 @@
+
+Cell neurona_lvs (0) disconnected node: vss
+Cell neurona_lvs (0) disconnected node: vdd
+Cell neurona_lvs (0) disconnected node: spike
+Cell neurona_lvs (0) disconnected node: spike_neg
+Cell neurona_lvs (0) disconnected node: Iin
+
+Subcircuit pins:
+Circuit 1: neurona_lvs                     |Circuit 2: neurona_lvs                     
+-------------------------------------------|-------------------------------------------
+vss                                        |vss                                        
+vdd                                        |vdd                                        
+spike                                      |spike                                      
+spike_neg                                  |spike_neg                                  
+Iin                                        |Iin                                        
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes neurona_lvs and neurona_lvs are equivalent.
+
+Cell layer_output (1) disconnected node: vdd
+Cell layer_output (1) disconnected node: vss
+Subcircuit summary:
+Circuit 1: layer_output                    |Circuit 2: layer_output                    
+-------------------------------------------|-------------------------------------------
+neurona_lvs (2)                            |neurona_lvs (2)                            
+Number of devices: 2                       |Number of devices: 2                       
+Number of nets: 8                          |Number of nets: 8                          
+---------------------------------------------------------------------------------------
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely with port errors.
+
+Subcircuit pins:
+Circuit 1: layer_output                    |Circuit 2: layer_output                    
+-------------------------------------------|-------------------------------------------
+vout_2                                     |vout_2                                     
+vout_1                                     |vout_1                                     
+nvout_2                                    |nvout_2                                    
+nvout_1                                    |nvout_1                                    
+Iext2                                      |Iext2                                      
+Iext1                                      |Iext1                                      
+VSS                                        |VSS                                        
+VDD                                        |VDD                                        
+(no matching pin)                          |vdd                                        
+(no matching pin)                          |vss                                        
+---------------------------------------------------------------------------------------
+Cell pin lists for layer_output and layer_output altered to match.
+Device classes layer_output and layer_output are equivalent.
+
+Final result: Top level cell failed pin matching.
