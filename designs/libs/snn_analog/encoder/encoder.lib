@@ -1,55 +1,37 @@
-library(encoder) {
-  time_unit : "1ns";
-  voltage_unit : "1V";
-  current_unit : "1uA";
-  pulling_resistance_unit : "1kohm";
-  leakage_power_unit : "1nW";
-  capacitive_load_unit(1,pf);
-
-  slew_derate_from_library : 1.0;
-  slew_lower_threshold_pct_fall : 20.0;
-  slew_upper_threshold_pct_fall : 80.0;
-  slew_lower_threshold_pct_rise : 20.0;
-  slew_upper_threshold_pct_rise : 80.0;
-  input_threshold_pct_fall : 50.0;
-  input_threshold_pct_rise : 50.0;
-  output_threshold_pct_fall : 50.0;
-  output_threshold_pct_rise : 50.0;
-
-  cell(encoder) {
-    pin(Vin) {
-      direction : input ;
-      max_transition : 2.5;
-      capacitance : 0.001; 
+library (neurona_lvs_lib) {
+  cell (neurona_lvs) {
+    area : 4024.86;
+    pin (Vdd) {
+      direction : inout;
+      pg_type : primary_power;
     }
-    pin(Vin_neg) {
-      direction : input ;
-      max_transition : 2.5;
-      capacitance : 0.001; 
+    pin (Vss) {
+      direction : inout;
+      pg_type : primary_ground;
     }
-    pin(Iex_1) {
-      direction : output ;
-      capacitance : 0.001; 
+    pin (Vin) {
+      direction : input;
+      capacitance : 0.001;
     }
-    pin(Iex_2) {
-      direction : output ;
-      capacitance : 0.001; 
+    pin (Vin_neg) {
+      direction : input;
+      capacitance : 0.001;
     }
-    pin(Iex_3) {
-      direction : output ;
-      capacitance : 0.001; 
+    pin (Iex_1_i) {
+      direction : output;
+      capacitance : 0.001;
     }
-    pin(Iex_4) {
-      direction : output ;
-      capacitance : 0.001; 
+    pin (Iex_2_i) {
+      direction : output;
+      capacitance : 0.001;
     }
-    pin(Vdd) {
-      direction : inout ;
-      pg_type : primary_power ;
+    pin (Iex_3_i) {
+      direction : output;
+      capacitance : 0.001;
     }
-    pin(Vss) {
-      direction : inout ;
-      pg_type : primary_ground ;
+    pin (Iex_4_i) {
+      direction : output;
+      capacitance : 0.001;
     }
   }
 }
