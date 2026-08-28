@@ -1,7 +1,0 @@
-set circuit1 [readnet spice /foss/designs/libs/snn_analog/macros/layer_output/runs/RUN_2026-08-28_00-44-50/63-magic-spiceextraction/layer_output.spice]
-set circuit2 [readnet verilog /dev/null]
-puts "Reading SPICE netlist file '/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/spice/gf180mcu_fd_sc_mcu7t5v0.spice'..."
-readnet spice /foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/spice/gf180mcu_fd_sc_mcu7t5v0.spice $circuit2
-puts "Reading Verilog netlist file '/foss/designs/libs/snn_analog/macros/layer_output/runs/RUN_2026-08-28_00-44-50/40-openroad-detailedrouting/layer_output.pnl.v'..."
-readnet verilog /foss/designs/libs/snn_analog/macros/layer_output/runs/RUN_2026-08-28_00-44-50/40-openroad-detailedrouting/layer_output.pnl.v $circuit2
-lvs "$circuit1 layer_output" "$circuit2 layer_output" /usr/local/lib/python3.12/dist-packages/librelane/scripts/netgen/setup.tcl /foss/designs/libs/snn_analog/macros/layer_output/runs/RUN_2026-08-28_00-44-50/65-netgen-lvs/reports/lvs.netgen.rpt -blackbox -json

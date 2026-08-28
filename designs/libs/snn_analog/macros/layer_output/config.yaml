@@ -14,8 +14,10 @@ FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 300
-  - 150
+  - 240
+  - 100
+  # - 300
+  # - 150
 #CORE_AREA:
 #  - 5.04
 #  - 7.84
@@ -34,16 +36,19 @@ GND_NETS:
 
 PDN_ENABLE_RAILS: false
 PDN_MULTILAYER: true
-PDN_VWIDTH: 1
-PDN_HWIDTH: 1
+PDN_VWIDTH: 1.2
+PDN_HWIDTH: 1.2
 PDN_VSPACING: 2
 PDN_HSPACING: 2
-PDN_VPITCH: 75
-PDN_HPITCH: 75
+PDN_VPITCH: 110
+PDN_HPITCH: 110
 PDN_CORE_RING: true
 PDN_CORE_RING_VWIDTH: 1.5
 PDN_CORE_RING_HWIDTH: 1.5
-
+PDN_CORE_RING_VSPACING: 1.5
+PDN_CORE_RING_HSPACING: 1.5
+PDN_VOFFSET: 30.0
+PDN_HOFFSET: 30.0
 # --- Conexiones de Potencia para los Macros ---
 PDN_MACRO_CONNECTIONS:
   - "x1 vdd vss vdd vss"
@@ -75,41 +80,38 @@ KLAYOUT_FILLER_OPTIONS:
   Metal2_ignore_active: true
 MAGIC_EXT_UNIQUE: notopports
 
-MAGIC_GDS_FLATGLOB:
-- "*_CDNS_*"
-- "*$$*"
-- "M1_N*"
-- "M1_P*"
-- "M2_M1*"
-- "M3_M2*"
-- "nmos_5p0*"
-- "nmos_1p2*"
-- "pmos_5p0*"
-- "pmos_1p2*"
-- "via1_*"
-- "ypass_gate*"
-- "G_ring_*"
-- "dcap_103*"
-- "din_*"
-- "mux821_*"
-- "rdummy_*"
-- "pmoscap_*"
-- "xdec_*"
-- "ypredec*"
-- "xpredec*"
-- "prexdec_*"
-- "xdec8_*"
-- "xdec16_*"
-- "xdec32_*"
-- "sa_*"
+# MAGIC_GDS_FLATGLOB:
+# - "*_CDNS_*"
+# - "*$$*"
+# - "M1_N*"
+# - "M1_P*"
+# - "M2_M1*"
+# - "M3_M2*"
+# - "nmos_5p0*"
+# - "nmos_1p2*"
+# - "pmos_5p0*"
+# - "pmos_1p2*"
+# - "via1_*"
+# - "ypass_gate*"
+# - "G_ring_*"
+# - "dcap_103*"
+# - "din_*"
+# - "mux821_*"
+# - "rdummy_*"
+# - "pmoscap_*"
+# - "xdec_*"
+# - "ypredec*"
+# - "xpredec*"
+# - "prexdec_*"
+# - "xdec8_*"
+# - "xdec16_*"
+# - "xdec32_*"
+# - "sa_*"
 RT_MIN_LAYER: Metal3
 RT_MAX_LAYER: Metal5
 DRT_THREADS: 12
 GRT_ALLOW_CONGESTION: true
 
-# --- Halo y Espaciado de Macros ---
-#FP_MACRO_HORIZONTAL_HALO: 2
-#FP_MACRO_VERTICAL_HALO: 2
 
 MACROS:
   neurona_lvs:
@@ -128,8 +130,8 @@ MACROS:
     instances:
 
       x1:
-        location: [50, 50]
+        location: [20, 20]
         orientation: N
       x2:
-        location: [200, 50]
+        location: [120, 20]
         orientation: N

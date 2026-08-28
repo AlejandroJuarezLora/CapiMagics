@@ -1,2 +1,0 @@
-+ analyze_power_grid -net vdd -voltage_file /foss/designs/libs/snn_analog/macros/layer_output/runs/RUN_2026-08-28_00-37-20/51-openroad-irdropreport/net-vdd.csv
-Error: irdrop.tcl, 51 PSM-0069
