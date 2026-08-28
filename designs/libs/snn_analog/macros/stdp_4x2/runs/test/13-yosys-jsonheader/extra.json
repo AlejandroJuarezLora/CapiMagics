@@ -1,0 +1,1 @@
+{"blackbox_models": ["/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/tmp/6e501fa3c06e47458b3c49ff48945791.bb.v", "/foss/designs/libs/snn_analog/stdp/stdp.v", "/foss/designs/libs/snn_analog/Current_limit/Current_limit.v"], "libs_synth": ["/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/tmp/e1764783587c4a7fbe31d09d610f1816.lib"]}

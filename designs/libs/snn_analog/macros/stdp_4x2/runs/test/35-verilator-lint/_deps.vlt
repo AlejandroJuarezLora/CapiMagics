@@ -1,0 +1,9 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/tmp/f66ac13a29bd40f8855f9a25f5ee22af.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/tmp/f66ac13a29bd40f8855f9a25f5ee22af.bb.v"
+lint_off -rule UNDRIVEN -file "/foss/designs/libs/snn_analog/stdp/stdp.v"
+lint_off -rule UNUSEDSIGNAL -file "/foss/designs/libs/snn_analog/stdp/stdp.v"
+lint_off -rule UNDRIVEN -file "/foss/designs/libs/snn_analog/Current_limit/Current_limit.v"
+lint_off -rule UNUSEDSIGNAL -file "/foss/designs/libs/snn_analog/Current_limit/Current_limit.v"

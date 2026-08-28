@@ -1,0 +1,88 @@
+
+===========================================================================
+report_checks -unconstrained
+===========================================================================
+======================= nom_ff_n40C_5v50 Corner ===================================
+
+Startpoint: avdd (input port clocked by __VIRTUAL_CLK__)
+Endpoint: x1/avdd (internal pin)
+Path Group: unconstrained
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  2.000000    2.000000 ^ input external delay
+    10    0.072910    0.832838    0.466336    2.466336 ^ avdd (inout)
+                                                         avdd (net)
+                      0.832838    0.000000    2.466336 ^ x1/avdd (stdp)
+                                              2.466336   data arrival time
+---------------------------------------------------------------------------------------------
+(Path is unconstrained)
+
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+======================= nom_ff_n40C_5v50 Corner ===================================
+
+No paths found.
+
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+======================= nom_ff_n40C_5v50 Corner ===================================
+
+max fanout
+
+Pin                                   Limit Fanout  Slack
+---------------------------------------------------------
+A                                        10     16     -6 (VIOLATED)
+B                                        10     16     -6 (VIOLATED)
+
+
+
+===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 18 unannotated drivers.
+ A
+ B
+ avdd
+ avss
+ nvpost1
+ nvpost2
+ nvpre1
+ nvpre2
+ nvpre3
+ nvpre4
+ vpost1
+ vpost2
+ vpre1
+ vpre2
+ vpre3
+ vpre4
+ vw11
+ vw42
+Found 0 partially unannotated drivers.
+
+===========================================================================
+max slew violation count 0
+max fanout violation count 2
+max cap violation count 0
+============================================================================
+
+===========================================================================
+check_setup -verbose -unconstrained_endpoints -multiple_clock -no_clock -no_input_delay -loops -generated_clocks
+===========================================================================
+Warning: There are 8 unconstrained endpoints.
+  A
+  B
+  avdd
+  avss
+  ifwd1
+  ifwd2
+  vw11
+  vw42

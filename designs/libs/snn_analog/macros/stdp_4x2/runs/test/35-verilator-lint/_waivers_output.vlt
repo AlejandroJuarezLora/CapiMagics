@@ -1,0 +1,23 @@
+// DESCRIPTION: Verilator output: Waivers generated with --waiver-output
+
+`verilator_config
+
+// Below are suggested waivers. You have three options:
+//   1. Fix the reason for the linter warning in the Verilog sources
+//   2. Keep the waiver permanently if you are sure it is okay
+//   3. Keep the waiver temporarily to suppress the output
+
+// lint_off -rule MODDUP -file "*/foss/designs/libs/snn_analog/stdp/stdp.v" -match "Duplicate declaration of module: 'stdp'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v" -match "Signal is not used: 'net1'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v" -match "Signal is not used: 'net2'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v" -match "Signal is not used: 'net3'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v" -match "Signal is not used: 'net4'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v" -match "Signal is not used: 'net5'*"
+
+// lint_off -rule UNUSEDSIGNAL -file "*/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v" -match "Signal is not used: 'net6'*"
+

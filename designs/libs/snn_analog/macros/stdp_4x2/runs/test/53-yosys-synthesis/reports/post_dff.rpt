@@ -1,0 +1,19 @@
+90. Printing statistics.
+
+=== stdp_4x2 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       28 wires
+       28 wire bits
+       28 public wires
+       28 public wire bits
+       20 ports
+       20 port bits
+       10 cells
+        2   Current_limit
+        8   stdp
+
+   Area for cell type \stdp is unknown!
+   Area for cell type \Current_limit is unknown!
+
