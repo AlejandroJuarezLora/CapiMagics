@@ -8,7 +8,7 @@ MACRO stdp
   ORIGIN 0.000 0.000 ;
   SIZE 107.980 BY 76.880 ;
   PIN avdd
-    USE POWER;
+    USE POWER ;
     ANTENNAGATEAREA 0.315000 ;
     ANTENNADIFFAREA 71.243996 ;
     PORT
@@ -206,7 +206,7 @@ MACRO stdp
     END
   END avdd
   PIN avss
-    USE GROUND;
+    USE GROUND ;
     ANTENNADIFFAREA 96.039597 ;
     PORT
       LAYER Pwell ;
