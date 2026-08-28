@@ -1,5 +1,0 @@
-- cell: neurona_lvs
-  inout: []
-  input:
-  - spike
-  output: []
