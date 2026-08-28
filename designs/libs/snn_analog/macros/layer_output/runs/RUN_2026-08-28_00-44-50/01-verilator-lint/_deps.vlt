@@ -1,0 +1,7 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/foss/designs/libs/snn_analog/macros/layer_output/runs/RUN_2026-08-28_00-44-50/tmp/2089eb4f15f14b94865a01643f68f078.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/foss/designs/libs/snn_analog/macros/layer_output/runs/RUN_2026-08-28_00-44-50/tmp/2089eb4f15f14b94865a01643f68f078.bb.v"
+lint_off -rule UNDRIVEN -file "/foss/designs/libs/snn_analog/lif/neurona_lvs.v"
+lint_off -rule UNUSEDSIGNAL -file "/foss/designs/libs/snn_analog/lif/neurona_lvs.v"

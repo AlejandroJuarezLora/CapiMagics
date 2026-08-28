@@ -1,0 +1,63 @@
+
+===========================================================================
+report_checks -unconstrained
+===========================================================================
+======================= min_tt_025C_5v00 Corner ===================================
+
+Startpoint: Iext2 (input port clocked by __VIRTUAL_CLK__)
+Endpoint: x2/Iin (internal pin)
+Path Group: unconstrained
+Path Type: max
+
+Fanout         Cap        Slew       Delay        Time   Description
+---------------------------------------------------------------------------------------------
+                                  2.000000    2.000000 ^ input external delay
+     1    0.009141    0.195883    0.089017    2.089017 ^ Iext2 (in)
+                                                         Iext2 (net)
+                      0.146912    0.000000    2.089017 ^ x2/Iin (neurona_lvs)
+                                              2.089017   data arrival time
+---------------------------------------------------------------------------------------------
+(Path is unconstrained)
+
+
+
+
+===========================================================================
+report_checks --slack_max -0.01
+============================================================================
+======================= min_tt_025C_5v00 Corner ===================================
+
+No paths found.
+
+
+===========================================================================
+ report_check_types -max_slew -max_cap -max_fanout -violators
+============================================================================
+======================= min_tt_025C_5v00 Corner ===================================
+
+
+
+===========================================================================
+report_parasitic_annotation -report_unannotated
+============================================================================
+Found 4 unannotated drivers.
+ x1/vdd
+ x1/vss
+ x2/vdd
+ x2/vss
+Found 0 partially unannotated drivers.
+
+===========================================================================
+max slew violation count 0
+max fanout violation count 0
+max cap violation count 0
+============================================================================
+
+===========================================================================
+check_setup -verbose -unconstrained_endpoints -multiple_clock -no_clock -no_input_delay -loops -generated_clocks
+===========================================================================
+Warning: There are 4 unconstrained endpoints.
+  nvout_1
+  nvout_2
+  vout_1
+  vout_2
