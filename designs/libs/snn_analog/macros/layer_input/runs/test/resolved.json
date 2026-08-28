@@ -110,8 +110,8 @@
     "DIE_AREA": [
         0,
         0,
-        150,
-        550
+        116,
+        380
     ],
     "EXTRA_EXCLUDED_CELLS": null,
     "MACROS": {
@@ -125,29 +125,29 @@
             "instances": {
                 "x1": {
                     "location": [
-                        50,
-                        50
+                        17.75,
+                        20
                     ],
                     "orientation": "N"
                 },
                 "x2": {
                     "location": [
-                        50,
-                        150
+                        17.75,
+                        110
                     ],
                     "orientation": "N"
                 },
                 "x3": {
                     "location": [
-                        50,
-                        250
+                        17.75,
+                        200
                     ],
                     "orientation": "N"
                 },
                 "x4": {
                     "location": [
-                        50,
-                        350
+                        17.75,
+                        290
                     ],
                     "orientation": "N"
                 }
@@ -333,18 +333,18 @@
     "PDN_VERTICAL_HALO": 10,
     "PDN_MULTILAYER": true,
     "PDN_RAIL_OFFSET": 0,
-    "PDN_VWIDTH": 1,
-    "PDN_HWIDTH": 1,
+    "PDN_VWIDTH": 1.2,
+    "PDN_HWIDTH": 1.2,
     "PDN_VSPACING": 2,
     "PDN_HSPACING": 2,
-    "PDN_VPITCH": 75,
-    "PDN_HPITCH": 75,
-    "PDN_VOFFSET": 16.32,
-    "PDN_HOFFSET": 16.65,
+    "PDN_VPITCH": 140,
+    "PDN_HPITCH": 140,
+    "PDN_VOFFSET": 30,
+    "PDN_HOFFSET": 30,
     "PDN_CORE_RING_VWIDTH": 1.5,
     "PDN_CORE_RING_HWIDTH": 1.5,
-    "PDN_CORE_RING_VSPACING": 1.7,
-    "PDN_CORE_RING_HSPACING": 1.7,
+    "PDN_CORE_RING_VSPACING": 1.5,
+    "PDN_CORE_RING_HSPACING": 1.5,
     "PDN_CORE_RING_VOFFSET": 6,
     "PDN_CORE_RING_HOFFSET": 6,
     "PDN_CORE_RING_CONNECT_TO_PADS": false,
@@ -992,34 +992,7 @@
     "KLAYOUT_XOR_TILE_SIZE": null,
     "ERROR_ON_XOR_ERROR": true,
     "MAGIC_DRC_USE_GDS": true,
-    "MAGIC_GDS_FLATGLOB": [
-        "*_CDNS_*",
-        "*$$*",
-        "M1_N*",
-        "M1_P*",
-        "M2_M1*",
-        "M3_M2*",
-        "nmos_5p0*",
-        "nmos_1p2*",
-        "pmos_5p0*",
-        "pmos_1p2*",
-        "via1_*",
-        "ypass_gate*",
-        "G_ring_*",
-        "dcap_103*",
-        "din_*",
-        "mux821_*",
-        "rdummy_*",
-        "pmoscap_*",
-        "xdec_*",
-        "ypredec*",
-        "xpredec*",
-        "prexdec_*",
-        "xdec8_*",
-        "xdec16_*",
-        "xdec32_*",
-        "sa_*"
-    ],
+    "MAGIC_GDS_FLATGLOB": null,
     "MAGIC_DRC_MAGLEFS": null,
     "KLAYOUT_DRC_RUNSET": null,
     "KLAYOUT_DRC_OPTIONS": null,
