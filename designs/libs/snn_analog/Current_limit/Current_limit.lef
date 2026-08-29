@@ -44,6 +44,7 @@ MACRO Current_limit
     END
   END ifwd
   PIN avdd
+    USE POWER ;
     ANTENNADIFFAREA 18.172800 ;
     PORT
       LAYER Nwell ;
@@ -93,6 +94,7 @@ MACRO Current_limit
     END
   END avdd
   PIN avss
+    USE GROUND ;
     ANTENNAGATEAREA 2.500000 ;
     ANTENNADIFFAREA 9.686399 ;
     PORT

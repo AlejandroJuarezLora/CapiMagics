@@ -9,23 +9,17 @@ VERILOG_FILES:
   - dir::stdp_4x2.v
   - dir::../../stdp/stdp.v
 
-# --- Parámetros de Floorplaning (Alineados a rejilla 7T GF180MCU) ---
+# --- Floorplaning ---
 FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 450
-  - 200
-# CORE_AREA:
-#   - 10.08
-#   - 11.76
-#   - 430.08
-#   - 180.32
+  - 350
+  - 570
 
 # --- Alimentación y Potencia ---
 VDD_NETS:
   - avdd
-  
 GND_NETS:
   - avss
 
@@ -35,22 +29,29 @@ ERROR_ON_LINTER_WARNINGS: false
 ERROR_ON_UNMAPPED_CELLS: false
 ERROR_ON_SYNTH_CHECKS: false
 ERROR_ON_NL_ASSIGN_STATEMENTS: false
-
+ERROR_ON_PDN_VIOLATIONS: false
 
 # ---- FLAGS PDN
 PDN_ENABLE_RAILS: false
 PDN_MULTILAYER: true
-PDN_VWIDTH: 1
-PDN_HWIDTH: 1
-PDN_VSPACING: 2
-PDN_HSPACING: 2
-PDN_VPITCH: 75
-PDN_HPITCH: 75
-PDN_CORE_RING: true
-PDN_CORE_RING_VWIDTH: 1.5
-PDN_CORE_RING_HWIDTH: 1.5
+PDN_VWIDTH: 2.0
+PDN_HWIDTH: 2.0
+PDN_VSPACING: 2.0
+PDN_HSPACING: 2.0
+PDN_VPITCH: 60.0
+PDN_HPITCH: 110.0
+PDN_VOFFSET: 90.0
+PDN_HOFFSET: 80.0
 
-# Conexión directa de alimentación a los pines y rieles de cada macro
+
+PDN_CORE_RING: true
+PDN_CORE_RING_VWIDTH: 2.0
+PDN_CORE_RING_HWIDTH: 2.0
+PDN_CORE_RING_VSPACING: 1.5
+PDN_CORE_RING_HSPACING: 1.5
+
+
+# Conexión de alimentación a cada macro
 PDN_MACRO_CONNECTIONS:
   - "x1 avdd avss avdd avss"
   - "x2 avdd avss avdd avss"
@@ -60,21 +61,22 @@ PDN_MACRO_CONNECTIONS:
   - "x6 avdd avss avdd avss"
   - "x7 avdd avss avdd avss"
   - "x8 avdd avss avdd avss"
-  - "x9 avdd avdd"
-  - "x10 avdd avdd"
+  - "x9 avdd avss avdd avss"
+  - "x10 avdd avss avdd avss"
 
-# --- Blackbox & Analog Optimization (Valid LibreLane Flags) ---
-PL_TIMING_DRIVEN: false            # Disables OpenROAD timing-driven placement
+# --- Optimizaciones para Macros / Desactivación de Diodos Antenna ---
+PL_TIMING_DRIVEN: false
 RUN_POST_GPL_DESIGN_REPAIR: false
-RUN_REPAIR_DESIGN: false
 RUN_CTS: false
 RUN_POST_CTS_RESIZER_TIMING: false
 RUN_POST_GRT_RESIZER_TIMING: false
 RUN_HEURISTIC_DIODE_INSERTION: false
+RUN_ANTENNA_REPAIR: true
+#GRT_ANTENNA_ITERS: 0
+#GRT_ANTENNA_MARGIN: 0
 RUN_FILL_INSERTION: false
 RUN_TAP_ENDCAP_INSERTION: false
-ERROR_ON_PDN_VIOLATIONS: false
-
+RUN_IRDROP_REPORT: false
 
 # --- Direct LEF/GDS Blackbox Include ---
 EXTRA_LEFS:
@@ -92,38 +94,10 @@ KLAYOUT_FILLER_OPTIONS:
   Metal2_ignore_active: true
 MAGIC_EXT_UNIQUE: notopports
 
-MAGIC_GDS_FLATGLOB:
-- "*_CDNS_*"
-- "*$$*"
-- "M1_N*"
-- "M1_P*"
-- "M2_M1*"
-- "M3_M2*"
-- "nmos_5p0*"
-- "nmos_1p2*"
-- "pmos_5p0*"
-- "pmos_1p2*"
-- "via1_*"
-- "ypass_gate*"
-- "G_ring_*"
-- "dcap_103*"
-- "din_*"
-- "mux821_*"
-- "rdummy_*"
-- "pmoscap_*"
-- "xdec_*"
-- "ypredec*"
-- "xpredec*"
-- "prexdec_*"
-- "xdec8_*"
-- "xdec16_*"
-- "xdec32_*"
-- "sa_*"
-RT_MIN_LAYER: Metal3
+RT_MIN_LAYER: Metal2
 RT_MAX_LAYER: Metal5
-ROUTING_CORES: 12
+DRT_THREADS: 12
 GRT_ALLOW_CONGESTION: true
-
 
 # --- Definición de Macros Analógicos ---
 MACROS:
@@ -138,28 +112,28 @@ MACROS:
       - dir::../../stdp/stdp.v
     instances:
       x1:
-        location: [5, 50]
+        location: [25, 120]
         orientation: N
       x2:
-        location: [5, 137]
+        location: [25, 220]
         orientation: N
       x3:
-        location: [5, 217]
+        location: [25, 330]
         orientation: N
       x4:
-        location: [5, 304]
+        location: [25, 440]
         orientation: N
       x5:
-        location: [122, 304]
+        location: [195, 440]
         orientation: N
       x6:
-        location: [122, 217]
+        location: [195, 330]
         orientation: N
       x7:
-        location: [122, 137]
+        location: [195, 220]
         orientation: N
       x8:
-        location: [122, 50]
+        location: [195, 120]
         orientation: N
 
   Current_limit:
@@ -173,8 +147,8 @@ MACROS:
       - dir::../../Current_limit/Current_limit.v
     instances:
       x9:
-        location: [41, 5]
+        location: [35, 35]
         orientation: N
       x10:
-        location: [158, 5]
+        location: [240, 35]
         orientation: N
