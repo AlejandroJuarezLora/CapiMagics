@@ -1,6 +1,6 @@
 *SPEF "ieee 1481-1999"
 *DESIGN "layer_output"
-*DATE "20:38:05 Friday August 28, 2026"
+*DATE "02:14:51 Saturday August 29, 2026"
 *VENDOR "The OpenROAD Project"
 *PROGRAM "OpenROAD"
 *VERSION "26Q1-1024-gdcf36133a"
@@ -42,61 +42,61 @@ vout_2 O
 1 Iext1 *10:Iin 25.6671 
 *END
 
-*D_NET *2 0.0051417
+*D_NET *2 0.00409915
 *CONN
 *P Iext2 I
 *I *11:Iin I *D neurona_lvs
 *CAP
-1 Iext2 0.00257085
-2 *11:Iin 0.00257085
+1 Iext2 0.00204957
+2 *11:Iin 0.00204957
 *RES
-1 Iext2 *11:Iin 29.0302 
+1 Iext2 *11:Iin 26.7324 
 *END
 
-*D_NET *5 0.0100417
+*D_NET *5 0.0106505
 *CONN
 *P nvout_1 O
 *I *10:spike_neg I *D neurona_lvs
 *CAP
-1 nvout_1 0.00484244
-2 *10:spike_neg 0.00484244
-3 *10:spike_neg *10:spike 0.000356836
+1 nvout_1 0.0049777
+2 *10:spike_neg 0.0049777
+3 *10:spike_neg *10:spike 0.000695078
 *RES
-1 nvout_1 *10:spike_neg 38.542 
+1 nvout_1 *10:spike_neg 38.352 
 *END
 
-*D_NET *6 0.00970448
+*D_NET *6 0.00970453
 *CONN
 *P nvout_2 O
 *I *11:spike_neg I *D neurona_lvs
 *CAP
-1 nvout_2 0.00481236
-2 *11:spike_neg 0.00481236
+1 nvout_2 0.00481239
+2 *11:spike_neg 0.00481239
 3 *11:spike_neg *11:spike 7.97597e-05
 *RES
-1 nvout_2 *11:spike_neg 47.412 
+1 nvout_2 *11:spike_neg 47.488 
 *END
 
-*D_NET *8 0.00992645
+*D_NET *8 0.0065017
 *CONN
 *P vout_1 O
 *I *10:spike I *D neurona_lvs
 *CAP
-1 vout_1 0.00478481
-2 *10:spike 0.00478481
-3 *10:spike_neg *10:spike 0.000356836
+1 vout_1 0.00290331
+2 *10:spike 0.00290331
+3 *10:spike_neg *10:spike 0.000695078
 *RES
-1 vout_1 *10:spike 34.2249 
+1 vout_1 *10:spike 34.416 
 *END
 
-*D_NET *9 0.00548645
+*D_NET *9 0.00532114
 *CONN
 *P vout_2 O
 *I *11:spike I *D neurona_lvs
 *CAP
-1 vout_2 0.00270335
-2 *11:spike 0.00270335
+1 vout_2 0.00262069
+2 *11:spike 0.00262069
 3 *11:spike_neg *11:spike 7.97597e-05
 *RES
-1 vout_2 *11:spike 26.6982 
+1 vout_2 *11:spike 25.812 
 *END

@@ -39,7 +39,7 @@ library (layer_input) {
     }
     pin("Iext3") {
       direction : input;
-      capacitance : 0.0060;
+      capacitance : 0.0037;
     }
     pin("Iext4") {
       direction : input;
@@ -47,11 +47,11 @@ library (layer_input) {
     }
     pin("nvout_1") {
       direction : output;
-      capacitance : 0.0097;
+      capacitance : 0.0094;
     }
     pin("nvout_2") {
       direction : output;
-      capacitance : 0.0103;
+      capacitance : 0.0097;
     }
     pin("nvout_3") {
       direction : output;
@@ -59,23 +59,23 @@ library (layer_input) {
     }
     pin("nvout_4") {
       direction : output;
-      capacitance : 0.0116;
+      capacitance : 0.0123;
     }
     pin("vout_1") {
       direction : output;
-      capacitance : 0.0113;
+      capacitance : 0.0089;
     }
     pin("vout_2") {
       direction : output;
-      capacitance : 0.0082;
+      capacitance : 0.0098;
     }
     pin("vout_3") {
       direction : output;
-      capacitance : 0.0103;
+      capacitance : 0.0091;
     }
     pin("vout_4") {
       direction : output;
-      capacitance : 0.0107;
+      capacitance : 0.0103;
     }
   }
 
