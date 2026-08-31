@@ -1,0 +1,3099 @@
+Starting…
+Running 'Verilator.Lint' at 'stdp_4x2/runs/test/01-verilator-lint'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/01-verilator-lint/verilator-lint.log'[/repr.filename]…
+Running 'Checker.LintTimingConstructs' at 'stdp_4x2/runs/test/02-checker-linttimingconstructs'…
+Check for Lint Timing Errors clear.
+Running 'Checker.LintErrors' at 'stdp_4x2/runs/test/03-checker-linterrors'…
+Check for Lint errors clear.
+Running 'Checker.LintWarnings' at 'stdp_4x2/runs/test/04-checker-lintwarnings'…
+9 Lint warnings found.
+Running 'Yosys.JsonHeader' at 'stdp_4x2/runs/test/05-yosys-jsonheader'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/05-yosys-jsonheader/yosys-jsonheader.log'[/repr.filename]…
+Running 'Yosys.Synthesis' at 'stdp_4x2/runs/test/06-yosys-synthesis'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/06-yosys-synthesis/yosys-synthesis.log'[/repr.filename]…
+Parsing synthesis checks…
+Running 'Checker.YosysUnmappedCells' at 'stdp_4x2/runs/test/07-checker-yosysunmappedcells'…
+Check for Unmapped Yosys instances clear.
+Running 'Checker.YosysSynthChecks' at 'stdp_4x2/runs/test/08-checker-yosyssynthchecks'…
+2 Yosys check errors found.
+Running 'Checker.NetlistAssignStatements' at 'stdp_4x2/runs/test/09-checker-netlistassignstatements'…
+Running 'OpenROAD.CheckSDCFiles' at 'stdp_4x2/runs/test/10-openroad-checksdcfiles'…
+'PNR_SDC_FILE' is not defined. Using generic fallback SDC for OpenROAD PnR steps.
+'SIGNOFF_SDC_FILE' is not defined. Using generic fallback SDC for OpenROAD PnR steps.
+Running 'OpenROAD.CheckMacroInstances' at 'stdp_4x2/runs/test/11-openroad-checkmacroinstances'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/11-openroad-checkmacroinstances/openroad-checkmacroinstances.log'[/repr.filename]…
+Running 'OpenROAD.STAPrePNR' at 'stdp_4x2/runs/test/12-openroad-staprepnr'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Starting STA for the nom_tt_025C_5v00 timing corner…
+No libs found for macro stdp at corner nom_ss_125C_4v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_ss_125C_4v50. The module will be black-boxed.
+Starting STA for the nom_ss_125C_4v50 timing corner…
+No libs found for macro stdp at corner nom_ff_n40C_5v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/12-openroad-staprepnr/nom_tt_025C_5v00/sta.log'[/repr.filename]…
+Starting STA for the nom_ff_n40C_5v50 timing corner…
+No libs found for macro stdp at corner min_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner min_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/12-openroad-staprepnr/nom_ss_125C_4v50/sta.log'[/repr.filename]…
+Skipping corner min_tt_025C_5v00 for STA (identical to nom_tt_025C_5v00 at this stage)…
+No libs found for macro stdp at corner min_ss_125C_4v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner min_ss_125C_4v50. The module will be black-boxed.
+Skipping corner min_ss_125C_4v50 for STA (identical to nom_ss_125C_4v50 at this stage)…
+No libs found for macro stdp at corner min_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/12-openroad-staprepnr/nom_ff_n40C_5v50/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner min_ff_n40C_5v50. The module will be black-boxed.
+Skipping corner min_ff_n40C_5v50 for STA (identical to nom_ff_n40C_5v50 at this stage)…
+No libs found for macro stdp at corner max_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner max_tt_025C_5v00. The module will be black-boxed.
+Skipping corner max_tt_025C_5v00 for STA (identical to nom_tt_025C_5v00 at this stage)…
+No libs found for macro stdp at corner max_ss_125C_4v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner max_ss_125C_4v50. The module will be black-boxed.
+Skipping corner max_ss_125C_4v50 for STA (identical to nom_ss_125C_4v50 at this stage)…
+No libs found for macro stdp at corner max_ff_n40C_5v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner max_ff_n40C_5v50. The module will be black-boxed.
+Skipping corner max_ff_n40C_5v50 for STA (identical to nom_ff_n40C_5v50 at this stage)…
+Finished STA for the nom_tt_025C_5v00 timing corner.
+Finished STA for the nom_ss_125C_4v50 timing corner.
+Finished STA for the nom_ff_n40C_5v50 timing corner.
+Running 'OpenROAD.Floorplan' at 'stdp_4x2/runs/test/13-openroad-floorplan'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/13-openroad-floorplan/openroad-floorplan.log'[/repr.filename]…
+[ODB-0229] Error: library (stdp) already exists
+[ODB-0229] Error: library (Current_limit) already exists
+[ORD-2011] LEF master stdp has no liberty cell.
+[ORD-2011] LEF master Current_limit has no liberty cell.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'OpenROAD.DumpRCValues' at 'stdp_4x2/runs/test/14-openroad-dumprcvalues'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/14-openroad-dumprcvalues/openroad-dumprcvalues.log'[/repr.filename]…
+[ODB-0229] Error: library (stdp) already exists
+[ODB-0229] Error: library (Current_limit) already exists
+Running 'Odb.CheckMacroAntennaProperties' at 'stdp_4x2/runs/test/15-odb-checkmacroantennaproperties'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/15-odb-checkmacroantennaproperties/odb-checkmacroantennaproperties.log'[/repr.filename]…
+Cell 'stdp' has (1) input pin(s) without antenna gate information. They might not be connected to a gate.
+Running 'Odb.SetPowerConnections' at 'stdp_4x2/runs/test/16-odb-setpowerconnections'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/16-odb-setpowerconnections/odb-setpowerconnections.log'[/repr.filename]…
+Running 'Odb.ManualMacroPlacement' at 'stdp_4x2/runs/test/17-odb-manualmacroplacement'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/17-odb-manualmacroplacement/odb-manualmacroplacement.log'[/repr.filename]…
+Running 'OpenROAD.CutRows' at 'stdp_4x2/runs/test/18-openroad-cutrows'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/18-openroad-cutrows/openroad-cutrows.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.TapEndcapInsertion' set to 'False'- the step will be skipped.
+Skipping step 'Tap/Decap Insertion'…
+Running 'Odb.AddPDNObstructions' at 'stdp_4x2/runs/test/19-odb-addpdnobstructions'…
+'PDN_OBSTRUCTIONS' is not defined. Skipping 'Odb.AddPDNObstructions'…
+Running 'OpenROAD.GeneratePDN' at 'stdp_4x2/runs/test/20-openroad-generatepdn'…
+'PDN_CFG' not explicitly set, setting it to /usr/local/lib/python3.12/dist-packages/librelane/scripts/openroad/common/pdn_cfg.tcl…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/20-openroad-generatepdn/openroad-generatepdn.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[PDN-0239] Ring shape falls outside the die bounds.
+[PSM-0038] Unconnected shape on net avdd at (53.340um, 50.610um) - (53.800um, 66.650um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.800um, 50.610um) - (53.840um, 51.110um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.800um, 55.290um) - (53.840um, 55.790um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.800um, 57.510um) - (53.840um, 58.010um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.800um, 62.190um) - (53.840um, 62.690um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.800um, 66.150um) - (53.840um, 66.650um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (54.490um, 50.610um) - (60.590um, 51.110um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (54.490um, 55.290um) - (60.590um, 55.790um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (54.490um, 57.510um) - (60.590um, 58.010um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (54.490um, 62.190um) - (60.590um, 62.690um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.280um, 50.610um) - (61.740um, 55.790um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.240um, 50.610um) - (61.280um, 51.110um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.240um, 55.290um) - (61.280um, 55.790um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.240um, 57.510um) - (61.280um, 58.010um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.280um, 57.510um) - (61.740um, 62.690um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.240um, 62.190um) - (61.280um, 62.690um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.340um, 50.610um) - (61.740um, 51.110um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (53.340um, 55.290um) - (61.740um, 55.790um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (53.340um, 57.510um) - (61.740um, 58.010um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (53.340um, 62.190um) - (61.740um, 62.690um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (57.290um, 66.900um) - (57.790um, 73.285um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (51.340um, 65.900um) - (71.280um, 66.900um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (57.290um, 72.785um) - (57.790um, 73.285um), layer: Metal3.
+[PSM-0038] Unconnected shape on net avdd at (62.260um, 66.150um) - (62.760um, 66.650um), layer: Metal3.
+[PSM-0038] Unconnected shape on net avdd at (42.540um, 45.845um) - (47.540um, 73.350um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (44.790um, 45.350um) - (45.290um, 45.845um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (44.790um, 73.350um) - (45.290um, 73.850um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (57.290um, 72.785um) - (57.790um, 73.285um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (75.620um, 45.845um) - (80.620um, 73.350um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (77.870um, 45.350um) - (78.370um, 45.845um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (77.870um, 73.350um) - (78.370um, 73.850um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (42.540um, 42.235um) - (80.620um, 48.365um), layer: Metal5.
+[PSM-0038] Unconnected shape on net avdd at (42.540um, 69.965um) - (80.620um, 76.095um), layer: Metal5.
+[PSM-0039] Unconnected instance x9/avdd at location (58.307um, 59.438um).
+[PSM-0069] Check connectivity failed on avdd.
+Grid check for avdd failed: PSM-0069
+[PSM-0038] Unconnected shape on net avss at (65.690um, 53.925um) - (65.760um, 54.425um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 51.125um) - (66.260um, 57.225um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 49.975um) - (66.260um, 50.475um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (66.260um, 49.975um) - (70.440um, 50.435um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 57.875um) - (66.260um, 58.375um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (66.260um, 57.915um) - (70.440um, 58.375um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (67.155um, 56.725um) - (68.505um, 57.185um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (66.655um, 56.705um) - (67.155um, 57.205um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (67.955um, 51.165um) - (68.505um, 51.625um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (67.455um, 51.145um) - (67.955um, 51.645um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (68.505um, 51.145um) - (69.005um, 51.645um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (68.505um, 56.705um) - (69.005um, 57.205um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (69.545um, 52.325um) - (70.045um, 52.825um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (69.545um, 53.125um) - (70.045um, 53.625um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (69.545um, 53.925um) - (70.045um, 54.425um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (69.545um, 54.725um) - (70.045um, 55.225um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (69.545um, 55.525um) - (70.045um, 56.025um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (70.440um, 49.975um) - (70.940um, 50.475um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (70.440um, 57.875um) - (70.940um, 58.375um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (70.440um, 51.125um) - (70.940um, 57.225um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 51.145um) - (67.155um, 52.325um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 49.975um) - (66.260um, 51.145um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 54.425um) - (67.155um, 57.205um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 57.205um) - (66.260um, 58.375um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 52.325um) - (70.045um, 52.825um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 52.825um) - (67.155um, 53.925um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.690um, 53.925um) - (67.155um, 54.425um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (66.655um, 37.750um) - (67.155um, 51.145um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (61.290um, 37.250um) - (67.155um, 37.750um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (67.455um, 51.675um) - (70.045um, 52.325um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (67.455um, 51.145um) - (69.545um, 51.675um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (67.455um, 56.675um) - (69.545um, 57.205um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (67.455um, 52.825um) - (70.045um, 56.675um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (70.440um, 49.975um) - (70.940um, 58.375um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (61.290um, 37.250um) - (61.790um, 37.750um), layer: Metal3.
+[PSM-0038] Unconnected shape on net avss at (35.000um, 37.750um) - (40.000um, 80.580um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (37.250um, 37.250um) - (37.750um, 37.750um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (37.250um, 80.580um) - (37.750um, 81.080um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (61.290um, 37.250um) - (61.790um, 37.750um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (83.080um, 37.750um) - (88.080um, 80.580um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (85.330um, 37.250um) - (85.830um, 37.750um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (85.330um, 80.580um) - (85.830um, 81.080um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (35.000um, 35.000um) - (88.080um, 40.000um), layer: Metal5.
+[PSM-0038] Unconnected shape on net avss at (35.000um, 78.330um) - (88.080um, 83.330um), layer: Metal5.
+[PSM-0039] Unconnected instance x9/avss at location (66.677um, 53.682um).
+[PSM-0069] Check connectivity failed on avss.
+Grid check for avss failed: PSM-0069
+Running 'Odb.RemovePDNObstructions' at 'stdp_4x2/runs/test/21-odb-removepdnobstructions'…
+'PDN_OBSTRUCTIONS' is not defined. Skipping 'Odb.RemovePDNObstructions'…
+Running 'Odb.AddRoutingObstructions' at 'stdp_4x2/runs/test/22-odb-addroutingobstructions'…
+'ROUTING_OBSTRUCTIONS' is not defined. Skipping 'Odb.AddRoutingObstructions'…
+Running 'OpenROAD.GlobalPlacementSkipIO' at 'stdp_4x2/runs/test/23-openroad-globalplacementskipio'…
+'PL_TARGET_DENSITY_PCT' not explicitly set, using dynamically calculated target density: 49.581900…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/23-openroad-globalplacementskipio/openroad-globalplacementskipio.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'OpenROAD.IOPlacement' at 'stdp_4x2/runs/test/24-openroad-ioplacement'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/24-openroad-ioplacement/openroad-ioplacement.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'Odb.CustomIOPlacement' at 'stdp_4x2/runs/test/25-odb-customioplacement'…
+No custom I/O placement file configured, skipping 'Odb.CustomIOPlacement'…
+Running 'Odb.ApplyDEFTemplate' at 'stdp_4x2/runs/test/26-odb-applydeftemplate'…
+No DEF template provided, skipping 'Odb.ApplyDEFTemplate'…
+Running 'OpenROAD.GlobalPlacement' at 'stdp_4x2/runs/test/27-openroad-globalplacement'…
+'PL_TARGET_DENSITY_PCT' not explicitly set, using dynamically calculated target density: 49.581900…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/27-openroad-globalplacement/openroad-globalplacement.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'Odb.WriteVerilogHeader' at 'stdp_4x2/runs/test/28-odb-writeverilogheader'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/28-odb-writeverilogheader/odb-writeverilogheader.log'[/repr.filename]…
+Running 'Checker.PowerGridViolations' at 'stdp_4x2/runs/test/29-checker-powergridviolations'…
+5676 power grid violations (as reported by OpenROAD PSM- you may ignore these if LVS passes) found.
+Running 'OpenROAD.STAMidPNR' at 'stdp_4x2/runs/test/30-openroad-stamidpnr'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/30-openroad-stamidpnr/openroad-stamidpnr.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.RepairDesignPostGPL' set to 'False'- the step will be skipped.
+Skipping step 'Repair Design (Post-Global Placement)'…
+Running 'Odb.ManualGlobalPlacement' at 'stdp_4x2/runs/test/31-odb-manualglobalplacement'…
+'MANUAL_GLOBAL_PLACEMENTS' not set. Skipping 'Odb.ManualGlobalPlacement'…
+Running 'OpenROAD.DetailedPlacement' at 'stdp_4x2/runs/test/32-openroad-detailedplacement'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/32-openroad-detailedplacement/openroad-detailedplacement.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.CTS' set to 'False'- the step will be skipped.
+Skipping step 'Clock Tree Synthesis'…
+Running 'OpenROAD.STAMidPNR-1' at 'stdp_4x2/runs/test/33-openroad-stamidpnr-1'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/33-openroad-stamidpnr-1/openroad-stamidpnr-1.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.ResizerTimingPostCTS' set to 'False'- the step will be skipped.
+Skipping step 'Resizer Timing Optimizations (Post-Clock Tree Synthesis)'…
+Running 'OpenROAD.STAMidPNR-2' at 'stdp_4x2/runs/test/34-openroad-stamidpnr-2'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/34-openroad-stamidpnr-2/openroad-stamidpnr-2.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'OpenROAD.GlobalRouting' at 'stdp_4x2/runs/test/35-openroad-globalrouting'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/35-openroad-globalrouting/openroad-globalrouting.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+Running 'OpenROAD.CheckAntennas' at 'stdp_4x2/runs/test/36-openroad-checkantennas'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/36-openroad-checkantennas/openroad-checkantennas.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.RepairDesignPostGRT' set to 'False'- the step will be skipped.
+Skipping step 'Repair Design (Post-Global Routing)'…
+Running 'Odb.DiodesOnPorts' at 'stdp_4x2/runs/test/37-odb-diodesonports'…
+'DIODE_ON_PORTS' is set to 'none': skipping 'Odb.DiodesOnPorts'…
+Gating variable for step 'Odb.HeuristicDiodeInsertion' set to 'False'- the step will be skipped.
+Skipping step 'Heuristic Diode Insertion'…
+Running 'OpenROAD.RepairAntennas' at 'stdp_4x2/runs/test/38-openroad-repairantennas'…
+Running 'OpenROAD.DiodeInsertion' at 'stdp_4x2/runs/test/38-openroad-repairantennas/1-openroad-diodeinsertion'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/38-openroad-repairantennas/1-openroad-diodeinsertion/openroad-diodeinsertion.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[GRT-0243] Unable to repair antennas on net with diodes.
+Running 'OpenROAD.CheckAntennas' at 'stdp_4x2/runs/test/38-openroad-repairantennas/2-openroad-checkantennas'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/38-openroad-repairantennas/2-openroad-checkantennas/openroad-checkantennas.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.ResizerTimingPostGRT' set to 'False'- the step will be skipped.
+Skipping step 'Resizer Timing Optimizations (Post-Global Routing)'…
+Running 'OpenROAD.STAMidPNR-3' at 'stdp_4x2/runs/test/39-openroad-stamidpnr-3'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/39-openroad-stamidpnr-3/openroad-stamidpnr-3.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'OpenROAD.DetailedRouting' at 'stdp_4x2/runs/test/40-openroad-detailedrouting'…
+Running TritonRoute with 10 threads…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/40-openroad-detailedrouting/openroad-detailedrouting.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via1
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via1
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via2
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via2
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via3
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via3
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via4
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via4
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] message limit (1000) reached. This message will no longer print.
+Running 'Odb.RemoveRoutingObstructions' at 'stdp_4x2/runs/test/41-odb-removeroutingobstructions'…
+'ROUTING_OBSTRUCTIONS' is not defined. Skipping 'Odb.RemoveRoutingObstructions'…
+Running 'OpenROAD.CheckAntennas-1' at 'stdp_4x2/runs/test/42-openroad-checkantennas-1'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/42-openroad-checkantennas-1/openroad-checkantennas-1.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'Checker.TrDRC' at 'stdp_4x2/runs/test/43-checker-trdrc'…
+4 Routing DRC errors found. - deferred
+Running 'Odb.ReportDisconnectedPins' at 'stdp_4x2/runs/test/44-odb-reportdisconnectedpins'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/44-odb-reportdisconnectedpins/odb-reportdisconnectedpins.log'[/repr.filename]…
+Running 'Checker.DisconnectedPins' at 'stdp_4x2/runs/test/45-checker-disconnectedpins'…
+Check for critical disconnected pins clear.
+Running 'Odb.ReportWireLength' at 'stdp_4x2/runs/test/46-odb-reportwirelength'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/46-odb-reportwirelength/odb-reportwirelength.log'[/repr.filename]…
+Running 'Checker.WireLength' at 'stdp_4x2/runs/test/47-checker-wirelength'…
+Threshold for Threshold-surpassing long wires is not set. The checker will be skipped.
+Gating variable for step 'OpenROAD.FillInsertion' set to 'False'- the step will be skipped.
+Skipping step 'Fill Insertion'…
+Running 'Odb.CellFrequencyTables' at 'stdp_4x2/runs/test/48-odb-cellfrequencytables'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/48-odb-cellfrequencytables/buffer_list.txt'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/48-odb-cellfrequencytables/odb-cellfrequencytables.log'[/repr.filename]…
+Running 'OpenROAD.RCX' at 'stdp_4x2/runs/test/49-openroad-rcx'…
+Running RCX for corners matching nom_* (/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/49-openroad-rcx/nom/rcx.log)…
+Running RCX for corners matching min_* (/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/49-openroad-rcx/min/rcx.log)…
+Running RCX for corners matching max_* (/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/49-openroad-rcx/max/rcx.log)…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/49-openroad-rcx/nom/rcx.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/49-openroad-rcx/max/rcx.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/49-openroad-rcx/min/rcx.log'[/repr.filename]…
+[ODB-0229] Error: library (stdp) already exists
+[ODB-0229] Error: library (stdp) already exists
+[ODB-0229] Error: library (Current_limit) already exists
+[ODB-0229] Error: library (Current_limit) already exists
+[ODB-0229] Error: library (stdp) already exists
+[ODB-0229] Error: library (Current_limit) already exists
+[RCX-0111] Net 19 vw11 has a loop at x=74480 y=334320 , on iterm x1/vw.
+[RCX-0111] Net 19 vw11 has a loop at x=74480 y=334320 , on iterm x1/vw.
+[RCX-0111] Net 19 vw11 has a loop at x=74480 y=334320 , on iterm x1/vw.
+[RCX-0111] Net 19 vw11 has a loop at x=77840 y=336560 , on iterm x1/vw.
+[RCX-0111] Net 19 vw11 has a loop at x=77840 y=336560 , on iterm x1/vw.
+[RCX-0111] Net 19 vw11 has a loop at x=77840 y=336560 , on iterm x1/vw.
+Finished RCX for corners matching max_*.
+Finished RCX for corners matching nom_*.
+Finished RCX for corners matching min_*.
+Running 'OpenROAD.STAPostPNR' at 'stdp_4x2/runs/test/50-openroad-stapostpnr'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Starting STA for the nom_tt_025C_5v00 timing corner…
+No libs found for macro stdp at corner nom_ss_125C_4v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_ss_125C_4v50. The module will be black-boxed.
+Starting STA for the nom_ss_125C_4v50 timing corner…
+No libs found for macro stdp at corner nom_ff_n40C_5v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/nom_tt_025C_5v00/sta.log'[/repr.filename]…
+Starting STA for the nom_ff_n40C_5v50 timing corner…
+No libs found for macro stdp at corner min_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner min_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/nom_ss_125C_4v50/sta.log'[/repr.filename]…
+Starting STA for the min_tt_025C_5v00 timing corner…
+No libs found for macro stdp at corner min_ss_125C_4v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner min_ss_125C_4v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/nom_ff_n40C_5v50/sta.log'[/repr.filename]…
+Starting STA for the min_ss_125C_4v50 timing corner…
+No libs found for macro stdp at corner min_ff_n40C_5v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner min_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/min_tt_025C_5v00/sta.log'[/repr.filename]…
+Starting STA for the min_ff_n40C_5v50 timing corner…
+No libs found for macro stdp at corner max_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/min_ss_125C_4v50/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner max_tt_025C_5v00. The module will be black-boxed.
+Starting STA for the max_tt_025C_5v00 timing corner…
+No libs found for macro stdp at corner max_ss_125C_4v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner max_ss_125C_4v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/min_ff_n40C_5v50/sta.log'[/repr.filename]…
+Starting STA for the max_ss_125C_4v50 timing corner…
+No libs found for macro stdp at corner max_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/max_tt_025C_5v00/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner max_ff_n40C_5v50. The module will be black-boxed.
+Starting STA for the max_ff_n40C_5v50 timing corner…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/max_ss_125C_4v50/sta.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/max_ff_n40C_5v50/sta.log'[/repr.filename]…
+Finished STA for the nom_tt_025C_5v00 timing corner.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/nom_tt_025C_5v00/filter_unannotated.log'[/repr.filename]…
+Finished STA for the nom_ss_125C_4v50 timing corner.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/nom_ss_125C_4v50/filter_unannotated.log'[/repr.filename]…
+Finished STA for the min_ss_125C_4v50 timing corner.
+Finished STA for the nom_ff_n40C_5v50 timing corner.
+Finished STA for the min_tt_025C_5v00 timing corner.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/min_ss_125C_4v50/filter_unannotated.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/nom_ff_n40C_5v50/filter_unannotated.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/min_tt_025C_5v00/filter_unannotated.log'[/repr.filename]…
+Finished STA for the min_ff_n40C_5v50 timing corner.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/min_ff_n40C_5v50/filter_unannotated.log'[/repr.filename]…
+Finished STA for the max_tt_025C_5v00 timing corner.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/max_tt_025C_5v00/filter_unannotated.log'[/repr.filename]…
+Finished STA for the max_ss_125C_4v50 timing corner.
+Finished STA for the max_ff_n40C_5v50 timing corner.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/max_ss_125C_4v50/filter_unannotated.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/50-openroad-stapostpnr/max_ff_n40C_5v50/filter_unannotated.log'[/repr.filename]…
+Gating variable for step 'OpenROAD.IRDropReport' set to 'False'- the step will be skipped.
+Skipping step 'IR Drop Report'…
+Running 'Magic.StreamOut' at 'stdp_4x2/runs/test/51-magic-streamout'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/51-magic-streamout/stdp.get_bbox.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/51-magic-streamout/Current_limit.get_bbox.log'[/repr.filename]…
+Starting…
+Running 'Verilator.Lint' at 'stdp_4x2/runs/test/52-verilator-lint'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/52-verilator-lint/verilator-lint.log'[/repr.filename]…
+Running 'Checker.LintTimingConstructs' at 'stdp_4x2/runs/test/53-checker-linttimingconstructs'…
+Check for Lint Timing Errors clear.
+Running 'Checker.LintErrors' at 'stdp_4x2/runs/test/54-checker-linterrors'…
+Check for Lint errors clear.
+Running 'Checker.LintWarnings' at 'stdp_4x2/runs/test/55-checker-lintwarnings'…
+9 Lint warnings found.
+Running 'Yosys.JsonHeader' at 'stdp_4x2/runs/test/56-yosys-jsonheader'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/56-yosys-jsonheader/yosys-jsonheader.log'[/repr.filename]…
+Running 'Yosys.Synthesis' at 'stdp_4x2/runs/test/57-yosys-synthesis'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/57-yosys-synthesis/yosys-synthesis.log'[/repr.filename]…
+Parsing synthesis checks…
+Running 'Checker.YosysUnmappedCells' at 'stdp_4x2/runs/test/58-checker-yosysunmappedcells'…
+Check for Unmapped Yosys instances clear.
+Running 'Checker.YosysSynthChecks' at 'stdp_4x2/runs/test/59-checker-yosyssynthchecks'…
+2 Yosys check errors found.
+Running 'Checker.NetlistAssignStatements' at 'stdp_4x2/runs/test/60-checker-netlistassignstatements'…
+Running 'OpenROAD.CheckSDCFiles' at 'stdp_4x2/runs/test/61-openroad-checksdcfiles'…
+'PNR_SDC_FILE' is not defined. Using generic fallback SDC for OpenROAD PnR steps.
+'SIGNOFF_SDC_FILE' is not defined. Using generic fallback SDC for OpenROAD PnR steps.
+Running 'OpenROAD.CheckMacroInstances' at 'stdp_4x2/runs/test/62-openroad-checkmacroinstances'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/62-openroad-checkmacroinstances/openroad-checkmacroinstances.log'[/repr.filename]…
+Running 'OpenROAD.STAPrePNR' at 'stdp_4x2/runs/test/63-openroad-staprepnr'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Starting STA for the nom_tt_025C_5v00 timing corner…
+No libs found for macro stdp at corner nom_ss_125C_4v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_ss_125C_4v50. The module will be black-boxed.
+Starting STA for the nom_ss_125C_4v50 timing corner…
+No libs found for macro stdp at corner nom_ff_n40C_5v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/63-openroad-staprepnr/nom_tt_025C_5v00/sta.log'[/repr.filename]…
+Starting STA for the nom_ff_n40C_5v50 timing corner…
+No libs found for macro stdp at corner min_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/63-openroad-staprepnr/nom_ss_125C_4v50/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner min_tt_025C_5v00. The module will be black-boxed.
+Starting STA for the min_tt_025C_5v00 timing corner…
+No libs found for macro stdp at corner min_ss_125C_4v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/63-openroad-staprepnr/nom_ff_n40C_5v50/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner min_ss_125C_4v50. The module will be black-boxed.
+Starting STA for the min_ss_125C_4v50 timing corner…
+No libs found for macro stdp at corner min_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/63-openroad-staprepnr/min_tt_025C_5v00/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner min_ff_n40C_5v50. The module will be black-boxed.
+Starting STA for the min_ff_n40C_5v50 timing corner…
+No libs found for macro stdp at corner max_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/63-openroad-staprepnr/min_ss_125C_4v50/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner max_tt_025C_5v00. The module will be black-boxed.
+Starting STA for the max_tt_025C_5v00 timing corner…
+No libs found for macro stdp at corner max_ss_125C_4v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner max_ss_125C_4v50. The module will be black-boxed.
+Starting STA for the max_ss_125C_4v50 timing corner…
+No libs found for macro stdp at corner max_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/63-openroad-staprepnr/min_ff_n40C_5v50/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner max_ff_n40C_5v50. The module will be black-boxed.
+Starting STA for the max_ff_n40C_5v50 timing corner…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/63-openroad-staprepnr/max_tt_025C_5v00/sta.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/63-openroad-staprepnr/max_ss_125C_4v50/sta.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/63-openroad-staprepnr/max_ff_n40C_5v50/sta.log'[/repr.filename]…
+Finished STA for the nom_tt_025C_5v00 timing corner.
+Finished STA for the nom_ss_125C_4v50 timing corner.
+Finished STA for the nom_ff_n40C_5v50 timing corner.
+Finished STA for the min_tt_025C_5v00 timing corner.
+Finished STA for the min_ss_125C_4v50 timing corner.
+Finished STA for the min_ff_n40C_5v50 timing corner.
+Finished STA for the max_tt_025C_5v00 timing corner.
+Finished STA for the max_ss_125C_4v50 timing corner.
+Finished STA for the max_ff_n40C_5v50 timing corner.
+Running 'OpenROAD.Floorplan' at 'stdp_4x2/runs/test/64-openroad-floorplan'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/64-openroad-floorplan/openroad-floorplan.log'[/repr.filename]…
+[ODB-0229] Error: library (stdp) already exists
+[ODB-0229] Error: library (Current_limit) already exists
+[ORD-2011] LEF master stdp has no liberty cell.
+[ORD-2011] LEF master Current_limit has no liberty cell.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'OpenROAD.DumpRCValues' at 'stdp_4x2/runs/test/65-openroad-dumprcvalues'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/65-openroad-dumprcvalues/openroad-dumprcvalues.log'[/repr.filename]…
+[ODB-0229] Error: library (stdp) already exists
+[ODB-0229] Error: library (Current_limit) already exists
+Running 'Odb.CheckMacroAntennaProperties' at 'stdp_4x2/runs/test/66-odb-checkmacroantennaproperties'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/66-odb-checkmacroantennaproperties/odb-checkmacroantennaproperties.log'[/repr.filename]…
+Cell 'stdp' has (1) input pin(s) without antenna gate information. They might not be connected to a gate.
+Running 'Odb.SetPowerConnections' at 'stdp_4x2/runs/test/67-odb-setpowerconnections'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/67-odb-setpowerconnections/odb-setpowerconnections.log'[/repr.filename]…
+Running 'Odb.ManualMacroPlacement' at 'stdp_4x2/runs/test/68-odb-manualmacroplacement'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/68-odb-manualmacroplacement/odb-manualmacroplacement.log'[/repr.filename]…
+Running 'OpenROAD.CutRows' at 'stdp_4x2/runs/test/69-openroad-cutrows'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/69-openroad-cutrows/openroad-cutrows.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.TapEndcapInsertion' set to 'False'- the step will be skipped.
+Skipping step 'Tap/Decap Insertion'…
+Running 'Odb.AddPDNObstructions' at 'stdp_4x2/runs/test/70-odb-addpdnobstructions'…
+'PDN_OBSTRUCTIONS' is not defined. Skipping 'Odb.AddPDNObstructions'…
+Running 'OpenROAD.GeneratePDN' at 'stdp_4x2/runs/test/71-openroad-generatepdn'…
+'PDN_CFG' not explicitly set, setting it to /usr/local/lib/python3.12/dist-packages/librelane/scripts/openroad/common/pdn_cfg.tcl…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/71-openroad-generatepdn/openroad-generatepdn.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[PDN-0239] Ring shape falls outside the die bounds.
+[PSM-0038] Unconnected shape on net avdd at (53.340um, 50.610um) - (53.800um, 66.650um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.800um, 50.610um) - (53.840um, 51.110um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.800um, 55.290um) - (53.840um, 55.790um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.800um, 57.510um) - (53.840um, 58.010um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.800um, 62.190um) - (53.840um, 62.690um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.800um, 66.150um) - (53.840um, 66.650um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (54.490um, 50.610um) - (60.590um, 51.110um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (54.490um, 55.290um) - (60.590um, 55.790um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (54.490um, 57.510um) - (60.590um, 58.010um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (54.490um, 62.190um) - (60.590um, 62.690um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.280um, 50.610um) - (61.740um, 55.790um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.240um, 50.610um) - (61.280um, 51.110um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.240um, 55.290um) - (61.280um, 55.790um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.240um, 57.510um) - (61.280um, 58.010um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.280um, 57.510um) - (61.740um, 62.690um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (61.240um, 62.190um) - (61.280um, 62.690um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avdd at (53.340um, 50.610um) - (61.740um, 51.110um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (53.340um, 55.290um) - (61.740um, 55.790um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (53.340um, 57.510um) - (61.740um, 58.010um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (53.340um, 62.190um) - (61.740um, 62.690um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (57.290um, 66.900um) - (57.790um, 73.285um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (51.340um, 65.900um) - (71.280um, 66.900um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avdd at (57.290um, 72.785um) - (57.790um, 73.285um), layer: Metal3.
+[PSM-0038] Unconnected shape on net avdd at (62.260um, 66.150um) - (62.760um, 66.650um), layer: Metal3.
+[PSM-0038] Unconnected shape on net avdd at (42.540um, 45.845um) - (47.540um, 73.350um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (44.790um, 45.350um) - (45.290um, 45.845um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (44.790um, 73.350um) - (45.290um, 73.850um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (57.290um, 72.785um) - (57.790um, 73.285um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (75.620um, 45.845um) - (80.620um, 73.350um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (77.870um, 45.350um) - (78.370um, 45.845um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (77.870um, 73.350um) - (78.370um, 73.850um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avdd at (42.540um, 42.235um) - (80.620um, 48.365um), layer: Metal5.
+[PSM-0038] Unconnected shape on net avdd at (42.540um, 69.965um) - (80.620um, 76.095um), layer: Metal5.
+[PSM-0039] Unconnected instance x9/avdd at location (58.307um, 59.438um).
+[PSM-0069] Check connectivity failed on avdd.
+Grid check for avdd failed: PSM-0069
+[PSM-0038] Unconnected shape on net avss at (65.690um, 53.925um) - (65.760um, 54.425um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 51.125um) - (66.260um, 57.225um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 49.975um) - (66.260um, 50.475um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (66.260um, 49.975um) - (70.440um, 50.435um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 57.875um) - (66.260um, 58.375um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (66.260um, 57.915um) - (70.440um, 58.375um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (67.155um, 56.725um) - (68.505um, 57.185um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (66.655um, 56.705um) - (67.155um, 57.205um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (67.955um, 51.165um) - (68.505um, 51.625um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (67.455um, 51.145um) - (67.955um, 51.645um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (68.505um, 51.145um) - (69.005um, 51.645um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (68.505um, 56.705um) - (69.005um, 57.205um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (69.545um, 52.325um) - (70.045um, 52.825um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (69.545um, 53.125um) - (70.045um, 53.625um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (69.545um, 53.925um) - (70.045um, 54.425um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (69.545um, 54.725um) - (70.045um, 55.225um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (69.545um, 55.525um) - (70.045um, 56.025um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (70.440um, 49.975um) - (70.940um, 50.475um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (70.440um, 57.875um) - (70.940um, 58.375um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (70.440um, 51.125um) - (70.940um, 57.225um), layer: Metal1.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 51.145um) - (67.155um, 52.325um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 49.975um) - (66.260um, 51.145um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 54.425um) - (67.155um, 57.205um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 57.205um) - (66.260um, 58.375um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 52.325um) - (70.045um, 52.825um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.760um, 52.825um) - (67.155um, 53.925um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (65.690um, 53.925um) - (67.155um, 54.425um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (66.655um, 37.750um) - (67.155um, 51.145um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (61.290um, 37.250um) - (67.155um, 37.750um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (67.455um, 51.675um) - (70.045um, 52.325um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (67.455um, 51.145um) - (69.545um, 51.675um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (67.455um, 56.675um) - (69.545um, 57.205um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (67.455um, 52.825um) - (70.045um, 56.675um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (70.440um, 49.975um) - (70.940um, 58.375um), layer: Metal2.
+[PSM-0038] Unconnected shape on net avss at (61.290um, 37.250um) - (61.790um, 37.750um), layer: Metal3.
+[PSM-0038] Unconnected shape on net avss at (35.000um, 37.750um) - (40.000um, 80.580um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (37.250um, 37.250um) - (37.750um, 37.750um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (37.250um, 80.580um) - (37.750um, 81.080um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (61.290um, 37.250um) - (61.790um, 37.750um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (83.080um, 37.750um) - (88.080um, 80.580um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (85.330um, 37.250um) - (85.830um, 37.750um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (85.330um, 80.580um) - (85.830um, 81.080um), layer: Metal4.
+[PSM-0038] Unconnected shape on net avss at (35.000um, 35.000um) - (88.080um, 40.000um), layer: Metal5.
+[PSM-0038] Unconnected shape on net avss at (35.000um, 78.330um) - (88.080um, 83.330um), layer: Metal5.
+[PSM-0039] Unconnected instance x9/avss at location (66.677um, 53.682um).
+[PSM-0069] Check connectivity failed on avss.
+Grid check for avss failed: PSM-0069
+Running 'Odb.RemovePDNObstructions' at 'stdp_4x2/runs/test/72-odb-removepdnobstructions'…
+'PDN_OBSTRUCTIONS' is not defined. Skipping 'Odb.RemovePDNObstructions'…
+Running 'Odb.AddRoutingObstructions' at 'stdp_4x2/runs/test/73-odb-addroutingobstructions'…
+'ROUTING_OBSTRUCTIONS' is not defined. Skipping 'Odb.AddRoutingObstructions'…
+Running 'OpenROAD.GlobalPlacementSkipIO' at 'stdp_4x2/runs/test/74-openroad-globalplacementskipio'…
+'PL_TARGET_DENSITY_PCT' not explicitly set, using dynamically calculated target density: 49.581900…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/74-openroad-globalplacementskipio/openroad-globalplacementskipio.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'OpenROAD.IOPlacement' at 'stdp_4x2/runs/test/75-openroad-ioplacement'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/75-openroad-ioplacement/openroad-ioplacement.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'Odb.CustomIOPlacement' at 'stdp_4x2/runs/test/76-odb-customioplacement'…
+No custom I/O placement file configured, skipping 'Odb.CustomIOPlacement'…
+Running 'Odb.ApplyDEFTemplate' at 'stdp_4x2/runs/test/77-odb-applydeftemplate'…
+No DEF template provided, skipping 'Odb.ApplyDEFTemplate'…
+Running 'OpenROAD.GlobalPlacement' at 'stdp_4x2/runs/test/78-openroad-globalplacement'…
+'PL_TARGET_DENSITY_PCT' not explicitly set, using dynamically calculated target density: 49.581900…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/78-openroad-globalplacement/openroad-globalplacement.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'Odb.WriteVerilogHeader' at 'stdp_4x2/runs/test/79-odb-writeverilogheader'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/79-odb-writeverilogheader/odb-writeverilogheader.log'[/repr.filename]…
+Running 'Checker.PowerGridViolations' at 'stdp_4x2/runs/test/80-checker-powergridviolations'…
+5676 power grid violations (as reported by OpenROAD PSM- you may ignore these if LVS passes) found.
+Running 'OpenROAD.STAMidPNR' at 'stdp_4x2/runs/test/81-openroad-stamidpnr'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/81-openroad-stamidpnr/openroad-stamidpnr.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.RepairDesignPostGPL' set to 'False'- the step will be skipped.
+Skipping step 'Repair Design (Post-Global Placement)'…
+Running 'Odb.ManualGlobalPlacement' at 'stdp_4x2/runs/test/82-odb-manualglobalplacement'…
+'MANUAL_GLOBAL_PLACEMENTS' not set. Skipping 'Odb.ManualGlobalPlacement'…
+Running 'OpenROAD.DetailedPlacement' at 'stdp_4x2/runs/test/83-openroad-detailedplacement'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/83-openroad-detailedplacement/openroad-detailedplacement.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.CTS' set to 'False'- the step will be skipped.
+Skipping step 'Clock Tree Synthesis'…
+Running 'OpenROAD.STAMidPNR-1' at 'stdp_4x2/runs/test/84-openroad-stamidpnr-1'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/84-openroad-stamidpnr-1/openroad-stamidpnr-1.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.ResizerTimingPostCTS' set to 'False'- the step will be skipped.
+Skipping step 'Resizer Timing Optimizations (Post-Clock Tree Synthesis)'…
+Running 'OpenROAD.STAMidPNR-2' at 'stdp_4x2/runs/test/85-openroad-stamidpnr-2'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/85-openroad-stamidpnr-2/openroad-stamidpnr-2.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'OpenROAD.GlobalRouting' at 'stdp_4x2/runs/test/86-openroad-globalrouting'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/86-openroad-globalrouting/openroad-globalrouting.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avdd has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+[GRT-0041] Net avss has wires/vias outside die area.
+Running 'OpenROAD.CheckAntennas' at 'stdp_4x2/runs/test/87-openroad-checkantennas'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/87-openroad-checkantennas/openroad-checkantennas.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.RepairDesignPostGRT' set to 'False'- the step will be skipped.
+Skipping step 'Repair Design (Post-Global Routing)'…
+Running 'Odb.DiodesOnPorts' at 'stdp_4x2/runs/test/88-odb-diodesonports'…
+'DIODE_ON_PORTS' is set to 'none': skipping 'Odb.DiodesOnPorts'…
+Gating variable for step 'Odb.HeuristicDiodeInsertion' set to 'False'- the step will be skipped.
+Skipping step 'Heuristic Diode Insertion'…
+Running 'OpenROAD.RepairAntennas' at 'stdp_4x2/runs/test/89-openroad-repairantennas'…
+Running 'OpenROAD.DiodeInsertion' at 'stdp_4x2/runs/test/89-openroad-repairantennas/1-openroad-diodeinsertion'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/89-openroad-repairantennas/1-openroad-diodeinsertion/openroad-diodeinsertion.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[GRT-0243] Unable to repair antennas on net with diodes.
+Running 'OpenROAD.CheckAntennas' at 'stdp_4x2/runs/test/89-openroad-repairantennas/2-openroad-checkantennas'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/89-openroad-repairantennas/2-openroad-checkantennas/openroad-checkantennas.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Gating variable for step 'OpenROAD.ResizerTimingPostGRT' set to 'False'- the step will be skipped.
+Skipping step 'Resizer Timing Optimizations (Post-Global Routing)'…
+Running 'OpenROAD.STAMidPNR-3' at 'stdp_4x2/runs/test/90-openroad-stamidpnr-3'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/90-openroad-stamidpnr-3/openroad-stamidpnr-3.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'OpenROAD.DetailedRouting' at 'stdp_4x2/runs/test/91-openroad-detailedrouting'…
+Running TritonRoute with 10 threads…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/91-openroad-detailedrouting/openroad-detailedrouting.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via1
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via1
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via2
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via2
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via3
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via3
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via4
+[DRT-0349] LEF58_ENCLOSURE with no CUTCLASS is not supported. Skipping for layer Via4
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] Macro pin has more than 1 polygon
+[DRT-6000] message limit (1000) reached. This message will no longer print.
+Running 'Odb.RemoveRoutingObstructions' at 'stdp_4x2/runs/test/92-odb-removeroutingobstructions'…
+'ROUTING_OBSTRUCTIONS' is not defined. Skipping 'Odb.RemoveRoutingObstructions'…
+Running 'OpenROAD.CheckAntennas-1' at 'stdp_4x2/runs/test/93-openroad-checkantennas-1'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/93-openroad-checkantennas-1/openroad-checkantennas-1.log'[/repr.filename]…
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0366] port '__VIRTUAL_CLK__' not found.
+[STA-0419] transition time can not be specified for virtual clocks.
+[STA-0450] virtual clock __VIRTUAL_CLK__ can not be propagated.
+Running 'Checker.TrDRC' at 'stdp_4x2/runs/test/94-checker-trdrc'…
+4 Routing DRC errors found. - deferred
+Running 'Odb.ReportDisconnectedPins' at 'stdp_4x2/runs/test/95-odb-reportdisconnectedpins'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/95-odb-reportdisconnectedpins/odb-reportdisconnectedpins.log'[/repr.filename]…
+Running 'Checker.DisconnectedPins' at 'stdp_4x2/runs/test/96-checker-disconnectedpins'…
+Check for critical disconnected pins clear.
+Running 'Odb.ReportWireLength' at 'stdp_4x2/runs/test/97-odb-reportwirelength'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/97-odb-reportwirelength/odb-reportwirelength.log'[/repr.filename]…
+Running 'Checker.WireLength' at 'stdp_4x2/runs/test/98-checker-wirelength'…
+Threshold for Threshold-surpassing long wires is not set. The checker will be skipped.
+Gating variable for step 'OpenROAD.FillInsertion' set to 'False'- the step will be skipped.
+Skipping step 'Fill Insertion'…
+Running 'Odb.CellFrequencyTables' at 'stdp_4x2/runs/test/99-odb-cellfrequencytables'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/99-odb-cellfrequencytables/buffer_list.txt'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/99-odb-cellfrequencytables/odb-cellfrequencytables.log'[/repr.filename]…
+Running 'OpenROAD.RCX' at 'stdp_4x2/runs/test/100-openroad-rcx'…
+Running RCX for corners matching nom_* (/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/100-openroad-rcx/nom/rcx.log)…
+Running RCX for corners matching min_* (/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/100-openroad-rcx/min/rcx.log)…
+Running RCX for corners matching max_* (/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/100-openroad-rcx/max/rcx.log)…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/100-openroad-rcx/min/rcx.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/100-openroad-rcx/nom/rcx.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/100-openroad-rcx/max/rcx.log'[/repr.filename]…
+[ODB-0229] Error: library (stdp) already exists
+[ODB-0229] Error: library (stdp) already exists
+[ODB-0229] Error: library (stdp) already exists
+[ODB-0229] Error: library (Current_limit) already exists
+[ODB-0229] Error: library (Current_limit) already exists
+[ODB-0229] Error: library (Current_limit) already exists
+[RCX-0111] Net 19 vw11 has a loop at x=74480 y=334320 , on iterm x1/vw.
+[RCX-0111] Net 19 vw11 has a loop at x=74480 y=334320 , on iterm x1/vw.
+[RCX-0111] Net 19 vw11 has a loop at x=74480 y=334320 , on iterm x1/vw.
+[RCX-0111] Net 19 vw11 has a loop at x=77840 y=336560 , on iterm x1/vw.
+[RCX-0111] Net 19 vw11 has a loop at x=77840 y=336560 , on iterm x1/vw.
+[RCX-0111] Net 19 vw11 has a loop at x=77840 y=336560 , on iterm x1/vw.
+Finished RCX for corners matching max_*.
+Finished RCX for corners matching nom_*.
+Finished RCX for corners matching min_*.
+Running 'OpenROAD.STAPostPNR' at 'stdp_4x2/runs/test/101-openroad-stapostpnr'…
+No libs found for macro stdp at corner nom_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_tt_025C_5v00. The module will be black-boxed.
+Starting STA for the nom_tt_025C_5v00 timing corner…
+No libs found for macro stdp at corner nom_ss_125C_4v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_ss_125C_4v50. The module will be black-boxed.
+Starting STA for the nom_ss_125C_4v50 timing corner…
+No libs found for macro stdp at corner nom_ff_n40C_5v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner nom_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/nom_tt_025C_5v00/sta.log'[/repr.filename]…
+Starting STA for the nom_ff_n40C_5v50 timing corner…
+No libs found for macro stdp at corner min_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner min_tt_025C_5v00. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/nom_ss_125C_4v50/sta.log'[/repr.filename]…
+Starting STA for the min_tt_025C_5v00 timing corner…
+No libs found for macro stdp at corner min_ss_125C_4v50. The module will be black-boxed.
+No libs found for macro Current_limit at corner min_ss_125C_4v50. The module will be black-boxed.
+Starting STA for the min_ss_125C_4v50 timing corner…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/nom_ff_n40C_5v50/sta.log'[/repr.filename]…
+No libs found for macro stdp at corner min_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/min_tt_025C_5v00/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner min_ff_n40C_5v50. The module will be black-boxed.
+Starting STA for the min_ff_n40C_5v50 timing corner…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/min_ss_125C_4v50/sta.log'[/repr.filename]…
+No libs found for macro stdp at corner max_tt_025C_5v00. The module will be black-boxed.
+No libs found for macro Current_limit at corner max_tt_025C_5v00. The module will be black-boxed.
+Starting STA for the max_tt_025C_5v00 timing corner…
+No libs found for macro stdp at corner max_ss_125C_4v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/min_ff_n40C_5v50/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner max_ss_125C_4v50. The module will be black-boxed.
+Starting STA for the max_ss_125C_4v50 timing corner…
+No libs found for macro stdp at corner max_ff_n40C_5v50. The module will be black-boxed.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/max_tt_025C_5v00/sta.log'[/repr.filename]…
+No libs found for macro Current_limit at corner max_ff_n40C_5v50. The module will be black-boxed.
+Starting STA for the max_ff_n40C_5v50 timing corner…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/max_ss_125C_4v50/sta.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/max_ff_n40C_5v50/sta.log'[/repr.filename]…
+Finished STA for the nom_tt_025C_5v00 timing corner.
+Finished STA for the nom_ss_125C_4v50 timing corner.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/nom_tt_025C_5v00/filter_unannotated.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/nom_ss_125C_4v50/filter_unannotated.log'[/repr.filename]…
+Finished STA for the min_ss_125C_4v50 timing corner.
+Finished STA for the min_tt_025C_5v00 timing corner.
+Finished STA for the nom_ff_n40C_5v50 timing corner.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/min_tt_025C_5v00/filter_unannotated.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/min_ss_125C_4v50/filter_unannotated.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/nom_ff_n40C_5v50/filter_unannotated.log'[/repr.filename]…
+Finished STA for the min_ff_n40C_5v50 timing corner.
+Finished STA for the max_ss_125C_4v50 timing corner.
+Finished STA for the max_tt_025C_5v00 timing corner.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/min_ff_n40C_5v50/filter_unannotated.log'[/repr.filename]…
+Finished STA for the max_ff_n40C_5v50 timing corner.
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/max_ss_125C_4v50/filter_unannotated.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/max_tt_025C_5v00/filter_unannotated.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/101-openroad-stapostpnr/max_ff_n40C_5v50/filter_unannotated.log'[/repr.filename]…
+Gating variable for step 'OpenROAD.IRDropReport' set to 'False'- the step will be skipped.
+Skipping step 'IR Drop Report'…
+Running 'Magic.StreamOut' at 'stdp_4x2/runs/test/102-magic-streamout'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/102-magic-streamout/stdp.get_bbox.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/102-magic-streamout/Current_limit.get_bbox.log'[/repr.filename]…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/102-magic-streamout/magic-streamout.log'[/repr.filename]…
+Running 'KLayout.StreamOut' at 'stdp_4x2/runs/test/103-klayout-streamout'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/103-klayout-streamout/klayout-streamout.log'[/repr.filename]…
+Running 'KLayout.Render' at 'stdp_4x2/runs/test/104-klayout-render'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/104-klayout-render/klayout-render.log'[/repr.filename]…
+Running 'Magic.WriteLEF' at 'stdp_4x2/runs/test/105-magic-writelef'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/105-magic-writelef/magic-writelef.log'[/repr.filename]…
+Running 'Odb.CheckDesignAntennaProperties' at 'stdp_4x2/runs/test/106-odb-checkdesignantennaproperties'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/106-odb-checkdesignantennaproperties/odb-checkdesignantennaproperties.log'[/repr.filename]…
+Running 'KLayout.XOR' at 'stdp_4x2/runs/test/107-klayout-xor'…
+Running XOR with 10 threads…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/107-klayout-xor/klayout-xor.log'[/repr.filename]…
+Running 'Checker.XOR' at 'stdp_4x2/runs/test/108-checker-xor'…
+Check for XOR differences clear.
+Running 'Magic.DRC' at 'stdp_4x2/runs/test/109-magic-drc'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/109-magic-drc/magic-drc.log'[/repr.filename]…
+Running 'KLayout.DRC' at 'stdp_4x2/runs/test/110-klayout-drc'…
+KLAYOUT_DRC_RUNSET is unset. KLayout.DRC may not be supported for the gf180mcuD PDK. This step will be skipped.
+Running 'Checker.MagicDRC' at 'stdp_4x2/runs/test/111-checker-magicdrc'…
+745 Magic DRC errors found.
+Running 'Checker.KLayoutDRC' at 'stdp_4x2/runs/test/112-checker-klayoutdrc'…
+The KLayout DRC errors metric was not found. Are you sure the relevant step was run?
+Running 'Magic.SpiceExtraction' at 'stdp_4x2/runs/test/113-magic-spiceextraction'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/113-magic-spiceextraction/magic-spiceextraction.log'[/repr.filename]…
+Running 'Checker.IllegalOverlap' at 'stdp_4x2/runs/test/114-checker-illegaloverlap'…
+Check for Magic Illegal Overlap errors clear.
+Running 'Netgen.LVS' at 'stdp_4x2/runs/test/115-netgen-lvs'…
+Logging subprocess to [repr.filename]'stdp_4x2/runs/test/115-netgen-lvs/netgen-lvs.log'[/repr.filename]…
+Running 'Checker.LVS' at 'stdp_4x2/runs/test/116-checker-lvs'…
+29 LVS errors found. - deferred
+Gating variable for step 'Yosys.EQY' set to 'False'- the step will be skipped.
+Skipping step 'Equivalence Check'…
+Running 'Checker.SetupViolations' at 'stdp_4x2/runs/test/117-checker-setupviolations'…
+No setup violations found
+Running 'Checker.HoldViolations' at 'stdp_4x2/runs/test/118-checker-holdviolations'…
+No hold violations found
+Running 'Checker.MaxSlewViolations' at 'stdp_4x2/runs/test/119-checker-maxslewviolations'…
+Max Slew violations found in the following corners:
+* max_ss_125C_4v50
+* min_ss_125C_4v50
+* nom_ss_125C_4v50
+No max slew violations found
+Running 'Checker.MaxCapViolations' at 'stdp_4x2/runs/test/120-checker-maxcapviolations'…
+No max cap violations found
+Running 'Misc.ReportManufacturability' at 'stdp_4x2/runs/test/121-misc-reportmanufacturability'…
+klayout__drc_error__count not reported. KLayout.DRC may have been skipped.
+Saving views to '/foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/final'…
