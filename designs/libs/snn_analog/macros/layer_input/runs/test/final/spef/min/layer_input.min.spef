@@ -1,6 +1,6 @@
 *SPEF "ieee 1481-1999"
 *DESIGN "layer_input"
-*DATE "22:13:51 Thursday August 27, 2026"
+*DATE "02:12:28 Saturday August 29, 2026"
 *VENDOR "The OpenROAD Project"
 *PROGRAM "OpenROAD"
 *VERSION "26Q1-1024-gdcf36133a"
@@ -45,150 +45,134 @@ vout_2 O
 vout_3 O
 vout_4 O
 
-*D_NET *1 0.00542376
+*D_NET *1 0.00366687
 *CONN
 *P Iext1 I
 *I *16:Iin I *D neurona_lvs
 *CAP
-1 Iext1 0.00271188
-2 *16:Iin 0.00271188
+1 Iext1 0.00183343
+2 *16:Iin 0.00183343
 *RES
-1 Iext1 *16:Iin 34.9778 
+1 Iext1 *16:Iin 11.362 
 *END
 
-*D_NET *2 0.00830259
+*D_NET *2 0.00250719
 *CONN
 *P Iext2 I
 *I *17:Iin I *D neurona_lvs
 *CAP
-1 Iext2 0.00414265
-2 *17:Iin 0.00414265
-3 *17:Iin *17:spike 1.73015e-05
+1 Iext2 0.00125359
+2 *17:Iin 0.00125359
 *RES
-1 Iext2 *17:Iin 36.4679 
+1 Iext2 *17:Iin 13.582 
 *END
 
-*D_NET *3 0.00962648
+*D_NET *3 0.00246075
 *CONN
 *P Iext3 I
 *I *18:Iin I *D neurona_lvs
 *CAP
-1 Iext3 0.00481324
-2 *18:Iin 0.00481324
+1 Iext3 0.00123038
+2 *18:Iin 0.00123038
 *RES
-1 Iext3 *18:Iin 48.6756 
+1 Iext3 *18:Iin 8.911 
 *END
 
-*D_NET *4 0.0163727
+*D_NET *4 0.00279512
 *CONN
 *P Iext4 I
 *I *19:Iin I *D neurona_lvs
 *CAP
-1 Iext4 0.00651863
-2 *19:Iin 0.00166773
-3 *4:13 0.00818635
+1 Iext4 0.00139756
+2 *19:Iin 0.00139756
 *RES
-1 Iext4 *4:13 47.038 
-2 *4:13 *19:Iin 16.4781 
+1 Iext4 *19:Iin 9.994 
 *END
 
-*D_NET *7 0.00767895
+*D_NET *7 0.00743817
 *CONN
 *P nvout_1 O
 *I *16:spike_neg I *D neurona_lvs
 *CAP
-1 nvout_1 0.00383948
-2 *16:spike_neg 0.00383948
-3 *16:spike_neg *12:21 0
+1 nvout_1 0.00371909
+2 *16:spike_neg 0.00371909
 *RES
-1 nvout_1 *16:spike_neg 35.8022 
+1 nvout_1 *16:spike_neg 34.498 
 *END
 
-*D_NET *8 0.010572
+*D_NET *8 0.00775166
 *CONN
 *P nvout_2 O
 *I *17:spike_neg I *D neurona_lvs
 *CAP
-1 nvout_2 0.00528601
-2 *17:spike_neg 0.00528601
-3 *17:spike_neg *17:spike 0
+1 nvout_2 0.00387583
+2 *17:spike_neg 0.00387583
 *RES
-1 nvout_2 *17:spike_neg 45.8994 
+1 nvout_2 *17:spike_neg 35.562 
 *END
 
-*D_NET *9 0.0167468
+*D_NET *9 0.00812765
 *CONN
 *P nvout_3 O
 *I *18:spike_neg I *D neurona_lvs
 *CAP
-1 nvout_3 0.00508208
-2 *18:spike_neg 0.00322494
-3 *9:11 0.00830702
-4 *18:spike_neg *18:spike 0.000132709
+1 nvout_3 0.00406383
+2 *18:spike_neg 0.00406383
 *RES
-1 nvout_3 *9:11 32.826 
-2 *9:11 *18:spike_neg 22.8665 
+1 nvout_3 *18:spike_neg 45.93 
 *END
 
-*D_NET *10 0.0158859
+*D_NET *10 0.00980607
 *CONN
 *P nvout_4 O
 *I *19:spike_neg I *D neurona_lvs
 *CAP
-1 nvout_4 0.00329568
-2 *19:spike_neg 0.00464729
-3 *10:7 0.00794297
+1 nvout_4 0.00490303
+2 *19:spike_neg 0.00490303
 *RES
-1 nvout_4 *10:7 27.338 
-2 *10:7 *19:spike_neg 38.1096 
+1 nvout_4 *19:spike_neg 38.032 
 *END
 
-*D_NET *12 0.0116522
+*D_NET *12 0.0071025
 *CONN
 *P vout_1 O
 *I *16:spike I *D neurona_lvs
 *CAP
-1 vout_1 0.00582611
-2 *16:spike 0
-3 *12:21 0.00582611
-4 *16:spike_neg *12:21 0
+1 vout_1 0.00355125
+2 *16:spike 0.00355125
 *RES
-1 vout_1 *12:21 47.168 
-2 *12:21 *16:spike 4.5 
+1 vout_1 *16:spike 37.554 
 *END
 
-*D_NET *13 0.00761188
+*D_NET *13 0.00786861
 *CONN
 *P vout_2 O
 *I *17:spike I *D neurona_lvs
 *CAP
-1 vout_2 0.00379729
-2 *17:spike 0.00379729
-3 *17:spike_neg *17:spike 0
-4 *17:Iin *17:spike 1.73015e-05
+1 vout_2 0.00393431
+2 *17:spike 0.00393431
 *RES
-1 vout_2 *17:spike 41.94 
+1 vout_2 *17:spike 36.5595 
 *END
 
-*D_NET *14 0.00781651
+*D_NET *14 0.00730921
 *CONN
 *P vout_3 O
 *I *18:spike I *D neurona_lvs
 *CAP
-1 vout_3 0.0038419
-2 *18:spike 0.0038419
-3 *18:spike_neg *18:spike 0.000132709
+1 vout_3 0.0036546
+2 *18:spike 0.0036546
 *RES
-1 vout_3 *18:spike 36.0655 
+1 vout_3 *18:spike 35.448 
 *END
 
-*D_NET *15 0.0128342
+*D_NET *15 0.00812198
 *CONN
 *P vout_4 O
 *I *19:spike I *D neurona_lvs
 *CAP
-1 vout_4 0.00641711
-2 *19:spike 0.00641711
+1 vout_4 0.00406099
+2 *19:spike 0.00406099
 *RES
-1 vout_4 *19:spike 45.5764 
+1 vout_4 *19:spike 34.3446 
 *END

@@ -18,8 +18,8 @@ FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 150
-  - 550
+  - 116
+  - 380
 
 # --- Power Grid (PDN) ---
 VDD_NETS:
@@ -31,16 +31,19 @@ GND_NETS:
 
 PDN_ENABLE_RAILS: false
 PDN_MULTILAYER: true
-PDN_VWIDTH: 1
-PDN_HWIDTH: 1
+PDN_VWIDTH: 1.2
+PDN_HWIDTH: 1.2
 PDN_VSPACING: 2
 PDN_HSPACING: 2
-PDN_VPITCH: 75
-PDN_HPITCH: 75
+PDN_VPITCH: 140
+PDN_HPITCH: 140
 PDN_CORE_RING: true
 PDN_CORE_RING_VWIDTH: 1.5
 PDN_CORE_RING_HWIDTH: 1.5
-
+PDN_CORE_RING_VSPACING: 1.5
+PDN_CORE_RING_HSPACING: 1.5
+PDN_VOFFSET: 30.0
+PDN_HOFFSET: 30.0
 # Connect Macro Power/Ground Pins to Global Net
 PDN_MACRO_CONNECTIONS:
   - "x1 vdd vss vdd vss"
@@ -74,33 +77,34 @@ KLAYOUT_FILLER_OPTIONS:
   Metal2_ignore_active: true
 MAGIC_EXT_UNIQUE: notopports
 
-MAGIC_GDS_FLATGLOB:
-- "*_CDNS_*"
-- "*$$*"
-- "M1_N*"
-- "M1_P*"
-- "M2_M1*"
-- "M3_M2*"
-- "nmos_5p0*"
-- "nmos_1p2*"
-- "pmos_5p0*"
-- "pmos_1p2*"
-- "via1_*"
-- "ypass_gate*"
-- "G_ring_*"
-- "dcap_103*"
-- "din_*"
-- "mux821_*"
-- "rdummy_*"
-- "pmoscap_*"
-- "xdec_*"
-- "ypredec*"
-- "xpredec*"
-- "prexdec_*"
-- "xdec8_*"
-- "xdec16_*"
-- "xdec32_*"
-- "sa_*"
+
+#MAGIC_GDS_FLATGLOB:
+#- "*_CDNS_*"
+#- "*$$*"
+#- "M1_N*"
+#- "M1_P*"
+#- "M2_M1*"
+#- "M3_M2*"
+#- "nmos_5p0*"
+#- "nmos_1p2*"
+#- "pmos_5p0*"
+#- "pmos_1p2*"
+#- "via1_*"
+#- "ypass_gate*"
+#- "G_ring_*"
+#- "dcap_103*"
+#- "din_*"
+#- "mux821_*"
+#- "rdummy_*"
+#- "pmoscap_*"
+#- "xdec_*"
+#- "ypredec*"
+#- "xpredec*"
+#- "prexdec_*"
+#- "xdec8_*"
+#- "xdec16_*"
+#- "xdec32_*"
+#- "sa_*"
 RT_MIN_LAYER: Metal3
 RT_MAX_LAYER: Metal5
 ROUTING_CORES: 12
@@ -122,14 +126,14 @@ MACROS:
         - /foss/designs/libs/snn_analog/lif/neurona_lvs.lib
     instances:
       x1:
-        location: [50, 50]
+        location: [17.75, 20]
         orientation: N
       x2:
-        location: [50, 150]
+        location: [17.75, 110]
         orientation: N
       x3:
-        location: [50, 250]
+        location: [17.75, 200]
         orientation: N
       x4:
-        location: [50, 350]
+        location: [17.75, 290]
         orientation: N
