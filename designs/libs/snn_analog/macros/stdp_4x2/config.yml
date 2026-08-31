@@ -7,19 +7,21 @@ DESIGN_NAME: stdp_4x2
 # --- RTL del top ---
 VERILOG_FILES:
   - dir::stdp_4x2.v
+  - dir::../../stdp/stdp.v
 
-# --- Parámetros de Floorplaning (Alineados a rejilla 7T GF180MCU) ---
+# --- Floorplaning ---
 FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 450
-  - 200
-CORE_AREA:
-  - 10.08
-  - 11.76
-  - 430.08
-  - 180.32
+  - 350
+  - 570
+
+# --- Alimentación y Potencia ---
+VDD_NETS:
+  - avdd
+GND_NETS:
+  - avss
 
 # --- Manejo de Verificaciones para Diseños Analógicos / Macros ---
 ERROR_ON_LINTER_ERRORS: false
@@ -27,50 +29,75 @@ ERROR_ON_LINTER_WARNINGS: false
 ERROR_ON_UNMAPPED_CELLS: false
 ERROR_ON_SYNTH_CHECKS: false
 ERROR_ON_NL_ASSIGN_STATEMENTS: false
+ERROR_ON_PDN_VIOLATIONS: false
 
-SYNTH_ELABORATE_ONLY: true
-SYNTH_CHECKS_ALLOW_TRISTATE: true
-SYNTH_AUTONAME: true
-SYNTH_SPLITNETS: false
+# ---- FLAGS PDN
+PDN_ENABLE_RAILS: false
+PDN_MULTILAYER: true
+PDN_VWIDTH: 2.0
+PDN_HWIDTH: 2.0
+PDN_VSPACING: 2.0
+PDN_HSPACING: 2.0
+PDN_VPITCH: 60.0
+PDN_HPITCH: 110.0
+PDN_VOFFSET: 90.0
+PDN_HOFFSET: 80.0
 
-# --- Desactivar Optimizaciones Digitales sobre Bloques Analógicos ---
-RUN_POST_GPL_DESIGN_REPAIR: false
-RUN_REPAIR_DESIGN: false
-RUN_CTS: false
 
-# --- Alimentación y Potencia ---
-VDD_NETS:
-  - avdd
-  - VDD
-  
-GND_NETS:
-  - avss
-  - VSS
+PDN_CORE_RING: true
+PDN_CORE_RING_VWIDTH: 2.0
+PDN_CORE_RING_HWIDTH: 2.0
+PDN_CORE_RING_VSPACING: 1.5
+PDN_CORE_RING_HSPACING: 1.5
 
-# --- Red de Distribución de Potencia (Railing Puro sin Ring ni Straps Multicapa) ---
-PDN_ENABLE_RAILS: true
-PDN_RAIL_LAYER: Metal1
 
-# Desactivar Power Ring y correas multicapa para evitar conflictos de capas con macros
-PDN_CORE_RING: false
-PDN_MULTILAYER: false
-
-# Conexión directa de alimentación a los pines y rieles de cada macro
+# Conexión de alimentación a cada macro
 PDN_MACRO_CONNECTIONS:
-  - ".*x.* avdd avss VDD VSS"
+  - "x1 avdd avss avdd avss"
+  - "x2 avdd avss avdd avss"
+  - "x3 avdd avss avdd avss"
+  - "x4 avdd avss avdd avss"
+  - "x5 avdd avss avdd avss"
+  - "x6 avdd avss avdd avss"
+  - "x7 avdd avss avdd avss"
+  - "x8 avdd avss avdd avss"
+  - "x9 avdd avss avdd avss"
+  - "x10 avdd avss avdd avss"
 
-PDN_ENABLE_GLOBAL_CONNECTIONS: true
+# --- Optimizaciones para Macros / Desactivación de Diodos Antenna ---
+PL_TIMING_DRIVEN: false
+RUN_POST_GPL_DESIGN_REPAIR: false
+RUN_CTS: false
+RUN_POST_CTS_RESIZER_TIMING: false
+RUN_POST_GRT_RESIZER_TIMING: false
+RUN_HEURISTIC_DIODE_INSERTION: false
+RUN_ANTENNA_REPAIR: true
+#GRT_ANTENNA_ITERS: 0
+#GRT_ANTENNA_MARGIN: 0
+RUN_FILL_INSERTION: false
+RUN_TAP_ENDCAP_INSERTION: false
+RUN_IRDROP_REPORT: false
 
-# --- Reglas de Enrutamiento y Capas (GF180MCU) ---
+# --- Direct LEF/GDS Blackbox Include ---
+EXTRA_LEFS:
+  - /foss/designs/libs/snn_analog/stdp/stdp.lef
+  - /foss/designs/libs/snn_analog/Current_limit/Current_limit.lef
+EXTRA_GDS:
+  - /foss/designs/libs/snn_analog/stdp/stdp.gds
+  - /foss/designs/libs/snn_analog/Current_limit/Current_limit.gds
+
+# --- Routing (GF180MCU) ---
 PRIMARY_GDSII_STREAMOUT_TOOL: klayout
-RT_MIN_LAYER: Metal3
+MAGIC_ZEROIZE_ORIGIN: false
+ERROR_ON_MAGIC_DRC: false
+KLAYOUT_FILLER_OPTIONS:
+  Metal2_ignore_active: true
+MAGIC_EXT_UNIQUE: notopports
+
+RT_MIN_LAYER: Metal2
 RT_MAX_LAYER: Metal5
 DRT_THREADS: 12
 GRT_ALLOW_CONGESTION: true
-
-# --- Halo y Espaciado de Macros ---
-FP_MACRO_HORIZONTAL_HALO: 2
-FP_MACRO_VERTICAL_HALO: 2
 
 # --- Definición de Macros Analógicos ---
 MACROS:
@@ -85,44 +112,28 @@ MACROS:
       - dir::../../stdp/stdp.v
     instances:
       x1:
-        location:
-          - 20.00
-          - 20.00
+        location: [25, 120]
         orientation: N
       x2:
-        location:
-          - 103.08
-          - 20.00
+        location: [25, 220]
         orientation: N
       x3:
-        location:
-          - 186.16
-          - 20.00
+        location: [25, 330]
         orientation: N
       x4:
-        location:
-          - 269.24
-          - 20.00
+        location: [25, 440]
         orientation: N
       x5:
-        location:
-          - 20.00
-          - 67.60
+        location: [195, 440]
         orientation: N
       x6:
-        location:
-          - 103.08
-          - 67.60
+        location: [195, 330]
         orientation: N
       x7:
-        location:
-          - 186.16
-          - 67.60
+        location: [195, 220]
         orientation: N
       x8:
-        location:
-          - 269.24
-          - 67.60
+        location: [195, 120]
         orientation: N
 
   Current_limit:
@@ -136,12 +147,8 @@ MACROS:
       - dir::../../Current_limit/Current_limit.v
     instances:
       x9:
-        location:
-          - 20.00
-          - 115.20
+        location: [35, 35]
         orientation: N
       x10:
-        location:
-          - 336.295
-          - 115.20
+        location: [240, 35]
         orientation: N
