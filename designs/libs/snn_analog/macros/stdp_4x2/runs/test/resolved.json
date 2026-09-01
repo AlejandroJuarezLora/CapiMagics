@@ -21,7 +21,7 @@
         "max_ss_125C_4v50",
         "max_ff_n40C_5v50"
     ],
-    "RT_MIN_LAYER": "Metal3",
+    "RT_MIN_LAYER": "Metal2",
     "RT_MAX_LAYER": "Metal5",
     "SCL_GROUND_PINS": [
         "VSS",
@@ -108,8 +108,8 @@
     "DIE_AREA": [
         0,
         0,
-        450,
-        200
+        350,
+        570
     ],
     "EXTRA_EXCLUDED_CELLS": null,
     "MACROS": {
@@ -123,57 +123,57 @@
             "instances": {
                 "x1": {
                     "location": [
-                        5,
-                        50
+                        25,
+                        120
                     ],
                     "orientation": "N"
                 },
                 "x2": {
                     "location": [
-                        5,
-                        137
+                        25,
+                        220
                     ],
                     "orientation": "N"
                 },
                 "x3": {
                     "location": [
-                        5,
-                        217
+                        25,
+                        330
                     ],
                     "orientation": "N"
                 },
                 "x4": {
                     "location": [
-                        5,
-                        304
+                        25,
+                        440
                     ],
                     "orientation": "N"
                 },
                 "x5": {
                     "location": [
-                        122,
-                        304
+                        195,
+                        440
                     ],
                     "orientation": "N"
                 },
                 "x6": {
                     "location": [
-                        122,
-                        217
+                        195,
+                        330
                     ],
                     "orientation": "N"
                 },
                 "x7": {
                     "location": [
-                        122,
-                        137
+                        195,
+                        220
                     ],
                     "orientation": "N"
                 },
                 "x8": {
                     "location": [
-                        122,
-                        50
+                        195,
+                        120
                     ],
                     "orientation": "N"
                 }
@@ -201,15 +201,15 @@
             "instances": {
                 "x9": {
                     "location": [
-                        41,
-                        5
+                        35,
+                        35
                     ],
                     "orientation": "N"
                 },
                 "x10": {
                     "location": [
-                        158,
-                        5
+                        240,
+                        35
                     ],
                     "orientation": "N"
                 }
@@ -270,7 +270,7 @@
     "RUN_FILL_INSERTION": false,
     "RUN_MCSTA": true,
     "RUN_SPEF_EXTRACTION": true,
-    "RUN_IRDROP_REPORT": true,
+    "RUN_IRDROP_REPORT": false,
     "RUN_LVS": true,
     "RUN_MAGIC_STREAMOUT": true,
     "RUN_KLAYOUT_STREAMOUT": true,
@@ -364,8 +364,8 @@
         "x6 avdd avss avdd avss",
         "x7 avdd avss avdd avss",
         "x8 avdd avss avdd avss",
-        "x9 avdd avdd",
-        "x10 avdd avdd"
+        "x9 avdd avss avdd avss",
+        "x10 avdd avss avdd avss"
     ],
     "PDN_ENABLE_GLOBAL_CONNECTIONS": true,
     "STA_EXTRA_CORNER_TCL_FILE": null,
@@ -400,18 +400,18 @@
     "PDN_VERTICAL_HALO": 10,
     "PDN_MULTILAYER": true,
     "PDN_RAIL_OFFSET": 0,
-    "PDN_VWIDTH": 1,
-    "PDN_HWIDTH": 1,
+    "PDN_VWIDTH": 2,
+    "PDN_HWIDTH": 2,
     "PDN_VSPACING": 2,
     "PDN_HSPACING": 2,
-    "PDN_VPITCH": 75,
-    "PDN_HPITCH": 75,
-    "PDN_VOFFSET": 16.32,
-    "PDN_HOFFSET": 16.65,
-    "PDN_CORE_RING_VWIDTH": 1.5,
-    "PDN_CORE_RING_HWIDTH": 1.5,
-    "PDN_CORE_RING_VSPACING": 1.7,
-    "PDN_CORE_RING_HSPACING": 1.7,
+    "PDN_VPITCH": 60,
+    "PDN_HPITCH": 110,
+    "PDN_VOFFSET": 90,
+    "PDN_HOFFSET": 80,
+    "PDN_CORE_RING_VWIDTH": 2,
+    "PDN_CORE_RING_HWIDTH": 2,
+    "PDN_CORE_RING_VSPACING": 1.5,
+    "PDN_CORE_RING_HSPACING": 1.5,
     "PDN_CORE_RING_VOFFSET": 6,
     "PDN_CORE_RING_HOFFSET": 6,
     "PDN_CORE_RING_CONNECT_TO_PADS": false,
@@ -1059,34 +1059,7 @@
     "KLAYOUT_XOR_TILE_SIZE": null,
     "ERROR_ON_XOR_ERROR": true,
     "MAGIC_DRC_USE_GDS": true,
-    "MAGIC_GDS_FLATGLOB": [
-        "*_CDNS_*",
-        "*$$*",
-        "M1_N*",
-        "M1_P*",
-        "M2_M1*",
-        "M3_M2*",
-        "nmos_5p0*",
-        "nmos_1p2*",
-        "pmos_5p0*",
-        "pmos_1p2*",
-        "via1_*",
-        "ypass_gate*",
-        "G_ring_*",
-        "dcap_103*",
-        "din_*",
-        "mux821_*",
-        "rdummy_*",
-        "pmoscap_*",
-        "xdec_*",
-        "ypredec*",
-        "xpredec*",
-        "prexdec_*",
-        "xdec8_*",
-        "xdec16_*",
-        "xdec32_*",
-        "sa_*"
-    ],
+    "MAGIC_GDS_FLATGLOB": null,
     "MAGIC_DRC_MAGLEFS": null,
     "KLAYOUT_DRC_RUNSET": null,
     "KLAYOUT_DRC_OPTIONS": null,
