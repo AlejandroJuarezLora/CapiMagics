@@ -14,14 +14,20 @@ FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 350
-  - 570
+  - 275
+  - 355
 
 # --- Alimentación y Potencia ---
 VDD_NETS:
   - avdd
 GND_NETS:
   - avss
+
+TOP_MARGIN_MULT: 2
+BOTTOM_MARGIN_MULT: 2
+LEFT_MARGIN_MULT: 2
+RIGHT_MARGIN_MULT: 2
+
 
 # --- Manejo de Verificaciones para Diseños Analógicos / Macros ---
 ERROR_ON_LINTER_ERRORS: false
@@ -38,10 +44,12 @@ PDN_VWIDTH: 2.0
 PDN_HWIDTH: 2.0
 PDN_VSPACING: 2.0
 PDN_HSPACING: 2.0
-PDN_VPITCH: 60.0
-PDN_HPITCH: 110.0
-PDN_VOFFSET: 90.0
-PDN_HOFFSET: 80.0
+
+PDN_VPITCH: 95.0
+PDN_HPITCH: 70.0
+
+PDN_VOFFSET: 5
+PDN_HOFFSET: 50.5
 
 
 PDN_CORE_RING: true
@@ -112,28 +120,29 @@ MACROS:
       - dir::../../stdp/stdp.v
     instances:
       x1:
-        location: [25, 120]
+        location: [5, 285]
         orientation: N
       x2:
-        location: [25, 220]
+        location: [5, 215]
         orientation: N
       x3:
-        location: [25, 330]
+        location: [5, 145]
         orientation: N
       x4:
-        location: [25, 440]
+        location: [5, 75]
         orientation: N
+#-----------------------------------------        
       x5:
-        location: [195, 440]
+        location: [141, 285]
         orientation: N
       x6:
-        location: [195, 330]
+        location: [141, 215]
         orientation: N
       x7:
-        location: [195, 220]
+        location: [141, 145]
         orientation: N
       x8:
-        location: [195, 120]
+        location: [141, 75]
         orientation: N
 
   Current_limit:
@@ -147,8 +156,8 @@ MACROS:
       - dir::../../Current_limit/Current_limit.v
     instances:
       x9:
-        location: [35, 35]
+        location: [66, 25]
         orientation: N
       x10:
-        location: [240, 35]
+        location: [161, 25]
         orientation: N
