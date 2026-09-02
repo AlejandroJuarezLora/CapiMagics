@@ -202,7 +202,7 @@ Net: m4_n2800_n500#                        |Net: m4_n2800_n500#
   cap_mim_2f0_m4m5_noshield/1 = 1          |  cap_mim_2f0_m4m5_noshield/1 = 1          
                                            |  c/top = 2                                
                                            |                                           
-Net: m4_n2920_n800#                        |Net: m4_n2920_n800#                        
+Net: m4_n2920_n620#                        |Net: m4_n2920_n620#                        
   cap_mim_2f0_m4m5_noshield/2 = 1          |  cap_mim_2f0_m4m5_noshield/2 = 1          
                                            |  c/bottom = 1                             
                                            |  c/top = 1                                

@@ -13,7 +13,7 @@ library (neurona_lvs) {
   default_cell_leakage_power : 0.0 ;
 
   cell (neurona_lvs) {
-    area : 4874.145;
+    area : 1665.80;
     interface_timing : true ;
     pin (vdd) {
       direction : inout;
