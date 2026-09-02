@@ -230,7 +230,7 @@ C4 a_n1120_n131# a_n1330_n504# 0.4423f
 C5 a_n1000_n339# a_n1330_n504# 4.53847f
 .ends
 
-.subckt stdp avdd avss nvpost nvpre vpost vpre vb_idep vb_itd vb_itp vb_pot vw Iout
+.subckt stdp_pex avdd avss nvpost nvpre vpost vpre vb_idep vb_itd vb_itp vb_pot vw Iout
 Xxm5_0 vw avdd avdd Iout avss xm5
 Xxm3_0 vw avss vpre xm4_0/a_63_n131# xm3
 Xxm1_0 xm1_0/a_63_n131# xm1_0/a_n63_n339# avdd avdd avss xm1
