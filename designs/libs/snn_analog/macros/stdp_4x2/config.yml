@@ -45,10 +45,10 @@ PDN_HWIDTH: 2.0
 PDN_VSPACING: 2.0
 PDN_HSPACING: 2.0
 
-PDN_VPITCH: 95.0
+PDN_VPITCH: 105.0
 PDN_HPITCH: 70.0
 
-PDN_VOFFSET: 5
+PDN_VOFFSET: 15
 PDN_HOFFSET: 50.5
 
 
@@ -120,29 +120,29 @@ MACROS:
       - dir::../../stdp/stdp.v
     instances:
       x1:
-        location: [5, 285]
+        location: [15, 285]
         orientation: N
       x2:
-        location: [5, 215]
+        location: [15, 215]
         orientation: N
       x3:
-        location: [5, 145]
+        location: [15, 145]
         orientation: N
       x4:
-        location: [5, 75]
+        location: [15, 75]
         orientation: N
 #-----------------------------------------        
       x5:
-        location: [141, 285]
+        location: [122, 285]
         orientation: N
       x6:
-        location: [141, 215]
+        location: [122, 215]
         orientation: N
       x7:
-        location: [141, 145]
+        location: [122, 145]
         orientation: N
       x8:
-        location: [141, 75]
+        location: [122, 75]
         orientation: N
 
   Current_limit:
@@ -156,8 +156,8 @@ MACROS:
       - dir::../../Current_limit/Current_limit.v
     instances:
       x9:
-        location: [66, 25]
+        location: [104, 20]
         orientation: N
       x10:
-        location: [161, 25]
+        location: [208, 20]
         orientation: N
