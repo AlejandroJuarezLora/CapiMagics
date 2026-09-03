@@ -46,6 +46,10 @@ module stdp_4x2 (A,
 
  gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_1 (.I(nvpre2));
  gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_2 (.I(nvpre2));
+ gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_3 (.I(nvpre2));
+ gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_4 (.I(nvpre2));
+ gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_5 (.I(nvpre2));
+ gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_6 (.I(nvpre2));
  stdp x1 (.nvpost(nvpost1),
     .nvpre(nvpre1),
     .vpost(vpost1),
@@ -57,9 +61,7 @@ module stdp_4x2 (A,
     .vw(vw11),
     .Iout(net7));
  Current_limit x10 (.i_SUM(net8),
-    .ifwd(ifwd2),
-    .avdd(avdd),
-    .avss(avss));
+    .ifwd(ifwd2));
  stdp x2 (.nvpost(nvpost1),
     .nvpre(nvpre2),
     .vpost(vpost1),
@@ -131,7 +133,5 @@ module stdp_4x2 (A,
     .vw(vw42),
     .Iout(net8));
  Current_limit x9 (.i_SUM(net7),
-    .ifwd(ifwd1),
-    .avdd(avdd),
-    .avss(avss));
+    .ifwd(ifwd1));
 endmodule

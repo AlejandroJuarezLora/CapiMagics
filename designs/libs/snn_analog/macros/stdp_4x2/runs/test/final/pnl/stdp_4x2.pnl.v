@@ -58,6 +58,26 @@ module stdp_4x2 (A,
     .VNW(avdd),
     .VPW(avss),
     .VSS(avss));
+ gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_3 (.I(nvpre2),
+    .VDD(avdd),
+    .VNW(avdd),
+    .VPW(avss),
+    .VSS(avss));
+ gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_4 (.I(nvpre2),
+    .VDD(avdd),
+    .VNW(avdd),
+    .VPW(avss),
+    .VSS(avss));
+ gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_5 (.I(nvpre2),
+    .VDD(avdd),
+    .VNW(avdd),
+    .VPW(avss),
+    .VSS(avss));
+ gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_6 (.I(nvpre2),
+    .VDD(avdd),
+    .VNW(avdd),
+    .VPW(avss),
+    .VSS(avss));
  stdp x1 (.avdd(avdd),
     .avss(avss),
     .nvpost(nvpost1),

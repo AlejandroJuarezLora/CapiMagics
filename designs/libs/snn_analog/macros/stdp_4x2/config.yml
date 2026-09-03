@@ -99,10 +99,10 @@ PRIMARY_GDSII_STREAMOUT_TOOL: klayout
 MAGIC_ZEROIZE_ORIGIN: false
 ERROR_ON_MAGIC_DRC: false
 KLAYOUT_FILLER_OPTIONS:
-  Metal2_ignore_active: true
+  Metal2_ignore_active: false
 MAGIC_EXT_UNIQUE: notopports
 
-RT_MIN_LAYER: Metal2
+RT_MIN_LAYER: Metal3
 RT_MAX_LAYER: Metal5
 DRT_THREADS: 12
 GRT_ALLOW_CONGESTION: true

@@ -1,5 +1,9 @@
 * NGSPICE file created from stdp_4x2.ext - technology: gf180mcuD
 
+* Black-box entry subcircuit for gf180mcu_fd_sc_mcu7t5v0__antenna abstract view
+.subckt gf180mcu_fd_sc_mcu7t5v0__antenna I VDD VNW VPW VSS
+.ends
+
 * Black-box entry subcircuit for stdp abstract view
 .subckt stdp avdd avss nvpost nvpre vpost vpre vb_idep vb_itd vb_itp vb_pot vw Iout
 .ends
@@ -8,29 +12,23 @@
 .subckt Current_limit i_SUM ifwd avdd avss
 .ends
 
-* Black-box entry subcircuit for gf180mcu_fd_sc_mcu7t5v0__antenna abstract view
-.subckt gf180mcu_fd_sc_mcu7t5v0__antenna I VDD VNW VPW VSS
-.ends
-
-.subckt stdp_4x2 B avdd avss ifwd1 ifwd2 nvpost1 nvpost2 nvpre1 nvpre2 nvpre3 A vpost1
-+ vpost2 vpre1 vpre2 vpre3 vpre4 vw11 vw42
-Xx1 avdd avss nvpost1 nvpre1 x1/vpost vpre1 x1/vb_idep x3/vb_pot x1/vb_itp x1/vb_pot
-+ vw11 nvpost1 stdp
-Xx2 avdd avss nvpost1 x2/nvpre vpost1 x6/vpre x1/vb_itp x3/vb_pot x2/vb_itp x3/vb_pot
-+ x2/vw nvpost1 stdp
-Xx3 avdd avss nvpost1 nvpre3 vpost1 vpre3 x8/vb_itp x3/vb_pot x3/vb_itp x3/vb_pot
-+ x3/vw x3/Iout stdp
-Xx4 avdd avss nvpost1 x4/nvpre x4/vpost x4/vpre x8/vb_itp A x4/vb_itp x4/vb_pot x4/vw
-+ x4/Iout stdp
-Xx5 x5/avdd avss nvpost2 nvpre1 vpost2 vpre1 B x5/vb_itd B A x5/vw nvpost2 stdp
-Xx6 x6/avdd avss nvpost2 x6/nvpre vpost2 x6/vpre B x6/vb_itd x6/nvpre A x6/vw nvpost2
-+ stdp
-Xx7 x7/avdd avss nvpost2 nvpre3 vpost2 x7/vpre B A B A x7/vw x7/Iout stdp
-Xx8 x8/avdd avss nvpost2 x8/nvpre x8/vpost x8/vpre x8/vb_itp A x8/vb_itp x8/vb_pot
-+ vw42 x8/Iout stdp
+.subckt stdp_4x2 A B avdd avss ifwd1 ifwd2 nvpost1 nvpost2 nvpre1 nvpre2 nvpre3 nvpre4
++ vpost1 vpost2 vpre1 vpre2 vpre3 vpre4 vw11 vw42
+XANTENNA_5 nvpre2 ANTENNA_5/VDD ANTENNA_5/VNW avss ANTENNA_5/VSS gf180mcu_fd_sc_mcu7t5v0__antenna
+XANTENNA_6 nvpre2 ANTENNA_6/VDD ANTENNA_6/VNW avss ANTENNA_6/VSS gf180mcu_fd_sc_mcu7t5v0__antenna
+Xx1 avdd avss nvpost1 nvpre1 vpost1 vpre1 B A B A vw11 x4/Iout stdp
+Xx2 avdd avss nvpost1 nvpre2 vpost1 vpre2 B A B A x2/vw x4/Iout stdp
+Xx3 avdd avss nvpost1 nvpre3 vpost1 vpre3 B A B A x3/vw x4/Iout stdp
+Xx4 avdd avss nvpost1 nvpre4 vpost1 vpre4 B A B A x4/vw x4/Iout stdp
+Xx5 x5/avdd avss nvpost2 nvpre1 vpost2 vpre1 B A B A x5/vw x8/Iout stdp
+Xx6 x6/avdd avss nvpost2 nvpre2 vpost2 vpre2 B A B A x6/vw x8/Iout stdp
+Xx7 x7/avdd avss nvpost2 nvpre3 vpost2 vpre3 B A B A x7/vw x8/Iout stdp
+Xx8 x8/avdd avss nvpost2 nvpre4 vpost2 vpre4 B A B A vw42 x8/Iout stdp
 Xx9 x4/Iout ifwd1 avdd avss Current_limit
 Xx10 x8/Iout ifwd2 avdd avss Current_limit
-XANTENNA_1 nvpre2 ANTENNA_1/VDD ANTENNA_1/VNW avss ANTENNA_1/VSS gf180mcu_fd_sc_mcu7t5v0__antenna
-XANTENNA_2 x6/nvpre ANTENNA_2/VDD ANTENNA_2/VNW avss ANTENNA_2/VSS gf180mcu_fd_sc_mcu7t5v0__antenna
+XANTENNA_1 nvpre2 ANTENNA_5/VDD ANTENNA_5/VNW avss ANTENNA_5/VSS gf180mcu_fd_sc_mcu7t5v0__antenna
+XANTENNA_2 nvpre2 ANTENNA_6/VDD ANTENNA_6/VNW avss ANTENNA_6/VSS gf180mcu_fd_sc_mcu7t5v0__antenna
+XANTENNA_3 nvpre2 ANTENNA_5/VDD ANTENNA_5/VNW avss ANTENNA_5/VSS gf180mcu_fd_sc_mcu7t5v0__antenna
+XANTENNA_4 nvpre2 ANTENNA_6/VDD ANTENNA_6/VNW avss ANTENNA_6/VSS gf180mcu_fd_sc_mcu7t5v0__antenna
 .ends
 
