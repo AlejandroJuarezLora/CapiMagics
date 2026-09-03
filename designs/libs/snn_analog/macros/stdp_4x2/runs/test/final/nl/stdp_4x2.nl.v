@@ -44,20 +44,9 @@ module stdp_4x2 (A,
  wire net7;
  wire net8;
 
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_1 (.I(nvpre1));
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_10 (.I(nvpre2));
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_11 (.I(nvpre3));
+ gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_1 (.I(nvpre2));
  gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_2 (.I(nvpre2));
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_3 (.I(nvpre4));
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_4 (.I(vpre1));
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_5 (.I(vpre1));
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_6 (.I(vpre4));
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_7 (.I(vpre4));
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_8 (.I(nvpre1));
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_9 (.I(nvpre1));
- stdp x1 (.avdd(avdd),
-    .avss(avss),
-    .nvpost(nvpost1),
+ stdp x1 (.nvpost(nvpost1),
     .nvpre(nvpre1),
     .vpost(vpost1),
     .vpre(vpre1),
@@ -68,10 +57,10 @@ module stdp_4x2 (A,
     .vw(vw11),
     .Iout(net7));
  Current_limit x10 (.i_SUM(net8),
-    .ifwd(ifwd2));
- stdp x2 (.avdd(avdd),
-    .avss(avss),
-    .nvpost(nvpost1),
+    .ifwd(ifwd2),
+    .avdd(avdd),
+    .avss(avss));
+ stdp x2 (.nvpost(nvpost1),
     .nvpre(nvpre2),
     .vpost(vpost1),
     .vpre(vpre2),
@@ -81,9 +70,7 @@ module stdp_4x2 (A,
     .vb_pot(A),
     .vw(net3),
     .Iout(net7));
- stdp x3 (.avdd(avdd),
-    .avss(avss),
-    .nvpost(nvpost1),
+ stdp x3 (.nvpost(nvpost1),
     .nvpre(nvpre3),
     .vpost(vpost1),
     .vpre(vpre3),
@@ -93,9 +80,7 @@ module stdp_4x2 (A,
     .vb_pot(A),
     .vw(net2),
     .Iout(net7));
- stdp x4 (.avdd(avdd),
-    .avss(avss),
-    .nvpost(nvpost1),
+ stdp x4 (.nvpost(nvpost1),
     .nvpre(nvpre4),
     .vpost(vpost1),
     .vpre(vpre4),
@@ -105,9 +90,7 @@ module stdp_4x2 (A,
     .vb_pot(A),
     .vw(net1),
     .Iout(net7));
- stdp x5 (.avdd(avdd),
-    .avss(avss),
-    .nvpost(nvpost2),
+ stdp x5 (.nvpost(nvpost2),
     .nvpre(nvpre1),
     .vpost(vpost2),
     .vpre(vpre1),
@@ -117,9 +100,7 @@ module stdp_4x2 (A,
     .vb_pot(A),
     .vw(net4),
     .Iout(net8));
- stdp x6 (.avdd(avdd),
-    .avss(avss),
-    .nvpost(nvpost2),
+ stdp x6 (.nvpost(nvpost2),
     .nvpre(nvpre2),
     .vpost(vpost2),
     .vpre(vpre2),
@@ -129,9 +110,7 @@ module stdp_4x2 (A,
     .vb_pot(A),
     .vw(net6),
     .Iout(net8));
- stdp x7 (.avdd(avdd),
-    .avss(avss),
-    .nvpost(nvpost2),
+ stdp x7 (.nvpost(nvpost2),
     .nvpre(nvpre3),
     .vpost(vpost2),
     .vpre(vpre3),
@@ -141,9 +120,7 @@ module stdp_4x2 (A,
     .vb_pot(A),
     .vw(net5),
     .Iout(net8));
- stdp x8 (.avdd(avdd),
-    .avss(avss),
-    .nvpost(nvpost2),
+ stdp x8 (.nvpost(nvpost2),
     .nvpre(nvpre4),
     .vpost(vpost2),
     .vpre(vpre4),
@@ -154,5 +131,7 @@ module stdp_4x2 (A,
     .vw(vw42),
     .Iout(net8));
  Current_limit x9 (.i_SUM(net7),
-    .ifwd(ifwd1));
+    .ifwd(ifwd1),
+    .avdd(avdd),
+    .avss(avss));
 endmodule
