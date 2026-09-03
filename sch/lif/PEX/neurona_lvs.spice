@@ -89,7 +89,7 @@ C8 a_n50_n339# VSUBS 0.04859f
 C9 w_n444_n560# VSUBS 3.73985f
 .ends
 
-.subckt neurona_lvs vss vdd Iin spike_neg spike
+.subckt neurona_layout Iin vdd vss spike spike_neg
 Xm1_0 vdd Iin vdd spike_neg vss m1
 Xm8_0 vss spike_neg vss spike m8
 Xcap_0 Iin vss vss cap
