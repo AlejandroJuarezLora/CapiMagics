@@ -938,12 +938,12 @@ NETS 28 ;
       NEW Metal4 ( 176400 168560 ) RECT ( -280 0 280 400 ) 
       NEW Metal4 ( 190960 168300 ) RECT ( -280 -400 280 0 )  ;
     - vw11 ( PIN vw11 ) ( x1 vw ) + USE SIGNAL
-      + ROUTED Metal4 ( 204400 653800 ) ( * 708400 )
-      NEW Metal3 ( 201600 708400 ) ( 204400 * )
+      + ROUTED Metal4 ( 205520 655760 ) ( * 708400 )
+      NEW Metal3 ( 201600 708400 ) ( 205520 * )
       NEW Metal3 ( 99120 709520 ) ( 201600 * )
       NEW Metal3 ( 201600 708400 ) ( * 709520 )
-      NEW Metal3 ( 204400 708400 ) Via3_HV
-      NEW Metal3 ( 204400 653800 ) Via3_VV
+      NEW Metal3 ( 205520 708400 ) Via3_HV
+      NEW Metal3 ( 205520 655760 ) Via3_HV
       NEW Metal2 ( 99120 709520 ) Via2_VH ;
     - vw42 ( PIN vw42 ) ( x8 vw ) + USE SIGNAL
       + ROUTED Metal3 ( 493360 213360 ) ( 549360 * 0 )

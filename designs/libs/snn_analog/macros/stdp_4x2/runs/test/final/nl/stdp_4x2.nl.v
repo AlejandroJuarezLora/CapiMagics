@@ -58,8 +58,8 @@ module stdp_4x2 (A,
     .vb_itd(A),
     .vb_itp(B),
     .vb_pot(A),
-    .vw(vw11),
-    .Iout(net7));
+    .Iout(net7),
+    .vw(vw11));
  Current_limit x10 (.i_SUM(net8),
     .ifwd(ifwd2));
  stdp x2 (.nvpost(nvpost1),
@@ -70,8 +70,8 @@ module stdp_4x2 (A,
     .vb_itd(A),
     .vb_itp(B),
     .vb_pot(A),
-    .vw(net3),
-    .Iout(net7));
+    .Iout(net7),
+    .vw(net3));
  stdp x3 (.nvpost(nvpost1),
     .nvpre(nvpre3),
     .vpost(vpost1),
@@ -80,8 +80,8 @@ module stdp_4x2 (A,
     .vb_itd(A),
     .vb_itp(B),
     .vb_pot(A),
-    .vw(net2),
-    .Iout(net7));
+    .Iout(net7),
+    .vw(net2));
  stdp x4 (.nvpost(nvpost1),
     .nvpre(nvpre4),
     .vpost(vpost1),
@@ -90,8 +90,8 @@ module stdp_4x2 (A,
     .vb_itd(A),
     .vb_itp(B),
     .vb_pot(A),
-    .vw(net1),
-    .Iout(net7));
+    .Iout(net7),
+    .vw(net1));
  stdp x5 (.nvpost(nvpost2),
     .nvpre(nvpre1),
     .vpost(vpost2),
@@ -100,8 +100,8 @@ module stdp_4x2 (A,
     .vb_itd(A),
     .vb_itp(B),
     .vb_pot(A),
-    .vw(net4),
-    .Iout(net8));
+    .Iout(net8),
+    .vw(net4));
  stdp x6 (.nvpost(nvpost2),
     .nvpre(nvpre2),
     .vpost(vpost2),
@@ -110,8 +110,8 @@ module stdp_4x2 (A,
     .vb_itd(A),
     .vb_itp(B),
     .vb_pot(A),
-    .vw(net6),
-    .Iout(net8));
+    .Iout(net8),
+    .vw(net6));
  stdp x7 (.nvpost(nvpost2),
     .nvpre(nvpre3),
     .vpost(vpost2),
@@ -120,8 +120,8 @@ module stdp_4x2 (A,
     .vb_itd(A),
     .vb_itp(B),
     .vb_pot(A),
-    .vw(net5),
-    .Iout(net8));
+    .Iout(net8),
+    .vw(net5));
  stdp x8 (.nvpost(nvpost2),
     .nvpre(nvpre4),
     .vpost(vpost2),
@@ -130,8 +130,8 @@ module stdp_4x2 (A,
     .vb_itd(A),
     .vb_itp(B),
     .vb_pot(A),
-    .vw(vw42),
-    .Iout(net8));
+    .Iout(net8),
+    .vw(vw42));
  Current_limit x9 (.i_SUM(net7),
     .ifwd(ifwd1));
 endmodule

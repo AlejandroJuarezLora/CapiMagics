@@ -95,7 +95,7 @@ library (stdp_4x2) {
     }
     pin("vw11") {
       direction : inout;
-      capacitance : 0.0808;
+      capacitance : 0.0807;
     }
     pin("vw42") {
       direction : inout;

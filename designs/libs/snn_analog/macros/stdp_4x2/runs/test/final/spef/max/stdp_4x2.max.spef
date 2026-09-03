@@ -1,6 +1,6 @@
 *SPEF "ieee 1481-1999"
 *DESIGN "stdp_4x2"
-*DATE "21:55:52 Thursday September 03, 2026"
+*DATE "00:06:37 Friday September 04, 2026"
 *VENDOR "The OpenROAD Project"
 *PROGRAM "OpenROAD"
 *VERSION "26Q1-1024-gdcf36133a"
@@ -588,15 +588,15 @@ vw42 I
 3 *18:35 *43:vpre 26.732 
 *END
 
-*D_NET *19 0.00843386
+*D_NET *19 0.00841051
 *CONN
 *P vw11 I
 *I *35:vw I *D stdp
 *CAP
-1 vw11 0.00421693
-2 *35:vw 0.00421693
+1 vw11 0.00420526
+2 *35:vw 0.00420526
 *RES
-1 vw11 *35:vw 39.316 
+1 vw11 *35:vw 43.66 
 *END
 
 *D_NET *20 0.00494427

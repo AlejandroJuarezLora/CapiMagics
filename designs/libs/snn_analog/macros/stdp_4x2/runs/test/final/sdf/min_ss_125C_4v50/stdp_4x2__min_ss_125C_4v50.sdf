@@ -1,7 +1,7 @@
 (DELAYFILE
  (SDFVERSION "3.0")
  (DESIGN "stdp_4x2")
- (DATE "Thu Sep  3 21:55:53 2026")
+ (DATE "Fri Sep  4 00:06:37 2026")
  (VENDOR "Parallax")
  (PROGRAM "STA")
  (VERSION "2.7.0")
@@ -82,7 +82,7 @@
     (INTERCONNECT vpre3 x7.vpre (0.182:0.182:0.182) (0.112:0.112:0.112))
     (INTERCONNECT vpre4 x4.vpre (0.213:0.213:0.213) (0.131:0.131:0.131))
     (INTERCONNECT vpre4 x8.vpre (0.213:0.213:0.213) (0.131:0.131:0.131))
-    (INTERCONNECT vw11 x1.vw (1.254:1.254:1.254) (0.777:0.777:0.777))
+    (INTERCONNECT vw11 x1.vw (1.254:1.254:1.254) (0.776:0.776:0.776))
     (INTERCONNECT vw42 x8.vw (1.208:1.208:1.208) (0.748:0.748:0.748))
    )
   )
