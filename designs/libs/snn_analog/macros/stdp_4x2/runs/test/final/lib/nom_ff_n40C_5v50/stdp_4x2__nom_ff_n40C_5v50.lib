@@ -27,79 +27,79 @@ library (stdp_4x2) {
 
 
   cell ("stdp_4x2") {
-    area : 48.294 
+    area : 26.342 
     is_macro_cell : true;
     pin("A") {
       direction : inout;
-      capacitance : 0.1485;
+      capacitance : 0.1331;
     }
     pin("B") {
       direction : inout;
-      capacitance : 0.1479;
+      capacitance : 0.1337;
     }
     pin("ifwd1") {
       direction : output;
-      capacitance : 0.0032;
+      capacitance : 0.0026;
     }
     pin("ifwd2") {
       direction : output;
-      capacitance : 0.0037;
+      capacitance : 0.0027;
     }
     pin("nvpost1") {
       direction : input;
-      capacitance : 0.0262;
+      capacitance : 0.0370;
     }
     pin("nvpost2") {
       direction : input;
-      capacitance : 0.0321;
+      capacitance : 0.0392;
     }
     pin("nvpre1") {
       direction : input;
-      capacitance : 0.0599;
+      capacitance : 0.0163;
     }
     pin("nvpre2") {
       direction : input;
-      capacitance : 0.0518;
+      capacitance : 0.0262;
     }
     pin("nvpre3") {
       direction : input;
-      capacitance : 0.0316;
+      capacitance : 0.0132;
     }
     pin("nvpre4") {
       direction : input;
-      capacitance : 0.0599;
+      capacitance : 0.0178;
     }
     pin("vpost1") {
       direction : input;
-      capacitance : 0.0378;
+      capacitance : 0.0225;
     }
     pin("vpost2") {
       direction : input;
-      capacitance : 0.0606;
+      capacitance : 0.0221;
     }
     pin("vpre1") {
       direction : input;
-      capacitance : 0.0473;
+      capacitance : 0.0170;
     }
     pin("vpre2") {
       direction : input;
-      capacitance : 0.0349;
+      capacitance : 0.0115;
     }
     pin("vpre3") {
       direction : input;
-      capacitance : 0.0303;
+      capacitance : 0.0121;
     }
     pin("vpre4") {
       direction : input;
-      capacitance : 0.0483;
+      capacitance : 0.0145;
     }
     pin("vw11") {
       direction : inout;
-      capacitance : 0.0774;
+      capacitance : 0.0807;
     }
     pin("vw42") {
       direction : inout;
-      capacitance : 0.0792;
+      capacitance : 0.0776;
     }
   }
 

@@ -14,14 +14,24 @@ FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 350
-  - 570
+  - 275
+  - 355
 
 # --- Alimentación y Potencia ---
 VDD_NETS:
   - avdd
 GND_NETS:
   - avss
+
+TOP_MARGIN_MULT: 2
+BOTTOM_MARGIN_MULT: 2
+LEFT_MARGIN_MULT: 2
+RIGHT_MARGIN_MULT: 2
+
+# FP_PIN_ORDER_CFG: dir::pin.cfg
+IGNORE_DISCONNECTED_MODULES:
+  - stdp
+
 
 # --- Manejo de Verificaciones para Diseños Analógicos / Macros ---
 ERROR_ON_LINTER_ERRORS: false
@@ -38,10 +48,12 @@ PDN_VWIDTH: 2.0
 PDN_HWIDTH: 2.0
 PDN_VSPACING: 2.0
 PDN_HSPACING: 2.0
-PDN_VPITCH: 60.0
-PDN_HPITCH: 110.0
-PDN_VOFFSET: 90.0
-PDN_HOFFSET: 80.0
+
+PDN_VPITCH: 105.0
+PDN_HPITCH: 70.0
+
+PDN_VOFFSET: 15
+PDN_HOFFSET: 50.5
 
 
 PDN_CORE_RING: true
@@ -91,10 +103,10 @@ PRIMARY_GDSII_STREAMOUT_TOOL: klayout
 MAGIC_ZEROIZE_ORIGIN: false
 ERROR_ON_MAGIC_DRC: false
 KLAYOUT_FILLER_OPTIONS:
-  Metal2_ignore_active: true
+  Metal2_ignore_active: false
 MAGIC_EXT_UNIQUE: notopports
 
-RT_MIN_LAYER: Metal2
+RT_MIN_LAYER: Metal3
 RT_MAX_LAYER: Metal5
 DRT_THREADS: 12
 GRT_ALLOW_CONGESTION: true
@@ -112,28 +124,29 @@ MACROS:
       - dir::../../stdp/stdp.v
     instances:
       x1:
-        location: [25, 120]
+        location: [15, 285]
         orientation: N
       x2:
-        location: [25, 220]
+        location: [15, 215]
         orientation: N
       x3:
-        location: [25, 330]
+        location: [15, 145]
         orientation: N
       x4:
-        location: [25, 440]
+        location: [15, 75]
         orientation: N
+#-----------------------------------------        
       x5:
-        location: [195, 440]
+        location: [122, 285]
         orientation: N
       x6:
-        location: [195, 330]
+        location: [122, 215]
         orientation: N
       x7:
-        location: [195, 220]
+        location: [122, 145]
         orientation: N
       x8:
-        location: [195, 120]
+        location: [122, 75]
         orientation: N
 
   Current_limit:
@@ -147,8 +160,8 @@ MACROS:
       - dir::../../Current_limit/Current_limit.v
     instances:
       x9:
-        location: [35, 35]
+        location: [104, 20]
         orientation: N
       x10:
-        location: [240, 35]
+        location: [208, 20]
         orientation: N
