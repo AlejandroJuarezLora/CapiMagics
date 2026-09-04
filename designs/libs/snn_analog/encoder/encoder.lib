@@ -9,12 +9,12 @@ library (encoder_lib) {
   output_threshold_pct_fall : 50.0;
   output_threshold_pct_rise : 50.0;
   cell (encoder) {
-    area : 1134;
-    pin (Vdd) {
+    area : 1402;
+    pin (vdd) {
       direction : inout;
       pg_type : primary_power;
     }
-    pin (Vss) {
+    pin (vss) {
       direction : inout;
       pg_type : primary_ground;
     }
