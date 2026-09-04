@@ -374,17 +374,6 @@ MACRO stdp
         RECT 24.035 23.010 26.035 25.010 ;
     END
   END nvpost
-  PIN nvpre
-    ANTENNAGATEAREA 0.315000 ;
-    PORT
-      LAYER Metal1 ;
-        RECT 38.365 23.760 38.865 24.260 ;
-      LAYER Metal2 ;
-        RECT 38.300 23.760 38.930 24.260 ;
-      LAYER Metal3 ;
-        RECT 37.615 23.010 39.615 25.010 ;
-    END
-  END nvpre
   PIN vpost
     ANTENNAGATEAREA 0.315000 ;
     PORT
@@ -520,6 +509,19 @@ MACRO stdp
         RECT 44.690 11.900 46.690 13.900 ;
     END
   END vb_pot
+  PIN nvpre
+    ANTENNAGATEAREA 0.315000 ;
+    PORT
+      LAYER Metal1 ;
+        RECT 38.365 23.760 38.865 24.260 ;
+      LAYER Metal2 ;
+        RECT 38.300 23.760 38.930 24.260 ;
+      LAYER Metal3 ;
+        RECT 38.365 23.760 38.865 24.260 ;
+      LAYER Metal4 ;
+        RECT 37.615 23.010 39.615 25.010 ;
+    END
+  END nvpre
   PIN Iout
     ANTENNADIFFAREA 0.300000 ;
     PORT

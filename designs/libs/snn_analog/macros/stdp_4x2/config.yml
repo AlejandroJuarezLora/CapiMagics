@@ -28,6 +28,10 @@ BOTTOM_MARGIN_MULT: 2
 LEFT_MARGIN_MULT: 2
 RIGHT_MARGIN_MULT: 2
 
+# FP_PIN_ORDER_CFG: dir::pin.cfg
+IGNORE_DISCONNECTED_MODULES:
+  - stdp
+
 
 # --- Manejo de Verificaciones para Diseños Analógicos / Macros ---
 ERROR_ON_LINTER_ERRORS: false
