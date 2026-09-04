@@ -24,7 +24,6 @@ module stdp_4x2 (
     inout  vw42
 );
 
-    wire net1, net2, net3, net4, net5, net6;
     wire net7, net8;
 
     // ---- Bloques de limitacion de corriente ----
@@ -67,7 +66,7 @@ module stdp_4x2 (
         .vb_idep (B),
         .vb_itp  (B),
         .vb_pot  (A),
-        .vw      (net3),
+        .vw      (),
         .Iout    (net7)
     );
 
@@ -82,7 +81,7 @@ module stdp_4x2 (
         .vb_idep (B),
         .vb_itp  (B),
         .vb_pot  (A),
-        .vw      (net2),
+        .vw      (),
         .Iout    (net7)
     );
 
@@ -97,7 +96,7 @@ module stdp_4x2 (
         .vb_idep (B),
         .vb_itp  (B),
         .vb_pot  (A),
-        .vw      (net1),
+        .vw      (),
         .Iout    (net7)
     );
 
@@ -112,7 +111,7 @@ module stdp_4x2 (
         .vb_idep (B),
         .vb_itp  (B),
         .vb_pot  (A),
-        .vw      (net4),
+        .vw      (),
         .Iout    (net8)
     );
 
@@ -127,7 +126,7 @@ module stdp_4x2 (
         .vb_idep (B),
         .vb_itp  (B),
         .vb_pot  (A),
-        .vw      (net6),
+        .vw      (),
         .Iout    (net8)
     );
 
@@ -142,7 +141,7 @@ module stdp_4x2 (
         .vb_idep (B),
         .vb_itp  (B),
         .vb_pot  (A),
-        .vw      (net5),
+        .vw      (),
         .Iout    (net8)
     );
 
