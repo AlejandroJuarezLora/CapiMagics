@@ -24,10 +24,8 @@ DIE_AREA:
 # --- Power Grid (PDN) ---
 VDD_NETS:
   - vdd
-  - VDD
 GND_NETS:
   - vss
-  - VSS
 
 PDN_ENABLE_RAILS: false
 PDN_MULTILAYER: true
