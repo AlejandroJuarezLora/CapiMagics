@@ -5,7 +5,7 @@
       "attributes": {
         "hdlname": "stdp_4x2",
         "top": "00000000000000000000000000000001",
-        "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:1.1-164.10"
+        "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:1.1-163.10"
       },
       "ports": {
         "avdd": {
@@ -97,7 +97,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:44.10-57.6"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:43.10-56.6"
           },
           "port_directions": {
             "Iout": "output",
@@ -135,7 +135,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:37.19-41.6"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:36.19-40.6"
           },
           "port_directions": {
             "avdd": "inout",
@@ -155,7 +155,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:59.10-72.6"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:58.10-71.6"
           },
           "port_directions": {
             "Iout": "output",
@@ -183,7 +183,7 @@
             "vb_pot": [ 4 ],
             "vpost": [ 14 ],
             "vpre": [ 8 ],
-            "vw": [ 24 ]
+            "vw": [ ]
           }
         },
         "x3": {
@@ -193,7 +193,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:74.10-87.6"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:73.10-86.6"
           },
           "port_directions": {
             "Iout": "output",
@@ -221,7 +221,7 @@
             "vb_pot": [ 4 ],
             "vpost": [ 14 ],
             "vpre": [ 10 ],
-            "vw": [ 25 ]
+            "vw": [ ]
           }
         },
         "x4": {
@@ -231,7 +231,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:89.10-102.6"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:88.10-101.6"
           },
           "port_directions": {
             "Iout": "output",
@@ -259,7 +259,7 @@
             "vb_pot": [ 4 ],
             "vpost": [ 14 ],
             "vpre": [ 12 ],
-            "vw": [ 26 ]
+            "vw": [ ]
           }
         },
         "x5": {
@@ -269,7 +269,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:104.10-117.6"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:103.10-116.6"
           },
           "port_directions": {
             "Iout": "output",
@@ -297,7 +297,7 @@
             "vb_pot": [ 4 ],
             "vpost": [ 16 ],
             "vpre": [ 7 ],
-            "vw": [ 27 ]
+            "vw": [ ]
           }
         },
         "x6": {
@@ -307,7 +307,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:119.10-132.6"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:118.10-131.6"
           },
           "port_directions": {
             "Iout": "output",
@@ -335,7 +335,7 @@
             "vb_pot": [ 4 ],
             "vpost": [ 16 ],
             "vpre": [ 8 ],
-            "vw": [ 28 ]
+            "vw": [ ]
           }
         },
         "x7": {
@@ -345,7 +345,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:134.10-147.6"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:133.10-146.6"
           },
           "port_directions": {
             "Iout": "output",
@@ -373,7 +373,7 @@
             "vb_pot": [ 4 ],
             "vpost": [ 16 ],
             "vpre": [ 10 ],
-            "vw": [ 29 ]
+            "vw": [ ]
           }
         },
         "x8": {
@@ -383,7 +383,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:149.10-162.6"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:148.10-161.6"
           },
           "port_directions": {
             "Iout": "output",
@@ -421,7 +421,7 @@
           },
           "attributes": {
             "module_not_derived": "00000000000000000000000000000001",
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:31.19-35.6"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:30.19-34.6"
           },
           "port_directions": {
             "avdd": "inout",
@@ -478,66 +478,18 @@
             "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:22.12-22.17"
           }
         },
-        "net1": {
-          "hide_name": 0,
-          "bits": [ 26 ],
-          "attributes": {
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:27.10-27.14",
-            "unused_bits": "0 "
-          }
-        },
-        "net2": {
-          "hide_name": 0,
-          "bits": [ 25 ],
-          "attributes": {
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:27.16-27.20",
-            "unused_bits": "0 "
-          }
-        },
-        "net3": {
-          "hide_name": 0,
-          "bits": [ 24 ],
-          "attributes": {
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:27.22-27.26",
-            "unused_bits": "0 "
-          }
-        },
-        "net4": {
-          "hide_name": 0,
-          "bits": [ 27 ],
-          "attributes": {
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:27.28-27.32",
-            "unused_bits": "0 "
-          }
-        },
-        "net5": {
-          "hide_name": 0,
-          "bits": [ 29 ],
-          "attributes": {
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:27.34-27.38",
-            "unused_bits": "0 "
-          }
-        },
-        "net6": {
-          "hide_name": 0,
-          "bits": [ 28 ],
-          "attributes": {
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:27.40-27.44",
-            "unused_bits": "0 "
-          }
-        },
         "net7": {
           "hide_name": 0,
           "bits": [ 22 ],
           "attributes": {
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:28.10-28.14"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:27.10-27.14"
           }
         },
         "net8": {
           "hide_name": 0,
           "bits": [ 23 ],
           "attributes": {
-            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:28.16-28.20"
+            "src": "/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v:27.16-27.20"
           }
         },
         "nvpost1": {

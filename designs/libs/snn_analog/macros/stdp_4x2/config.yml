@@ -14,7 +14,7 @@ FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 275
+  - 250
   - 355
 
 # --- Alimentación y Potencia ---
@@ -22,16 +22,18 @@ VDD_NETS:
   - avdd
 GND_NETS:
   - avss
+  
 
 TOP_MARGIN_MULT: 2
 BOTTOM_MARGIN_MULT: 2
 LEFT_MARGIN_MULT: 2
 RIGHT_MARGIN_MULT: 2
 
-# FP_PIN_ORDER_CFG: dir::pin.cfg
+# IO_PIN_ORDER_CFG: dir::pin.cfg
 IGNORE_DISCONNECTED_MODULES:
   - stdp
 
+# STD_CELL_LIBRARY: "gf180mcu_fd_sc_mcu7t5v0"
 
 # --- Manejo de Verificaciones para Diseños Analógicos / Macros ---
 ERROR_ON_LINTER_ERRORS: false
@@ -49,10 +51,10 @@ PDN_HWIDTH: 2.0
 PDN_VSPACING: 2.0
 PDN_HSPACING: 2.0
 
-PDN_VPITCH: 105.0
+PDN_VPITCH: 109.0
 PDN_HPITCH: 70.0
 
-PDN_VOFFSET: 15
+PDN_VOFFSET: 10
 PDN_HOFFSET: 50.5
 
 
@@ -83,8 +85,8 @@ RUN_CTS: false
 RUN_POST_CTS_RESIZER_TIMING: false
 RUN_POST_GRT_RESIZER_TIMING: false
 RUN_HEURISTIC_DIODE_INSERTION: false
-RUN_ANTENNA_REPAIR: true
-#GRT_ANTENNA_ITERS: 0
+RUN_ANTENNA_REPAIR: false
+# GRT_ANTENNA_ITERS: 5
 #GRT_ANTENNA_MARGIN: 0
 RUN_FILL_INSERTION: false
 RUN_TAP_ENDCAP_INSERTION: false
@@ -124,29 +126,29 @@ MACROS:
       - dir::../../stdp/stdp.v
     instances:
       x1:
-        location: [15, 285]
+        location: [10, 285]
         orientation: N
       x2:
-        location: [15, 215]
+        location: [10, 215]
         orientation: N
       x3:
-        location: [15, 145]
+        location: [10, 145]
         orientation: N
       x4:
-        location: [15, 75]
+        location: [10, 75]
         orientation: N
 #-----------------------------------------        
       x5:
-        location: [122, 285]
+        location: [119, 285]
         orientation: N
       x6:
-        location: [122, 215]
+        location: [119, 215]
         orientation: N
       x7:
-        location: [122, 145]
+        location: [119, 145]
         orientation: N
       x8:
-        location: [122, 75]
+        location: [119, 75]
         orientation: N
 
   Current_limit:
@@ -160,8 +162,8 @@ MACROS:
       - dir::../../Current_limit/Current_limit.v
     instances:
       x9:
-        location: [104, 20]
+        location: [102, 20]
         orientation: N
       x10:
-        location: [208, 20]
+        location: [210, 20]
         orientation: N
