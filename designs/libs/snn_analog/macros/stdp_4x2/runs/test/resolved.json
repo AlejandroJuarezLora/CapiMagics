@@ -21,7 +21,7 @@
         "max_ss_125C_4v50",
         "max_ff_n40C_5v50"
     ],
-    "RT_MIN_LAYER": "Metal2",
+    "RT_MIN_LAYER": "Metal3",
     "RT_MAX_LAYER": "Metal5",
     "SCL_GROUND_PINS": [
         "VSS",
@@ -108,8 +108,8 @@
     "DIE_AREA": [
         0,
         0,
-        350,
-        570
+        250,
+        355
     ],
     "EXTRA_EXCLUDED_CELLS": null,
     "MACROS": {
@@ -123,57 +123,57 @@
             "instances": {
                 "x1": {
                     "location": [
-                        25,
-                        120
+                        10,
+                        285
                     ],
                     "orientation": "N"
                 },
                 "x2": {
                     "location": [
-                        25,
-                        220
+                        10,
+                        215
                     ],
                     "orientation": "N"
                 },
                 "x3": {
                     "location": [
-                        25,
-                        330
+                        10,
+                        145
                     ],
                     "orientation": "N"
                 },
                 "x4": {
                     "location": [
-                        25,
-                        440
+                        10,
+                        75
                     ],
                     "orientation": "N"
                 },
                 "x5": {
                     "location": [
-                        195,
-                        440
+                        119,
+                        285
                     ],
                     "orientation": "N"
                 },
                 "x6": {
                     "location": [
-                        195,
-                        330
+                        119,
+                        215
                     ],
                     "orientation": "N"
                 },
                 "x7": {
                     "location": [
-                        195,
-                        220
+                        119,
+                        145
                     ],
                     "orientation": "N"
                 },
                 "x8": {
                     "location": [
-                        195,
-                        120
+                        119,
+                        75
                     ],
                     "orientation": "N"
                 }
@@ -201,15 +201,15 @@
             "instances": {
                 "x9": {
                     "location": [
-                        35,
-                        35
+                        102,
+                        20
                     ],
                     "orientation": "N"
                 },
                 "x10": {
                     "location": [
-                        240,
-                        35
+                        210,
+                        20
                     ],
                     "orientation": "N"
                 }
@@ -265,7 +265,7 @@
     "RUN_POST_CTS_RESIZER_TIMING": false,
     "RUN_POST_GRT_RESIZER_TIMING": false,
     "RUN_HEURISTIC_DIODE_INSERTION": false,
-    "RUN_ANTENNA_REPAIR": true,
+    "RUN_ANTENNA_REPAIR": false,
     "RUN_DRT": true,
     "RUN_FILL_INSERTION": false,
     "RUN_MCSTA": true,
@@ -382,10 +382,10 @@
     "FP_OBSTRUCTIONS": null,
     "PL_SOFT_OBSTRUCTIONS": null,
     "CORE_AREA": null,
-    "BOTTOM_MARGIN_MULT": 4,
-    "TOP_MARGIN_MULT": 4,
-    "LEFT_MARGIN_MULT": 12,
-    "RIGHT_MARGIN_MULT": 12,
+    "BOTTOM_MARGIN_MULT": 2,
+    "TOP_MARGIN_MULT": 2,
+    "LEFT_MARGIN_MULT": 2,
+    "RIGHT_MARGIN_MULT": 2,
     "EXTRA_SITES": null,
     "MACRO_PLACEMENT_CFG": null,
     "FP_MACRO_HORIZONTAL_HALO": 10,
@@ -404,10 +404,10 @@
     "PDN_HWIDTH": 2,
     "PDN_VSPACING": 2,
     "PDN_HSPACING": 2,
-    "PDN_VPITCH": 60,
-    "PDN_HPITCH": 110,
-    "PDN_VOFFSET": 90,
-    "PDN_HOFFSET": 80,
+    "PDN_VPITCH": 109,
+    "PDN_HPITCH": 70,
+    "PDN_VOFFSET": 10,
+    "PDN_HOFFSET": 50.5,
     "PDN_CORE_RING_VWIDTH": 2,
     "PDN_CORE_RING_HWIDTH": 2,
     "PDN_CORE_RING_VSPACING": 1.5,
@@ -555,7 +555,9 @@
     "NON_DEFAULT_RULES": null,
     "DRT_ASSIGN_NDR": null,
     "ERROR_ON_TR_DRC": true,
-    "IGNORE_DISCONNECTED_MODULES": null,
+    "IGNORE_DISCONNECTED_MODULES": [
+        "stdp"
+    ],
     "ERROR_ON_DISCONNECTED_PINS": true,
     "ERROR_ON_LONG_WIRE": true,
     "WIRE_LENGTH_THRESHOLD": null,
