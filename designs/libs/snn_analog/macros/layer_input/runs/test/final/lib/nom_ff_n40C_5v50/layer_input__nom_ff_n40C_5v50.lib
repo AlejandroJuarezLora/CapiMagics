@@ -27,55 +27,55 @@ library (layer_input) {
 
 
   cell ("layer_input") {
-    area : 19496.580 
+    area : 6663.200 
     is_macro_cell : true;
     pin("Iext1") {
       direction : input;
-      capacitance : 0.0049;
+      capacitance : 0.0029;
     }
     pin("Iext2") {
       direction : input;
-      capacitance : 0.0036;
+      capacitance : 0.0029;
     }
     pin("Iext3") {
       direction : input;
-      capacitance : 0.0036;
+      capacitance : 0.0028;
     }
     pin("Iext4") {
       direction : input;
-      capacitance : 0.0039;
+      capacitance : 0.0028;
     }
     pin("nvout_1") {
       direction : output;
-      capacitance : 0.0089;
+      capacitance : 0.0081;
     }
     pin("nvout_2") {
       direction : output;
-      capacitance : 0.0092;
+      capacitance : 0.0059;
     }
     pin("nvout_3") {
       direction : output;
-      capacitance : 0.0096;
+      capacitance : 0.0043;
     }
     pin("nvout_4") {
       direction : output;
-      capacitance : 0.0115;
+      capacitance : 0.0084;
     }
     pin("vout_1") {
       direction : output;
-      capacitance : 0.0085;
+      capacitance : 0.0047;
     }
     pin("vout_2") {
       direction : output;
-      capacitance : 0.0093;
+      capacitance : 0.0049;
     }
     pin("vout_3") {
       direction : output;
-      capacitance : 0.0087;
+      capacitance : 0.0050;
     }
     pin("vout_4") {
       direction : output;
-      capacitance : 0.0097;
+      capacitance : 0.0051;
     }
   }
 
