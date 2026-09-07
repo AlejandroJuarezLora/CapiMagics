@@ -27,55 +27,54 @@ library (stdp_4x2) {
 
 
   cell ("stdp_4x2") {
-    area : 8.781 
     is_macro_cell : true;
     pin("A") {
       direction : inout;
-      capacitance : 0.1524;
+      capacitance : 0.1343;
     }
     pin("B") {
       direction : inout;
-      capacitance : 0.1500;
+      capacitance : 0.1364;
     }
     pin("ifwd1") {
       direction : output;
-      capacitance : 0.0027;
+      capacitance : 0.0010;
     }
     pin("ifwd2") {
       direction : output;
-      capacitance : 0.0026;
+      capacitance : 0.0008;
     }
     pin("nvpost1") {
       direction : input;
-      capacitance : 0.0438;
+      capacitance : 0.0336;
     }
     pin("nvpost2") {
       direction : input;
-      capacitance : 0.0455;
+      capacitance : 0.0343;
     }
     pin("nvpre1") {
       direction : input;
-      capacitance : 0.0227;
+      capacitance : 0.0196;
     }
     pin("nvpre2") {
       direction : input;
-      capacitance : 0.0142;
+      capacitance : 0.0131;
     }
     pin("nvpre3") {
       direction : input;
-      capacitance : 0.0141;
+      capacitance : 0.0132;
     }
     pin("nvpre4") {
       direction : input;
-      capacitance : 0.0141;
+      capacitance : 0.0159;
     }
     pin("vpost1") {
       direction : input;
-      capacitance : 0.0263;
+      capacitance : 0.0204;
     }
     pin("vpost2") {
       direction : input;
-      capacitance : 0.0239;
+      capacitance : 0.0219;
     }
     pin("vpre1") {
       direction : input;
@@ -83,23 +82,23 @@ library (stdp_4x2) {
     }
     pin("vpre2") {
       direction : input;
-      capacitance : 0.0132;
+      capacitance : 0.0119;
     }
     pin("vpre3") {
       direction : input;
-      capacitance : 0.0125;
+      capacitance : 0.0118;
     }
     pin("vpre4") {
       direction : input;
-      capacitance : 0.0119;
+      capacitance : 0.0130;
     }
     pin("vw11") {
       direction : inout;
-      capacitance : 0.0830;
+      capacitance : 0.0828;
     }
     pin("vw42") {
       direction : inout;
-      capacitance : 0.0764;
+      capacitance : 0.0806;
     }
   }
 

@@ -108,8 +108,8 @@
     "DIE_AREA": [
         0,
         0,
-        250,
-        355
+        225,
+        255
     ],
     "EXTRA_EXCLUDED_CELLS": null,
     "MACROS": {
@@ -124,56 +124,56 @@
                 "x1": {
                     "location": [
                         10,
-                        285
+                        201
                     ],
                     "orientation": "N"
                 },
                 "x2": {
                     "location": [
                         10,
-                        215
+                        145
                     ],
                     "orientation": "N"
                 },
                 "x3": {
                     "location": [
                         10,
-                        145
+                        90
                     ],
                     "orientation": "N"
                 },
                 "x4": {
                     "location": [
                         10,
-                        75
+                        35
                     ],
                     "orientation": "N"
                 },
                 "x5": {
                     "location": [
-                        119,
-                        285
+                        110,
+                        201
                     ],
                     "orientation": "N"
                 },
                 "x6": {
                     "location": [
-                        119,
-                        215
+                        110,
+                        145
                     ],
                     "orientation": "N"
                 },
                 "x7": {
                     "location": [
-                        119,
-                        145
+                        110,
+                        90
                     ],
                     "orientation": "N"
                 },
                 "x8": {
                     "location": [
-                        119,
-                        75
+                        110,
+                        35
                     ],
                     "orientation": "N"
                 }
@@ -201,15 +201,15 @@
             "instances": {
                 "x9": {
                     "location": [
-                        102,
-                        20
+                        94,
+                        3
                     ],
                     "orientation": "N"
                 },
                 "x10": {
                     "location": [
-                        210,
-                        20
+                        195,
+                        3
                     ],
                     "orientation": "N"
                 }
@@ -404,10 +404,10 @@
     "PDN_HWIDTH": 2,
     "PDN_VSPACING": 2,
     "PDN_HSPACING": 2,
-    "PDN_VPITCH": 109,
-    "PDN_HPITCH": 70,
+    "PDN_VPITCH": 101,
+    "PDN_HPITCH": 55,
     "PDN_VOFFSET": 10,
-    "PDN_HOFFSET": 50.5,
+    "PDN_HOFFSET": 20.5,
     "PDN_CORE_RING_VWIDTH": 2,
     "PDN_CORE_RING_HWIDTH": 2,
     "PDN_CORE_RING_VSPACING": 1.5,

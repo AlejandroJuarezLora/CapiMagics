@@ -38,8 +38,6 @@ module stdp_4x2 (A,
  wire net7;
  wire net8;
 
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_1 (.I(nvpre1));
- gf180mcu_fd_sc_mcu7t5v0__antenna ANTENNA_2 (.I(nvpre1));
  stdp x1 (.nvpost(nvpost1),
     .vpost(vpost1),
     .vpre(vpre1),

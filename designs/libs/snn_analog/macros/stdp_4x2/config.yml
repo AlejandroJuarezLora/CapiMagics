@@ -14,8 +14,8 @@ FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 250
-  - 355
+  - 225
+  - 255
 
 # --- Alimentación y Potencia ---
 VDD_NETS:
@@ -51,11 +51,11 @@ PDN_HWIDTH: 2.0
 PDN_VSPACING: 2.0
 PDN_HSPACING: 2.0
 
-PDN_VPITCH: 109.0
-PDN_HPITCH: 70.0
+PDN_VPITCH: 101.0
+PDN_HPITCH: 55.0
 
 PDN_VOFFSET: 10
-PDN_HOFFSET: 50.5
+PDN_HOFFSET: 20.5
 
 
 PDN_CORE_RING: true
@@ -112,10 +112,19 @@ RT_MIN_LAYER: Metal3
 RT_MAX_LAYER: Metal5
 DRT_THREADS: 12
 GRT_ALLOW_CONGESTION: true
+GRT_MACRO_EXTENSION: 0.5
 
 # --- Definición de Macros Analógicos ---
 MACROS:
   stdp:
+    # "ROUTING_OBSTRUCTIONS": [
+    #     ["metal5", 61.58, 25.95, 68.58, 40.35],
+    #     ["metal4", 61.58, 25.95, 68.58, 40.35],
+    #     ["metal5", 71.68, 20.05, 78.58, 34.35],
+    #     ["metal4", 71.68, 20.05, 78.58, 34.35],
+    #     ["metal5", 81.68, 3.1, 96.08, 39.7],
+    #     ["metal4", 81.68, 3.1, 96.08, 39.7],
+    # ]
     gds:
       - dir::../../stdp/stdp.gds
     lef:
@@ -126,29 +135,29 @@ MACROS:
       - dir::../../stdp/stdp.v
     instances:
       x1:
-        location: [10, 285]
+        location: [10, 201]
         orientation: N
       x2:
-        location: [10, 215]
-        orientation: N
-      x3:
         location: [10, 145]
         orientation: N
+      x3:
+        location: [10, 90]
+        orientation: N
       x4:
-        location: [10, 75]
+        location: [10, 35]
         orientation: N
 #-----------------------------------------        
       x5:
-        location: [119, 285]
+        location: [110, 201]
         orientation: N
       x6:
-        location: [119, 215]
+        location: [110, 145]
         orientation: N
       x7:
-        location: [119, 145]
+        location: [110, 90]
         orientation: N
       x8:
-        location: [119, 75]
+        location: [110, 35]
         orientation: N
 
   Current_limit:
@@ -162,8 +171,8 @@ MACROS:
       - dir::../../Current_limit/Current_limit.v
     instances:
       x9:
-        location: [102, 20]
+        location: [94, 3]
         orientation: N
       x10:
-        location: [210, 20]
+        location: [195, 3]
         orientation: N
