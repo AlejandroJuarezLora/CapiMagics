@@ -106,6 +106,8 @@ than the post synaptic neuron. } -520 1380 0 0 0.2 0.2 {}
 T {As the presynaptic neuron spikes faster, the synaptic value Vw grows} 390 540 0 0 0.2 0.2 {}
 T {The spikes of the postSynaptic neuron. On purpose, it is set to spike faster 
 than the post synaptic neuron. } 270 1380 0 0 0.2 0.2 {}
+T {vw_pex represent the synaptic weight of 
+the post layout device. Works as expected} 420 400 0 0 0.4 0.4 {}
 N -470 -50 -450 -50 {lab=#net1}
 N 230 -20 250 -20 {lab=nvpost}
 N -150 -20 -70 -20 {lab=nvpre}
@@ -210,7 +212,7 @@ C {code_shown.sym} 130 160 0 0 {name=s1 only_toplevel=false value="
 .endc 
 
 "}
-C {devices/code_shown.sym} 410 230 0 0 {name=MODELS only_toplevel=true
+C {devices/code_shown.sym} 500 -440 0 0 {name=MODELS only_toplevel=true
 format="tcleval( @value )"
 value="
 .include $::180MCU_MODELS/design.ngspice

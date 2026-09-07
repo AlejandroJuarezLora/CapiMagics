@@ -254,7 +254,7 @@ C8 a_n186_n382# VSUBS 0.07458f
 C9 w_n572_n603# VSUBS 5.08511f
 .ends
 
-.subckt encoder_pex Vdd Vss Vin Vin_neg Iex_1_i Iex_2_i Iex_3_i Iex_4_i
+.subckt encoder Vdd Vss Vin Vin_neg Iex_1_i Iex_2_i Iex_3_i Iex_4_i
 Xxm5_0 Vdd Iex_2_i Vdd xm3_0/a_28_n281# Vss xm5
 Xxm3_0 xm3_0/a_28_n281# Vdd Vdd xm3_0/a_28_n281# Vss xm3
 Xxm11_0 Vdd xm9_0/a_n50_n339# Vdd xm9_0/a_n50_n339# Vss xm11
