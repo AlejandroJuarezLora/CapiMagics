@@ -30,75 +30,75 @@ library (stdp_4x2) {
     is_macro_cell : true;
     pin("A") {
       direction : inout;
-      capacitance : 0.1291;
+      capacitance : 0.1324;
     }
     pin("B") {
       direction : inout;
-      capacitance : 0.1312;
+      capacitance : 0.1372;
     }
     pin("ifwd1") {
       direction : output;
-      capacitance : 0.0009;
+      capacitance : 0.0136;
     }
     pin("ifwd2") {
       direction : output;
-      capacitance : 0.0007;
+      capacitance : 0.0101;
     }
     pin("nvpost1") {
       direction : input;
-      capacitance : 0.0300;
+      capacitance : 0.0461;
     }
     pin("nvpost2") {
       direction : input;
-      capacitance : 0.0306;
+      capacitance : 0.0426;
     }
     pin("nvpre1") {
       direction : input;
-      capacitance : 0.0178;
+      capacitance : 0.0180;
     }
     pin("nvpre2") {
       direction : input;
-      capacitance : 0.0123;
+      capacitance : 0.0127;
     }
     pin("nvpre3") {
       direction : input;
-      capacitance : 0.0124;
+      capacitance : 0.0125;
     }
     pin("nvpre4") {
       direction : input;
-      capacitance : 0.0150;
+      capacitance : 0.0163;
     }
     pin("vpost1") {
       direction : input;
-      capacitance : 0.0191;
+      capacitance : 0.0194;
     }
     pin("vpost2") {
       direction : input;
-      capacitance : 0.0206;
+      capacitance : 0.0213;
     }
     pin("vpre1") {
       direction : input;
-      capacitance : 0.0139;
+      capacitance : 0.0161;
     }
     pin("vpre2") {
       direction : input;
-      capacitance : 0.0112;
+      capacitance : 0.0130;
     }
     pin("vpre3") {
       direction : input;
-      capacitance : 0.0111;
+      capacitance : 0.0144;
     }
     pin("vpre4") {
       direction : input;
-      capacitance : 0.0122;
+      capacitance : 0.0143;
     }
     pin("vw11") {
       direction : inout;
-      capacitance : 0.0817;
+      capacitance : 0.0751;
     }
     pin("vw42") {
       direction : inout;
-      capacitance : 0.0802;
+      capacitance : 0.0827;
     }
   }
 

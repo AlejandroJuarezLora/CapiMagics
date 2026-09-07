@@ -452,7 +452,7 @@
     "GPL_CELL_PADDING": 0,
     "PL_KEEP_RESIZE_BELOW_OVERFLOW": null,
     "IO_PIN_PLACEMENT_MODE": "matching",
-    "IO_PIN_ORDER_CFG": null,
+    "IO_PIN_ORDER_CFG": "/foss/designs/libs/snn_analog/macros/stdp_4x2/pin.cfg",
     "FP_DEF_TEMPLATE": null,
     "IO_PIN_H_LAYER": "Metal3",
     "IO_PIN_V_LAYER": "Metal2",
