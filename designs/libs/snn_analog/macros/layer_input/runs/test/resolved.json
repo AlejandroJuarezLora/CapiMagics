@@ -100,18 +100,16 @@
     "CLOCK_PORT": null,
     "CLOCK_NET": null,
     "VDD_NETS": [
-        "vdd",
-        "VDD"
+        "vdd"
     ],
     "GND_NETS": [
-        "vss",
-        "VSS"
+        "vss"
     ],
     "DIE_AREA": [
         0,
         0,
-        116,
-        380
+        100,
+        190
     ],
     "EXTRA_EXCLUDED_CELLS": null,
     "MACROS": {
@@ -125,29 +123,29 @@
             "instances": {
                 "x1": {
                     "location": [
-                        17.75,
+                        20,
                         20
                     ],
                     "orientation": "N"
                 },
                 "x2": {
                     "location": [
-                        17.75,
-                        110
+                        20,
+                        60
                     ],
                     "orientation": "N"
                 },
                 "x3": {
                     "location": [
-                        17.75,
-                        200
+                        20,
+                        100
                     ],
                     "orientation": "N"
                 },
                 "x4": {
                     "location": [
-                        17.75,
-                        290
+                        20,
+                        140
                     ],
                     "orientation": "N"
                 }
@@ -337,10 +335,10 @@
     "PDN_HWIDTH": 1.2,
     "PDN_VSPACING": 2,
     "PDN_HSPACING": 2,
-    "PDN_VPITCH": 140,
-    "PDN_HPITCH": 140,
-    "PDN_VOFFSET": 30,
-    "PDN_HOFFSET": 30,
+    "PDN_VPITCH": 90,
+    "PDN_HPITCH": 40,
+    "PDN_VOFFSET": 20,
+    "PDN_HOFFSET": 37,
     "PDN_CORE_RING_VWIDTH": 1.5,
     "PDN_CORE_RING_HWIDTH": 1.5,
     "PDN_CORE_RING_VSPACING": 1.5,

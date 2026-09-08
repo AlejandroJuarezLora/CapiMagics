@@ -31,51 +31,51 @@ library (layer_input) {
     is_macro_cell : true;
     pin("Iext1") {
       direction : input;
-      capacitance : 0.0030;
+      capacitance : 0.0038;
     }
     pin("Iext2") {
       direction : input;
-      capacitance : 0.0030;
+      capacitance : 0.0032;
     }
     pin("Iext3") {
       direction : input;
-      capacitance : 0.0029;
+      capacitance : 0.0033;
     }
     pin("Iext4") {
       direction : input;
-      capacitance : 0.0029;
+      capacitance : 0.0034;
     }
     pin("nvout_1") {
       direction : output;
-      capacitance : 0.0085;
+      capacitance : 0.0040;
     }
     pin("nvout_2") {
       direction : output;
-      capacitance : 0.0062;
+      capacitance : 0.0032;
     }
     pin("nvout_3") {
       direction : output;
-      capacitance : 0.0045;
+      capacitance : 0.0034;
     }
     pin("nvout_4") {
       direction : output;
-      capacitance : 0.0088;
+      capacitance : 0.0039;
     }
     pin("vout_1") {
       direction : output;
-      capacitance : 0.0049;
+      capacitance : 0.0058;
     }
     pin("vout_2") {
       direction : output;
-      capacitance : 0.0051;
+      capacitance : 0.0048;
     }
     pin("vout_3") {
       direction : output;
-      capacitance : 0.0052;
+      capacitance : 0.0043;
     }
     pin("vout_4") {
       direction : output;
-      capacitance : 0.0054;
+      capacitance : 0.0037;
     }
   }
 

@@ -2,12 +2,12 @@
 
 .subckt m1 a_n178_n131# a_n50_n339# w_n444_n560# a_28_n131# VSUBS
 X0 a_28_n131# a_n50_n339# a_n178_n131# w_n444_n560# pfet_03v3 ad=0.375p pd=2.5u as=0.375p ps=2.5u w=0.5u l=0.28u
-C0 a_28_n131# w_n444_n560# 0.48499f
-C1 a_n178_n131# a_n50_n339# 0.02611f
+C0 a_28_n131# a_n50_n339# 0.01004f
+C1 a_n178_n131# a_28_n131# 0.34063f
 C2 a_n50_n339# w_n444_n560# 0.39308f
-C3 a_28_n131# a_n50_n339# 0.01004f
-C4 a_n178_n131# w_n444_n560# 0.22952f
-C5 a_28_n131# a_n178_n131# 0.34063f
+C3 a_n178_n131# w_n444_n560# 0.22952f
+C4 a_28_n131# w_n444_n560# 0.48499f
+C5 a_n178_n131# a_n50_n339# 0.02611f
 C6 a_28_n131# VSUBS 0.04441f
 C7 a_n178_n131# VSUBS 0.04328f
 C8 a_n50_n339# VSUBS 0.04859f
@@ -16,9 +16,9 @@ C9 w_n444_n560# VSUBS 3.73985f
 
 .subckt m8 a_n178_n131# a_n50_n339# a_n388_n504# a_28_n131#
 X0 a_28_n131# a_n50_n339# a_n178_n131# a_n388_n504# nfet_03v3 ad=0.375p pd=2.5u as=0.375p ps=2.5u w=0.5u l=0.28u
-C0 a_28_n131# a_n178_n131# 0.34063f
-C1 a_n178_n131# a_n50_n339# 0.02611f
-C2 a_28_n131# a_n50_n339# 0.01004f
+C0 a_n178_n131# a_n50_n339# 0.02611f
+C1 a_28_n131# a_n50_n339# 0.01004f
+C2 a_28_n131# a_n178_n131# 0.34063f
 C3 a_28_n131# a_n388_n504# 0.52938f
 C4 a_n178_n131# a_n388_n504# 0.27279f
 C5 a_n50_n339# a_n388_n504# 0.44167f
@@ -33,9 +33,9 @@ C2 m4_n2920_n620# VSUBS 2.30522f
 
 .subckt m4 a_n178_n131# a_n50_n339# a_n388_n504# a_28_n131#
 X0 a_28_n131# a_n50_n339# a_n178_n131# a_n388_n504# nfet_03v3 ad=0.375p pd=2.5u as=0.375p ps=2.5u w=0.5u l=0.28u
-C0 a_28_n131# a_n178_n131# 0.34063f
-C1 a_n178_n131# a_n50_n339# 0.02611f
-C2 a_28_n131# a_n50_n339# 0.01004f
+C0 a_n178_n131# a_n50_n339# 0.02611f
+C1 a_28_n131# a_n50_n339# 0.01004f
+C2 a_28_n131# a_n178_n131# 0.34063f
 C3 a_28_n131# a_n388_n504# 0.52938f
 C4 a_n178_n131# a_n388_n504# 0.27279f
 C5 a_n50_n339# a_n388_n504# 0.44167f
@@ -43,9 +43,9 @@ C5 a_n50_n339# a_n388_n504# 0.44167f
 
 .subckt m2 a_n178_n131# a_n50_n339# a_n388_n504# a_28_n131#
 X0 a_28_n131# a_n50_n339# a_n178_n131# a_n388_n504# nfet_03v3 ad=0.375p pd=2.5u as=0.375p ps=2.5u w=0.5u l=0.28u
-C0 a_28_n131# a_n178_n131# 0.34063f
-C1 a_n178_n131# a_n50_n339# 0.02611f
-C2 a_28_n131# a_n50_n339# 0.01004f
+C0 a_n178_n131# a_n50_n339# 0.02611f
+C1 a_28_n131# a_n50_n339# 0.01004f
+C2 a_28_n131# a_n178_n131# 0.34063f
 C3 a_28_n131# a_n388_n504# 0.52938f
 C4 a_n178_n131# a_n388_n504# 0.27279f
 C5 a_n50_n339# a_n388_n504# 0.44167f
@@ -53,12 +53,12 @@ C5 a_n50_n339# a_n388_n504# 0.44167f
 
 .subckt m7 a_n178_n131# a_n50_n339# w_n444_n560# a_28_n131# VSUBS
 X0 a_28_n131# a_n50_n339# a_n178_n131# w_n444_n560# pfet_03v3 ad=0.375p pd=2.5u as=0.375p ps=2.5u w=0.5u l=0.28u
-C0 a_28_n131# w_n444_n560# 0.48499f
-C1 a_n178_n131# a_n50_n339# 0.02611f
+C0 a_28_n131# a_n50_n339# 0.01004f
+C1 a_n178_n131# a_28_n131# 0.34063f
 C2 a_n50_n339# w_n444_n560# 0.39308f
-C3 a_28_n131# a_n50_n339# 0.01004f
-C4 a_n178_n131# w_n444_n560# 0.22952f
-C5 a_28_n131# a_n178_n131# 0.34063f
+C3 a_n178_n131# w_n444_n560# 0.22952f
+C4 a_28_n131# w_n444_n560# 0.48499f
+C5 a_n178_n131# a_n50_n339# 0.02611f
 C6 a_28_n131# VSUBS 0.04441f
 C7 a_n178_n131# VSUBS 0.04328f
 C8 a_n50_n339# VSUBS 0.04859f
@@ -67,9 +67,9 @@ C9 w_n444_n560# VSUBS 3.73985f
 
 .subckt m5 a_n5000_n519# a_n5120_n311# a_n5330_n683# a_5000_n311#
 X0 a_5000_n311# a_n5000_n519# a_n5120_n311# a_n5330_n683# nfet_03v3 ad=1.38p pd=5.8u as=1.38p ps=5.8u w=2.3u l=50u
-C0 a_5000_n311# a_n5120_n311# 4.41467f
-C1 a_n5120_n311# a_n5000_n519# 1.8049f
-C2 a_5000_n311# a_n5000_n519# 0.22856f
+C0 a_n5120_n311# a_n5000_n519# 1.8049f
+C1 a_5000_n311# a_n5000_n519# 0.22856f
+C2 a_5000_n311# a_n5120_n311# 4.41467f
 C3 a_5000_n311# a_n5330_n683# 5.37377f
 C4 a_n5120_n311# a_n5330_n683# 1.24677f
 C5 a_n5000_n519# a_n5330_n683# 21.8141f
@@ -77,12 +77,12 @@ C5 a_n5000_n519# a_n5330_n683# 21.8141f
 
 .subckt m3 a_n178_n131# a_n50_n339# w_n444_n560# a_28_n131# VSUBS
 X0 a_28_n131# a_n50_n339# a_n178_n131# w_n444_n560# pfet_03v3 ad=0.375p pd=2.5u as=0.375p ps=2.5u w=0.5u l=0.28u
-C0 a_28_n131# w_n444_n560# 0.48499f
-C1 a_n178_n131# a_n50_n339# 0.02611f
+C0 a_28_n131# a_n50_n339# 0.01004f
+C1 a_n178_n131# a_28_n131# 0.34063f
 C2 a_n50_n339# w_n444_n560# 0.39308f
-C3 a_28_n131# a_n50_n339# 0.01004f
-C4 a_n178_n131# w_n444_n560# 0.22952f
-C5 a_28_n131# a_n178_n131# 0.34063f
+C3 a_n178_n131# w_n444_n560# 0.22952f
+C4 a_28_n131# w_n444_n560# 0.48499f
+C5 a_n178_n131# a_n50_n339# 0.02611f
 C6 a_28_n131# VSUBS 0.04441f
 C7 a_n178_n131# VSUBS 0.04328f
 C8 a_n50_n339# VSUBS 0.04859f
@@ -102,12 +102,12 @@ R0 spike_neg.n5 spike_neg.n0 48.4901
 R1 spike_neg.n3 spike_neg.n1 48.4901
 R2 spike_neg.n5 spike_neg.n4 36.7469
 R3 spike_neg.n3 spike_neg.n2 36.7469
-R4 spike_neg spike_neg.n5 33.3293
+R4 spike_neg spike_neg.n5 33.1155
 R5 spike_neg.n5 spike_neg.n3 1.0697
 R6 Iin.n3 Iin.n2 43.3961
 R7 Iin.n3 Iin.n1 41.8859
 R8 Iin.n4 Iin.n0 19.3816
-R9 Iin Iin.n4 9.6431
+R9 Iin Iin.n4 9.60935
 R10 Iin.n4 Iin.n3 4.5005
 R11 vdd.n13 vdd.n12 528.52
 R12 vdd.n12 vdd.n4 528.52
@@ -1138,16 +1138,16 @@ R1036 vss.n19 vss.n18 0.1445
 R1037 vss.n491 vss.n0 0.0933481
 R1038 vss.n465 vss.n464 0.0933481
 R1039 vss.n515 vss.n514 0.0933481
-C0 Iin vdd 0.11171f
-C1 spike spike_neg 0.81933f
-C2 Iin m4_0/a_28_n131# 1.29291f
-C3 spike_neg vdd 2.6638f
-C4 m4_0/a_28_n131# spike_neg 1.46495f
-C5 spike vdd 0.55075f
-C6 spike m4_0/a_28_n131# 0.23235f
-C7 m4_0/a_28_n131# vdd 0.38291f
-C8 Iin spike_neg 0.93387f
-C9 spike Iin 0.12445f
+C0 spike_neg m4_0/a_28_n131# 1.46495f
+C1 Iin m4_0/a_28_n131# 1.29291f
+C2 spike vdd 0.54747f
+C3 spike spike_neg 0.90015f
+C4 spike Iin 0.12445f
+C5 spike m4_0/a_28_n131# 0.23235f
+C6 vdd spike_neg 2.72405f
+C7 Iin vdd 0.11335f
+C8 vdd m4_0/a_28_n131# 0.38291f
+C9 Iin spike_neg 0.93895f
 C10 vss.n0 vss 0.01017f
 C11 vss.n1 vss 0.00536f
 C12 vss.n2 vss 0.00322f
@@ -1716,21 +1716,21 @@ C574 vdd.n49 vss 0.00615f
 C575 vdd.n50 vss 0.00481f
 C576 vdd.n51 vss 0.05701f
 C577 vdd.n52 vss 0.09975f
-C578 Iin.n0 vss 1.66677f
-C579 Iin.n1 vss 0.00136f
-C580 Iin.n2 vss 0.00191f
-C581 Iin.n3 vss 0.0308f
-C582 Iin.n4 vss 0.08295f
-C583 spike_neg.n0 vss 0.00429f
-C584 spike_neg.n1 vss 0.00429f
-C585 spike_neg.n2 vss 0
-C586 spike_neg.n3 vss 0.02909f
-C587 spike_neg.n4 vss 0
-C588 spike_neg.n5 vss 0.09487f
+C578 Iin.n0 vss 1.69624f
+C579 Iin.n1 vss 0.00138f
+C580 Iin.n2 vss 0.00194f
+C581 Iin.n3 vss 0.03134f
+C582 Iin.n4 vss 0.08442f
+C583 spike_neg.n0 vss 0.00689f
+C584 spike_neg.n1 vss 0.00689f
+C585 spike_neg.n2 vss 0.00138f
+C586 spike_neg.n3 vss 0.04674f
+C587 spike_neg.n4 vss 0.00138f
+C588 spike_neg.n5 vss 0.15136f
 C589 m4_0/a_28_n131# vss -0.64406f
-C590 spike vss -0.15576f
-C591 Iin vss 1.36365f
-C592 spike_neg vss -2.60699f
+C590 spike_neg vss -2.6471f
+C591 Iin vss 1.33034f
+C592 spike vss -0.11539f
 C593 vdd vss -4.28565f
 .ends
 
