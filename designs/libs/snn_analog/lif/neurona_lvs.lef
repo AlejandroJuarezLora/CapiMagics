@@ -93,19 +93,19 @@ MACRO neurona_lvs
         RECT 1.640 0.250 29.180 0.750 ;
       LAYER Metal3 ;
         RECT 1.640 0.250 2.140 11.255 ;
-        RECT 20.470 0.250 20.970 0.750 ;
+        RECT 19.470 0.250 19.970 0.750 ;
         RECT 28.680 0.250 29.180 0.750 ;
       LAYER Metal4 ;
-        RECT 21.820 8.600 51.020 9.200 ;
-        RECT 21.820 4.750 22.420 8.600 ;
-        RECT 20.470 4.250 22.420 4.750 ;
-        RECT 21.820 3.600 22.420 4.250 ;
-        RECT 50.420 3.600 51.020 8.600 ;
-        RECT 21.820 3.000 51.020 3.600 ;
-        RECT 20.470 0.250 20.970 0.750 ;
+        RECT 20.820 8.600 50.020 9.200 ;
+        RECT 20.820 4.750 21.420 8.600 ;
+        RECT 19.470 4.250 21.420 4.750 ;
+        RECT 20.820 3.600 21.420 4.250 ;
+        RECT 49.420 3.600 50.020 8.600 ;
+        RECT 20.820 3.000 50.020 3.600 ;
+        RECT 19.470 0.250 19.970 0.750 ;
         RECT 28.680 0.250 29.180 0.750 ;
       LAYER Metal5 ;
-        RECT 20.470 1.000 20.970 4.750 ;
+        RECT 19.470 1.000 19.970 4.750 ;
         RECT 0.000 0.000 57.860 1.000 ;
     END
   END vss
@@ -186,16 +186,18 @@ MACRO neurona_lvs
     ANTENNAGATEAREA 0.280000 ;
     ANTENNADIFFAREA 1.380000 ;
     PORT
+
       LAYER Metal4 ;
         RECT 0.150 15.585 2.150 17.585 ;
-        RECT 36.170 16.335 36.670 16.835 ;
- 
+        RECT 35.170 16.335 35.670 16.835 ;
+
     END
   END Iin
   PIN spike_neg
     ANTENNAGATEAREA 0.560000 ;
     ANTENNADIFFAREA 0.750000 ;
     PORT
+
       LAYER Metal4 ;
         RECT 54.670 24.535 56.670 26.535 ;
     END
@@ -203,6 +205,7 @@ MACRO neurona_lvs
   PIN spike
     ANTENNADIFFAREA 0.750000 ;
     PORT
+
       LAYER Metal4 ;
         RECT 54.670 21.535 56.670 23.535 ;
     END

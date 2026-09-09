@@ -8,14 +8,14 @@ DESIGN_NAME: layer_output
 VERILOG_FILES:
   - dir::layer_output.v
 
-FP_PIN_ORDER_CFG: dir::pin.cfg
+
 # --- Floorplaning ---
 FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 240
-  - 100
+  - 130
+  - 70
   # - 300
   # - 150
 #CORE_AREA:
@@ -27,28 +27,42 @@ DIE_AREA:
 # --- Alimentación y Potencia ---
 VDD_NETS:
   - vdd
-  - VDD
+
   
 GND_NETS:
   - vss
-  - VSS
+
+TOP_MARGIN_MULT: 2
+BOTTOM_MARGIN_MULT: 2
+#LEFT_MARGIN_MULT: 2
+#RIGHT_MARGIN_MULT: 2
+
+GRT_MACRO_EXTENSION: 10
+
+#FP_PIN_ORDER_CFG: dir::pin.cfg
+IO_PIN_ORDER_CFG: dir::pin.cfg
 # --- Desactivar Optimización y Reparación de Celdas Estándar Temporal en lo que arreglan lo de los capacitores :/, Esto se deberia de cambiar a true cuando se tenga cada uno de los parametros conectado a cada uno de sus pines, debido a que no se encuentran, esto se debe que libreline lo quiere reparar para llegar al vdd del elemento, pero como no existe da error, para evitar eso se desactivo temporalmente para seguir con el flujo lo mas deseado posible y observar que todo funciona correctamente---
 
 PDN_ENABLE_RAILS: false
 PDN_MULTILAYER: true
-PDN_VWIDTH: 1.2
-PDN_HWIDTH: 1.2
-PDN_VSPACING: 2
-PDN_HSPACING: 2
-PDN_VPITCH: 100
+PDN_VWIDTH: 2.0
+PDN_HWIDTH: 2.0
+PDN_VSPACING: 2.0
+PDN_HSPACING: 2.0
+
+PDN_VPITCH: 65
 PDN_HPITCH: 50
+
+PDN_VOFFSET: 10.0
+PDN_HOFFSET: 35.0
+
 PDN_CORE_RING: true
-PDN_CORE_RING_VWIDTH: 1.5
-PDN_CORE_RING_HWIDTH: 1.5
+PDN_CORE_RING_VWIDTH: 2
+PDN_CORE_RING_HWIDTH: 2
 PDN_CORE_RING_VSPACING: 1.5
 PDN_CORE_RING_HSPACING: 1.5
-PDN_VOFFSET: 20.0
-PDN_HOFFSET: 50.0
+
+
 # --- Conexiones de Potencia para los Macros ---
 PDN_MACRO_CONNECTIONS:
   - "x1 vdd vss vdd vss"
@@ -130,8 +144,8 @@ MACROS:
     instances:
 
       x1:
-        location: [20, 20]
+        location: [3, 10]
         orientation: N
       x2:
-        location: [120, 20]
+        location: [70, 10]
         orientation: N
