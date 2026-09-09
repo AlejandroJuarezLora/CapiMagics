@@ -27,31 +27,31 @@ library (layer_output) {
 
 
   cell ("layer_output") {
-    area : 9748.290 
+    area : 3331.600 
     is_macro_cell : true;
     pin("Iext1") {
       direction : input;
-      capacitance : 0.0047;
+      capacitance : 0.0076;
     }
     pin("Iext2") {
       direction : input;
-      capacitance : 0.0051;
+      capacitance : 0.0074;
     }
     pin("nvout_1") {
       direction : output;
-      capacitance : 0.0117;
+      capacitance : 0.0045;
     }
     pin("nvout_2") {
       direction : output;
-      capacitance : 0.0107;
+      capacitance : 0.0048;
     }
     pin("vout_1") {
       direction : output;
-      capacitance : 0.0075;
+      capacitance : 0.0074;
     }
     pin("vout_2") {
       direction : output;
-      capacitance : 0.0063;
+      capacitance : 0.0087;
     }
   }
 

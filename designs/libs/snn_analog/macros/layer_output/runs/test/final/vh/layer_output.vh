@@ -3,8 +3,6 @@ module layer_output(
 `ifdef USE_POWER_PINS
   inout vdd,
   inout vss,
-  inout VSS,
-  inout VDD,
 `endif
   input Iext1,
   output vout_1,
