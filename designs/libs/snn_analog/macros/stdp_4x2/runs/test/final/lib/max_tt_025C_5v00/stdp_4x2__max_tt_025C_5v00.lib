@@ -38,19 +38,19 @@ library (stdp_4x2) {
     }
     pin("ifwd1") {
       direction : output;
-      capacitance : 0.0152;
+      capacitance : 0.0156;
     }
     pin("ifwd2") {
       direction : output;
-      capacitance : 0.0111;
+      capacitance : 0.0106;
     }
     pin("nvpost1") {
       direction : input;
-      capacitance : 0.0519;
+      capacitance : 0.0541;
     }
     pin("nvpost2") {
       direction : input;
-      capacitance : 0.0474;
+      capacitance : 0.0486;
     }
     pin("nvpre1") {
       direction : input;
@@ -70,11 +70,11 @@ library (stdp_4x2) {
     }
     pin("vpost1") {
       direction : input;
-      capacitance : 0.0207;
+      capacitance : 0.0218;
     }
     pin("vpost2") {
       direction : input;
-      capacitance : 0.0228;
+      capacitance : 0.0259;
     }
     pin("vpre1") {
       direction : input;
@@ -94,11 +94,11 @@ library (stdp_4x2) {
     }
     pin("vw11") {
       direction : inout;
-      capacitance : 0.0753;
+      capacitance : 0.0761;
     }
     pin("vw42") {
       direction : inout;
-      capacitance : 0.0837;
+      capacitance : 0.0813;
     }
   }
 
