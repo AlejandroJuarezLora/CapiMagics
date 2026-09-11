@@ -6,13 +6,7 @@ module D14_topcell(
 `endif
   input Vin,
   input Vin_neg,
-  output vout_1,
-  output nvout_1,
-  output vout_2,
-  output nvout_2,
-  output vout_3,
-  output nvout_3,
-  output vout_4,
-  output nvout_4
+  output vw11,
+  output vw42
 );
 endmodule

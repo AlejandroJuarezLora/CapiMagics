@@ -6,12 +6,12 @@ DESIGN_NAME: D14_topcell
 
 # --- RTL del top ---
 VERILOG_FILES:
-  #- dir::macros/layer_input/layer_input.v
-  #- dir::macros/layer_output/layer_output.v
-  #- dir::encoder/encoder.v
-  #- dir::current_mirror/current_mirror.v
+  # - dir::macros/layer_input/layer_input.v
+  # - dir::macros/layer_output/layer_output.v
+  # - dir::encoder/encoder.v
+  # - dir::current_mirror/current_mirror.v
   - dir::D14_topcell.v
-  #- dir::macros/stdp_4x2/stdp_4x2.v
+  # - dir::macros/stdp_4x2/stdp_4x2.v
 
 
 # --- Parámetros de Floorplaning (Alineados a rejilla 7T GF180MCU) ---
@@ -19,8 +19,8 @@ FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 605
-  - 605
+  - 480
+  - 400
 # CORE_AREA:
 #   - 10.08
 #   - 11.76
@@ -42,28 +42,34 @@ ERROR_ON_NL_ASSIGN_STATEMENTS: false
 
 # ---- FLAGS PDN
 
-PDN_ENABLE_RAILS: false
+PDN_ENABLE_RAILS: true
 PDN_MULTILAYER: true
 PDN_VWIDTH: 1
 PDN_HWIDTH: 1
 PDN_VSPACING: 2
 PDN_HSPACING: 2
-PDN_VPITCH: 64
-PDN_HPITCH: 40
+PDN_VPITCH: 40 #64
+PDN_HPITCH: 40 #40
 PDN_CORE_RING: true
 PDN_CORE_RING_VWIDTH: 1.5
 PDN_CORE_RING_HWIDTH: 1.5
 PDN_CORE_RING_VSPACING: 1.5
 PDN_CORE_RING_HSPACING: 1.5
-PDN_VOFFSET: 30.0
-PDN_HOFFSET: 55.0
+PDN_VOFFSET: 20.0
+PDN_HOFFSET: 30.0
 
-
+# IGNORE_DISCONNECTED_MODULES:
+  # - stdp_4x2
+  # - current_mirror
+  # - layer_output
 
 # Conexión directa de alimentación a los pines y rieles de cada macro
 PDN_MACRO_CONNECTIONS:
   - "u_encoder avdd avss vdd vss"
   - "u_layer_input vdd vss avdd avss"
+  - "u_layer_output vdd vss vdd vss"
+  - "u_current_mirror avdd avss avdd avss"
+  - "u_stdp_4x2 avdd avss avdd avss"
 
 
 # --- Blackbox & Analog Optimization (Valid LibreLane Flags) ---
@@ -80,18 +86,18 @@ ERROR_ON_PDN_VIOLATIONS: false
 
 
 # --- Direct LEF/GDS Blackbox Include ---
-#EXTRA_LEFS:
-  #- /foss/designs/libs/snn_analog/macros/layer_input/layer_input.lef
-  #- /foss/designs/libs/snn_analog/macros/layer_output/layer_output.lef
-  #- /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.lef
-  #- /foss/designs/libs/snn_analog/encoder/encoder.lef
-  #- /foss/designs/libs/snn_analog/current_mirror/current_mirror.lef
-#EXTRA_GDS:
-  #- /foss/designs/libs/snn_analog/macros/layer_input/layer_input.gds
-  #- /foss/designs/libs/snn_analog/macros/layer_output/layer_output.gds
-  #- /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.gds
-  #- /foss/designs/libs/snn_analog/encoder/encoder.gds
-  #- /foss/designs/libs/snn_analog/current_mirror/current_mirror.gds
+# EXTRA_LEFS:
+#   - /foss/designs/libs/snn_analog/macros/layer_input/layer_input.lef
+#   - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.lef
+#   - /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.lef
+#   - /foss/designs/libs/snn_analog/encoder/encoder.lef
+#   - /foss/designs/libs/snn_analog/current_mirror/current_mirror.lef
+# EXTRA_GDS:
+#   - /foss/designs/libs/snn_analog/macros/layer_input/layer_input.gds
+#   - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.gds
+#   - /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.gds
+#   - /foss/designs/libs/snn_analog/encoder/encoder.gds
+#   - /foss/designs/libs/snn_analog/current_mirror/current_mirror.gds
 
 # --- Routing (GF180MCU) ---
 PRIMARY_GDSII_STREAMOUT_TOOL: klayout
@@ -136,19 +142,19 @@ GRT_ALLOW_CONGESTION: true
 
 # --- Definición de Macros Analógicos ---
 MACROS:
-#   stdp_4x2:
-#     gds:
-#       - dir::/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.gds
-#     lef:
-#       - dir::/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.lef
-#     spice:
-#       - dir::/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.spice
-#     vh:
-#       - dir::/foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.v
-#     instances:
-#       x1:
-#         location: [5, 50]
-#         orientation: N
+  stdp_4x2:
+    gds:
+      - /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.gds
+    lef:
+      - /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.lef
+    spice:
+      - /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.spice
+    vh:
+      - /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.pnl.v
+    instances:
+      u_stdp_4x2:
+        location: [190, 80]
+        orientation: N
 
   encoder:
     gds:
@@ -161,22 +167,22 @@ MACROS:
       - /foss/designs/libs/snn_analog/encoder/encoder.v
     instances:
       u_encoder:
-        location: [30, 300]
+        location: [20, 320]
         orientation: N
   
-  # current_mirror:
-  #   gds:
-  #     - current_mirror/current_mirror.gds
-  #   lef:
-  #     - current_mirror/current_mirror.lef
-  #   spice:
-  #     - current_mirror/current_mirror_sch.spice
-  #   vh:
-  #     - current_mirror/current_mirror.v
-  #   instances:
-  #     x9:
-  #       location: [33, 100]
-  #       orientation: N
+  current_mirror:
+    gds:
+      - /foss/designs/libs/snn_analog/current_mirror/current_mirror.gds
+    lef:
+      - /foss/designs/libs/snn_analog/current_mirror/current_mirror.lef
+    spice:
+      - /foss/designs/libs/snn_analog/current_mirror/current_mirror.spice
+    vh:
+      - /foss/designs/libs/snn_analog/current_mirror/current_mirror.v
+    instances:
+      u_current_mirror:
+        location: [185, 30]
+        orientation: N
 
   layer_input:
     gds:
@@ -189,19 +195,19 @@ MACROS:
       - macros/layer_input/layer_input.pnl.v
     instances:
       u_layer_input:
-        location: [110, 20]
+        location: [20, 110]
         orientation: N
 
-  # layer_output:
-  #   gds:
-  #     - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.gds
-  #   lef:
-  #     - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.lef
-  #   spice:
-  #     - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.spice
-  #   vh:
-  #     - macros/layer_output/layer_output.v
-  #   instances:
-  #     x2:
-  #       location: [277, 5]
-  #       orientation: N
+  layer_output:
+    gds:
+      - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.gds
+    lef:
+      - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.lef
+    spice:
+      - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.spice
+    vh:
+      - macros/layer_output/layer_output.pnl.v
+    instances:
+      u_layer_output:
+        location: [20, 20]
+        orientation: N

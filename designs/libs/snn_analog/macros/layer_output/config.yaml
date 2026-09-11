@@ -15,7 +15,7 @@ DIE_AREA:
   - 0
   - 0
   - 130
-  - 70
+  - 75 #70
   # - 300
   # - 150
 #CORE_AREA:
@@ -32,12 +32,12 @@ VDD_NETS:
 GND_NETS:
   - vss
 
-TOP_MARGIN_MULT: 2
-BOTTOM_MARGIN_MULT: 2
+# TOP_MARGIN_MULT: 2
+# BOTTOM_MARGIN_MULT: 2
 #LEFT_MARGIN_MULT: 2
 #RIGHT_MARGIN_MULT: 2
 
-GRT_MACRO_EXTENSION: 10
+# GRT_MACRO_EXTENSION: 10
 
 #FP_PIN_ORDER_CFG: dir::pin.cfg
 IO_PIN_ORDER_CFG: dir::pin.cfg
@@ -51,7 +51,7 @@ PDN_VSPACING: 2.0
 PDN_HSPACING: 2.0
 
 PDN_VPITCH: 65
-PDN_HPITCH: 50
+PDN_HPITCH: 55 #50
 
 PDN_VOFFSET: 10.0
 PDN_HOFFSET: 35.0
@@ -144,8 +144,8 @@ MACROS:
     instances:
 
       x1:
-        location: [3, 10]
+        location: [7, 15]
         orientation: N
       x2:
-        location: [70, 10]
+        location: [70, 15]
         orientation: N
