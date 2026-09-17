@@ -1,6 +1,6 @@
 *SPEF "ieee 1481-1999"
 *DESIGN "layer_output"
-*DATE "03:01:39 Wednesday September 09, 2026"
+*DATE "18:39:42 Thursday September 17, 2026"
 *VENDOR "The OpenROAD Project"
 *PROGRAM "OpenROAD"
 *VERSION "26Q1-1024-gdcf36133a"
@@ -31,72 +31,72 @@ nvout_2 O
 vout_1 O
 vout_2 O
 
-*D_NET *1 0.00703822
+*D_NET *1 0.00562492
 *CONN
 *P Iext1 I
 *I *8:Iin I *D neurona_lvs
 *CAP
-1 Iext1 0.00351911
-2 *8:Iin 0.00351911
+1 Iext1 0.00281246
+2 *8:Iin 0.00281246
 *RES
-1 Iext1 *8:Iin 37.782 
+1 Iext1 *8:Iin 31.0854 
 *END
 
-*D_NET *2 0.00684165
+*D_NET *2 0.00583792
 *CONN
 *P Iext2 I
 *I *9:Iin I *D neurona_lvs
 *CAP
-1 Iext2 0.00342083
-2 *9:Iin 0.00342083
+1 Iext2 0.00291896
+2 *9:Iin 0.00291896
 *RES
-1 Iext2 *9:Iin 36.1429 
+1 Iext2 *9:Iin 31.4454 
 *END
 
-*D_NET *3 0.00373495
+*D_NET *3 0.00636164
 *CONN
 *P nvout_1 O
 *I *8:spike_neg I *D neurona_lvs
 *CAP
-1 nvout_1 0.00183141
-2 *8:spike_neg 0.00183141
-3 *8:spike_neg *8:spike 7.21403e-05
+1 nvout_1 0.00126963
+2 *8:spike_neg 0.00126963
+3 *8:spike_neg *8:spike 0.00382238
 *RES
-1 nvout_1 *8:spike_neg 23.6218 
+1 nvout_1 *8:spike_neg 26.3282 
 *END
 
-*D_NET *4 0.00397628
+*D_NET *4 0.00505673
 *CONN
 *P nvout_2 O
 *I *9:spike_neg I *D neurona_lvs
 *CAP
-1 nvout_2 0.00181816
-2 *9:spike_neg 0.00181816
-3 *9:spike_neg *9:spike 0.000339952
+1 nvout_2 0.00177202
+2 *9:spike_neg 0.00177202
+3 *9:spike_neg *9:spike 0.00151269
 *RES
-1 nvout_2 *9:spike_neg 24.3418 
+1 nvout_2 *9:spike_neg 25.7882 
 *END
 
-*D_NET *6 0.00684489
+*D_NET *6 0.00860273
 *CONN
 *P vout_1 O
 *I *8:spike I *D neurona_lvs
 *CAP
-1 vout_1 0.00338637
-2 *8:spike 0.00338637
-3 *8:spike_neg *8:spike 7.21403e-05
+1 vout_1 0.00239017
+2 *8:spike 0.00239017
+3 *8:spike_neg *8:spike 0.00382238
 *RES
-1 vout_1 *8:spike 34.7046 
+1 vout_1 *8:spike 35.6304 
 *END
 
-*D_NET *7 0.00829466
+*D_NET *7 0.00730383
 *CONN
 *P vout_2 O
 *I *9:spike I *D neurona_lvs
 *CAP
-1 vout_2 0.00397735
-2 *9:spike 0.00397735
-3 *9:spike_neg *9:spike 0.000339952
+1 vout_2 0.00289557
+2 *9:spike 0.00289557
+3 *9:spike_neg *9:spike 0.00151269
 *RES
-1 vout_2 *9:spike 34.9119 
+1 vout_2 *9:spike 35.0904 
 *END

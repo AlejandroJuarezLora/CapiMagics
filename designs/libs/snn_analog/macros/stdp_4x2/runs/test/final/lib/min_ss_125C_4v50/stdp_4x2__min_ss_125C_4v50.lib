@@ -30,47 +30,47 @@ library (stdp_4x2) {
     is_macro_cell : true;
     pin("A") {
       direction : inout;
-      capacitance : 0.1276;
+      capacitance : 0.1274;
     }
     pin("B") {
       direction : inout;
-      capacitance : 0.1321;
+      capacitance : 0.1319;
     }
     pin("ifwd1") {
       direction : output;
-      capacitance : 0.0124;
+      capacitance : 0.0125;
     }
     pin("ifwd2") {
       direction : output;
-      capacitance : 0.0086;
+      capacitance : 0.0084;
     }
     pin("nvpost1") {
       direction : input;
-      capacitance : 0.0428;
+      capacitance : 0.0419;
     }
     pin("nvpost2") {
       direction : input;
-      capacitance : 0.0394;
+      capacitance : 0.0392;
     }
     pin("nvpre1") {
       direction : input;
-      capacitance : 0.0168;
+      capacitance : 0.0166;
     }
     pin("nvpre2") {
       direction : input;
-      capacitance : 0.0119;
+      capacitance : 0.0118;
     }
     pin("nvpre3") {
       direction : input;
-      capacitance : 0.0117;
+      capacitance : 0.0116;
     }
     pin("nvpre4") {
       direction : input;
-      capacitance : 0.0151;
+      capacitance : 0.0149;
     }
     pin("vpost1") {
       direction : input;
-      capacitance : 0.0190;
+      capacitance : 0.0181;
     }
     pin("vpost2") {
       direction : input;
@@ -78,27 +78,27 @@ library (stdp_4x2) {
     }
     pin("vpre1") {
       direction : input;
-      capacitance : 0.0150;
+      capacitance : 0.0148;
     }
     pin("vpre2") {
       direction : input;
-      capacitance : 0.0122;
+      capacitance : 0.0121;
     }
     pin("vpre3") {
       direction : input;
-      capacitance : 0.0136;
+      capacitance : 0.0134;
     }
     pin("vpre4") {
       direction : input;
-      capacitance : 0.0135;
+      capacitance : 0.0133;
     }
     pin("vw11") {
       direction : inout;
-      capacitance : 0.0757;
+      capacitance : 0.0754;
     }
     pin("vw42") {
       direction : inout;
-      capacitance : 0.0803;
+      capacitance : 0.0802;
     }
   }
 

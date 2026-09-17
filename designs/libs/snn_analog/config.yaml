@@ -74,8 +74,8 @@ PDN_MACRO_CONNECTIONS:
 
 # --- Blackbox & Analog Optimization (Valid LibreLane Flags) ---
 PL_TIMING_DRIVEN: false            # Disables OpenROAD timing-driven placement
-RUN_POST_GPL_DESIGN_REPAIR: false
-RUN_REPAIR_DESIGN: false
+RUN_POST_GPL_DESIGN_REPAIR: true
+RUN_REPAIR_DESIGN: true
 RUN_CTS: false
 RUN_POST_CTS_RESIZER_TIMING: false
 RUN_POST_GRT_RESIZER_TIMING: false
@@ -140,17 +140,19 @@ ROUTING_CORES: 12
 GRT_ALLOW_CONGESTION: true
 
 
+
+
 # --- Definición de Macros Analógicos ---
 MACROS:
   stdp_4x2:
     gds:
-      - /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.gds
+      - /foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/final/gds/stdp_4x2.gds
     lef:
-      - /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.lef
+      - /foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/final/lef/stdp_4x2.lef
     spice:
-      - /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.spice
+      - /foss/designs/libs/snn_analog/macros/stdp_4x2/runs/test/final/spice/stdp_4x2.spice
     vh:
-      - /foss/designs/libs/snn_analog/macros/stdp_4x2/stdp_4x2.pnl.v
+      - /foss/designs/libs/snn_analog/macros/stdp_4x2//runs/test/final/pnl/stdp_4x2.pnl.v
     instances:
       u_stdp_4x2:
         location: [190, 80]
@@ -186,13 +188,13 @@ MACROS:
 
   layer_input:
     gds:
-      - /foss/designs/libs/snn_analog/macros/layer_input/layer_input.gds
+      - /foss/designs/libs/snn_analog/macros/layer_input/runs/test/final/gds/layer_input.gds
     lef:
-      - /foss/designs/libs/snn_analog/macros/layer_input/layer_input.lef
+      - /foss/designs/libs/snn_analog/macros/layer_input/runs/test/final/lef/layer_input.lef
     spice:
-      - /foss/designs/libs/snn_analog/macros/layer_input/layer_input.spice
+      - /foss/designs/libs/snn_analog/macros/layer_input/runs/test/final/spice/layer_input.spice
     pnl:
-      - macros/layer_input/layer_input.pnl.v
+      - macros/layer_input/runs/test/final/pnl/layer_input.pnl.v
     instances:
       u_layer_input:
         location: [20, 110]
@@ -200,13 +202,13 @@ MACROS:
 
   layer_output:
     gds:
-      - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.gds
+      - /foss/designs/libs/snn_analog/macros/layer_output/runs/test/final/gds/layer_output.gds
     lef:
-      - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.lef
+      - /foss/designs/libs/snn_analog/macros/layer_output/runs/test/final/lef/layer_output.lef
     spice:
-      - /foss/designs/libs/snn_analog/macros/layer_output/layer_output.spice
+      - /foss/designs/libs/snn_analog/macros/layer_output/runs/test/final/spice/layer_output.spice
     vh:
-      - macros/layer_output/layer_output.pnl.v
+      - macros/layer_output/runs/test/final/pnl/layer_output.pnl.v
     instances:
       u_layer_output:
         location: [20, 20]

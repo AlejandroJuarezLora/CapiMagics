@@ -31,9 +31,23 @@ module D14_topcell (Vin,
  wire vpre2_int;
  wire vpre3_int;
  wire vpre4_int;
+ wire net1;
+ wire net2;
  wire vdd;
  wire vss;
 
+ gf180mcu_fd_sc_mcu7t5v0__dlyb_1 output1 (.I(net1),
+    .Z(vw11),
+    .VDD(avdd),
+    .VNW(avdd),
+    .VPW(avss),
+    .VSS(avss));
+ gf180mcu_fd_sc_mcu7t5v0__dlyb_1 output2 (.I(net2),
+    .Z(vw42),
+    .VDD(avdd),
+    .VNW(avdd),
+    .VPW(avss),
+    .VSS(avss));
  current_mirror u_current_mirror (.avss(avss),
     .avdd(avdd));
  encoder u_encoder (.vss(avss),
@@ -84,6 +98,6 @@ module D14_topcell (Vin,
     .vpre2(vpre2_int),
     .vpre3(vpre3_int),
     .vpre4(vpre4_int),
-    .vw11(vw11),
-    .vw42(vw42));
+    .vw11(net1),
+    .vw42(net2));
 endmodule

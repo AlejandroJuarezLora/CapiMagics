@@ -27,6 +27,7 @@ library (D14_topcell) {
 
 
   cell ("D14_topcell") {
+    area : 70.246 
     is_macro_cell : true;
     pin("Vin") {
       direction : input;
@@ -34,15 +35,15 @@ library (D14_topcell) {
     }
     pin("Vin_neg") {
       direction : input;
-      capacitance : 0.0053;
+      capacitance : 0.0048;
     }
     pin("vw11") {
       direction : output;
-      capacitance : 0.0058;
+      capacitance : 0.0019;
     }
     pin("vw42") {
       direction : output;
-      capacitance : 0.0046;
+      capacitance : 0.0011;
     }
   }
 

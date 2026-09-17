@@ -1,6 +1,6 @@
 *SPEF "ieee 1481-1999"
 *DESIGN "layer_output"
-*DATE "03:01:39 Wednesday September 09, 2026"
+*DATE "18:39:42 Thursday September 17, 2026"
 *VENDOR "The OpenROAD Project"
 *PROGRAM "OpenROAD"
 *VERSION "26Q1-1024-gdcf36133a"
@@ -31,72 +31,72 @@ nvout_2 O
 vout_1 O
 vout_2 O
 
-*D_NET *1 0.00758035
+*D_NET *1 0.0059618
 *CONN
 *P Iext1 I
 *I *8:Iin I *D neurona_lvs
 *CAP
-1 Iext1 0.00379018
-2 *8:Iin 0.00379018
+1 Iext1 0.0029809
+2 *8:Iin 0.0029809
 *RES
-1 Iext1 *8:Iin 40.8853 
+1 Iext1 *8:Iin 34.5209 
 *END
 
-*D_NET *2 0.00736495
+*D_NET *2 0.00620474
 *CONN
 *P Iext2 I
 *I *9:Iin I *D neurona_lvs
 *CAP
-1 Iext2 0.00368248
-2 *9:Iin 0.00368248
+1 Iext2 0.00310237
+2 *9:Iin 0.00310237
 *RES
-1 Iext2 *9:Iin 38.998 
+1 Iext2 *9:Iin 34.9369 
 *END
 
-*D_NET *3 0.00395547
+*D_NET *3 0.00691301
 *CONN
 *P nvout_1 O
 *I *8:spike_neg I *D neurona_lvs
 *CAP
-1 nvout_1 0.00194027
-2 *8:spike_neg 0.00194027
-3 *8:spike_neg *8:spike 7.4935e-05
+1 nvout_1 0.00135683
+2 *8:spike_neg 0.00135683
+3 *8:spike_neg *8:spike 0.00419935
 *RES
-1 nvout_1 *8:spike_neg 25.8963 
+1 nvout_1 *8:spike_neg 29.0237 
 *END
 
-*D_NET *4 0.0042142
+*D_NET *4 0.00545792
 *CONN
 *P nvout_2 O
 *I *9:spike_neg I *D neurona_lvs
 *CAP
-1 nvout_2 0.00193031
-2 *9:spike_neg 0.00193031
-3 *9:spike_neg *9:spike 0.000353572
+1 nvout_2 0.00188344
+2 *9:spike_neg 0.00188344
+3 *9:spike_neg *9:spike 0.00169104
 *RES
-1 nvout_2 *9:spike_neg 26.7283 
+1 nvout_2 *9:spike_neg 28.3997 
 *END
 
-*D_NET *6 0.00731872
+*D_NET *6 0.00926166
 *CONN
 *P vout_1 O
 *I *8:spike I *D neurona_lvs
 *CAP
-1 vout_1 0.00362189
-2 *8:spike 0.00362189
-3 *8:spike_neg *8:spike 7.4935e-05
+1 vout_1 0.00253115
+2 *8:spike 0.00253115
+3 *8:spike_neg *8:spike 0.00419935
 *RES
-1 vout_1 *8:spike 37.3691 
+1 vout_1 *8:spike 39.7729 
 *END
 
-*D_NET *7 0.00893496
+*D_NET *7 0.00781326
 *CONN
 *P vout_2 O
 *I *9:spike I *D neurona_lvs
 *CAP
-1 vout_2 0.0042907
-2 *9:spike 0.0042907
-3 *9:spike_neg *9:spike 0.000353572
+1 vout_2 0.00306111
+2 *9:spike 0.00306111
+3 *9:spike_neg *9:spike 0.00169104
 *RES
-1 vout_2 *9:spike 37.607 
+1 vout_2 *9:spike 39.1489 
 *END

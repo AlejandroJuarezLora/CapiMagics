@@ -116,6 +116,11 @@ RT_MAX_LAYER: Metal5
 ROUTING_CORES: 12
 GRT_ALLOW_CONGESTION: true
 
+IO_PIN_H_LENGTH: 2.5
+IO_PIN_V_LENGTH: 2.5
+IO_PIN_V_THICKNESS_MULT: 3
+IO_PIN_H_THICKNESS_MULT: 3
+
 # --- Analog Macro Instantiation ---
 MACROS:
   neurona_lvs:
@@ -133,15 +138,15 @@ MACROS:
       "*":
         - /foss/designs/libs/snn_analog/lif/neurona_lvs.lib
     instances:
-      x1:
+      x4:
         location: [20, 20] #30
         orientation: N
-      x2:
+      x3:
         location: [20, 60] #130
         orientation: N
-      x3:
+      x2:
         location: [20, 100] #230
         orientation: N
-      x4:
+      x1:
         location: [20, 140] #330
         orientation: N
