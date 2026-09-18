@@ -14,8 +14,8 @@ FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 130
-  - 75 #75
+  - 140
+  - 80 #75
   # - 300
   # - 150
 #CORE_AREA:
@@ -54,7 +54,7 @@ PDN_VPITCH: 65 #65
 PDN_HPITCH: 50 #50
 
 PDN_VOFFSET: 10.0 #10
-PDN_HOFFSET: 35.0 #35
+PDN_HOFFSET: 40.0 #35
 
 PDN_CORE_RING: true
 PDN_CORE_RING_VWIDTH: 2
@@ -164,8 +164,8 @@ MACROS:
     instances:
 
       x1:
-        location: [7, 15]
+        location: [13, 15]
         orientation: N
       x2:
-        location: [70, 15]
+        location: [75, 15]
         orientation: N
