@@ -28,7 +28,8 @@ module D14_topcell (Vin,
  wire vpre3_int;
  wire vpre4_int;
 
- current_mirror u_current_mirror ();
+ current_mirror u_current_mirror (.A(A_wire),
+    .B(B_wire));
  encoder u_encoder (.Vin(Vin),
     .Vin_neg(Vin_neg),
     .Iex_1_i(net3),

@@ -35,7 +35,9 @@ module D14_topcell (Vin,
  wire vss;
 
  current_mirror u_current_mirror (.avss(avss),
-    .avdd(avdd));
+    .avdd(avdd),
+    .A(A_wire),
+    .B(B_wire));
  encoder u_encoder (.vss(avss),
     .vdd(avdd),
     .Vin(Vin),
@@ -62,10 +64,10 @@ module D14_topcell (Vin,
     .Iext2(ifwd2_net),
     .nvout_1(nvpost1_net),
     .nvout_2(nvpost2_net),
-    .vdd(vdd),
+    .vdd(avdd),
     .vout_1(vpost1_net),
     .vout_2(vpost2_net),
-    .vss(vss));
+    .vss(avss));
  stdp_4x2 u_stdp_4x2 (.A(A_wire),
     .B(B_wire),
     .avdd(avdd),

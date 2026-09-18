@@ -9,7 +9,6 @@ VERILOG_FILES:
   # - dir::macros/layer_input/layer_input.v
   # - dir::macros/layer_output/layer_output.v
   # - dir::encoder/encoder.v
-  # - dir::current_mirror/current_mirror.v
   - dir::D14_topcell.v
   # - dir::macros/stdp_4x2/stdp_4x2.v
 
@@ -67,7 +66,7 @@ PDN_HOFFSET: 30.0
 PDN_MACRO_CONNECTIONS:
   - "u_encoder avdd avss vdd vss"
   - "u_layer_input vdd vss avdd avss"
-  - "u_layer_output vdd vss vdd vss"
+  - "u_layer_output avdd avss vdd vss"
   - "u_current_mirror avdd avss avdd avss"
   - "u_stdp_4x2 avdd avss avdd avss"
 
