@@ -19,8 +19,8 @@ FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 480
-  - 400
+  - 410 #460
+  - 390 #390
 # CORE_AREA:
 #   - 10.08
 #   - 11.76
@@ -74,8 +74,8 @@ PDN_MACRO_CONNECTIONS:
 
 # --- Blackbox & Analog Optimization (Valid LibreLane Flags) ---
 PL_TIMING_DRIVEN: false            # Disables OpenROAD timing-driven placement
-RUN_POST_GPL_DESIGN_REPAIR: true
-RUN_REPAIR_DESIGN: true
+RUN_POST_GPL_DESIGN_REPAIR: false
+RUN_REPAIR_DESIGN: false
 RUN_CTS: false
 RUN_POST_CTS_RESIZER_TIMING: false
 RUN_POST_GRT_RESIZER_TIMING: false
@@ -137,11 +137,33 @@ MAGIC_EXT_UNIQUE: notopports
 RT_MIN_LAYER: Metal3
 RT_MAX_LAYER: Metal5
 ROUTING_CORES: 12
-GRT_ALLOW_CONGESTION: true
+#GRT_ALLOW_CONGESTION: true
+#GRT_ADJUSTMENT: 0.5
+
+NON_DEFAULT_RULES:
+  ndr_safe_spacing:
+    width:
+      - Metal3
+      - "0.28"
+    spacing:
+      - Metal3
+      - "1"
+
+DRT_ASSIGN_NDR:
+  ".*": ndr_safe_spacing
 
 
+RUN_ANTENNA_REPAIR: true
 
+GRT_ANTENNA_REPAIR_ITERS: 10
+GRT_ANTENNA_REPAIR_MARGIN: 10
 
+GRT_ANTENNA_REPAIR_JUMPER_ONLY: true
+GRT_ANTENNA_REPAIR_DIODE_ONLY: false
+DRT_ANTENNA_REPAIR_JUMPER_ONLY: true
+DRT_ANTENNA_REPAIR_DIODE_ONLY: false
+
+IO_PIN_ORDER_CFG: dir::pin.cfg
 # --- Definición de Macros Analógicos ---
 MACROS:
   stdp_4x2:
@@ -155,7 +177,7 @@ MACROS:
       - /foss/designs/libs/snn_analog/macros/stdp_4x2//runs/test/final/pnl/stdp_4x2.pnl.v
     instances:
       u_stdp_4x2:
-        location: [190, 80]
+        location: [150, 110]
         orientation: N
 
   encoder:
@@ -169,7 +191,7 @@ MACROS:
       - /foss/designs/libs/snn_analog/encoder/encoder.v
     instances:
       u_encoder:
-        location: [20, 320]
+        location: [20, 346]
         orientation: N
   
   current_mirror:
@@ -183,7 +205,7 @@ MACROS:
       - /foss/designs/libs/snn_analog/current_mirror/current_mirror.v
     instances:
       u_current_mirror:
-        location: [185, 30]
+        location: [103, 95] #185,30
         orientation: N
 
   layer_input:
@@ -197,7 +219,7 @@ MACROS:
       - macros/layer_input/runs/test/final/pnl/layer_input.pnl.v
     instances:
       u_layer_input:
-        location: [20, 110]
+        location: [20, 136]
         orientation: N
 
   layer_output:
@@ -211,5 +233,5 @@ MACROS:
       - macros/layer_output/runs/test/final/pnl/layer_output.pnl.v
     instances:
       u_layer_output:
-        location: [20, 20]
+        location: [150, 20] #20,20
         orientation: N
