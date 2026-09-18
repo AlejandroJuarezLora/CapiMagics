@@ -1,8 +1,8 @@
 module current_mirror(
-    inout Avdd, 
-    inout Avss,
-    output B,
-    output A
+    inout avdd, 
+    inout avss,
+    output A,
+    output B
 );
 endmodule
 
