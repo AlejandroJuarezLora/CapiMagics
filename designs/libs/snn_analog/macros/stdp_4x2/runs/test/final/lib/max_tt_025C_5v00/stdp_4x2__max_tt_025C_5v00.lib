@@ -30,59 +30,59 @@ library (stdp_4x2) {
     is_macro_cell : true;
     pin("A") {
       direction : inout;
-      capacitance : 0.1379;
+      capacitance : 0.1230;
     }
     pin("B") {
       direction : inout;
-      capacitance : 0.1429;
+      capacitance : 0.1261;
     }
     pin("ifwd1") {
       direction : output;
-      capacitance : 0.0157;
+      capacitance : 0.0116;
     }
     pin("ifwd2") {
       direction : output;
-      capacitance : 0.0103;
+      capacitance : 0.0063;
     }
     pin("nvpost1") {
       direction : input;
-      capacitance : 0.0529;
+      capacitance : 0.0316;
     }
     pin("nvpost2") {
       direction : input;
-      capacitance : 0.0483;
+      capacitance : 0.0299;
     }
     pin("nvpre1") {
       direction : input;
-      capacitance : 0.0193;
+      capacitance : 0.0189;
     }
     pin("nvpre2") {
       direction : input;
-      capacitance : 0.0134;
+      capacitance : 0.0139;
     }
     pin("nvpre3") {
       direction : input;
-      capacitance : 0.0131;
+      capacitance : 0.0134;
     }
     pin("nvpre4") {
       direction : input;
-      capacitance : 0.0175;
+      capacitance : 0.0149;
     }
     pin("vpost1") {
       direction : input;
-      capacitance : 0.0205;
+      capacitance : 0.0213;
     }
     pin("vpost2") {
       direction : input;
-      capacitance : 0.0259;
+      capacitance : 0.0231;
     }
     pin("vpre1") {
       direction : input;
-      capacitance : 0.0172;
+      capacitance : 0.0173;
     }
     pin("vpre2") {
       direction : input;
-      capacitance : 0.0136;
+      capacitance : 0.0137;
     }
     pin("vpre3") {
       direction : input;
@@ -94,7 +94,7 @@ library (stdp_4x2) {
     }
     pin("vw11") {
       direction : inout;
-      capacitance : 0.0758;
+      capacitance : 0.0757;
     }
     pin("vw42") {
       direction : inout;

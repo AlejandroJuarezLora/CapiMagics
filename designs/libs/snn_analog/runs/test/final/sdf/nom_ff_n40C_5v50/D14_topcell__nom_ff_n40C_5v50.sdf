@@ -1,7 +1,7 @@
 (DELAYFILE
  (SDFVERSION "3.0")
  (DESIGN "D14_topcell")
- (DATE "Thu Sep 17 18:47:33 2026")
+ (DATE "Fri Sep 18 19:54:22 2026")
  (VENDOR "Parallax")
  (PROGRAM "STA")
  (VERSION "2.7.0")
@@ -12,28 +12,8 @@
   (INSTANCE)
   (DELAY
    (ABSOLUTE
-    (INTERCONNECT Vin u_encoder.Vin (0.017:0.017:0.017) (0.010:0.010:0.010))
-    (INTERCONNECT Vin_neg u_encoder.Vin_neg (0.032:0.032:0.032) (0.020:0.020:0.020))
-    (INTERCONNECT output1.Z vw11 (0.002:0.002:0.002) (0.002:0.002:0.002))
-    (INTERCONNECT output2.Z vw42 (0.002:0.002:0.002) (0.002:0.002:0.002))
-   )
-  )
- )
- (CELL
-  (CELLTYPE "gf180mcu_fd_sc_mcu7t5v0__dlyb_1")
-  (INSTANCE output1)
-  (DELAY
-   (ABSOLUTE
-    (IOPATH I Z (0.948:0.948:0.948) (0.892:0.892:0.892))
-   )
-  )
- )
- (CELL
-  (CELLTYPE "gf180mcu_fd_sc_mcu7t5v0__dlyb_1")
-  (INSTANCE output2)
-  (DELAY
-   (ABSOLUTE
-    (IOPATH I Z (0.943:0.943:0.943) (0.889:0.889:0.889))
+    (INTERCONNECT Vin u_encoder.Vin (0.153:0.153:0.153) (0.096:0.096:0.096))
+    (INTERCONNECT Vin_neg u_encoder.Vin_neg (0.089:0.089:0.089) (0.055:0.055:0.055))
    )
   )
  )

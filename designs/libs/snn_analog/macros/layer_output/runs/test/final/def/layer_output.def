@@ -22,6 +22,15 @@ VIAS 3 ;
     - via4_5_4000_2000_2_4_1040_1040 + VIARULE Via4_GEN_HH + CUTSIZE 520 520  + LAYERS Metal4 Via4 Metal5  + CUTSPACING 520 520  + ENCLOSURE 180 120 180 220  + ROWCOL 2 4  ;
     - via4_5_1000_1000_1_1_1040_1040 + VIARULE Via4_GEN_HH + CUTSIZE 520 520  + LAYERS Metal4 Via4 Metal5  + CUTSPACING 520 520  + ENCLOSURE 240 240 240 240  ;
 END VIAS
+NONDEFAULTRULES 1 ;
+    - ndr_safe_spacing
+      + LAYER Metal1 WIDTH 460
+      + LAYER Metal2 WIDTH 560
+      + LAYER Metal3 WIDTH 560 SPACING 3000
+      + LAYER Metal4 WIDTH 560
+      + LAYER Metal5 WIDTH 880
+    ;
+END NONDEFAULTRULES
 COMPONENTS 2 ;
     - x1 neurona_lvs + FIXED ( 14000 30000 ) N ;
     - x2 neurona_lvs + FIXED ( 140000 30000 ) N ;
@@ -29,20 +38,20 @@ END COMPONENTS
 PINS 8 ;
     - Iext1 + NET Iext1 + DIRECTION INPUT + USE SIGNAL
       + PORT
-        + LAYER Metal2 ( -840 -2500 ) ( 840 2500 )
-        + PLACED ( 63280 147500 ) N ;
+        + LAYER Metal3 ( -2800 -1500 ) ( 2800 1500 )
+        + PLACED ( 61040 148500 ) N ;
     - Iext2 + NET Iext2 + DIRECTION INPUT + USE SIGNAL
       + PORT
-        + LAYER Metal2 ( -840 -2500 ) ( 840 2500 )
-        + PLACED ( 193200 147500 ) N ;
+        + LAYER Metal3 ( -2800 -1500 ) ( 2800 1500 )
+        + PLACED ( 188720 148500 ) N ;
     - nvout_1 + NET nvout_1 + DIRECTION OUTPUT + USE SIGNAL
       + PORT
-        + LAYER Metal2 ( -840 -2500 ) ( 840 2500 )
-        + PLACED ( 96880 2500 ) N ;
+        + LAYER Metal3 ( -2800 -1500 ) ( 2800 1500 )
+        + PLACED ( 94640 1500 ) N ;
     - nvout_2 + NET nvout_2 + DIRECTION OUTPUT + USE SIGNAL
       + PORT
-        + LAYER Metal2 ( -840 -2500 ) ( 840 2500 )
-        + PLACED ( 226800 2500 ) N ;
+        + LAYER Metal3 ( -2800 -1500 ) ( 2800 1500 )
+        + PLACED ( 215600 1500 ) N ;
     - vdd + NET vdd + SPECIAL + DIRECTION INOUT + USE POWER
       + PORT
         + LAYER Metal5 ( -139480 -2000 ) ( 139480 2000 )
@@ -55,12 +64,12 @@ PINS 8 ;
         + FIXED ( 129920 101360 ) N ;
     - vout_1 + NET vout_1 + DIRECTION OUTPUT + USE SIGNAL
       + PORT
-        + LAYER Metal2 ( -840 -2500 ) ( 840 2500 )
-        + PLACED ( 31920 2500 ) N ;
+        + LAYER Metal3 ( -2800 -1500 ) ( 2800 1500 )
+        + PLACED ( 34160 1500 ) N ;
     - vout_2 + NET vout_2 + DIRECTION OUTPUT + USE SIGNAL
       + PORT
-        + LAYER Metal2 ( -840 -2500 ) ( 840 2500 )
-        + PLACED ( 161840 2500 ) N ;
+        + LAYER Metal3 ( -2800 -1500 ) ( 2800 1500 )
+        + PLACED ( 155120 1500 ) N ;
     - vss + NET vss + SPECIAL + DIRECTION INOUT + USE GROUND
       + PORT
         + LAYER Metal5 ( -139480 -2000 ) ( 139480 2000 )
@@ -127,45 +136,39 @@ SPECIALNETS 2 ;
       NEW Metal4 0 + SHAPE RING ( -7560 10360 ) via4_5_4000_4000_3_3_1240_1240 ;
 END SPECIALNETS
 NETS 8 ;
-    - Iext1 ( PIN Iext1 ) ( x1 Iin ) + USE SIGNAL
-      + ROUTED Metal4 ( 12880 117600 ) ( 15120 * )
-      NEW Metal4 ( 12880 63900 ) ( 15120 * 0 )
-      NEW Metal4 ( 12880 63900 ) ( * 117600 )
-      NEW Metal4 ( 15120 117600 ) ( * 146160 )
-      NEW Metal3 ( 15120 146160 ) ( 63280 * )
-      NEW Metal3 ( 15120 146160 ) Via3_HV
-      NEW Metal2 ( 63280 146160 ) Via2_VH ;
-    - Iext2 ( PIN Iext2 ) ( x2 Iin ) + USE SIGNAL
-      + ROUTED Metal4 ( 139440 117600 ) ( 141680 * )
-      NEW Metal4 ( 139440 63900 ) ( 140560 * 0 )
-      NEW Metal4 ( 139440 63900 ) ( * 117600 )
-      NEW Metal4 ( 141680 117600 ) ( * 146160 )
-      NEW Metal3 ( 141680 146160 ) ( 193200 * )
-      NEW Metal3 ( 141680 146160 ) Via3_HV
-      NEW Metal2 ( 193200 146160 ) Via2_VH ;
-    - nvout_1 ( PIN nvout_1 ) ( x1 spike_neg ) + USE SIGNAL
-      + ROUTED Metal4 ( 121520 560 ) ( * 80100 )
-      NEW Metal4 ( 121520 80100 ) ( 123760 * 0 )
-      NEW Metal3 ( 96880 560 ) ( 121520 * )
-      NEW Metal2 ( 96880 560 ) Via2_VH
-      NEW Metal3 ( 121520 560 ) Via3_HV ;
-    - nvout_2 ( PIN nvout_2 ) ( x2 spike_neg ) + USE SIGNAL
-      + ROUTED Metal4 ( 243600 560 ) ( * 80100 )
+    - Iext1 ( PIN Iext1 ) ( x1 Iin ) + USE SIGNAL + NONDEFAULTRULE ndr_safe_spacing
+      + ROUTED Metal4 ( 12880 63900 ) ( 15120 * 0 )
+      NEW Metal3 ( 12880 147280 ) ( 58800 * 0 )
+      NEW Metal4 ( 12880 63900 ) ( * 147280 )
+      NEW Metal3 ( 12880 147280 ) Via3_HV ;
+    - Iext2 ( PIN Iext2 ) ( x2 Iin ) + USE SIGNAL + NONDEFAULTRULE ndr_safe_spacing
+      + ROUTED Metal4 ( 139440 63900 ) ( 140560 * 0 )
+      NEW Metal3 ( 139440 147280 ) ( 186480 * 0 )
+      NEW Metal4 ( 139440 63900 ) ( * 147280 )
+      NEW Metal3 ( 139440 147280 ) Via3_HV ;
+    - nvout_1 ( PIN nvout_1 ) ( x1 spike_neg ) + USE SIGNAL + NONDEFAULTRULE ndr_safe_spacing
+      + ROUTED Metal3 ( 96880 2800 0 ) ( 118160 * )
+      NEW Metal4 ( 118160 2800 ) ( * 80100 )
+      NEW Metal4 ( 118160 80100 ) ( 123760 * 0 )
+      NEW Metal3 ( 118160 2800 ) Via3_HV ;
+    - nvout_2 ( PIN nvout_2 ) ( x2 spike_neg ) + USE SIGNAL + NONDEFAULTRULE ndr_safe_spacing
+      + ROUTED Metal3 ( 217840 2800 0 ) ( 243600 * )
+      NEW Metal4 ( 243600 2800 ) ( * 80100 )
       NEW Metal4 ( 243600 80100 ) ( 250320 * 0 )
-      NEW Metal3 ( 226800 560 ) ( 243600 * )
-      NEW Metal3 ( 243600 560 ) Via3_HV
-      NEW Metal2 ( 226800 560 ) Via2_VH ;
-    - vdd ( PIN vdd ) ( x2 vdd ) ( x1 vdd ) + USE POWER ;
-    - vout_1 ( PIN vout_1 ) ( x1 spike ) + USE SIGNAL
-      + ROUTED Metal4 ( 123760 1680 ) ( * 74700 0 )
-      NEW Metal3 ( 31920 1680 ) ( 123760 * )
-      NEW Metal2 ( 31920 1680 ) Via2_VH
-      NEW Metal3 ( 123760 1680 ) Via3_HV ;
-    - vout_2 ( PIN vout_2 ) ( x2 spike ) + USE SIGNAL
-      + ROUTED Metal4 ( 250320 1680 ) ( * 74700 0 )
-      NEW Metal3 ( 161840 1680 ) ( 250320 * )
-      NEW Metal3 ( 250320 1680 ) Via3_HV
-      NEW Metal2 ( 161840 1680 ) Via2_VH ;
-    - vss ( PIN vss ) ( x2 vss ) ( x1 vss ) + USE GROUND ;
+      NEW Metal3 ( 243600 2800 ) Via3_HV ;
+    - vdd ( PIN vdd ) ( x2 vdd ) ( x1 vdd ) + USE POWER + NONDEFAULTRULE ndr_safe_spacing ;
+    - vout_1 ( PIN vout_1 ) ( x1 spike ) + USE SIGNAL + NONDEFAULTRULE ndr_safe_spacing
+      + ROUTED Metal3 ( 36400 1680 0 ) ( 84000 * )
+      NEW Metal3 ( 84000 1680 ) ( * 7280 )
+      NEW Metal3 ( 84000 7280 ) ( 123760 * )
+      NEW Metal4 ( 123760 7280 ) ( * 74700 0 )
+      NEW Metal3 ( 123760 7280 ) Via3_HV ;
+    - vout_2 ( PIN vout_2 ) ( x2 spike ) + USE SIGNAL + NONDEFAULTRULE ndr_safe_spacing
+      + ROUTED Metal4 ( 250320 7280 ) ( * 74700 0 )
+      NEW Metal3 ( 201600 7280 ) ( 250320 * )
+      NEW Metal3 ( 157360 1680 0 ) ( 201600 * )
+      NEW Metal3 ( 201600 1680 ) ( * 7280 )
+      NEW Metal3 ( 250320 7280 ) Via3_HV ;
+    - vss ( PIN vss ) ( x2 vss ) ( x1 vss ) + USE GROUND + NONDEFAULTRULE ndr_safe_spacing ;
 END NETS
 END DESIGN

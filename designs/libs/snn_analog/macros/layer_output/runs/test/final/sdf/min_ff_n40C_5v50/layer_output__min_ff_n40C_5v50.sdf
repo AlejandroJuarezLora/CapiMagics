@@ -1,7 +1,7 @@
 (DELAYFILE
  (SDFVERSION "3.0")
  (DESIGN "layer_output")
- (DATE "Thu Sep 17 18:39:43 2026")
+ (DATE "Fri Sep 18 18:48:29 2026")
  (VENDOR "Parallax")
  (PROGRAM "STA")
  (VERSION "2.7.0")
@@ -12,11 +12,11 @@
   (INSTANCE)
   (DELAY
    (ABSOLUTE
-    (INTERCONNECT Iext1 x1.Iin (0.042:0.042:0.042) (0.026:0.026:0.026))
-    (INTERCONNECT Iext2 x2.Iin (0.044:0.044:0.044) (0.027:0.027:0.027))
-    (INTERCONNECT x1.spike vout_1 (0.002:0.002:0.002))
+    (INTERCONNECT Iext1 x1.Iin (0.041:0.041:0.041) (0.025:0.025:0.025))
+    (INTERCONNECT Iext2 x2.Iin (0.042:0.042:0.042) (0.026:0.026:0.026))
+    (INTERCONNECT x1.spike vout_1 (0.001:0.001:0.001))
     (INTERCONNECT x1.spike_neg nvout_1 (0.001:0.001:0.001))
-    (INTERCONNECT x2.spike vout_2 (0.002:0.002:0.002))
+    (INTERCONNECT x2.spike vout_2 (0.001:0.001:0.001))
     (INTERCONNECT x2.spike_neg nvout_2 (0.001:0.001:0.001))
    )
   )
