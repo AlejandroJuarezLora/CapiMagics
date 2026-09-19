@@ -7,6 +7,10 @@ module D14_topcell(
   input Vin,
   input Vin_neg,
   output vw11,
-  output vw42
+  output vw42,
+  output vpre1,
+  output vpre2,
+  output vpost1,
+  output vpost2
 );
 endmodule

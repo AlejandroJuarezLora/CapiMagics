@@ -31,6 +31,8 @@ VDD_NETS:
 GND_NETS:
   - avss
 
+PAD_LIBS: {} #para ignorar los pads de la librería de pads del PDK y usar los pads de la macro, se necesita ignoras las librerias de 5V0
+
 # --- Manejo de Verificaciones para Diseños Analógicos / Macros ---
 ERROR_ON_LINTER_ERRORS: false
 ERROR_ON_LINTER_WARNINGS: false

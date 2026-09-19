@@ -1,9 +1,17 @@
 module D14_topcell (Vin,
     Vin_neg,
+    vpost1,
+    vpost2,
+    vpre1,
+    vpre2,
     vw11,
     vw42);
  input Vin;
  input Vin_neg;
+ output vpost1;
+ output vpost2;
+ output vpre1;
+ output vpre2;
  output vw11;
  output vw42;
 
@@ -21,10 +29,6 @@ module D14_topcell (Vin,
  wire nvpre2_int;
  wire nvpre3_int;
  wire nvpre4_int;
- wire vpost1_net;
- wire vpost2_net;
- wire vpre1_int;
- wire vpre2_int;
  wire vpre3_int;
  wire vpre4_int;
 
@@ -44,16 +48,16 @@ module D14_topcell (Vin,
     .nvout_2(nvpre2_int),
     .nvout_3(nvpre3_int),
     .nvout_4(nvpre4_int),
-    .vout_1(vpre1_int),
-    .vout_2(vpre2_int),
+    .vout_1(vpre1),
+    .vout_2(vpre2),
     .vout_3(vpre3_int),
     .vout_4(vpre4_int));
  layer_output u_layer_output (.Iext1(ifwd1_net),
     .Iext2(ifwd2_net),
     .nvout_1(nvpost1_net),
     .nvout_2(nvpost2_net),
-    .vout_1(vpost1_net),
-    .vout_2(vpost2_net));
+    .vout_1(vpost1),
+    .vout_2(vpost2));
  stdp_4x2 u_stdp_4x2 (.A(A_wire),
     .B(B_wire),
     .ifwd1(ifwd1_net),
@@ -64,10 +68,10 @@ module D14_topcell (Vin,
     .nvpre2(nvpre2_int),
     .nvpre3(nvpre3_int),
     .nvpre4(nvpre4_int),
-    .vpost1(vpost1_net),
-    .vpost2(vpost2_net),
-    .vpre1(vpre1_int),
-    .vpre2(vpre2_int),
+    .vpost1(vpost1),
+    .vpost2(vpost2),
+    .vpre1(vpre1),
+    .vpre2(vpre2),
     .vpre3(vpre3_int),
     .vpre4(vpre4_int),
     .vw11(vw11),
