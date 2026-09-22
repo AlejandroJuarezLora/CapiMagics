@@ -13,8 +13,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-8e-05
-x2=0.00012
+x1=0
+x2=0.0002
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -35,8 +35,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-8e-05
-x2=0.00012
+x1=0
+x2=0.0002
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -57,8 +57,8 @@ ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-8e-05
-x2=0.00012
+x1=0
+x2=0.0002
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -72,15 +72,15 @@ logx=0
 logy=0
 }
 B 2 480 520 1280 920 {flags=graph
-y1=2.2217121
-y2=2.2351338
+y1=2.2230129
+y2=2.2285104
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
-x1=-8e-05
-x2=0.00012
+x1=0
+x2=0.0002
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -93,8 +93,96 @@ unitx=1
 logx=0
 logy=0
 }
+B 2 1500 120 2300 520 {flags=graph
+y1=-0.0014
+y2=6.7
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0
+x2=0.0002
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node="\\"N1pre; vpre1_pex\\"
+\\"N2pre; vpre2_pex 3.3 +\\""
+color="4 7"
+dataset=-1
+unitx=1
+logx=0
+logy=0
+}
+B 2 2350 120 3150 520 {flags=graph
+y1=0.523125
+y2=0.553125
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0
+x2=0.0002
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node="\\"N1post; vpost1_pex\\"
+\\"N2post; vpost2_pex \\""
+color="4 7"
+dataset=-1
+unitx=1
+logx=0
+logy=0
+}
+B 2 2350 540 3150 940 {flags=graph
+y1=-0.005
+y2=6.7
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0
+x2=0.0002
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node="\\"vw11; vw11_pex\\"
+\\"vw42; vw42_pex\\""
+color="4 5"
+dataset=-1
+unitx=1
+logx=0
+logy=0
+}
+B 2 1500 530 2300 930 {flags=graph
+y1=9e-11
+y2=3.3
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0
+x2=0.0002
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+node="\\"vin; vin\\"
+\\"vin_neg; vin_neg\\""
+color="4 7"
+dataset=-1
+unitx=1
+logx=0
+logy=0
+}
 C {full_4x2_lvs.sym} 250 -10 0 0 {name=x1
-spice_ignore=true}
+}
 C {vsource.sym} -190 20 0 0 {name=V2 value="SINE(1.65 1.65 5000 0 0 0)" savecurrent=false}
 C {vsource.sym} -50 20 0 0 {name=V3 value="SINE(1.65 1.65 5000 0 0 180)" savecurrent=false}
 C {gnd.sym} -50 50 0 0 {name=l21 lab=GND}
@@ -102,32 +190,35 @@ C {gnd.sym} -190 50 0 0 {name=l22 lab=GND}
 C {lab_pin.sym} -190 -10 0 0 {name=p13 sig_type=std_logic lab=Vin}
 C {lab_pin.sym} -50 -10 0 0 {name=p14 sig_type=std_logic lab=Vin_neg}
 C {lab_pin.sym} 100 -80 0 0 {name=p15 sig_type=std_logic lab=Vin
-spice_ignore=true}
+}
 C {lab_pin.sym} 100 -60 0 0 {name=p16 sig_type=std_logic lab=Vin_neg
-spice_ignore=true}
+}
 C {vsource.sym} -290 30 0 0 {name=V4 value=3.3 savecurrent=false}
 C {vdd.sym} -290 0 0 0 {name=l17 lab=VDD}
 C {gnd.sym} -290 60 0 0 {name=l18 lab=0}
 C {vdd.sym} 400 -80 1 0 {name=l1 lab=VDD
-spice_ignore=true}
+}
 C {gnd.sym} 400 -60 3 0 {name=l2 lab=0
-spice_ignore=true}
+}
 C {lab_pin.sym} 400 -40 0 1 {name=p3 sig_type=std_logic lab=vpre1
-spice_ignore=true}
+}
 C {lab_pin.sym} 400 -20 0 1 {name=p5 sig_type=std_logic lab=vpre2
-spice_ignore=true}
+}
 C {lab_pin.sym} 400 40 0 1 {name=p17 sig_type=std_logic lab=vpost1
-spice_ignore=true}
+}
 C {lab_pin.sym} 400 60 0 1 {name=p19 sig_type=std_logic lab=vpost2
-spice_ignore=true}
+}
 C {lab_pin.sym} 400 0 0 1 {name=p1 sig_type=std_logic lab=vw11
-spice_ignore=true}
+}
 C {lab_pin.sym} 400 20 0 1 {name=p2 sig_type=std_logic lab=vw42
-spice_ignore=true}
-C {code_shown.sym} -520 -310 0 0 {name=s1 only_toplevel=false value=".include /foss/designs/libs/snn_analog/sch/full_4x2_pex.spice
-.tran 1n 200u
-.save all
+}
+C {code_shown.sym} -520 -310 0 0 {name=s1 only_toplevel=false value=".include /foss/designs/libs/snn_analog/sch/D14_topcell_flat.spice
+.tran 10n 200u
+.save Vin vin_neg vpre1_pex vpre2_pex vw11_pex vw42_pex vpost1_pex vpost2_pex 
+.save vpre1 vpre2 vw11 vw42 vpost1 vpost2
 .control
+	set num_threads = 8
+	option klu
 	run
 	write tb_full_4x2_pl.raw
 .endc 
