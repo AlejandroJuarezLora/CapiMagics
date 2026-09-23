@@ -8,9 +8,12 @@ module D14_topcell (
     //salidas de stdp_4x2
     output vw11,
     output vw42,
+    output vpre1,
+    output vpre2,
+    output vpost1,
+    output vpost2,
     // input A,
     // input B,
-
 
     inout avdd,
     inout avss
@@ -40,7 +43,10 @@ module D14_topcell (
     wire A_wire;
     wire B_wire;
 
-
+    assign vpre1 = vpre1_int;
+    assign vpre2 = vpre2_int;
+    assign vpost1 = vpost1_net;
+    assign vpost2 = vpost2_net;
 
     // Instancia del encoder
     encoder u_encoder (

@@ -1,7 +1,7 @@
 magic
 tech gf180mcuD
 magscale 1 10
-timestamp 1789662996
+timestamp 1789772338
 << metal3 >>
 rect 19500 35476 20000 35532
 rect 16034 35420 16044 35476
@@ -1262,15 +1262,15 @@ flabel metal3 s 19500 11844 20000 12012 0 FreeSans 896 0 0 0 nvout_3
 port 6 nsew signal output
 flabel metal3 s 19500 2436 20000 2604 0 FreeSans 896 0 0 0 nvout_4
 port 7 nsew signal output
-flabel metal4 s -156 1636 144 35996 0 FreeSans 1472 90 0 0 vdd
+flabel metal4 s -156 1636 144 35996 0 FreeSans 1792 90 0 0 vdd
 port 8 nsew power bidirectional
-flabel metal4 s 19792 1636 20092 35996 0 FreeSans 1472 90 0 0 vdd
+flabel metal4 s 19792 1636 20092 35996 0 FreeSans 1792 90 0 0 vdd
 port 8 nsew power bidirectional
 flabel metal5 s -156 1636 20092 1936 0 FreeSans 1408 0 0 0 vdd
 port 8 nsew power bidirectional
 flabel metal5 s -156 35696 20092 35996 0 FreeSans 1408 0 0 0 vdd
 port 8 nsew power bidirectional
-flabel metal4 s 5224 1036 5464 36596 0 FreeSans 1472 90 0 0 vdd
+flabel metal4 s 5224 1036 5464 36596 0 FreeSans 1792 90 0 0 vdd
 port 8 nsew power bidirectional
 flabel metal5 s -756 10416 20692 10656 0 FreeSans 1408 0 0 0 vdd
 port 8 nsew power bidirectional
@@ -1286,15 +1286,15 @@ flabel metal3 s 19500 16548 20000 16716 0 FreeSans 896 0 0 0 vout_3
 port 11 nsew signal output
 flabel metal3 s 19500 7140 20000 7308 0 FreeSans 896 0 0 0 vout_4
 port 12 nsew signal output
-flabel metal4 s -756 1036 -456 36596 0 FreeSans 1472 90 0 0 vss
+flabel metal4 s -756 1036 -456 36596 0 FreeSans 1792 90 0 0 vss
 port 13 nsew ground bidirectional
-flabel metal4 s 20392 1036 20692 36596 0 FreeSans 1472 90 0 0 vss
+flabel metal4 s 20392 1036 20692 36596 0 FreeSans 1792 90 0 0 vss
 port 13 nsew ground bidirectional
 flabel metal5 s -756 1036 20692 1336 0 FreeSans 1408 0 0 0 vss
 port 13 nsew ground bidirectional
 flabel metal5 s -756 36296 20692 36596 0 FreeSans 1408 0 0 0 vss
 port 13 nsew ground bidirectional
-flabel metal4 s 5864 1036 6104 36596 0 FreeSans 1472 90 0 0 vss
+flabel metal4 s 5864 1036 6104 36596 0 FreeSans 1792 90 0 0 vss
 port 13 nsew ground bidirectional
 flabel metal5 s -756 11056 20692 11296 0 FreeSans 1408 0 0 0 vss
 port 13 nsew ground bidirectional
