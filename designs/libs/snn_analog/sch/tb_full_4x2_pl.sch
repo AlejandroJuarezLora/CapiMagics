@@ -14,7 +14,7 @@ divy=5
 subdivy=1
 unity=1
 x1=0
-x2=0.0002
+x2=2e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -36,7 +36,7 @@ divy=5
 subdivy=1
 unity=1
 x1=0
-x2=0.0002
+x2=2e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -58,7 +58,7 @@ divy=5
 subdivy=1
 unity=1
 x1=0
-x2=0.0002
+x2=2e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -72,15 +72,15 @@ logx=0
 logy=0
 }
 B 2 480 520 1280 920 {flags=graph
-y1=2.2230129
-y2=2.2285104
+y1=0.15
+y2=0.16
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
 x1=0
-x2=0.0002
+x2=2e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -94,15 +94,15 @@ logx=0
 logy=0
 }
 B 2 1500 120 2300 520 {flags=graph
-y1=-0.0014
-y2=6.7
+y1=-0.2
+y2=6.9
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
 x1=0
-x2=0.0002
+x2=2e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -116,15 +116,15 @@ logx=0
 logy=0
 }
 B 2 2350 120 3150 520 {flags=graph
-y1=0.523125
-y2=0.553125
+y1=-0.2
+y2=3.6
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
 x1=0
-x2=0.0002
+x2=2e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -138,15 +138,15 @@ logx=0
 logy=0
 }
 B 2 2350 540 3150 940 {flags=graph
-y1=-0.005
-y2=6.7
+y1=0.53
+y2=0.57
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
 x1=0
-x2=0.0002
+x2=2e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -160,15 +160,15 @@ logx=0
 logy=0
 }
 B 2 1500 530 2300 930 {flags=graph
-y1=9e-11
-y2=3.3
+y1=0.68
+y2=2.7
 ypos1=0
 ypos2=2
 divy=5
 subdivy=1
 unity=1
 x1=0
-x2=0.0002
+x2=2e-05
 divx=5
 subdivx=1
 xlabmag=1.0
@@ -181,6 +181,31 @@ unitx=1
 logx=0
 logy=0
 }
+B 2 2020 -610 2820 -210 {flags=graph
+y1=2.2444688
+y2=2.2523855
+ypos1=0
+ypos2=2
+divy=5
+subdivy=1
+unity=1
+x1=0
+x2=2e-05
+divx=5
+subdivx=1
+xlabmag=1.0
+ylabmag=1.0
+dataset=-1
+unitx=1
+logx=0
+logy=0
+color="4 5 8 9 12 16"
+node="x2.stdp_4x2_0.stdp_0.vw
+x2.stdp_4x2_0.stdp_2.vw
+x2.stdp_4x2_0.stdp_3.vw
+x2.stdp_4x2_0.stdp_4.vw
+x2.stdp_4x2_0.stdp_5.vw
+x2.stdp_4x2_0.stdp_6.vw"}
 C {full_4x2_lvs.sym} 250 -10 0 0 {name=x1
 }
 C {vsource.sym} -190 20 0 0 {name=V2 value="SINE(1.65 1.65 5000 0 0 0)" savecurrent=false}
@@ -212,9 +237,10 @@ C {lab_pin.sym} 400 0 0 1 {name=p1 sig_type=std_logic lab=vw11
 }
 C {lab_pin.sym} 400 20 0 1 {name=p2 sig_type=std_logic lab=vw42
 }
-C {code_shown.sym} -520 -310 0 0 {name=s1 only_toplevel=false value=".include /foss/designs/libs/snn_analog/sch/D14_topcell_flat.spice
-.tran 10n 200u
-.save Vin vin_neg vpre1_pex vpre2_pex vw11_pex vw42_pex vpost1_pex vpost2_pex 
+C {code_shown.sym} -500 -480 0 0 {name=s1 only_toplevel=false value=".include /foss/designs/libs/snn_analog/sch/D14_topcell_flat.spice
+.tran 10n 20u
+.save Vin vin_neg vpre1_pex vpre2_pex vw11_pex vw42_pex vpost1_pex vpost2_pex
+.save x2.stdp_4x2_0.stdp_0.vw x2.stdp_4x2_0.stdp_1.vw x2.stdp_4x2_0.stdp_2.vw x2.stdp_4x2_0.stdp_3.vw x2.stdp_4x2_0.stdp_4.vw x2.stdp_4x2_0.stdp_5.vw x2.stdp_4x2_0.stdp_6.vw x2.stdp_4x2_0.stdp_7.vw 
 .save vpre1 vpre2 vw11 vw42 vpost1 vpost2
 .control
 	set num_threads = 8

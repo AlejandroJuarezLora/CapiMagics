@@ -25,10 +25,10 @@ B 5 -152.5 -72.5 -147.5 -67.5 {name=Vin dir=in sim_pinnumber=2}
 B 5 -152.5 -52.5 -147.5 -47.5 {name=Vin_neg dir=in sim_pinnumber=3}
 B 5 147.5 -32.5 152.5 -27.5 {name=vpre1 dir=out sim_pinnumber=4}
 B 5 147.5 -12.5 152.5 -7.5 {name=vpre2 dir=out sim_pinnumber=5}
-B 5 147.5 47.5 152.5 52.5 {name=vpost1 dir=out sim_pinnumber=6}
-B 5 147.5 67.5 152.5 72.5 {name=vpost2 dir=out sim_pinnumber=7}
-B 5 147.5 7.5 152.5 12.5 {name=vw11 dir=out sim_pinnumber=8}
-B 5 147.5 27.5 152.5 32.5 {name=vw42 dir=out sim_pinnumber=9}
+B 5 147.5 7.5 152.5 12.5 {name=vw11 dir=out sim_pinnumber=6}
+B 5 147.5 27.5 152.5 32.5 {name=vw42 dir=out sim_pinnumber=7}
+B 5 147.5 47.5 152.5 52.5 {name=vpost1 dir=out sim_pinnumber=8}
+B 5 147.5 67.5 152.5 72.5 {name=vpost2 dir=out sim_pinnumber=9}
 P 4 5 130 -80 -130 -80 -130 80 130 80 130 -80 {}
 T {@symname} -72 -6 0 0 0.3 0.3 {}
 T {@name} 135 -92 0 0 0.2 0.2 {}
