@@ -1,7 +1,7 @@
 (DELAYFILE
  (SDFVERSION "3.0")
  (DESIGN "D14_topcell")
- (DATE "Fri Sep 18 22:05:18 2026")
+ (DATE "Sat Sep 19 02:59:32 2026")
  (VENDOR "Parallax")
  (PROGRAM "STA")
  (VERSION "2.7.0")
@@ -12,8 +12,8 @@
   (INSTANCE)
   (DELAY
    (ABSOLUTE
-    (INTERCONNECT Vin u_encoder.Vin (0.236:0.236:0.236) (0.149:0.149:0.149))
-    (INTERCONNECT Vin_neg u_encoder.Vin_neg (0.142:0.142:0.142) (0.089:0.089:0.089))
+    (INTERCONNECT Vin u_encoder.Vin (0.405:0.405:0.405) (0.256:0.256:0.256))
+    (INTERCONNECT Vin_neg u_encoder.Vin_neg (0.214:0.214:0.214) (0.134:0.134:0.134))
    )
   )
  )

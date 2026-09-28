@@ -288,7 +288,5 @@
     "design__lvs_error__count": 0,
     "design__lvs_unmatched_device__count": 0,
     "design__lvs_unmatched_net__count": 0,
-    "design__lvs_unmatched_pin__count": 0,
-    "flow__warnings__count:PSM-0038": 61,
-    "flow__warnings__count:PSM-0039": 1
+    "design__lvs_unmatched_pin__count": 0
 }

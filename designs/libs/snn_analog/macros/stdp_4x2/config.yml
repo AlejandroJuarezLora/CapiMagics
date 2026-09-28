@@ -22,7 +22,7 @@ VDD_NETS:
   - avdd
 GND_NETS:
   - avss
-  
+PAD_LIBS: {} #para ignorar los pads de la librería de pads del PDK y usar los pads de la macro, se necesita ignoras las librerias de 5V0
 
 TOP_MARGIN_MULT: 2
 BOTTOM_MARGIN_MULT: 2
