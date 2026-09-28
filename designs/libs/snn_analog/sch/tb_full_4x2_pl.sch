@@ -5,7 +5,7 @@ V {}
 S {}
 F {}
 E {}
-B 2 -320 120 480 520 {flags=graph
+B 2 -310 250 490 650 {flags=graph
 y1=-0.036
 y2=6.7
 ypos1=0
@@ -27,7 +27,7 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 480 120 1280 520 {flags=graph
+B 2 490 250 1290 650 {flags=graph
 y1=-0.13
 y2=6.7
 ypos1=0
@@ -49,7 +49,7 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 -320 520 480 920 {flags=graph
+B 2 -320 740 480 1140 {flags=graph
 y1=9e-11
 y2=3.3
 ypos1=0
@@ -71,9 +71,9 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 480 520 1280 920 {flags=graph
-y1=0.15
-y2=0.16
+B 2 480 740 1280 1140 {flags=graph
+y1=2.2180652
+y2=2.2314869
 ypos1=0
 ypos2=2
 divy=5
@@ -93,7 +93,7 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 1500 120 2300 520 {flags=graph
+B 2 1510 250 2310 650 {flags=graph
 y1=-0.2
 y2=6.9
 ypos1=0
@@ -115,9 +115,9 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 2350 120 3150 520 {flags=graph
-y1=-0.2
-y2=3.6
+B 2 2360 250 3160 650 {flags=graph
+y1=-0.17
+y2=6.9
 ypos1=0
 ypos2=2
 divy=5
@@ -130,16 +130,16 @@ subdivx=1
 xlabmag=1.0
 ylabmag=1.0
 node="\\"N1post; vpost1_pex\\"
-\\"N2post; vpost2_pex \\""
+\\"N2post; vpost2_pex 3.3 +\\""
 color="4 7"
 dataset=-1
 unitx=1
 logx=0
 logy=0
 }
-B 2 2350 540 3150 940 {flags=graph
-y1=0.53
-y2=0.57
+B 2 2350 760 3150 1160 {flags=graph
+y1=0.53807212
+y2=0.56638367
 ypos1=0
 ypos2=2
 divy=5
@@ -159,7 +159,7 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 1500 530 2300 930 {flags=graph
+B 2 1500 750 2300 1150 {flags=graph
 y1=0.68
 y2=2.7
 ypos1=0
@@ -181,9 +181,9 @@ unitx=1
 logx=0
 logy=0
 }
-B 2 2020 -610 2820 -210 {flags=graph
-y1=2.2444688
-y2=2.2523855
+B 2 1950 1310 2750 1710 {flags=graph
+y1=2.2420033
+y2=2.2556833
 ypos1=0
 ypos2=2
 divy=5
@@ -206,6 +206,26 @@ x2.stdp_4x2_0.stdp_3.vw
 x2.stdp_4x2_0.stdp_4.vw
 x2.stdp_4x2_0.stdp_5.vw
 x2.stdp_4x2_0.stdp_6.vw"}
+T {The voltage level of un-probed synaptic weights
+(capacitance's value of each cell) goes up to 2.25,
+as in pre-layout simulation} 2080 1730 0 0 0.4 0.4 {}
+T {two of four spikes of the input layer} -100 650 0 0 0.4 0.4 {}
+T {same input signal than prelayout} -100 1140 0 0 0.4 0.4 {}
+T {spikes at the output layer} 750 650 0 0 0.4 0.4 {}
+T {evolution of the two probed 
+synaptic weights. Nominal voltage 
+of 2.25V} 750 1150 0 0 0.4 0.4 {}
+T {Pre-layout} 390 160 0 0 0.8 0.8 {}
+T {Post-layout} 2210 170 0 0 0.8 0.8 {}
+T {two of four spikes of the input layer, postlayout.
+It works fine, but a bit slower than prelayout} 1670 650 0 0 0.4 0.4 {}
+T {spikes at the output layer.
+Also, they work properly, but slower rate} 2680 650 0 0 0.4 0.4 {}
+T {input signal, sinusoidal
+and its complementary signal} 1740 1160 0 0 0.4 0.4 {}
+T {synaptic weight values evolve nicely
+but there is a drop in voltage. These are 
+the only two synaptic weights that are being probed} 2500 1170 0 0 0.4 0.4 {}
 C {full_4x2_lvs.sym} 250 -10 0 0 {name=x1
 }
 C {vsource.sym} -190 20 0 0 {name=V2 value="SINE(1.65 1.65 5000 0 0 0)" savecurrent=false}
