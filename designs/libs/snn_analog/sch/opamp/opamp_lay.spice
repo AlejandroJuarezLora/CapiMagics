@@ -1,0 +1,50 @@
+* NGSPICE file created from opamp.ext - technology: gf180mcuD
+
+.subckt nfet_03v3_CTT5VY a_n100_n592# a_100_n500# a_n326_n686# a_n188_n500#
+X0 a_100_n500# a_n100_n592# a_n188_n500# a_n326_n686# nfet_03v3 ad=2.2p pd=10.88u as=2.2p ps=10.88u w=5u l=1u
+.ends
+
+.subckt pfet_03v3_5MDBD5 w_n350_n1110# a_n188_n900# a_n100_n992# a_100_n900#
+X0 a_100_n900# a_n100_n992# a_n188_n900# w_n350_n1110# pfet_03v3 ad=3.96p pd=18.88u as=3.96p ps=18.88u w=9u l=1u
+.ends
+
+.subckt nfet_03v3_JWTLTL a_100_n800# a_n326_n986# a_n188_n800# a_n100_n892#
+X0 a_100_n800# a_n100_n892# a_n188_n800# a_n326_n986# nfet_03v3 ad=3.52p pd=16.88u as=3.52p ps=16.88u w=8u l=1u
+.ends
+
+.subckt pfet_03v3_U949MW a_52_n572# a_556_n480# a_n556_n572# a_660_n572# w_n1110_n690#
++ a_252_n480# a_n948_n480# a_n252_n572# a_n356_n480# a_860_n480# a_n860_n572# a_n52_n480#
++ a_356_n572# a_n660_n480#
+X0 a_252_n480# a_52_n572# a_n52_n480# w_n1110_n690# pfet_03v3 ad=1.248p pd=5.32u as=1.248p ps=5.32u w=4.8u l=1u
+X1 a_n52_n480# a_n252_n572# a_n356_n480# w_n1110_n690# pfet_03v3 ad=1.248p pd=5.32u as=1.248p ps=5.32u w=4.8u l=1u
+X2 a_860_n480# a_660_n572# a_556_n480# w_n1110_n690# pfet_03v3 ad=2.112p pd=10.48u as=1.248p ps=5.32u w=4.8u l=1u
+X3 a_n356_n480# a_n556_n572# a_n660_n480# w_n1110_n690# pfet_03v3 ad=1.248p pd=5.32u as=1.248p ps=5.32u w=4.8u l=1u
+X4 a_n660_n480# a_n860_n572# a_n948_n480# w_n1110_n690# pfet_03v3 ad=1.248p pd=5.32u as=2.112p ps=10.48u w=4.8u l=1u
+X5 a_556_n480# a_356_n572# a_252_n480# w_n1110_n690# pfet_03v3 ad=1.248p pd=5.32u as=1.248p ps=5.32u w=4.8u l=1u
+.ends
+
+.subckt nfet_03v3_HVW9XU a_n188_n700# a_n100_n792# a_100_n700# a_n326_n886#
+X0 a_100_n700# a_n100_n792# a_n188_n700# a_n326_n886# nfet_03v3 ad=3.08p pd=14.88u as=3.08p ps=14.88u w=7u l=1u
+.ends
+
+.subckt cap_mim_2p0fF_LVJL5F m4_n3120_n3000# m4_n3240_n3120#
+X0 m4_n3120_n3000# m4_n3240_n3120# cap_mim_2f0_m4m5_noshield c_width=30u c_length=30u
+.ends
+
+.subckt pfet_03v3_9TRV9F a_n188_n100# a_n100_n192# a_100_n100# w_n350_n310#
+X0 a_100_n100# a_n100_n192# a_n188_n100# w_n350_n310# pfet_03v3 ad=0.44p pd=2.88u as=0.44p ps=2.88u w=1u l=1u
+.ends
+
+.subckt opamp avdd avss vin1 vin2 vout
+XM1 vin1 p avss y nfet_03v3_CTT5VY
+XM2 vin2 p avss x nfet_03v3_CTT5VY
+XM3 avdd y y avdd pfet_03v3_5MDBD5
+XM4 avdd x y avdd pfet_03v3_5MDBD5
+XM5 avss avss p vb nfet_03v3_JWTLTL
+XM6 x vout x x avdd avdd avdd x avdd avdd x vout x vout pfet_03v3_U949MW
+XM7 vout vb avss avss nfet_03v3_HVW9XU
+XM8 avss avss vb vb nfet_03v3_JWTLTL
+Xcap_mim_2p0fF_LVJL5F_0 x vout cap_mim_2p0fF_LVJL5F
+XM9 vb vb avdd avdd pfet_03v3_9TRV9F
+.ends
+

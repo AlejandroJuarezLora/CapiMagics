@@ -26,5 +26,5 @@
 	"LVS_VERILOG_FILES": [
 		""
 	],
-	"LAYOUT_FILE": "$UPRJ_ROOT/gds/$TOP_LAYOUT.gds"
+	"LAYOUT_FILE": "$UPRJ_ROOT/designs/libs/snn_analog/runs/test/final/gds/$TOP_LAYOUT.gds"
 }

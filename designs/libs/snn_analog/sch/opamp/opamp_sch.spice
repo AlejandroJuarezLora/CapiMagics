@@ -1,0 +1,14 @@
+** sch_path: /foss/designs/libs/snn_analog/sch/opamp/opamp.sch
+.subckt opamp avdd avss vin1 vin2 vout
+*.PININFO avdd:B avss:B vin1:I vin2:I vout:O
+M1 y vin1 net1 avss nfet_03v3 L=1u W=5u nf=1
+M2 x vin2 net1 avss nfet_03v3 L=1u W=5u nf=1
+M3 y y avdd avdd pfet_03v3 L=1u W=9u nf=1
+M4 x y avdd avdd pfet_03v3 L=1u W=9u nf=1
+M5 net1 vb avss avss nfet_03v3 L=1u W=8u nf=1
+M6 vout x avdd avdd pfet_03v3 L=1u W=28.8u nf=6
+M7 vout vb avss avss nfet_03v3 L=1u W=7u nf=1
+M8 vb vb avss avss nfet_03v3 L=1u W=8u nf=1
+M9 vb vb avdd avdd pfet_03v3 L=1u W=1u nf=1
+XC1 x vout cap_mim_2f0fF c_width=30e-6 c_length=30e-6
+.ends

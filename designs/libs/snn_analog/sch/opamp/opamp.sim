@@ -1,0 +1,93 @@
+| units: 0.5 tech: gf180mcuD format: MIT
+x vin1 y p avss s=88000,2176 d=88000,2176 l=200 w=1000 x=3451 y=1385 nfet_03v3
+x vin2 x p avss s=88000,2176 d=88000,2176 l=200 w=1000 x=4217 y=1389 nfet_03v3
+x y y avdd avdd s=158400,3776 d=158400,3776 l=200 w=1800 x=2766 y=3011 pfet_03v3
+x y x avdd avdd s=158400,3776 d=158400,3776 l=200 w=1800 x=3346 y=3011 pfet_03v3
+x vb p avss avss s=140800,3376 d=140800,3376 l=200 w=1600 x=2668 y=807 nfet_03v3
+x x vout avdd avdd s=49920,1064 d=49920,1064 l=200 w=960 x=4894 y=3131 pfet_03v3
+x x avdd vout avdd s=49920,1064 d=49920,1064 l=200 w=960 x=4591 y=3131 pfet_03v3
+x x vout avdd avdd s=49920,1064 d=84480,2096 l=200 w=960 x=5502 y=3131 pfet_03v3
+x x vout avdd avdd s=49920,1064 d=49920,1064 l=200 w=960 x=4287 y=3131 pfet_03v3
+x x avdd vout avdd s=84480,2096 d=49920,1064 l=200 w=960 x=3983 y=3131 pfet_03v3
+x x avdd vout avdd s=49920,1064 d=49920,1064 l=200 w=960 x=5198 y=3131 pfet_03v3
+x vb vout avss avss s=123200,2976 d=123200,2976 l=200 w=1400 x=4955 y=814 nfet_03v3
+x vb vb avss avss s=140800,3376 d=140800,3376 l=200 w=1600 x=5707 y=829 nfet_03v3
+x x vout s=3187200,49040 l=6000 w=6000 x=1081 y=81 cap_mim_2f0_m4m5_noshield
+x vb vb avdd avdd s=17600,576 d=17600,576 l=200 w=200 x=4955 y=4651 pfet_03v3
+C vout x 4.4
+C avdd y 3.7
+C vb x 2.2
+C vout avdd 2.2
+C vb avdd 3.2
+C avdd x 10.3
+R avss 2489
+= avss M9/VSUBS
+= avss M8/a_100_n800#
+= avss M7/a_100_n700#
+= avss M7/a_n326_n886#
+= avss M8/a_n326_n986#
+= avss m1_5293_851#
+= avss cap_mim_2p0fF_LVJL5F_0/VSUBS
+= avss M6/VSUBS
+= avss M3/VSUBS
+= avss M4/VSUBS
+= avss M5/a_100_n800#
+= avss M5/a_n326_n986#
+= avss M1/a_n326_n686#
+= avss M2/a_n326_n686#
+= avss VSUBS
+C vout0 6.6
+R vout 344
+= vout M6/a_556_n480#
+= vout M6/a_n52_n480#
+= vout M6/a_n660_n480#
+= vout cap_mim_2p0fF_LVJL5F_0/m4_n3240_n3120#
+= vout M7/a_n188_n700#
+C vb0 7.6
+R vb 399
+= vb M9/a_n188_n100#
+= vb M9/a_n100_n192#
+= vb M8/a_n100_n892#
+= vb M8/a_n188_n800#
+= vb M7/a_n100_n792#
+= vb M5/a_n100_n892#
+C avdd0 22.2
+R avdd 11253
+= avdd M9/a_100_n100#
+= avdd M9/w_n350_n310#
+= avdd M6/a_860_n480#
+= avdd M6/a_252_n480#
+= avdd M6/a_n356_n480#
+= avdd M6/a_n948_n480#
+= avdd M3/a_100_n900#
+= avdd M4/a_100_n900#
+= avdd M6/w_n1110_n690#
+= avdd m1_2941_3014#
+= avdd M3/w_n350_n1110#
+= avdd M4/w_n350_n1110#
+C p0 2.5
+R p 293
+= p M5/a_n188_n800#
+= p M1/a_100_n500#
+= p M2/a_100_n500#
+C x0 13.1
+R x 566
+= x cap_mim_2p0fF_LVJL5F_0/m4_n3120_n3000#
+= x M6/a_660_n572#
+= x M6/a_356_n572#
+= x M6/a_52_n572#
+= x M6/a_n252_n572#
+= x M6/a_n556_n572#
+= x M6/a_n860_n572#
+= x M4/a_n188_n900#
+= x M2/a_n188_n500#
+R vin2 47
+= vin2 M2/a_n100_n592#
+R y 386
+= y M3/a_n188_n900#
+= y M3/a_n100_n992#
+= y M4/a_n100_n992#
+= y M1/a_n188_n500#
+C vin10 2.1
+R vin1 46
+= vin1 M1/a_n100_n592#
