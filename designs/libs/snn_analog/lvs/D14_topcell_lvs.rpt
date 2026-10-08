@@ -1,4 +1,17 @@
 
+Circuit 1 cell cap_mim_2f0_m4m5_noshield and Circuit 2 cell cap_mim_2f0fF are black boxes.
+Warning: Equate pins:  cell cap_mim_2f0_m4m5_noshield is a placeholder, treated as a black box.
+Warning: Equate pins:  cell cap_mim_2f0fF is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: cap_mim_2f0_m4m5_noshield       |Circuit 2: cap_mim_2f0fF                   
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes cap_mim_2f0_m4m5_noshield and cap_mim_2f0fF are equivalent.
+
 Circuit 1 cell pfet_03v3 and Circuit 2 cell pfet_03v3 are black boxes.
 Warning: Equate pins:  cell pfet_03v3 is a placeholder, treated as a black box.
 Warning: Equate pins:  cell pfet_03v3 is a placeholder, treated as a black box.
@@ -28,19 +41,6 @@ Circuit 1: nfet_03v3                       |Circuit 2: nfet_03v3
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes nfet_03v3 and nfet_03v3 are equivalent.
-
-Circuit 1 cell cap_mim_2f0_m4m5_noshield and Circuit 2 cell cap_mim_2f0fF are black boxes.
-Warning: Equate pins:  cell cap_mim_2f0_m4m5_noshield is a placeholder, treated as a black box.
-Warning: Equate pins:  cell cap_mim_2f0fF is a placeholder, treated as a black box.
-
-Subcircuit pins:
-Circuit 1: cap_mim_2f0_m4m5_noshield       |Circuit 2: cap_mim_2f0fF                   
--------------------------------------------|-------------------------------------------
-1                                          |1                                          
-2                                          |2                                          
----------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes cap_mim_2f0_m4m5_noshield and cap_mim_2f0fF are equivalent.
 Flattening unmatched subcell M1[[0]] in circuit neurona_lvs (0)(1 instance)
 Flattening unmatched subcell m8 in circuit neurona_lvs (0)(1 instance)
 Flattening unmatched subcell cap in circuit neurona_lvs (0)(1 instance)
@@ -72,6 +72,44 @@ vdd                                        |Vdd
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes neurona_lvs and neurona_lvs are equivalent.
+Flattening unmatched subcell xm2$1 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm5$1 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm8$1 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm11 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm1$1 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm4$1 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm7$1 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm6 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm3$1 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm10 in circuit encoder (0)(1 instance)
+Flattening unmatched subcell xm9$1 in circuit encoder (0)(1 instance)
+
+Subcircuit summary:
+Circuit 1: encoder                         |Circuit 2: encoder                         
+-------------------------------------------|-------------------------------------------
+nfet_03v3 (4)                              |nfet_03v3 (4)                              
+pfet_03v3 (7)                              |pfet_03v3 (7)                              
+Number of devices: 11                      |Number of devices: 11                      
+Number of nets: 12                         |Number of nets: 12                         
+---------------------------------------------------------------------------------------
+Resolving symmetries by property value.
+Resolving symmetries by pin name.
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: encoder                         |Circuit 2: encoder                         
+-------------------------------------------|-------------------------------------------
+vdd                                        |Vdd                                        
+Vin                                        |Vin                                        
+Vin_neg                                    |Vin_neg                                    
+Iex_2_i                                    |Iex_2_i                                    
+Iex_3_i                                    |Iex_3_i                                    
+Iex_4_i                                    |Iex_4_i                                    
+Iex_1_i                                    |Iex_1_i                                    
+vss                                        |Vss                                        
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes encoder and encoder are equivalent.
 Flattening unmatched subcell m3[[0]] in circuit current_mirror (0)(1 instance)
 Flattening unmatched subcell m4[[0]] in circuit current_mirror (0)(1 instance)
 Flattening unmatched subcell m2[[0]] in circuit current_mirror (0)(1 instance)
@@ -129,44 +167,6 @@ nvout_3                                    |nvout_3
 ---------------------------------------------------------------------------------------
 Cell pin lists for layer_input and layer_input altered to match.
 Device classes layer_input and layer_input are equivalent.
-Flattening unmatched subcell xm2$1 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell xm5$1 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell xm8$1 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell xm11 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell xm1$1 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell xm4$1 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell xm7$1 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell xm6 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell xm3$1 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell xm10 in circuit encoder (0)(1 instance)
-Flattening unmatched subcell xm9$1 in circuit encoder (0)(1 instance)
-
-Subcircuit summary:
-Circuit 1: encoder                         |Circuit 2: encoder                         
--------------------------------------------|-------------------------------------------
-nfet_03v3 (4)                              |nfet_03v3 (4)                              
-pfet_03v3 (7)                              |pfet_03v3 (7)                              
-Number of devices: 11                      |Number of devices: 11                      
-Number of nets: 12                         |Number of nets: 12                         
----------------------------------------------------------------------------------------
-Resolving symmetries by property value.
-Resolving symmetries by pin name.
-Netlists match uniquely.
-
-Subcircuit pins:
-Circuit 1: encoder                         |Circuit 2: encoder                         
--------------------------------------------|-------------------------------------------
-vdd                                        |Vdd                                        
-Vin                                        |Vin                                        
-Vin_neg                                    |Vin_neg                                    
-Iex_2_i                                    |Iex_2_i                                    
-Iex_3_i                                    |Iex_3_i                                    
-Iex_4_i                                    |Iex_4_i                                    
-Iex_1_i                                    |Iex_1_i                                    
-vss                                        |Vss                                        
----------------------------------------------------------------------------------------
-Cell pin lists are equivalent.
-Device classes encoder and encoder are equivalent.
 Flattening unmatched subcell neurona_lvs$1 in circuit layer_output (0)(2 instances)
 Flattening unmatched subcell m2$1 in circuit layer_output (0)(2 instances)
 Flattening unmatched subcell m5$1 in circuit layer_output (0)(2 instances)
@@ -233,15 +233,16 @@ Flattening unmatched subcell xmcm_chain_3 in circuit D14_topcell (0)(8 instances
 Flattening unmatched subcell xm17 in circuit D14_topcell (0)(8 instances)
 Flattening unmatched subcell xm7 in circuit D14_topcell (0)(8 instances)
 Flattening unmatched subcell xmcm_chain_1 in circuit D14_topcell (0)(8 instances)
-Flattening unmatched subcell stdp_4x2_lvs in circuit full_4x2_lvs (1)(1 instance)
-Flattening unmatched subcell stdp_lvs in circuit full_4x2_lvs (1)(8 instances)
-Flattening unmatched subcell unitcap in circuit full_4x2_lvs (1)(112 instances)
-Flattening unmatched subcell Current-limit in circuit full_4x2_lvs (1)(2 instances)
+Flattening unmatched subcell full_4x2_lvs in circuit D14_topcell (1)(1 instance)
+Flattening unmatched subcell stdp_4x2_lvs in circuit D14_topcell (1)(1 instance)
+Flattening unmatched subcell stdp_lvs in circuit D14_topcell (1)(8 instances)
+Flattening unmatched subcell unitcap in circuit D14_topcell (1)(112 instances)
+Flattening unmatched subcell Current-limit in circuit D14_topcell (1)(2 instances)
 
 Class D14_topcell (0):  Merged 89 parallel devices.
-Class full_4x2_lvs (1):  Merged 89 parallel devices.
+Class D14_topcell (1):  Merged 89 parallel devices.
 Subcircuit summary:
-Circuit 1: D14_topcell                     |Circuit 2: full_4x2_lvs                    
+Circuit 1: D14_topcell                     |Circuit 2: D14_topcell                     
 -------------------------------------------|-------------------------------------------
 current_mirror (1)                         |current_mirror (1)                         
 layer_input (1)                            |layer_input (1)                            
@@ -256,7 +257,7 @@ Number of nets: 124                        |Number of nets: 124
 Netlists match uniquely.
 
 Subcircuit pins:
-Circuit 1: D14_topcell                     |Circuit 2: full_4x2_lvs                    
+Circuit 1: D14_topcell                     |Circuit 2: D14_topcell                     
 -------------------------------------------|-------------------------------------------
 vw42                                       |vw42                                       
 vw11                                       |vw11                                       
@@ -270,7 +271,7 @@ avss                                       |avss
 avdd                                       |avdd                                       
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
-Device classes D14_topcell and full_4x2_lvs are equivalent.
+Device classes D14_topcell and D14_topcell are equivalent.
 
 Final result: Circuits match uniquely.
 .

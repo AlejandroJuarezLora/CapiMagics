@@ -1,7 +1,7 @@
 #!/bin/bash
 # Full-chip LVS: final GDS against the hierarchical schematic.
 #
-#   source : sch/full_4x2_lvs.sch -> xschem -> full_4x2_lvs.spice (this dir)
+#   source : sch/D14_topcell.sch (wraps full_4x2_lvs.sch) -> xschem -> D14_topcell.spice (this dir)
 #   layout : runs/test/final/gds/D14_topcell.gds -> magic -> extracted netlist
 #   compare: netgen with the PDK setup -> D14_topcell_lvs.rpt (this dir)
 #
@@ -26,7 +26,7 @@ append XSCHEM_LIBRARY_PATH :$SNN/sch
 set top_is_subckt 1
 EOF
 (cd "$SNN/sch" && xschem --rcfile "$TMP/xschemrc" -n -s -q -x \
-    -o "$HERE" -N full_4x2_lvs.spice full_4x2_lvs.sch)
+    -o "$HERE" -N D14_topcell.spice D14_topcell.sch)
 
 # 2. Layout: hierarchical extraction of the final GDS.
 cat > "$TMP/ext.tcl" <<EOF
@@ -44,7 +44,7 @@ magic -dnull -noconsole -rcfile "$TECH/magic/$PDK.magicrc" "$TMP/ext.tcl" > "$TM
 # 3. Comparison.
 RPT=$HERE/D14_topcell_lvs.rpt
 netgen -batch lvs "$TMP/D14_topcell.spice D14_topcell" \
-    "$HERE/full_4x2_lvs.spice full_4x2_lvs" \
+    "$HERE/D14_topcell.spice D14_topcell" \
     "$TECH/netgen/${PDK}_setup.tcl" "$RPT" > "$TMP/netgen.log" 2>&1
 
 # 4. Verdict. "Circuits match uniquely" is not enough: netgen still prints it
