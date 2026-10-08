@@ -174,9 +174,9 @@ C {lab_pin.sym} 50 -120 2 0 {name=p18 sig_type=std_logic lab=Iin}
 C {lab_pin.sym} 50 0 2 0 {name=p19 sig_type=std_logic lab=spike_neg}
 C {lab_pin.sym} 50 -30 2 0 {name=p20 sig_type=std_logic lab=spike}
 C {symbols/cap_mim_2f0fF.sym} 20 200 0 0 {name=C2
-W=15e-6
+W=28e-6
 L=5e-6
 model=cap_mim_2f0fF
 spiceprefix=X
-m=3}
+m=1}
 C {lab_pin.sym} 310 80 0 0 {name=p6 sig_type=std_logic lab=Vss}
