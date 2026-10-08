@@ -69,7 +69,7 @@ C {iopin.sym} 90 140 0 0 {name=p4 lab=ifwd
 
 }
 C {symbols/nfet_03v3.sym} 290 50 0 0 {name=M3
-L=0.28u
+L=5.0u
 W=0.5u
 nf=1
 m=1

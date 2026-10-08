@@ -286,7 +286,7 @@ C {iopin.sym} 780 80 0 1 {name=p21 lab=vb_pot}
 C {iopin.sym} 110 200 0 1 {name=p23 lab=vw}
 C {symbols/pfet_03v3.sym} 510 -210 0 1 {name=M17
 L=4.6u
-W=0.3u
+W=0.5u
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.18u'"

@@ -54,10 +54,6 @@ N 465 455 465 600 {lab=#net7}
 N 1075 455 1075 620 {lab=#net8}
 N 465 -55 465 205 {lab=#net7}
 N 1075 -55 1075 205 {lab=#net8}
-N -80 590 -50 590 {lab=avdd}
-N -80 610 -50 610 {lab=B}
-N -80 630 -50 630 {lab=A}
-N -80 650 -50 650 {lab=avss}
 C {stdp/stdp_lvs.sym} 160 -310 0 0 {name=x1}
 C {lab_pin.sym} 10 -340 0 0 {name=p1 sig_type=std_logic lab=vpre1}
 C {lab_pin.sym} 10 -320 0 0 {name=p2 sig_type=std_logic lab=nvpre1}
@@ -192,8 +188,3 @@ C {noconn.sym} 390 150 0 1 {name=l5}
 C {noconn.sym} 390 400 0 1 {name=l6}
 C {lab_pin.sym} 465 660 0 1 {name=p104 sig_type=std_logic lab=avss}
 C {lab_pin.sym} 1075 680 0 1 {name=p105 sig_type=std_logic lab=avss}
-C {current_mirror/current_mirror.sym} -230 620 0 0 {name=x11}
-C {lab_pin.sym} -50 610 0 1 {name=p106 sig_type=std_logic lab=B}
-C {lab_pin.sym} -50 630 0 1 {name=p107 sig_type=std_logic lab=A}
-C {lab_pin.sym} -50 590 0 1 {name=p115 lab=avdd}
-C {lab_pin.sym} -50 650 0 1 {name=p116 lab=avss}

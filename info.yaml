@@ -17,6 +17,8 @@ project:
   discord: "alejandrojuarezlora"                   # Optional: Discord username (for support / communication)
   description: "Set of analog neuromorphic standard cell to be assembled into a net"  # Short one-line description
   lvs_config: "./designs/libs/snn_analog/lvs_config.json"
+  drc_ready: true               # data ready for integration and DRC
+  lvs_ready: true               # data ready for integrated LVS
 
 pins: 
   - name: avss

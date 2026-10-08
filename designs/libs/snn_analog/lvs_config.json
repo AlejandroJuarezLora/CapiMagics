@@ -21,7 +21,7 @@
 		""
 	],
 	"LVS_SPICE_FILES": [
-		""
+		"$UPRJ_ROOT/designs/libs/snn_analog/lvs/D14_topcell.spice"
 	],
 	"LVS_VERILOG_FILES": [
 		""
