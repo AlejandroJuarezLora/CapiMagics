@@ -1,0 +1,70 @@
+
+Circuit 1 cell nfet_03v3 and Circuit 2 cell nfet_03v3 are black boxes.
+Warning: Equate pins:  cell nfet_03v3 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell nfet_03v3 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: nfet_03v3                       |Circuit 2: nfet_03v3                       
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes nfet_03v3 and nfet_03v3 are equivalent.
+
+Circuit 1 cell pfet_03v3 and Circuit 2 cell pfet_03v3 are black boxes.
+Warning: Equate pins:  cell pfet_03v3 is a placeholder, treated as a black box.
+Warning: Equate pins:  cell pfet_03v3 is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: pfet_03v3                       |Circuit 2: pfet_03v3                       
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+3                                          |3                                          
+4                                          |4                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes pfet_03v3 and pfet_03v3 are equivalent.
+
+Circuit 1 cell cap_mim_2f0_m4m5_noshield and Circuit 2 cell cap_mim_2f0fF are black boxes.
+Warning: Equate pins:  cell cap_mim_2f0_m4m5_noshield is a placeholder, treated as a black box.
+Warning: Equate pins:  cell cap_mim_2f0fF is a placeholder, treated as a black box.
+
+Subcircuit pins:
+Circuit 1: cap_mim_2f0_m4m5_noshield       |Circuit 2: cap_mim_2f0fF                   
+-------------------------------------------|-------------------------------------------
+1                                          |1                                          
+2                                          |2                                          
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes cap_mim_2f0_m4m5_noshield and cap_mim_2f0fF are equivalent.
+
+Class opamp (0):  Merged 5 parallel devices.
+Subcircuit summary:
+Circuit 1: opamp                           |Circuit 2: opamp                           
+-------------------------------------------|-------------------------------------------
+nfet_03v3 (5)                              |nfet_03v3 (5)                              
+pfet_03v3 (9->4)                           |pfet_03v3 (4)                              
+cap_mim_2f0_m4m5_noshield (1)              |cap_mim_2f0fF (1)                          
+Number of devices: 10                      |Number of devices: 10                      
+Number of nets: 9                          |Number of nets: 9                          
+---------------------------------------------------------------------------------------
+Netlists match uniquely.
+
+Subcircuit pins:
+Circuit 1: opamp                           |Circuit 2: opamp                           
+-------------------------------------------|-------------------------------------------
+avss                                       |avss                                       
+avdd                                       |avdd                                       
+vout                                       |vout                                       
+vin1                                       |vin1                                       
+vin2                                       |vin2                                       
+---------------------------------------------------------------------------------------
+Cell pin lists are equivalent.
+Device classes opamp and opamp are equivalent.
+
+Final result: Circuits match uniquely.
+.
