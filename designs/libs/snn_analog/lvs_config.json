@@ -24,7 +24,7 @@
 		"$UPRJ_ROOT/designs/libs/snn_analog/lvs/D14_topcell.spice"
 	],
 	"LVS_VERILOG_FILES": [
-		""
+		"$UPRJ_ROOT/designs/libs/snn_analog/D14_topcell.v"
 	],
 	"LAYOUT_FILE": "$UPRJ_ROOT/designs/libs/snn_analog/runs/test/final/gds/$TOP_LAYOUT.gds"
 }
