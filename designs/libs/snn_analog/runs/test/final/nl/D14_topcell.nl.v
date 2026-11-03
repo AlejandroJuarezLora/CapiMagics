@@ -1,19 +1,19 @@
 module D14_topcell (Vin,
     Vin_neg,
+    vout_1,
+    vout_2,
     vpost1,
     vpost2,
     vpre1,
-    vpre2,
-    vw11,
-    vw42);
+    vpre2);
  input Vin;
  input Vin_neg;
+ output vout_1;
+ output vout_2;
  output vpost1;
  output vpost2;
  output vpre1;
  output vpre2;
- output vw11;
- output vw42;
 
  wire A_wire;
  wire B_wire;
@@ -31,6 +31,8 @@ module D14_topcell (Vin,
  wire nvpre4_int;
  wire vpre3_int;
  wire vpre4_int;
+ wire vw11_net;
+ wire vw42_net;
 
  current_mirror u_current_mirror (.A(A_wire),
     .B(B_wire));
@@ -58,6 +60,10 @@ module D14_topcell (Vin,
     .nvout_2(nvpost2_net),
     .vout_1(vpost1),
     .vout_2(vpost2));
+ opamp_out u_opamp_out (.vin2_1(vw11_net),
+    .vin2_2(vw42_net),
+    .vout_1(vout_1),
+    .vout_2(vout_2));
  stdp_4x2 u_stdp_4x2 (.A(A_wire),
     .B(B_wire),
     .ifwd1(ifwd1_net),
@@ -74,6 +80,6 @@ module D14_topcell (Vin,
     .vpre2(vpre2),
     .vpre3(vpre3_int),
     .vpre4(vpre4_int),
-    .vw11(vw11),
-    .vw42(vw42));
+    .vw11(vw11_net),
+    .vw42(vw42_net));
 endmodule

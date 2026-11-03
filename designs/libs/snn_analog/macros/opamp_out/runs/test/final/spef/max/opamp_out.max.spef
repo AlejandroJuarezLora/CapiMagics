@@ -1,0 +1,80 @@
+*SPEF "ieee 1481-1999"
+*DESIGN "opamp_out"
+*DATE "21:53:53 Tuesday November 03, 2026"
+*VENDOR "The OpenROAD Project"
+*PROGRAM "OpenROAD"
+*VERSION "26Q1-1024-gdcf36133a"
+*DESIGN_FLOW "NAME_SCOPE LOCAL" "PIN_CAP NONE"
+*DIVIDER /
+*DELIMITER :
+*BUS_DELIMITER []
+*T_UNIT 1 NS
+*C_UNIT 1 PF
+*R_UNIT 1 OHM
+*L_UNIT 1 HENRY
+
+*NAME_MAP
+*3 vin2_1
+*4 vin2_2
+*5 vout_1
+*6 vout_2
+*7 x1
+*8 x2
+
+*PORTS
+vin2_1 I
+vin2_2 I
+vout_1 O
+vout_2 O
+
+*D_NET *3 0.00568175
+*CONN
+*P vin2_1 I
+*I *7:vin2 I *D opamp
+*CAP
+1 vin2_1 0.00284087
+2 *7:vin2 0.00284087
+*RES
+1 vin2_1 *7:vin2 33.26 
+*END
+
+*D_NET *4 0.0063385
+*CONN
+*P vin2_2 I
+*I *8:vin2 I *D opamp
+*CAP
+1 vin2_2 0.00316925
+2 *8:vin2 0.00316925
+*RES
+1 vin2_2 *8:vin2 37.836 
+*END
+
+*D_NET *5 0.00806414
+*CONN
+*P vout_1 O
+*I *7:vout I *D opamp
+*I *7:vin1 I *D opamp
+*CAP
+1 vout_1 0.00331959
+2 *7:vout 0.00052114
+3 *7:vin1 0.000191337
+4 *5:13 0.00403207
+*RES
+1 vout_1 *5:13 30.656 
+2 *5:13 *7:vin1 6.112 
+3 *5:13 *7:vout 8.608 
+*END
+
+*D_NET *6 0.00451184
+*CONN
+*P vout_2 O
+*I *8:vin1 I *D opamp
+*I *8:vout I *D opamp
+*CAP
+1 vout_2 0.00179382
+2 *8:vin1 0.000462101
+3 *8:vout 0.00225592
+*RES
+1 vout_2 *8:vout 21.48 
+2 *8:vout *8:vin1 4.888 
+*END

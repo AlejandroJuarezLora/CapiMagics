@@ -1,0 +1,11 @@
+* NGSPICE file created from opamp_out.ext - technology: gf180mcuD
+
+* Black-box entry subcircuit for opamp abstract view
+.subckt opamp avdd avss vout vin1 vin2
+.ends
+
+.subckt opamp_out avdd avss vin2_1 vin2_2 vout_1 vout_2
+Xx1 avdd avss vout_1 vout_1 vin2_1 opamp
+Xx2 avdd avss vout_2 vout_2 vin2_2 opamp
+.ends
+

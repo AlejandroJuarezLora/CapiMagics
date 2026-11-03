@@ -41,6 +41,13 @@ Circuit 1: cap_mim_2f0_m4m5_noshield       |Circuit 2: cap_mim_2f0fF
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes cap_mim_2f0_m4m5_noshield and cap_mim_2f0fF are equivalent.
+Flattening unmatched subcell nfet_03v3_CTT5VY in circuit opamp (0)(2 instances)
+Flattening unmatched subcell pfet_03v3_5MDBD5 in circuit opamp (0)(2 instances)
+Flattening unmatched subcell nfet_03v3_JWTLTL in circuit opamp (0)(2 instances)
+Flattening unmatched subcell pfet_03v3_U949MW in circuit opamp (0)(1 instance)
+Flattening unmatched subcell nfet_03v3_HVW9XU in circuit opamp (0)(1 instance)
+Flattening unmatched subcell cap_mim_2p0fF_LVJL5F in circuit opamp (0)(1 instance)
+Flattening unmatched subcell pfet_03v3_9TRV9F in circuit opamp (0)(1 instance)
 
 Class opamp (0):  Merged 5 parallel devices.
 Subcircuit summary:
@@ -60,8 +67,8 @@ Circuit 1: opamp                           |Circuit 2: opamp
 avss                                       |avss                                       
 avdd                                       |avdd                                       
 vout                                       |vout                                       
-vin1                                       |vin1                                       
 vin2                                       |vin2                                       
+vin1                                       |vin1                                       
 ---------------------------------------------------------------------------------------
 Cell pin lists are equivalent.
 Device classes opamp and opamp are equivalent.

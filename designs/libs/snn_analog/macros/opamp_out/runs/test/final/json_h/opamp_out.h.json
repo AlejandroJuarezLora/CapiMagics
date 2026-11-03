@@ -1,0 +1,132 @@
+{
+  "creator": "Yosys 0.64 (git sha1 6d2c445ae, g++ 13.3.0-6ubuntu2~24.04.1 -fPIC -O3)",
+  "modules": {
+    "opamp_out": {
+      "attributes": {
+        "hdlname": "opamp_out",
+        "top": "00000000000000000000000000000001",
+        "src": "/foss/designs/libs/snn_analog/macros/opamp_out/opamp_out.v:1.1-42.10"
+      },
+      "ports": {
+        "avdd": {
+          "direction": "inout",
+          "bits": [ 2 ]
+        },
+        "avss": {
+          "direction": "inout",
+          "bits": [ 3 ]
+        },
+        "vin2_1": {
+          "direction": "input",
+          "bits": [ 4 ]
+        },
+        "vout_1": {
+          "direction": "output",
+          "bits": [ 5 ]
+        },
+        "vin2_2": {
+          "direction": "input",
+          "bits": [ 6 ]
+        },
+        "vout_2": {
+          "direction": "output",
+          "bits": [ 7 ]
+        }
+      },
+      "cells": {
+        "x1": {
+          "hide_name": 0,
+          "type": "opamp",
+          "parameters": {
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/foss/designs/libs/snn_analog/macros/opamp_out/opamp_out.v:24.11-30.6"
+          },
+          "port_directions": {
+            "avdd": "inout",
+            "avss": "inout",
+            "vin1": "input",
+            "vin2": "input",
+            "vout": "output"
+          },
+          "connections": {
+            "avdd": [ 2 ],
+            "avss": [ 3 ],
+            "vin1": [ 5 ],
+            "vin2": [ 4 ],
+            "vout": [ 5 ]
+          }
+        },
+        "x2": {
+          "hide_name": 0,
+          "type": "opamp",
+          "parameters": {
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/foss/designs/libs/snn_analog/macros/opamp_out/opamp_out.v:34.11-40.6"
+          },
+          "port_directions": {
+            "avdd": "inout",
+            "avss": "inout",
+            "vin1": "input",
+            "vin2": "input",
+            "vout": "output"
+          },
+          "connections": {
+            "avdd": [ 2 ],
+            "avss": [ 3 ],
+            "vin1": [ 7 ],
+            "vin2": [ 6 ],
+            "vout": [ 7 ]
+          }
+        }
+      },
+      "netnames": {
+        "avdd": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "/foss/designs/libs/snn_analog/macros/opamp_out/opamp_out.v:11.11-11.15"
+          }
+        },
+        "avss": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "/foss/designs/libs/snn_analog/macros/opamp_out/opamp_out.v:12.11-12.15"
+          }
+        },
+        "vin2_1": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "/foss/designs/libs/snn_analog/macros/opamp_out/opamp_out.v:15.12-15.18"
+          }
+        },
+        "vin2_2": {
+          "hide_name": 0,
+          "bits": [ 6 ],
+          "attributes": {
+            "src": "/foss/designs/libs/snn_analog/macros/opamp_out/opamp_out.v:19.12-19.18"
+          }
+        },
+        "vout_1": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "src": "/foss/designs/libs/snn_analog/macros/opamp_out/opamp_out.v:16.12-16.18"
+          }
+        },
+        "vout_2": {
+          "hide_name": 0,
+          "bits": [ 7 ],
+          "attributes": {
+            "src": "/foss/designs/libs/snn_analog/macros/opamp_out/opamp_out.v:20.12-20.18"
+          }
+        }
+      }
+    }
+  }
+}
