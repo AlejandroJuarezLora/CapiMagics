@@ -38,9 +38,9 @@ pins:
     secondary_esd: false
   - name: vpost2
     io_type: analog
-  - name: vw11
+  - name: vout_1
     io_type: analog
-  - name: vw42
+  - name: vout_2
     io_type: analog
   - name: avdd
     io_type: power  # subsequent power/ground cells cause a break in the I/O power rails
