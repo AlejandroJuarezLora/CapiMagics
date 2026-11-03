@@ -1,5 +1,9 @@
 * NGSPICE file created from D14_topcell.ext - technology: gf180mcuD
 
+* Black-box entry subcircuit for opamp_out abstract view
+.subckt opamp_out avdd avss vin2_1 vin2_2 vout_1 vout_2
+.ends
+
 * Black-box entry subcircuit for current_mirror abstract view
 .subckt current_mirror avss avdd A B
 .ends
@@ -22,7 +26,8 @@
 + vpost1 vpost2 vpre1 vpre2 vpre3 vpre4 vw11 vw42
 .ends
 
-.subckt full_4x2_pex avdd avss Vin Vin_neg vpre1 vpre2 vw11 vw42 vpost1 vpost2
+.subckt D14_topcell Vin Vin_neg avdd avss vout_1 vout_2 vpost1 vpost2 vpre1 vpre2
+Xu_opamp_out avdd avss u_stdp_4x2/vw11 u_stdp_4x2/vw42 vout_1 vout_2 opamp_out
 Xu_current_mirror avss avdd u_stdp_4x2/A u_stdp_4x2/B current_mirror
 Xu_layer_input u_encoder/Iex_1_i u_encoder/Iex_2_i u_encoder/Iex_3_i u_encoder/Iex_4_i
 + u_stdp_4x2/nvpre1 u_stdp_4x2/nvpre2 u_stdp_4x2/nvpre3 u_stdp_4x2/nvpre4 avdd vpre1
@@ -33,7 +38,7 @@ Xu_encoder avss avdd Vin Vin_neg u_encoder/Iex_1_i u_encoder/Iex_2_i u_encoder/I
 + u_encoder/Iex_4_i encoder
 Xu_stdp_4x2 u_stdp_4x2/A u_stdp_4x2/B avdd avss u_stdp_4x2/ifwd1 u_stdp_4x2/ifwd2
 + u_stdp_4x2/nvpost1 u_stdp_4x2/nvpost2 u_stdp_4x2/nvpre1 u_stdp_4x2/nvpre2 u_stdp_4x2/nvpre3
-+ u_stdp_4x2/nvpre4 vpost1 vpost2 vpre1 vpre2 u_stdp_4x2/vpre3 u_stdp_4x2/vpre4 vw11
-+ vw42 stdp_4x2
++ u_stdp_4x2/nvpre4 vpost1 vpost2 vpre1 vpre2 u_stdp_4x2/vpre3 u_stdp_4x2/vpre4 u_stdp_4x2/vw11
++ u_stdp_4x2/vw42 stdp_4x2
 .ends
 

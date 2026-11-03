@@ -1,0 +1,24 @@
+(DELAYFILE
+ (SDFVERSION "3.0")
+ (DESIGN "opamp_out")
+ (DATE "Tue Nov  3 21:53:54 2026")
+ (VENDOR "Parallax")
+ (PROGRAM "STA")
+ (VERSION "2.7.0")
+ (DIVIDER .)
+ (TIMESCALE 1ns)
+ (CELL
+  (CELLTYPE "opamp_out")
+  (INSTANCE)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT vin2_1 x1.vin2 (0.091:0.091:0.091) (0.056:0.056:0.056))
+    (INTERCONNECT vin2_2 x2.vin2 (0.101:0.101:0.101) (0.062:0.062:0.062))
+    (INTERCONNECT x1.vout x1.vin1 (0.000:0.000:0.000))
+    (INTERCONNECT x1.vout vout_1 (0.002:0.002:0.002))
+    (INTERCONNECT x2.vout x2.vin1 (0.000:0.000:0.000))
+    (INTERCONNECT x2.vout vout_2 (0.001:0.001:0.001))
+   )
+  )
+ )
+)

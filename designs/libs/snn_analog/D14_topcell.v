@@ -3,11 +3,10 @@ module D14_topcell (
     // Entradas del encoder
     input Vin,
     input Vin_neg,
-   
-
+    
     //salidas de stdp_4x2
-    output vw11,
-    output vw42,
+    output vout_1,
+    output vout_2,
     output vpre1,
     output vpre2,
     output vpost1,
@@ -42,6 +41,10 @@ module D14_topcell (
     //Nets entre stdp y current mirror
     wire A_wire;
     wire B_wire;
+
+    //Nets entre stdp_4x2 y opamp_out
+    wire vw11_net;
+    wire vw42_net;
 
     assign vpre1 = vpre1_int;
     assign vpre2 = vpre2_int;
@@ -97,8 +100,8 @@ module D14_topcell (
         .B(B_wire),
         .ifwd2(ifwd2_net),
         .ifwd1(ifwd1_net),
-        .vw11(vw11),
-        .vw42(vw42)
+        .vw11(vw11_net),
+        .vw42(vw42_net)
     );
 
     //instancia de layer_output
@@ -117,7 +120,17 @@ module D14_topcell (
         .A(A_wire),
         .B(B_wire)
     );
-
     
+
+    //instancia del amplificador operacional
+    opamp_out u_opamp_out(
+        .avdd(avdd),
+        .avss(avss),
+        .vin2_1(vw11_net),
+        .vin2_2(vw42_net),
+        .vout_1(vout_1),
+        .vout_2(vout_2)
+    );
+
 
 endmodule

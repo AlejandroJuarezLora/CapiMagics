@@ -49,8 +49,8 @@ PDN_VWIDTH: 1
 PDN_HWIDTH: 1
 PDN_VSPACING: 2
 PDN_HSPACING: 2
-PDN_VPITCH: 40 #64
-PDN_HPITCH: 40 #40
+PDN_VPITCH: 20 #64
+PDN_HPITCH: 20 #40
 PDN_CORE_RING: true
 PDN_CORE_RING_VWIDTH: 1.5
 PDN_CORE_RING_HWIDTH: 1.5
@@ -59,10 +59,12 @@ PDN_CORE_RING_HSPACING: 1.5
 PDN_VOFFSET: 20.0
 PDN_HOFFSET: 30.0
 
-# IGNORE_DISCONNECTED_MODULES:
+IGNORE_DISCONNECTED_MODULES:
   # - stdp_4x2
   # - current_mirror
   # - layer_output
+ 
+
 
 # Conexión directa de alimentación a los pines y rieles de cada macro
 PDN_MACRO_CONNECTIONS:
@@ -71,6 +73,8 @@ PDN_MACRO_CONNECTIONS:
   - "u_layer_output avdd avss vdd vss"
   - "u_current_mirror avdd avss avdd avss"
   - "u_stdp_4x2 avdd avss avdd avss"
+  - "u_opamp_out avdd avss avdd avss"
+
 
 
 # --- Blackbox & Analog Optimization (Valid LibreLane Flags) ---
@@ -117,7 +121,7 @@ MAGIC_EXT_UNIQUE: notopports
 #- "M3_M2*"
 #- "nmos_5p0*"
 #- "nmos_1p2*"
-#- "pmos_5p0*"
+#- "pmoscap_*"
 #- "pmos_1p2*"
 #- "via1_*"
 #- "ypass_gate*"
@@ -129,12 +133,12 @@ MAGIC_EXT_UNIQUE: notopports
 #- "pmoscap_*"
 #- "xdec_*"
 #- "ypredec*"
-#- "xpredec*"
 #- "prexdec_*"
 #- "xdec8_*"
 #- "xdec16_*"
 #- "xdec32_*"
 #- "sa_*"
+
 RT_MIN_LAYER: Metal3
 RT_MAX_LAYER: Metal5
 ROUTING_CORES: 12
@@ -165,6 +169,8 @@ DRT_ANTENNA_REPAIR_JUMPER_ONLY: true
 DRT_ANTENNA_REPAIR_DIODE_ONLY: false
 
 IO_PIN_ORDER_CFG: dir::pin.cfg
+
+
 # --- Definición de Macros Analógicos ---
 MACROS:
   stdp_4x2:
@@ -206,7 +212,7 @@ MACROS:
       - /foss/designs/libs/snn_analog/current_mirror/current_mirror.v
     instances:
       u_current_mirror:
-        location: [103, 95] #185,30
+        location: [44, 95] #185,30
         orientation: N
 
   layer_input:
@@ -234,5 +240,19 @@ MACROS:
       - macros/layer_output/runs/test/final/pnl/layer_output.pnl.v
     instances:
       u_layer_output:
-        location: [150, 20] #20,20
+        location: [91, 20] #20,20
+        orientation: N
+
+  opamp_out:
+    gds:
+      - /foss/designs/libs/snn_analog/macros/opamp_out/runs/test/final/gds/opamp_out.gds
+    lef:
+      - /foss/designs/libs/snn_analog/macros/opamp_out/runs/test/final/lef/opamp_out.lef
+    spice:
+      - /foss/designs/libs/snn_analog/macros/opamp_out/runs/test/final/spice/opamp_out.spice
+    vh:
+      - /foss/designs/libs/snn_analog/macros/opamp_out/runs/test/final/pnl/opamp_out.pnl.v
+    instances:
+      u_opamp_out:
+        location: [260, 20]
         orientation: N

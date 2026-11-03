@@ -8,7 +8,7 @@ set techlibs ${pdklib}/libs.tech
 set reflibs ${pdklib}/libs.ref
 
 #set setupfile ${techlibs}/netgen/gf180mcuD_setup.tcl
-set setupfile /foss/designs/libs/snn_analog/sch/opamp/lvs/gf180mcuD_setup.tcl
+set setupfile /foss/designs/libs/snn_analog/sch/opamp/LVS/gf180mcuD_setup.tcl
 set sclib ${reflibs}/gf180mcu_fd_sc_mcu9t5v0/spice/gf180mcu_fd_sc_mcu9t5v0.spice
 
 set circuit1 [readnet spice opamp_layout.spice]
