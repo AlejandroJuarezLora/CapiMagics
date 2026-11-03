@@ -19,6 +19,7 @@ project:
   lvs_config: "./designs/libs/snn_analog/lvs_config.json"
   drc_ready: true               # data ready for integration and DRC
   lvs_ready: true               # data ready for integrated LVS
+  export_control: "docs/Export_Control_GF_Rev8.2.docx"   # Required export control document
 
 pins: 
   - name: avss
