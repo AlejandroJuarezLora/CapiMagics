@@ -28,14 +28,14 @@ FP_SIZING: absolute
 DIE_AREA:
   - 0
   - 0
-  - 116 #130
-  - 70  #80
+  - 121 #116 
+  - 80  #70
 
 CORE_AREA:
   - 11
   - 11
-  - 105
-  - 59
+  - 110 #105
+  - 70 #59
 
 
 # --- Espacio de Proteccion de las Macros ---
@@ -93,11 +93,11 @@ PDN_HSPACING: 2
 
 # --- Distribucion de los rieles de Alimentacion ---
 
-PDN_VPITCH: 14 #6.4
-PDN_HPITCH: 19.2 #6.4
+PDN_VPITCH: 14 #14
+PDN_HPITCH: 19.2 #19.2
 
 PDN_VOFFSET: 1
-PDN_HOFFSET: 1
+PDN_HOFFSET: 10
 
 # --- Anillo de Alimentacion (PDN Core Ring) ---
 
@@ -133,7 +133,7 @@ ERROR_ON_PDN_VIOLATIONS: false
 
 
 # --- Verificacion XOR ---
-ERROR_ON_XOR_ERROR: false
+ERROR_ON_XOR_ERROR: true
 
 
 # ============================================================
@@ -199,20 +199,20 @@ MACROS:
   opamp:
 
     gds:
-      - /foss/designs/libs/snn_analog/opamp/opamp.gds
+      - /foss/designs/libs/snn_analog/layout/opamp/opamp.gds
 
     lef:
-      - /foss/designs/libs/snn_analog/opamp/opamp.lef
+      - /foss/designs/libs/snn_analog/layout/opamp/opamp.lef
 
     spice:
-      - /foss/designs/libs/snn_analog/opamp/opamp_sch.spice
+      - /foss/designs/libs/snn_analog/layout/opamp/opamp.spice
 
     vh:
-      - /foss/designs/libs/snn_analog/opamp/opamp.v
+      - /foss/designs/libs/snn_analog/layout/opamp/opamp.v
 
     lib:
       "*":
-        - /foss/designs/libs/snn_analog/opamp/opamp.lib
+        - /foss/designs/libs/snn_analog/layout/opamp/opamp.lib
 
 
     # --------------------------------------------------------
@@ -228,5 +228,5 @@ MACROS:
 
       # --- Amplificador operacional 2 ---
       x2:
-        location: [60, 13]
+        location: [70, 13]
         orientation: N
