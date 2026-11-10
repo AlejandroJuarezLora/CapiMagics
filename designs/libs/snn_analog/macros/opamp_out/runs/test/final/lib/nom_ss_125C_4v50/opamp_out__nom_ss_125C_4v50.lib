@@ -27,23 +27,23 @@ library (opamp_out) {
 
 
   cell ("opamp_out") {
-    area : 2463.060 
+    area : 2258.940 
     is_macro_cell : true;
     pin("vin2_1") {
       direction : input;
-      capacitance : 0.0052;
+      capacitance : 0.0078;
     }
     pin("vin2_2") {
       direction : input;
-      capacitance : 0.0059;
+      capacitance : 0.0074;
     }
     pin("vout_1") {
       direction : output;
-      capacitance : 0.0075;
+      capacitance : 0.0097;
     }
     pin("vout_2") {
       direction : output;
-      capacitance : 0.0042;
+      capacitance : 0.0062;
     }
   }
 

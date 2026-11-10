@@ -1,6 +1,6 @@
 *SPEF "ieee 1481-1999"
 *DESIGN "opamp_out"
-*DATE "21:53:53 Tuesday November 03, 2026"
+*DATE "23:41:49 Monday November 09, 2026"
 *VENDOR "The OpenROAD Project"
 *PROGRAM "OpenROAD"
 *VERSION "26Q1-1024-gdcf36133a"
@@ -27,54 +27,54 @@ vin2_2 I
 vout_1 O
 vout_2 O
 
-*D_NET *3 0.00487381
+*D_NET *3 0.00632069
 *CONN
 *P vin2_1 I
 *I *7:vin2 I *D opamp
 *CAP
-1 vin2_1 0.0024369
-2 *7:vin2 0.0024369
+1 vin2_1 0.00316034
+2 *7:vin2 0.00316034
 *RES
-1 vin2_1 *7:vin2 27.94 
+1 vin2_1 *7:vin2 30.98 
 *END
 
-*D_NET *4 0.00553568
+*D_NET *4 0.00598871
 *CONN
 *P vin2_2 I
 *I *8:vin2 I *D opamp
 *CAP
-1 vin2_2 0.00276784
-2 *8:vin2 0.00276784
+1 vin2_2 0.00299436
+2 *8:vin2 0.00299436
 *RES
-1 vin2_2 *8:vin2 31.284 
+1 vin2_2 *8:vin2 31.892 
 *END
 
-*D_NET *5 0.00709059
+*D_NET *5 0.00729412
 *CONN
 *P vout_1 O
 *I *7:vout I *D opamp
 *I *7:vin1 I *D opamp
 *CAP
-1 vout_1 0.0029141
-2 *7:vout 0.000460996
-3 *7:vin1 0.000170201
-4 *5:13 0.0035453
+1 vout_1 0.00296785
+2 *7:vout 0.000543826
+3 *7:vin1 0.00013538
+4 *5:9 0.00364706
 *RES
-1 vout_1 *5:13 23.614 
-2 *5:13 *7:vin1 5.678 
-3 *5:13 *7:vout 7.502 
+1 vout_1 *5:9 24.526 
+2 *5:9 *7:vin1 5.374 
+3 *5:9 *7:vout 7.958 
 *END
 
-*D_NET *6 0.00392323
+*D_NET *6 0.00391975
 *CONN
 *P vout_2 O
 *I *8:vin1 I *D opamp
 *I *8:vout I *D opamp
 *CAP
-1 vout_2 0.00154023
-2 *8:vin1 0.000421388
-3 *8:vout 0.00196161
+1 vout_2 0.00158147
+2 *8:vin1 0.000378406
+3 *8:vout 0.00195987
 *RES
-1 vout_2 *8:vout 18.12 
-2 *8:vout *8:vin1 3.572 
+1 vout_2 *8:vout 18.994 
+2 *8:vout *8:vin1 11.622 
 *END

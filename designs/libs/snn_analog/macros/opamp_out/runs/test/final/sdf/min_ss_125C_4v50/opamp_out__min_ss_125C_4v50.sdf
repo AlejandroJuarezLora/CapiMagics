@@ -1,7 +1,7 @@
 (DELAYFILE
  (SDFVERSION "3.0")
  (DESIGN "opamp_out")
- (DATE "Tue Nov  3 21:53:54 2026")
+ (DATE "Mon Nov  9 23:41:50 2026")
  (VENDOR "Parallax")
  (PROGRAM "STA")
  (VERSION "2.7.0")
@@ -12,8 +12,8 @@
   (INSTANCE)
   (DELAY
    (ABSOLUTE
-    (INTERCONNECT vin2_1 x1.vin2 (0.078:0.078:0.078) (0.048:0.048:0.048))
-    (INTERCONNECT vin2_2 x2.vin2 (0.089:0.089:0.089) (0.054:0.054:0.054))
+    (INTERCONNECT vin2_1 x1.vin2 (0.117:0.117:0.117) (0.072:0.072:0.072))
+    (INTERCONNECT vin2_2 x2.vin2 (0.112:0.112:0.112) (0.069:0.069:0.069))
     (INTERCONNECT x1.vout x1.vin1 (0.000:0.000:0.000))
     (INTERCONNECT x1.vout vout_1 (0.002:0.002:0.002))
     (INTERCONNECT x2.vout x2.vin1 (0.000:0.000:0.000))
