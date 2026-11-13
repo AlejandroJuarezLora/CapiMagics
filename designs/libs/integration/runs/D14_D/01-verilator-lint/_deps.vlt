@@ -1,0 +1,9 @@
+`verilator_config
+lint_off -rule DECLFILENAME
+lint_off -rule EOFNEWLINE
+lint_off -rule UNDRIVEN -file "/foss/designs/libs/integration/runs/D14_D/tmp/55dd16605e3b4a13be406e1a8752fd31.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/foss/designs/libs/integration/runs/D14_D/tmp/55dd16605e3b4a13be406e1a8752fd31.bb.v"
+lint_off -rule UNDRIVEN -file "/foss/designs/libs/integration/runs/D14_D/tmp/724c7bdab3a648058664bb0d48f1d865.bb.v"
+lint_off -rule UNUSEDSIGNAL -file "/foss/designs/libs/integration/runs/D14_D/tmp/724c7bdab3a648058664bb0d48f1d865.bb.v"
+lint_off -rule UNDRIVEN -file "/foss/designs/libs/snn_analog/runs/test/D14_topcell/vh/D14_topcell.vh"
+lint_off -rule UNUSEDSIGNAL -file "/foss/designs/libs/snn_analog/runs/test/D14_topcell/vh/D14_topcell.vh"

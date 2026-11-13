@@ -1,0 +1,285 @@
+{
+    "STD_CELL_LIBRARY": "gf180mcu_fd_sc_mcu7t5v0",
+    "VDD_PIN": "VDD",
+    "GND_PIN": "VSS",
+    "TECH_LEFS": {
+        "nom_*": "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/techlef/gf180mcu_fd_sc_mcu7t5v0__nom.tlef",
+        "min_*": "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/techlef/gf180mcu_fd_sc_mcu7t5v0__min.tlef",
+        "max_*": "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/techlef/gf180mcu_fd_sc_mcu7t5v0__max.tlef"
+    },
+    "PRIMARY_GDSII_STREAMOUT_TOOL": "klayout",
+    "DEFAULT_MAX_TRAN": null,
+    "DEFAULT_CORNER": "nom_",
+    "STA_CORNERS": [
+        "nom_tt_025C_5v00",
+        "nom_ss_125C_4v50",
+        "nom_ff_n40C_5v50",
+        "min_tt_025C_5v00",
+        "min_ss_125C_4v50",
+        "min_ff_n40C_5v50",
+        "max_tt_025C_5v00",
+        "max_ss_125C_4v50",
+        "max_ff_n40C_5v50"
+    ],
+    "RT_MIN_LAYER": "Metal3",
+    "RT_MAX_LAYER": "Metal5",
+    "SCL_GROUND_PINS": [
+        "VSS",
+        "VPW"
+    ],
+    "SCL_POWER_PINS": [
+        "VDD",
+        "VNW"
+    ],
+    "TRISTATE_CELLS": [
+        "gf180mcu_fd_sc_mcu7t5v0__bufz*"
+    ],
+    "FILL_CELLS": [
+        "gf180mcu_fd_sc_mcu7t5v0__fill_*"
+    ],
+    "DECAP_CELLS": [
+        "gf180mcu_fd_sc_mcu7t5v0__fillcap_*"
+    ],
+    "LIB": {},
+    "CELL_LEFS": [
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/lef/gf180mcu_fd_sc_mcu7t5v0.lef"
+    ],
+    "CELL_GDS": [
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/gds/gf180mcu_fd_sc_mcu7t5v0.gds"
+    ],
+    "CELL_VERILOG_MODELS": [
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/verilog/gf180mcu_fd_sc_mcu7t5v0.v"
+    ],
+    "CELL_BB_VERILOG_MODELS": null,
+    "CELL_SPICE_MODELS": [
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/spice/gf180mcu_fd_sc_mcu7t5v0.spice"
+    ],
+    "CELL_CDLS": [
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_sc_mcu7t5v0/cdl/gf180mcu_fd_sc_mcu7t5v0.cdl"
+    ],
+    "SYNTH_EXCLUDED_CELL_FILE": "/foss/pdks/gf180mcuD/libs.tech/librelane/gf180mcu_fd_sc_mcu7t5v0/synth_exclude.cells",
+    "PNR_EXCLUDED_CELL_FILE": "/foss/pdks/gf180mcuD/libs.tech/librelane/gf180mcu_fd_sc_mcu7t5v0/pnr_exclude.cells",
+    "OUTPUT_CAP_LOAD": 72.91,
+    "MAX_FANOUT_CONSTRAINT": 10,
+    "MAX_TRANSITION_CONSTRAINT": 3,
+    "MAX_CAPACITANCE_CONSTRAINT": 0.2,
+    "CLOCK_UNCERTAINTY_CONSTRAINT": 0.25,
+    "CLOCK_TRANSITION_CONSTRAINT": 0.15,
+    "TIME_DERATING_CONSTRAINT": 5,
+    "IO_DELAY_CONSTRAINT": 20,
+    "SYNTH_DRIVING_CELL": "gf180mcu_fd_sc_mcu7t5v0__inv_1/ZN",
+    "SYNTH_CLK_DRIVING_CELL": "gf180mcu_fd_sc_mcu7t5v0__inv_4/ZN",
+    "SYNTH_TIEHI_CELL": "gf180mcu_fd_sc_mcu7t5v0__tieh/Z",
+    "SYNTH_TIELO_CELL": "gf180mcu_fd_sc_mcu7t5v0__tiel/ZN",
+    "SYNTH_BUFFER_CELL": "gf180mcu_fd_sc_mcu7t5v0__buf_1/I/Z",
+    "PLACE_SITE": "GF018hv5v_mcu_sc7",
+    "CELL_PAD_EXCLUDE": [
+        "gf180mcu_fd_sc_mcu7t5v0__filltie",
+        "gf180mcu_fd_sc_mcu7t5v0__fill_*",
+        "gf180mcu_fd_sc_mcu7t5v0__endcap"
+    ],
+    "DIODE_CELL": "gf180mcu_fd_sc_mcu7t5v0__antenna/I",
+    "WELLTAP_CELL": "gf180mcu_fd_sc_mcu7t5v0__filltie",
+    "ENDCAP_CELL": "gf180mcu_fd_sc_mcu7t5v0__endcap",
+    "DESIGN_DIR": "/foss/designs/libs/integration",
+    "PDK_ROOT": "/foss/pdks",
+    "DESIGN_NAME": "D14",
+    "PDK": "gf180mcuD",
+    "CLOCK_PERIOD": 10,
+    "CLOCK_PORT": null,
+    "CLOCK_NET": null,
+    "VDD_NETS": [
+        "avdd"
+    ],
+    "GND_NETS": [
+        "avss"
+    ],
+    "DIE_AREA": [
+        0,
+        0,
+        605,
+        605
+    ],
+    "EXTRA_EXCLUDED_CELLS": null,
+    "MACROS": {
+        "D14_topcell": {
+            "gds": [
+                "/foss/designs/libs/snn_analog/runs/test/D14_topcell/gds/D14_topcell.gds"
+            ],
+            "lef": [
+                "/foss/designs/libs/snn_analog/runs/test/D14_topcell/lef/D14_topcell.lef"
+            ],
+            "instances": {
+                "D14_topcell_u": {
+                    "location": [
+                        30,
+                        30
+                    ],
+                    "orientation": "N"
+                }
+            },
+            "vh": [
+                "/foss/designs/libs/snn_analog/runs/test/D14_topcell/vh/D14_topcell.vh"
+            ],
+            "nl": [
+                "/foss/designs/libs/snn_analog/runs/test/D14_topcell/nl/D14_topcell.nl.v"
+            ],
+            "pnl": [
+                "/foss/designs/libs/snn_analog/runs/test/D14_topcell/pnl/D14_topcell.pnl.v"
+            ],
+            "spef": {
+                "max": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/spef/max/D14_topcell.max.spef"
+                ],
+                "min": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/spef/min/D14_topcell.min.spef"
+                ],
+                "nom": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/spef/nom/D14_topcell.nom.spef"
+                ]
+            },
+            "lib": {
+                "max_ff_n40C_5v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/lib/max_ff_n40C_5v50/D14_topcell__max_ff_n40C_5v50.lib"
+                ],
+                "max_ss_125C_4v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/lib/max_ss_125C_4v50/D14_topcell__max_ss_125C_4v50.lib"
+                ],
+                "max_tt_025C_5v00": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/lib/max_tt_025C_5v00/D14_topcell__max_tt_025C_5v00.lib"
+                ],
+                "min_ff_n40C_5v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/lib/min_ff_n40C_5v50/D14_topcell__min_ff_n40C_5v50.lib"
+                ],
+                "min_ss_125C_4v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/lib/min_ss_125C_4v50/D14_topcell__min_ss_125C_4v50.lib"
+                ],
+                "min_tt_025C_5v00": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/lib/min_tt_025C_5v00/D14_topcell__min_tt_025C_5v00.lib"
+                ],
+                "nom_ff_n40C_5v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/lib/nom_ff_n40C_5v50/D14_topcell__nom_ff_n40C_5v50.lib"
+                ],
+                "nom_ss_125C_4v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/lib/nom_ss_125C_4v50/D14_topcell__nom_ss_125C_4v50.lib"
+                ],
+                "nom_tt_025C_5v00": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/lib/nom_tt_025C_5v00/D14_topcell__nom_tt_025C_5v00.lib"
+                ]
+            },
+            "spice": [
+                "/foss/designs/libs/snn_analog/runs/test/D14_topcell/spice/D14_topcell.spice"
+            ],
+            "sdf": {
+                "max_ff_n40C_5v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/sdf/max_ff_n40C_5v50/D14_topcell__max_ff_n40C_5v50.sdf"
+                ],
+                "max_ss_125C_4v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/sdf/max_ss_125C_4v50/D14_topcell__max_ss_125C_4v50.sdf"
+                ],
+                "max_tt_025C_5v00": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/sdf/max_tt_025C_5v00/D14_topcell__max_tt_025C_5v00.sdf"
+                ],
+                "min_ff_n40C_5v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/sdf/min_ff_n40C_5v50/D14_topcell__min_ff_n40C_5v50.sdf"
+                ],
+                "min_ss_125C_4v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/sdf/min_ss_125C_4v50/D14_topcell__min_ss_125C_4v50.sdf"
+                ],
+                "min_tt_025C_5v00": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/sdf/min_tt_025C_5v00/D14_topcell__min_tt_025C_5v00.sdf"
+                ],
+                "nom_ff_n40C_5v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/sdf/nom_ff_n40C_5v50/D14_topcell__nom_ff_n40C_5v50.sdf"
+                ],
+                "nom_ss_125C_4v50": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/sdf/nom_ss_125C_4v50/D14_topcell__nom_ss_125C_4v50.sdf"
+                ],
+                "nom_tt_025C_5v00": [
+                    "/foss/designs/libs/snn_analog/runs/test/D14_topcell/sdf/nom_tt_025C_5v00/D14_topcell__nom_tt_025C_5v00.sdf"
+                ]
+            },
+            "json_h": null
+        }
+    },
+    "EXTRA_LEFS": null,
+    "EXTRA_VERILOG_MODELS": null,
+    "EXTRA_SPICE_MODELS": null,
+    "EXTRA_CDLS": null,
+    "EXTRA_LIBS": null,
+    "EXTRA_GDS": null,
+    "FALLBACK_SDC": "/usr/local/lib/python3.12/dist-packages/librelane/scripts/base.sdc",
+    "PAD_GDS": [
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/gds/gf180mcu_fd_io.gds",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/gds/gf180mcu_ef_io.gds"
+    ],
+    "PAD_LEFS": [
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__dvss.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__fillnc.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__fill10.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__cor.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__fill5.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__brk2.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__fill1.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__bi_24t.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__bi_t.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__in_c.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__dvdd.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_ef_io__bi_t.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__in_s.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__asig_5p0.lef",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/lef/gf180mcu_fd_io__brk5.lef"
+    ],
+    "PAD_VERILOG_MODELS": [
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/verilog/gf180mcu_fd_io__blackbox_pp.v",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/verilog/gf180mcu_ef_io__blackbox_pp.v"
+    ],
+    "PAD_SPICE_MODELS": [
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/spice/gf180mcu_fd_io.spice",
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/spice/gf180mcu_ef_io.spice"
+    ],
+    "PAD_CDLS": [
+        "/foss/pdks/gf180mcuD/libs.ref/gf180mcu_fd_io/cdl/gf180mcu_fd_io.cdl"
+    ],
+    "PAD_LIBS": {},
+    "PAD_CORNER": [
+        "gf180mcu_fd_io__cor"
+    ],
+    "PAD_FILLERS": [
+        "gf180mcu_fd_io__fill10",
+        "gf180mcu_fd_io__fill5",
+        "gf180mcu_fd_io__fill1",
+        "gf180mcu_fd_io__fillnc"
+    ],
+    "PAD_SITE_NAME": "GF_IO_Site",
+    "PAD_CORNER_SITE_NAME": "GF_COR_Site",
+    "PAD_FAKE_SITES": {
+        "GF_IO_Site": [
+            0.1,
+            355
+        ],
+        "GF_COR_Site": [
+            355,
+            355
+        ]
+    },
+    "PAD_BONDPAD_NAME": null,
+    "PAD_BONDPAD_WIDTH": null,
+    "PAD_BONDPAD_HEIGHT": null,
+    "PAD_BONDPAD_OFFSETS": null,
+    "PAD_PLACE_IO_TERMINALS": [
+        "gf180mcu_fd_io__asig_5p0/ASIG5V",
+        "gf180mcu_fd_io__bi_24t/PAD",
+        "gf180mcu_fd_io__bi_t/PAD",
+        "gf180mcu_fd_io__in_c/PAD",
+        "gf180mcu_fd_io__in_s/PAD",
+        "gf180mcu_fd_io__dvss/DVSS",
+        "gf180mcu_fd_io__dvdd/DVDD"
+    ],
+    "PAD_EDGE_SPACING": 26,
+    "ERROR_ON_LINTER_WARNINGS": false,
+    "meta": {
+        "librelane_version": "3.0.2",
+        "step": "Checker.LintWarnings"
+    }
+}

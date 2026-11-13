@@ -1,0 +1,15 @@
+85. Printing statistics.
+
+=== D14 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        8 wires
+        8 wire bits
+        8 public wires
+        8 public wire bits
+        8 ports
+        8 port bits
+        1 cells
+        1   D14_topcell
+

@@ -1,0 +1,162 @@
+{
+  "creator": "Yosys 0.64 (git sha1 6d2c445ae, g++ 13.3.0-6ubuntu2~24.04.1 -fPIC -O3)",
+  "modules": {
+    "D14": {
+      "attributes": {
+        "hdlname": "D14",
+        "top": "00000000000000000000000000000001",
+        "src": "/foss/designs/libs/integration/D14.v:5.1-37.10"
+      },
+      "ports": {
+        "VSS": {
+          "direction": "inout",
+          "bits": [ 2 ]
+        },
+        "VDD": {
+          "direction": "inout",
+          "bits": [ 3 ]
+        },
+        "Vin": {
+          "direction": "inout",
+          "bits": [ 4 ]
+        },
+        "Vin_neg": {
+          "direction": "inout",
+          "bits": [ 5 ]
+        },
+        "vout_1": {
+          "direction": "inout",
+          "bits": [ 6 ]
+        },
+        "vout_2": {
+          "direction": "inout",
+          "bits": [ 7 ]
+        },
+        "vpre1": {
+          "direction": "inout",
+          "bits": [ 8 ]
+        },
+        "vpre2": {
+          "direction": "inout",
+          "bits": [ 9 ]
+        },
+        "vpost1": {
+          "direction": "inout",
+          "bits": [ 10 ]
+        },
+        "vpost2": {
+          "direction": "inout",
+          "bits": [ 11 ]
+        }
+      },
+      "cells": {
+        "D14_topcell_u": {
+          "hide_name": 0,
+          "type": "D14_topcell",
+          "parameters": {
+          },
+          "attributes": {
+            "module_not_derived": "00000000000000000000000000000001",
+            "src": "/foss/designs/libs/integration/D14.v:22.18-35.6"
+          },
+          "port_directions": {
+            "Vin": "input",
+            "Vin_neg": "input",
+            "avdd": "inout",
+            "avss": "inout",
+            "vout_1": "output",
+            "vout_2": "output",
+            "vpost1": "output",
+            "vpost2": "output",
+            "vpre1": "output",
+            "vpre2": "output"
+          },
+          "connections": {
+            "Vin": [ 4 ],
+            "Vin_neg": [ 5 ],
+            "avdd": [ 3 ],
+            "avss": [ 2 ],
+            "vout_1": [ 6 ],
+            "vout_2": [ 7 ],
+            "vpost1": [ 10 ],
+            "vpost2": [ 11 ],
+            "vpre1": [ 8 ],
+            "vpre2": [ 9 ]
+          }
+        }
+      },
+      "netnames": {
+        "VDD": {
+          "hide_name": 0,
+          "bits": [ 3 ],
+          "attributes": {
+            "src": "/foss/designs/libs/integration/D14.v:7.15-7.18"
+          }
+        },
+        "VSS": {
+          "hide_name": 0,
+          "bits": [ 2 ],
+          "attributes": {
+            "src": "/foss/designs/libs/integration/D14.v:6.15-6.18"
+          }
+        },
+        "Vin": {
+          "hide_name": 0,
+          "bits": [ 4 ],
+          "attributes": {
+            "src": "/foss/designs/libs/integration/D14.v:9.11-9.14"
+          }
+        },
+        "Vin_neg": {
+          "hide_name": 0,
+          "bits": [ 5 ],
+          "attributes": {
+            "src": "/foss/designs/libs/integration/D14.v:10.11-10.18"
+          }
+        },
+        "vout_1": {
+          "hide_name": 0,
+          "bits": [ 6 ],
+          "attributes": {
+            "src": "/foss/designs/libs/integration/D14.v:11.11-11.17"
+          }
+        },
+        "vout_2": {
+          "hide_name": 0,
+          "bits": [ 7 ],
+          "attributes": {
+            "src": "/foss/designs/libs/integration/D14.v:12.11-12.17"
+          }
+        },
+        "vpost1": {
+          "hide_name": 0,
+          "bits": [ 10 ],
+          "attributes": {
+            "src": "/foss/designs/libs/integration/D14.v:15.11-15.17"
+          }
+        },
+        "vpost2": {
+          "hide_name": 0,
+          "bits": [ 11 ],
+          "attributes": {
+            "src": "/foss/designs/libs/integration/D14.v:16.11-16.17"
+          }
+        },
+        "vpre1": {
+          "hide_name": 0,
+          "bits": [ 8 ],
+          "attributes": {
+            "src": "/foss/designs/libs/integration/D14.v:13.11-13.16"
+          }
+        },
+        "vpre2": {
+          "hide_name": 0,
+          "bits": [ 9 ],
+          "attributes": {
+            "src": "/foss/designs/libs/integration/D14.v:14.11-14.16"
+          }
+        }
+      }
+    }
+  }
+}

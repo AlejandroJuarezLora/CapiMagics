@@ -1,0 +1,9 @@
+MACROS:
+  final:
+    sdf:
+    lib:
+    spef:
+    instances:
+      i_chip_core.final_u:
+        location: [550, 550]
+        orientation: N

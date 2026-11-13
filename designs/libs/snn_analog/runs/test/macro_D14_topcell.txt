@@ -1,0 +1,63 @@
+MACROS:
+  D14_topcell:
+    gds:
+      - dir::build/D14_topcell/gds/D14_topcell.gds
+    lef:
+      - dir::build/D14_topcell/lef/D14_topcell.lef
+    vh:
+      - dir::build/D14_topcell/vh/D14_topcell.vh
+    nl:
+      - dir::build/D14_topcell/nl/D14_topcell.nl.v
+    pnl:
+      - dir::build/D14_topcell/pnl/D14_topcell.pnl.v
+    spice:
+      - dir::build/D14_topcell/spice/D14_topcell.spice
+    sdf:
+      max_ff_n40C_5v50:
+        - dir::build/D14_topcell/sdf/max_ff_n40C_5v50/D14_topcell__max_ff_n40C_5v50.sdf
+      max_ss_125C_4v50:
+        - dir::build/D14_topcell/sdf/max_ss_125C_4v50/D14_topcell__max_ss_125C_4v50.sdf
+      max_tt_025C_5v00:
+        - dir::build/D14_topcell/sdf/max_tt_025C_5v00/D14_topcell__max_tt_025C_5v00.sdf
+      min_ff_n40C_5v50:
+        - dir::build/D14_topcell/sdf/min_ff_n40C_5v50/D14_topcell__min_ff_n40C_5v50.sdf
+      min_ss_125C_4v50:
+        - dir::build/D14_topcell/sdf/min_ss_125C_4v50/D14_topcell__min_ss_125C_4v50.sdf
+      min_tt_025C_5v00:
+        - dir::build/D14_topcell/sdf/min_tt_025C_5v00/D14_topcell__min_tt_025C_5v00.sdf
+      nom_ff_n40C_5v50:
+        - dir::build/D14_topcell/sdf/nom_ff_n40C_5v50/D14_topcell__nom_ff_n40C_5v50.sdf
+      nom_ss_125C_4v50:
+        - dir::build/D14_topcell/sdf/nom_ss_125C_4v50/D14_topcell__nom_ss_125C_4v50.sdf
+      nom_tt_025C_5v00:
+        - dir::build/D14_topcell/sdf/nom_tt_025C_5v00/D14_topcell__nom_tt_025C_5v00.sdf
+    lib:
+      max_ff_n40C_5v50:
+        - dir::build/D14_topcell/lib/max_ff_n40C_5v50/D14_topcell__max_ff_n40C_5v50.lib
+      max_ss_125C_4v50:
+        - dir::build/D14_topcell/lib/max_ss_125C_4v50/D14_topcell__max_ss_125C_4v50.lib
+      max_tt_025C_5v00:
+        - dir::build/D14_topcell/lib/max_tt_025C_5v00/D14_topcell__max_tt_025C_5v00.lib
+      min_ff_n40C_5v50:
+        - dir::build/D14_topcell/lib/min_ff_n40C_5v50/D14_topcell__min_ff_n40C_5v50.lib
+      min_ss_125C_4v50:
+        - dir::build/D14_topcell/lib/min_ss_125C_4v50/D14_topcell__min_ss_125C_4v50.lib
+      min_tt_025C_5v00:
+        - dir::build/D14_topcell/lib/min_tt_025C_5v00/D14_topcell__min_tt_025C_5v00.lib
+      nom_ff_n40C_5v50:
+        - dir::build/D14_topcell/lib/nom_ff_n40C_5v50/D14_topcell__nom_ff_n40C_5v50.lib
+      nom_ss_125C_4v50:
+        - dir::build/D14_topcell/lib/nom_ss_125C_4v50/D14_topcell__nom_ss_125C_4v50.lib
+      nom_tt_025C_5v00:
+        - dir::build/D14_topcell/lib/nom_tt_025C_5v00/D14_topcell__nom_tt_025C_5v00.lib
+    spef:
+      max:
+        - dir::build/D14_topcell/spef/max/D14_topcell.max.spef
+      min:
+        - dir::build/D14_topcell/spef/min/D14_topcell.min.spef
+      nom:
+        - dir::build/D14_topcell/spef/nom/D14_topcell.nom.spef
+    instances:
+      i_chip_core.D14_topcell_u:
+        location: [550, 550]
+        orientation: N
