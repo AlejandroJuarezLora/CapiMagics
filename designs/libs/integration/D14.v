@@ -2,10 +2,11 @@
 
 //MUCHAS DUDAS AL CREAR TU VERILOG. EN TU PROYECTO DIGITAL, TIENES OTROS puertos distintos. 
 
-module D14 (`ifdef USE_POWER_PINS
-        inout VSS,
-        inout VDD,
-    `endif
+module D14 (
+    //`ifdef USE_POWER_PINS
+    //    inout avss,
+    //    inout avdd,
+    //`endif
     inout Vin,
     inout Vin_neg,
     inout vout_1,
@@ -16,14 +17,12 @@ module D14 (`ifdef USE_POWER_PINS
     inout vpost2
 );
 
-    
-
       //LA INSTANCIA DE NUESTRA CELDA DEBERIA IR EN D14_D_padring.v? o a que lo conecto aqui?
      D14_topcell D14_topcell_u (
-        `ifdef USE_POWER_PINS
-            .avdd  (VDD),
-            .avss (VSS),
-        `endif
+        //`ifdef USE_POWER_PINS
+        //    .avdd  (avdd),
+        //    .avss (avss),
+        //`endif
         .Vin(Vin),
         .Vin_neg(Vin_neg),
         .vout_1(vout_1),
