@@ -10,13 +10,22 @@ VERILOG_FILES:
   # - dir::macros/layer_output/layer_output.v
   # - dir::encoder/encoder.v
   - dir::D14.v
+  - dir::connectors/avss_conn.v
+  - dir::connectors/avdd_conn.v
   # - dir::macros/stdp_4x2/stdp_4x2.v
 
 
 # --- Parámetros de Floorplaning (Alineados a rejilla 7T GF180MCU) ---
 FP_SIZING: absolute
 DIE_AREA: [0, 0, 605, 605] 
-CORE_AREA: [10, 10, 595, 595] #de /snn_analog/config.yaml
+CORE_AREA: [0, 0, 605, 605]   # no core ring: the grid reaches the DEF power pins through the bridges
+# D14_D.route.def = D14_D.def (official, unchanged) with each 8-stripe signal pin merged
+# into one rectangle over the same stripes: OpenROAD routing rejects multi-shape pins
+# (DRT-0302). check_def_alignment.py verifies the GDS still covers every official stripe.
+FP_DEF_TEMPLATE: dir::D14_D.route.def
+FP_TEMPLATE_COPY_POWER_PINS: true
+# LibreLane 3.0.2 strict mode always fails on avdd/avss when copying power pins.
+FP_TEMPLATE_MATCH_MODE: permissive
 
 VDD_NETS:
   - avdd
@@ -35,23 +44,31 @@ ERROR_ON_NL_ASSIGN_STATEMENTS: false
 
 # ---- FLAGS PDN
 
-PDN_ENABLE_RAILS: true
+PDN_ENABLE_RAILS: false
+PDN_ENABLE_PINS: false
+PDN_CFG: dir::pdn_cfg.tcl
 PDN_MULTILAYER: true
-PDN_VWIDTH: 1
-PDN_HWIDTH: 1
+PDN_VWIDTH: 2
+PDN_HWIDTH: 2
 PDN_VSPACING: 2
 PDN_HSPACING: 2
-PDN_VPITCH: 20 #64
-PDN_HPITCH: 20 #40
-PDN_CORE_RING: true
+PDN_VPITCH: 60
+PDN_HPITCH: 60
+# avdd straps at x = 10 + 60k, avss at x = 14 + 60k: x = 14 crosses avss_conn
+# (x 0..30) and x = 370 crosses avdd_conn (x 331..404). Keep these values.
+PDN_CORE_RING: false
 PDN_CORE_RING_VWIDTH: 1.5
 PDN_CORE_RING_HWIDTH: 1.5
 PDN_CORE_RING_VSPACING: 1.5
 PDN_CORE_RING_HSPACING: 1.5
-PDN_VOFFSET: 20.0
-PDN_HOFFSET: 30.0
+PDN_VOFFSET: 10
+PDN_HOFFSET: 10
 
-IGNORE_DISCONNECTED_MODULES:
+SYNTH_KEEP_HIERARCHY_MODULES: [avss_conn, avdd_conn]
+# The bridges are tied to avss/avdd in pdn_cfg.tcl, not in RTL (on purpose).
+IGNORE_DISCONNECTED_MODULES: [avss_conn, avdd_conn]
+FP_MACRO_HORIZONTAL_HALO: 5
+FP_MACRO_VERTICAL_HALO: 5
   # - stdp_4x2
   # - current_mirror
   # - layer_output
@@ -118,12 +135,26 @@ MACROS:
         - dir::../snn_analog/runs/test/D14_topcell/spef/nom/D14_topcell.nom.spef
     instances:
       D14_topcell_u:
-        location: [30, 30]
+        location: [160, 110]
         orientation: N
 
 # Conexión directa de alimentación a los pines y rieles de cada macro
+  avss_conn:
+    gds: [dir::connectors/avss_conn.gds]
+    lef: [dir::connectors/avss_conn.lef]
+    instances:
+      u_avss_conn:
+        location: [0, 0]
+        orientation: N
+  avdd_conn:
+    gds: [dir::connectors/avdd_conn.gds]
+    lef: [dir::connectors/avdd_conn.lef]
+    instances:
+      u_avdd_conn:
+        location: [330.96, 575.12]
+        orientation: N
 PDN_MACRO_CONNECTIONS:
-  - "D14_topcell_u avdd avss vdd vss"
+  - "D14_topcell_u avdd avss avdd avss"   # last two = pin names inside D14_topcell
 
 
 
@@ -137,7 +168,7 @@ RUN_POST_GRT_RESIZER_TIMING: false
 RUN_HEURISTIC_DIODE_INSERTION: false
 RUN_FILL_INSERTION: false
 RUN_TAP_ENDCAP_INSERTION: false
-ERROR_ON_PDN_VIOLATIONS: false
+ERROR_ON_PDN_VIOLATIONS: true
 
 
 # --- Routing (GF180MCU) ---
@@ -149,7 +180,7 @@ KLAYOUT_FILLER_OPTIONS:
 MAGIC_EXT_UNIQUE: notopports
 
 
-RT_MIN_LAYER: Metal3
+RT_MIN_LAYER: Metal2   # Metal3-only access shorts vpost1/vpost2 against the macro (DRT shorts at y=110.1)
 RT_MAX_LAYER: Metal5
 ROUTING_CORES: 12
 #GRT_ALLOW_CONGESTION: true
