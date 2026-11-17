@@ -21,7 +21,7 @@ DIE_AREA: [0, 0, 605, 605]
 CORE_AREA: [0, 0, 605, 605]   # no core ring: the grid reaches the DEF power pins through the bridges
 # D14_D.route.def = D14_D.def (official, unchanged) with each 8-stripe signal pin merged
 # into one rectangle over the same stripes: OpenROAD routing rejects multi-shape pins
-# (DRT-0302). check_def_alignment.py verifies the GDS still covers every official stripe.
+# (DRT-0302). The routed GDS still covers every official stripe.
 FP_DEF_TEMPLATE: dir::D14_D.route.def
 FP_TEMPLATE_COPY_POWER_PINS: true
 # LibreLane 3.0.2 strict mode always fails on avdd/avss when copying power pins.
