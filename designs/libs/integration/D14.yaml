@@ -1,14 +1,13 @@
 meta:
   version: 3
   flow: Classic
+#  substituting_steps:
+#    OpenROAD.IRDropReport: null
 
 DESIGN_NAME: D14
 
 # --- RTL del top ---
 VERILOG_FILES:
-  # - dir::macros/layer_input/layer_input.v
-  # - dir::macros/layer_output/layer_output.v
-  # - dir::encoder/encoder.v
   - dir::D14.v
   - dir::connectors/avss_conn.v
   - dir::connectors/avdd_conn.v
@@ -34,13 +33,18 @@ GND_NETS:
 
 PAD_LIBS: {} #para ignorar los pads de la librería de pads del PDK y usar los pads de la macro, se necesita ignoras las librerias de 5V0
 
+
+FP_DEF_TEMPLATE: dir::D14_D.def
+FP_TEMPLATE_COPY_POWER_PINS: true
+FP_TEMPLATE_MATCH_MODE: permissive
+
 # --- Manejo de Verificaciones para Diseños Analógicos / Macros ---
 ERROR_ON_LINTER_ERRORS: false
 ERROR_ON_LINTER_WARNINGS: false
 ERROR_ON_UNMAPPED_CELLS: false
 ERROR_ON_SYNTH_CHECKS: false
 ERROR_ON_NL_ASSIGN_STATEMENTS: false
-
+ERROR_ON_DISCONNECTED_PINS: false ######
 
 # ---- FLAGS PDN
 
@@ -170,7 +174,6 @@ RUN_FILL_INSERTION: false
 RUN_TAP_ENDCAP_INSERTION: false
 ERROR_ON_PDN_VIOLATIONS: true
 
-
 # --- Routing (GF180MCU) ---
 PRIMARY_GDSII_STREAMOUT_TOOL: klayout
 MAGIC_ZEROIZE_ORIGIN: false
@@ -183,8 +186,6 @@ MAGIC_EXT_UNIQUE: notopports
 RT_MIN_LAYER: Metal2   # Metal3-only access shorts vpost1/vpost2 against the macro (DRT shorts at y=110.1)
 RT_MAX_LAYER: Metal5
 ROUTING_CORES: 12
-#GRT_ALLOW_CONGESTION: true
-#GRT_ADJUSTMENT: 0.5
 
 NON_DEFAULT_RULES:
   ndr_safe_spacing:
@@ -197,7 +198,6 @@ NON_DEFAULT_RULES:
 
 DRT_ASSIGN_NDR:
   ".*": ndr_safe_spacing
-
 
 RUN_ANTENNA_REPAIR: true
 
