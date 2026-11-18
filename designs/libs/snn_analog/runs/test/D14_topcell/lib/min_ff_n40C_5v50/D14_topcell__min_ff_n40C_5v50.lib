@@ -38,19 +38,19 @@ library (D14_topcell) {
     }
     pin("vout_1") {
       direction : output;
-      capacitance : 0.0100;
+      capacitance : 0.0095;
     }
     pin("vout_2") {
       direction : output;
-      capacitance : 0.0277;
+      capacitance : 0.0274;
     }
     pin("vpost1") {
       direction : output;
-      capacitance : 0.0171;
+      capacitance : 0.0192;
     }
     pin("vpost2") {
       direction : output;
-      capacitance : 0.0236;
+      capacitance : 0.0254;
     }
     pin("vpre1") {
       direction : output;

@@ -1,12 +1,14 @@
 `default_nettype none
 
-//MUCHAS DUDAS AL CREAR TU VERILOG. EN TU PROYECTO DIGITAL, TIENES OTROS puertos distintos. 
-
+// D14: CapiMagics block for the Chipathon 2026 GF padframe (block type D, 605 x 605 um).
+// Pin names and locations come from the organizers' D14_D.def.
+// The organizers connect this block to the padring (D14_D_padring.v); this file only
+// wires the finished D14_topcell macro to the block pins.
 module D14 (
-    //`ifdef USE_POWER_PINS
-    //    inout avss,
-    //    inout avdd,
-    //`endif
+`ifdef USE_POWER_PINS
+    inout avss,
+    inout avdd,
+`endif
     inout Vin,
     inout Vin_neg,
     inout vout_1,
@@ -17,12 +19,11 @@ module D14 (
     inout vpost2
 );
 
-      //LA INSTANCIA DE NUESTRA CELDA DEBERIA IR EN D14_D_padring.v? o a que lo conecto aqui?
-     D14_topcell D14_topcell_u (
-        //`ifdef USE_POWER_PINS
-        //    .avdd  (avdd),
-        //    .avss (avss),
-        //`endif
+    D14_topcell D14_topcell_u (
+`ifdef USE_POWER_PINS
+        .avdd(avdd),
+        .avss(avss),
+`endif
         .Vin(Vin),
         .Vin_neg(Vin_neg),
         .vout_1(vout_1),
@@ -33,7 +34,11 @@ module D14 (
         .vpost2(vpost2)
     );
 
+    // Passive Metal2-Metal3 bridges over the avss / avdd DEF pins. They tie the
+    // padframe power stripes to the Metal4/Metal5 grid (see connectors/ and pdn_cfg.tcl).
+    (* keep *) avss_conn u_avss_conn ();
+    (* keep *) avdd_conn u_avdd_conn ();
+
 endmodule
 
 `default_nettype wire
-
