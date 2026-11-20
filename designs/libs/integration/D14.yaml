@@ -11,7 +11,7 @@ VERILOG_FILES:
   - dir::D14.v
   - dir::connectors/avss_conn.v
   - dir::connectors/avdd_conn.v
-  # - dir::macros/stdp_4x2/stdp_4x2.v
+
 
 
 # --- Parámetros de Floorplaning (Alineados a rejilla 7T GF180MCU) ---
@@ -34,9 +34,9 @@ GND_NETS:
 PAD_LIBS: {} #para ignorar los pads de la librería de pads del PDK y usar los pads de la macro, se necesita ignoras las librerias de 5V0
 
 
-FP_DEF_TEMPLATE: dir::D14_D.def
-FP_TEMPLATE_COPY_POWER_PINS: true
-FP_TEMPLATE_MATCH_MODE: permissive
+#FP_DEF_TEMPLATE: dir::D14_D.def
+##FP_TEMPLATE_COPY_POWER_PINS: true
+#FP_TEMPLATE_MATCH_MODE: permissive
 
 # --- Manejo de Verificaciones para Diseños Analógicos / Macros ---
 ERROR_ON_LINTER_ERRORS: false
@@ -65,7 +65,7 @@ PDN_CORE_RING_VWIDTH: 1.5
 PDN_CORE_RING_HWIDTH: 1.5
 PDN_CORE_RING_VSPACING: 1.5
 PDN_CORE_RING_HSPACING: 1.5
-PDN_VOFFSET: 10
+PDN_VOFFSET: 10 
 PDN_HOFFSET: 10
 
 SYNTH_KEEP_HIERARCHY_MODULES: [avss_conn, avdd_conn]
@@ -139,7 +139,7 @@ MACROS:
         - dir::../snn_analog/runs/test/D14_topcell/spef/nom/D14_topcell.nom.spef
     instances:
       D14_topcell_u:
-        location: [160, 110]
+        location: [160, 50]
         orientation: N
 
 # Conexión directa de alimentación a los pines y rieles de cada macro
@@ -208,6 +208,4 @@ GRT_ANTENNA_REPAIR_JUMPER_ONLY: true
 GRT_ANTENNA_REPAIR_DIODE_ONLY: false
 DRT_ANTENNA_REPAIR_JUMPER_ONLY: true
 DRT_ANTENNA_REPAIR_DIODE_ONLY: false
-
-# IO_PIN_ORDER_CFG: dir::pin.cfg
 

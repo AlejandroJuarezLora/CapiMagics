@@ -1,0 +1,20 @@
+* NGSPICE file created from D14.ext - technology: gf180mcuD
+
+* Black-box entry subcircuit for avdd_conn abstract view
+.subckt avdd_conn avdd
+.ends
+
+* Black-box entry subcircuit for D14_topcell abstract view
+.subckt D14_topcell Vin Vin_neg avdd avss vout_1 vout_2 vpost1 vpost2 vpre1 vpre2
+.ends
+
+* Black-box entry subcircuit for avss_conn abstract view
+.subckt avss_conn avss
+.ends
+
+.subckt D14 Vin Vin_neg avdd avss vout_1 vout_2 vpost1 vpost2 vpre1 vpre2
+Xu_avdd_conn avdd avdd_conn
+XD14_topcell_u Vin Vin_neg avdd avss vout_1 vout_2 vpost1 vpost2 vpre1 vpre2 D14_topcell
+Xu_avss_conn avss avss_conn
+.ends
+

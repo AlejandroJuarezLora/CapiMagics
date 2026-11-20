@@ -1,0 +1,173 @@
+meta:
+  version: 3
+  flow: Classic
+  substituting_steps:
+    OpenROAD.IRDropReport: null
+
+DESIGN_NAME: D14
+
+# --- RTL del top ---
+VERILOG_FILES:
+  - dir::D14.v
+
+# --- Parámetros de Floorplaning (Alineados a rejilla 7T GF180MCU) ---
+FP_SIZING: absolute
+DIE_AREA: [0, 0, 605, 605] 
+CORE_AREA: [10, 10, 595, 595] #de /snn_analog/config.yaml
+
+VDD_NETS:
+  - avdd
+GND_NETS:
+  - avss
+
+PAD_LIBS: {} #para ignorar los pads de la librería de pads del PDK y usar los pads de la macro, se necesita ignoras las librerias de 5V0
+
+
+FP_DEF_TEMPLATE: dir::D14_D.def
+FP_TEMPLATE_COPY_POWER_PINS: true
+FP_TEMPLATE_MATCH_MODE: permissive
+
+# --- Manejo de Verificaciones para Diseños Analógicos / Macros ---
+ERROR_ON_LINTER_ERRORS: false
+ERROR_ON_LINTER_WARNINGS: false
+ERROR_ON_UNMAPPED_CELLS: false
+ERROR_ON_SYNTH_CHECKS: false
+ERROR_ON_NL_ASSIGN_STATEMENTS: false
+ERROR_ON_DISCONNECTED_PINS: false ######
+
+# ---- FLAGS PDN
+
+PDN_ENABLE_RAILS: true
+PDN_MULTILAYER: true
+PDN_VWIDTH: 1
+PDN_HWIDTH: 1
+PDN_VSPACING: 2
+PDN_HSPACING: 2
+PDN_VPITCH: 20 #64
+PDN_HPITCH: 20 #40
+PDN_CORE_RING: true
+PDN_CORE_RING_VWIDTH: 1.5
+PDN_CORE_RING_HWIDTH: 1.5
+PDN_CORE_RING_VSPACING: 1.5
+PDN_CORE_RING_HSPACING: 1.5
+PDN_VOFFSET: 20.0
+PDN_HOFFSET: 30.0
+
+MACROS:
+  D14_topcell:
+    gds:
+      - dir::../snn_analog/runs/test/D14_topcell/gds/D14_topcell.gds
+    lef:
+      - dir::../snn_analog/runs/test/D14_topcell/lef/D14_topcell.lef
+    vh:
+      - dir::../snn_analog/runs/test/D14_topcell/vh/D14_topcell.vh
+    nl:
+      - dir::../snn_analog/runs/test/D14_topcell/nl/D14_topcell.nl.v
+    pnl:
+      - dir::../snn_analog/runs/test/D14_topcell/pnl/D14_topcell.pnl.v
+    spice:
+      - dir::../snn_analog/runs/test/D14_topcell/spice/D14_topcell.spice
+    sdf:
+      max_ff_n40C_5v50:
+        - dir::../snn_analog/runs/test/D14_topcell/sdf/max_ff_n40C_5v50/D14_topcell__max_ff_n40C_5v50.sdf
+      max_ss_125C_4v50:
+        - dir::../snn_analog/runs/test/D14_topcell/sdf/max_ss_125C_4v50/D14_topcell__max_ss_125C_4v50.sdf
+      max_tt_025C_5v00:
+        - dir::../snn_analog/runs/test/D14_topcell/sdf/max_tt_025C_5v00/D14_topcell__max_tt_025C_5v00.sdf
+      min_ff_n40C_5v50:
+        - dir::../snn_analog/runs/test/D14_topcell/sdf/min_ff_n40C_5v50/D14_topcell__min_ff_n40C_5v50.sdf
+      min_ss_125C_4v50:
+        - dir::../snn_analog/runs/test/D14_topcell/sdf/min_ss_125C_4v50/D14_topcell__min_ss_125C_4v50.sdf
+      min_tt_025C_5v00:
+        - dir::../snn_analog/runs/test/D14_topcell/sdf/min_tt_025C_5v00/D14_topcell__min_tt_025C_5v00.sdf
+      nom_ff_n40C_5v50:
+        - dir::../snn_analog/runs/test/D14_topcell/sdf/nom_ff_n40C_5v50/D14_topcell__nom_ff_n40C_5v50.sdf
+      nom_ss_125C_4v50:
+        - dir::../snn_analog/runs/test/D14_topcell/sdf/nom_ss_125C_4v50/D14_topcell__nom_ss_125C_4v50.sdf
+      nom_tt_025C_5v00:
+        - dir::../snn_analog/runs/test/D14_topcell/sdf/nom_tt_025C_5v00/D14_topcell__nom_tt_025C_5v00.sdf
+    lib:
+      max_ff_n40C_5v50:
+        - dir::../snn_analog/runs/test/D14_topcell/lib/max_ff_n40C_5v50/D14_topcell__max_ff_n40C_5v50.lib
+      max_ss_125C_4v50:
+        - dir::../snn_analog/runs/test/D14_topcell/lib/max_ss_125C_4v50/D14_topcell__max_ss_125C_4v50.lib
+      max_tt_025C_5v00:
+        - dir::../snn_analog/runs/test/D14_topcell/lib/max_tt_025C_5v00/D14_topcell__max_tt_025C_5v00.lib
+      min_ff_n40C_5v50:
+        - dir::../snn_analog/runs/test/D14_topcell/lib/min_ff_n40C_5v50/D14_topcell__min_ff_n40C_5v50.lib
+      min_ss_125C_4v50:
+        - dir::../snn_analog/runs/test/D14_topcell/lib/min_ss_125C_4v50/D14_topcell__min_ss_125C_4v50.lib
+      min_tt_025C_5v00:
+        - dir::../snn_analog/runs/test/D14_topcell/lib/min_tt_025C_5v00/D14_topcell__min_tt_025C_5v00.lib
+      nom_ff_n40C_5v50:
+        - dir::../snn_analog/runs/test/D14_topcell/lib/nom_ff_n40C_5v50/D14_topcell__nom_ff_n40C_5v50.lib
+      nom_ss_125C_4v50:
+        - dir::../snn_analog/runs/test/D14_topcell/lib/nom_ss_125C_4v50/D14_topcell__nom_ss_125C_4v50.lib
+      nom_tt_025C_5v00:
+        - dir::../snn_analog/runs/test/D14_topcell/lib/nom_tt_025C_5v00/D14_topcell__nom_tt_025C_5v00.lib
+    spef:
+      max:
+        - dir::../snn_analog/runs/test/D14_topcell/spef/max/D14_topcell.max.spef
+      min:
+        - dir::../snn_analog/runs/test/D14_topcell/spef/min/D14_topcell.min.spef
+      nom:
+        - dir::../snn_analog/runs/test/D14_topcell/spef/nom/D14_topcell.nom.spef
+    instances:
+      D14_topcell_u:
+        location: [50, 50]
+        orientation: N
+
+# Conexión directa de alimentación a los pines y rieles de cada macro
+PDN_MACRO_CONNECTIONS:
+  - "D14_topcell_u avdd avss avdd avss"
+
+# --- Blackbox & Analog Optimization (Valid LibreLane Flags) ---
+PL_TIMING_DRIVEN: false            # Disables OpenROAD timing-driven placement
+RUN_POST_GPL_DESIGN_REPAIR: false
+RUN_REPAIR_DESIGN: false
+RUN_CTS: false
+RUN_POST_CTS_RESIZER_TIMING: false
+RUN_POST_GRT_RESIZER_TIMING: false
+RUN_HEURISTIC_DIODE_INSERTION: false
+RUN_FILL_INSERTION: false
+RUN_TAP_ENDCAP_INSERTION: false
+ERROR_ON_PDN_VIOLATIONS: false
+
+# --- Routing (GF180MCU) ---
+PRIMARY_GDSII_STREAMOUT_TOOL: klayout
+MAGIC_ZEROIZE_ORIGIN: false
+ERROR_ON_MAGIC_DRC: false
+KLAYOUT_FILLER_OPTIONS:
+  Metal2_ignore_active: true
+MAGIC_EXT_UNIQUE: notopports
+
+RT_MIN_LAYER: Metal3
+RT_MAX_LAYER: Metal5
+ROUTING_CORES: 12
+
+
+NON_DEFAULT_RULES:
+  ndr_safe_spacing:
+    width:
+      - Metal3
+      - "0.28"
+    spacing:
+      - Metal3
+      - "1"
+
+DRT_ASSIGN_NDR:
+  ".*": ndr_safe_spacing
+
+RUN_ANTENNA_REPAIR: true
+RUN_MAGIC_DRC: false
+
+GRT_ANTENNA_REPAIR_ITERS: 10
+GRT_ANTENNA_REPAIR_MARGIN: 10
+
+GRT_ANTENNA_REPAIR_JUMPER_ONLY: true
+GRT_ANTENNA_REPAIR_DIODE_ONLY: false
+DRT_ANTENNA_REPAIR_JUMPER_ONLY: true
+DRT_ANTENNA_REPAIR_DIODE_ONLY: false
+
+# IO_PIN_ORDER_CFG: dir::pin.cfg
+

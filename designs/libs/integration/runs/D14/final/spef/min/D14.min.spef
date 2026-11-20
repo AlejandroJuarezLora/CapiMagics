@@ -1,0 +1,173 @@
+*SPEF "ieee 1481-1999"
+*DESIGN "D14"
+*DATE "20:12:14 Friday November 20, 2026"
+*VENDOR "The OpenROAD Project"
+*PROGRAM "OpenROAD"
+*VERSION "26Q1-1024-gdcf36133a"
+*DESIGN_FLOW "NAME_SCOPE LOCAL" "PIN_CAP NONE"
+*DIVIDER /
+*DELIMITER :
+*BUS_DELIMITER []
+*T_UNIT 1 NS
+*C_UNIT 1 PF
+*R_UNIT 1 OHM
+*L_UNIT 1 HENRY
+
+*NAME_MAP
+*1 Vin
+*2 Vin_neg
+*5 vout_1
+*6 vout_2
+*7 vpost1
+*8 vpost2
+*9 vpre1
+*10 vpre2
+*11 D14_topcell_u
+*12 u_avdd_conn
+*13 u_avss_conn
+
+*PORTS
+Vin I
+Vin_neg I
+vout_1 I
+vout_2 I
+vpost1 I
+vpost2 I
+vpre1 I
+vpre2 I
+
+*D_NET *1 0.0143541
+*CONN
+*P Vin I
+*I *11:Vin I *D D14_topcell
+*CAP
+1 Vin 0.00238773
+2 *11:Vin 0.00461202
+3 *1:12 0.00699975
+4 *1:12 *7:24 0.000354613
+*RES
+1 Vin *1:12 20.878 
+2 *1:12 *11:Vin 32.2674 
+*END
+
+*D_NET *2 0.0144611
+*CONN
+*P Vin_neg I
+*I *11:Vin_neg I *D D14_topcell
+*CAP
+1 Vin_neg 0.000758617
+2 *11:Vin_neg 0.00628339
+3 *2:8 0.00704201
+4 *2:8 *7:24 0.000377129
+*RES
+1 Vin_neg *2:8 9.706 
+2 *2:8 *11:Vin_neg 43.6566 
+*END
+
+*D_NET *5 0.0739873
+*CONN
+*P vout_1 I
+*I *11:vout_1 O *D D14_topcell
+*CAP
+1 vout_1 0.00646294
+2 *11:vout_1 9.56846e-05
+3 *5:18 0.0221143
+4 *5:16 0.0156514
+5 *5:14 0.00977118
+6 *5:12 0.00986686
+7 *5:14 *6:14 0.010025
+*RES
+1 *11:vout_1 *5:12 5.21657 
+2 *5:12 *5:14 79.876 
+3 *5:14 *5:16 4.5 
+4 *5:16 *5:18 111.796 
+5 *5:18 vout_1 48.922 
+*END
+
+*D_NET *6 0.0511023
+*CONN
+*P vout_2 I
+*I *11:vout_2 O *D D14_topcell
+*CAP
+1 vout_2 0.00680379
+2 *11:vout_2 0.00191437
+3 *6:18 0.00680379
+4 *6:16 0.0118205
+5 *6:14 0.0137348
+6 *5:14 *6:14 0.010025
+*RES
+1 *11:vout_2 *6:14 34.4817 
+2 *6:14 *6:16 84.588 
+3 *6:16 *6:18 4.5 
+4 *6:18 vout_2 46.702 
+*END
+
+*D_NET *7 0.0581052
+*CONN
+*P vpost1 I
+*I *11:vpost1 O *D D14_topcell
+*CAP
+1 vpost1 2.73362e-05
+2 *11:vpost1 0.000273909
+3 *7:24 0.0176871
+4 *7:22 0.0188885
+5 *7:12 0.00799077
+6 *7:10 0.00703592
+7 *7:12 *8:10 0.00438785
+8 *7:24 vpre1 0.000455932
+9 *7:24 vpre2 0.000626164
+10 *1:12 *7:24 0.000354613
+11 *2:8 *7:24 0.000377129
+*RES
+1 *11:vpost1 *7:10 6.248 
+2 *7:10 *7:12 62.244 
+3 *7:12 *7:22 17.2412 
+4 *7:22 *7:24 127.504 
+5 *7:24 vpost1 9.19 
+*END
+
+*D_NET *8 0.0748278
+*CONN
+*P vpost2 I
+*I *11:vpost2 O *D D14_topcell
+*CAP
+1 vpost2 0.0220546
+2 *11:vpost2 8.69274e-05
+3 *8:12 0.0220546
+4 *8:10 0.0130784
+5 *8:8 0.0131654
+6 *7:12 *8:10 0.00438785
+*RES
+1 *11:vpost2 *8:8 5.03743 
+2 *8:8 *8:10 108.523 
+3 *8:10 *8:12 4.5 
+4 *8:12 vpost2 150.974 
+*END
+
+*D_NET *9 0.0149124
+*CONN
+*P vpre1 I
+*I *11:vpre1 O *D D14_topcell
+*CAP
+1 vpre1 0.000943353
+2 *11:vpre1 0.00628487
+3 *9:16 0.00722822
+4 *7:24 vpre1 0.000455932
+*RES
+1 *11:vpre1 *9:16 48.2434 
+2 *9:16 vpre1 6.27 
+*END
+
+*D_NET *10 0.0151552
+*CONN
+*P vpre2 I
+*I *11:vpre2 O *D D14_topcell
+*CAP
+1 vpre2 0.000955437
+2 *11:vpre2 0.00630906
+3 *10:12 0.0072645
+4 *7:24 vpre2 0.000626164
+*RES
+1 *11:vpre2 *10:12 48.3086 
+2 *10:12 vpre2 6.574 
+*END

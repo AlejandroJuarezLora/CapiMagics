@@ -1,0 +1,26 @@
+(DELAYFILE
+ (SDFVERSION "3.0")
+ (DESIGN "D14")
+ (DATE "Fri Nov 20 20:12:15 2026")
+ (VENDOR "Parallax")
+ (PROGRAM "STA")
+ (VERSION "2.7.0")
+ (DIVIDER .)
+ (TIMESCALE 1ns)
+ (CELL
+  (CELLTYPE "D14")
+  (INSTANCE)
+  (DELAY
+   (ABSOLUTE
+    (INTERCONNECT Vin D14_topcell_u.Vin (1.203:1.203:1.203) (0.761:0.761:0.761))
+    (INTERCONNECT Vin_neg D14_topcell_u.Vin_neg (1.015:1.015:1.015) (0.642:0.642:0.642))
+    (INTERCONNECT D14_topcell_u.vout_1 vout_1 (0.023:0.023:0.023))
+    (INTERCONNECT D14_topcell_u.vout_2 vout_2 (0.014:0.014:0.014))
+    (INTERCONNECT D14_topcell_u.vpost1 vpost1 (0.019:0.019:0.019))
+    (INTERCONNECT D14_topcell_u.vpost2 vpost2 (0.025:0.025:0.025))
+    (INTERCONNECT D14_topcell_u.vpre1 vpre1 (0.004:0.004:0.004))
+    (INTERCONNECT D14_topcell_u.vpre2 vpre2 (0.004:0.004:0.004))
+   )
+  )
+ )
+)
